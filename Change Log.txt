@@ -1,0 +1,17 @@
+28-01-2021:
+-Proyecto Creado
+---------------------------------------------------------------------------------
+29-01-2021:
+-Agregado Cinemachine al proyecto (plugin de camara).
+-Agregado Pixel perfect al proyecto (plugin de camara).
+-Agregado FMOD al proyecto (plugin de audio).
+-Agregado Probuilder al proyecto (herramienta de prototipado en 3d).
+-Agregado Progrids al proyecto (plugin de snapeo de movimiento para el editor).
+-Agregado Sprite2D al proyecto (editor de sprites).
+-Agregados Sprites de sample al proyecto.
+-Se setearon animaciones de Idle en loop para cada sprite.
+-Se le agrego un script de movimiento simple al jugador con el fin de probar las interacciones entre los plugins de cámara.
+-Se configuró el plugin "Cinemachine" para que la cámara siga al jugador.
+-Se configuró el plugin "Pixel perfect para que funcione correctamente en conjunto con el plugin "Cinemachine".
+-Se testeo el movimiento de la cámara.
+---------------------------------------------------------------------------------
