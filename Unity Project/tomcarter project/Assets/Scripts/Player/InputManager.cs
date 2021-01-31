@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour
         _myInputs.Gameplay.Jump.Disable();
     }
     public Vector2 axis(){
-        return _myInputs.Gameplay.Axis.ReadValue<Vector2>();
+        return _myInputs.Gameplay.Axis.ReadValue<Vector2>().normalized;
     }
     private void JumpButtonUp(){
         jumpPerformed = true;

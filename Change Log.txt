@@ -22,3 +22,7 @@
 -Agregado Unity Input System al proyecto (plugin de mapeo de inputs), reemplazando al sistema viejo de inputs.
 -Creados los scripts "Brain", "InputManager" y "PlayerMovement" que operan en conjunto para mover al jugador.
 -Testeado el funcionamiento de los scripts mediante debugs en la consola.
+-Agregado el movimiento mediante Rigidbody.velocity al jugador.
+-Agregada una pequeña aceleración/desaceleración para cuando el jugador comienza/para de moverse.
+-Agregada la detección de piso mediante 2 physics.Raycast en los extremos del jugador.
+-Agregada una funcion de salto simple mediante Rigidbody.addforce con el fin de testear la detección de piso.
