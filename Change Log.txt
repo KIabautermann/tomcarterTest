@@ -15,3 +15,10 @@
 -Se configuró el plugin "Pixel perfect para que funcione correctamente en conjunto con el plugin "Cinemachine".
 -Se testeo el movimiento de la cámara.
 ---------------------------------------------------------------------------------
+30-01-2021:
+-Creado el script "AnimatedLine" que permite animar Line Renderers.
+-Agregado un sprite de tile básico para usar como piso y paredes.
+-Agregada la layer "walkable" con el fin de detectar si el jugador esta sobre piso o no.
+-Agregado Unity Input System al proyecto (plugin de mapeo de inputs), reemplazando al sistema viejo de inputs.
+-Creados los scripts "Brain", "InputManager" y "PlayerMovement" que operan en conjunto para mover al jugador.
+-Testeado el funcionamiento de los scripts mediante debugs en la consola.
