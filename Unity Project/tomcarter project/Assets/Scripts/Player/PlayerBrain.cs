@@ -13,11 +13,20 @@ public class PlayerBrain : MonoBehaviour
     private InputManager _myInputs;
     private Rigidbody _rb;
     private Movement _myMovement;
+    private CharacterVisuals _myVisuals;
+    private bool facingRight;
+    private bool wasFacingRight;
+
+    private void Awake(){
+        facingRight = (transform.position.x + transform.right.x) > transform.position.x;
+        wasFacingRight = facingRight;
+    }
 
     private void Start(){
         _myInputs = GetComponent<InputManager>();
         _rb = GetComponent<Rigidbody>();
         _myMovement = GetComponent<Movement>();
+        _myVisuals = GetComponent<CharacterVisuals>();
     }
 
     private void Update(){
@@ -27,11 +36,24 @@ public class PlayerBrain : MonoBehaviour
             }
             _myInputs.jumpPerformed = false;
         }
+        if(_myInputs.axis().x!=0)
+        {
+            facingRight = _myInputs.axis().x > 0;
+            if (wasFacingRight != facingRight)
+            {
+                _myVisuals.Flip();
+                _myMovement.SetAcceleration(0);
+                wasFacingRight = facingRight;
+            }
+        }
     }
     private void FixedUpdate(){
         _myMovement.Move(_myInputs.axis().x);
+        if (!Grounded())
+        {
+            _myMovement.SetFallSpeed(_myInputs.jumpHold);
+        }
     }
-
     private bool Grounded(){
         int counter = 0;
         for (int i = 0; i < _groundCheck.Length; i++){
@@ -41,7 +63,6 @@ public class PlayerBrain : MonoBehaviour
         }
         return counter != 0;
     }
-
     private void OnDrawGizmos(){
         for (int i = 0; i < _groundCheck.Length; i++){
             Gizmos.DrawLine(_groundCheck[i].position, _groundCheck[i].position + -Vector3.up * _floorDetection);
