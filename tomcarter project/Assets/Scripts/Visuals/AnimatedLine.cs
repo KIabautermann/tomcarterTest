@@ -20,14 +20,26 @@ public class AnimatedLine : MonoBehaviour
 
     private void Update()
     {
-        counter += Time.deltaTime;
-        if(counter >= 1f / _fps){
-            animationIndex++;
-            if (animationIndex == _textures.Length){
-                animationIndex = 0;
+        if (_myRenderer.enabled)
+        {
+            counter += Time.deltaTime;
+            if (counter >= 1f / _fps)
+            {
+                animationIndex++;
+                if (animationIndex == _textures.Length)
+                {
+                    animationIndex = 0;
+                }
+                _myRenderer.material.SetTexture("_MainTex", _textures[animationIndex]);
+                counter = 0;
             }
-            _myRenderer.material.SetTexture("_MainTex", _textures[animationIndex]);
+        }
+        else
+        {
+            _myRenderer.material.SetTexture("_MainTex", _textures[0]);
+            animationIndex = 0;
             counter = 0;
         }
+        
     }
 }
