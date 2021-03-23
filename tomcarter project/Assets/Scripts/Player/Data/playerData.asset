@@ -9,46 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9abfcc6f901ee734b987d813077cdc19, type: 3}
-  m_Name: playerData
+  m_Script: {fileID: 11500000, guid: b23deb08ef567294ba86bfa0e2561b55, type: 3}
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
-  movementVelocity: 7
-  groundedAccelerationTime: 0.2
-  airAccelerationTime: 0.4
-  jumpVelocity: 10
-  fallMultiplier: 0.8
-  minJumpVelocity: 1.5
-  coyoteTime: 0.1
-  shortHopMultiplier: 0.25
-  maxFallVelocity: -15
-  amountOfJumps: 1
-  dashCooldown: 0.3
-  HoldTime: 0.01
-  dashLenght: 0.15
-  dashSpeed: 50
-  drag: 10
-  dashEndMultiplier: 0.3
-  collisionDetection: 0.41
-  dashJumpVelocityX: 12
-  dashJumpAccelerationTime: 0.1
-  dashJumpFallMultiplier: 0.8
-  minDashJumpVelocity: 1.5
-  dashCoyoteTime: 0.2
-  jumpHandicapTime: 0.02
-  hookSpeed: 20
-  circularSpeed: 5
-  hookDetectionRadius: 0.25
-  maxAngle: 45
-  hookCooldown: 1
-  hookTarget: {x: 2.5, y: 2.5, z: 0}
-  hedgeDetectionLenght: 0.5
-  hedgeDetectionRadius: 0.5
-  hedge:
-    serializedVersion: 2
-    m_Bits: 1024
-  hedgeMovementVelocity: 10
-  groundCheckDistance: 0.1
-  wallCheckDistance: 0.45
-  walkable:
-    serializedVersion: 2
-    m_Bits: 1280
