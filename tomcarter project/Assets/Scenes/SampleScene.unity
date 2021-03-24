@@ -772,6 +772,9 @@ GameObject:
   - component: {fileID: 1677930201}
   - component: {fileID: 1677930202}
   - component: {fileID: 1677930200}
+  - component: {fileID: 1677930209}
+  - component: {fileID: 1677930208}
+  - component: {fileID: 1677930205}
   - component: {fileID: 1677930203}
   - component: {fileID: 1677930207}
   - component: {fileID: 1677930206}
@@ -781,7 +784,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!212 &1677930200
 SpriteRenderer:
@@ -896,6 +899,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6875, y: 0.625, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1677930205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677930199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d883f0bc969e19d40a0cedec5c663924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTransitionIn:
+    m_PersistentCalls:
+      m_Calls: []
+  onLogicUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onPhysicsUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onTransitionOut:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1677930206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1079,6 +1106,43 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1677930208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677930199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b79473dc206404590b2270c6f79e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTransitionIn:
+    m_PersistentCalls:
+      m_Calls: []
+  onLogicUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onPhysicsUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onTransitionOut:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1677930209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677930199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a04a5d1d615514db1641765d989b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: a2bb1c849d658464a9372fb9db7693b0, type: 2}
 --- !u!1 &2097832751
 GameObject:
   m_ObjectHideFlags: 0

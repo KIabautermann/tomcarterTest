@@ -6,9 +6,12 @@ public abstract class PlayerState : State<PlayerStateMachine>
 {  
     protected PlayerInputHandler inputs;
     protected PlayerData stats;
-    private void Start() 
+
+    public override void Init(PlayerStateMachine target)
     {
+        base.Init(target);
         inputs = GetComponent<PlayerInputHandler>();
-        stats = GetComponent<PlayerData>();
+        stats = target.stats;
     }
+
 }

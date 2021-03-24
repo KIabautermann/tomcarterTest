@@ -58,7 +58,6 @@ public class PlayerInputHandler : MonoBehaviour
     {
         rawAxis = ctx.ReadValue<Vector2>();
         FixedAxis = Vector2Int.RoundToInt(rawAxis.normalized);
-        Debug.Log("movement");
     }
     public void OnJumpInput(InputAction.CallbackContext ctx)
     {
@@ -67,7 +66,6 @@ public class PlayerInputHandler : MonoBehaviour
             JumpInput = true;
             JumpCancel = false;
             _jumpStartTime = Time.time;
-            Debug.Log("jump");
         } 
         if(ctx.canceled)
         {
@@ -81,7 +79,6 @@ public class PlayerInputHandler : MonoBehaviour
             RootsInput = true;
             RootsCancel = false;
             _rootsStartTime = Time.time;
-            Debug.Log("roots");
         } 
         if(ctx.canceled)
         {
@@ -95,7 +92,6 @@ public class PlayerInputHandler : MonoBehaviour
             DashInput = true;
             DashCancel = false;
             _dashStartTime = Time.time;
-            Debug.Log("dash");
         } 
         if(ctx.canceled)
         {
@@ -109,7 +105,6 @@ public class PlayerInputHandler : MonoBehaviour
             MeleeInput = true;
             MeleeCancel = false;
             _meleeStartTime = Time.time;
-            Debug.Log("melee");
         } 
         if(ctx.canceled)
         {
@@ -123,7 +118,6 @@ public class PlayerInputHandler : MonoBehaviour
             RangeInput = true;
             RangeCancel = false;
             _rangeStartTime = Time.time;
-            Debug.Log("range");
         } 
         if(ctx.canceled)
         {
@@ -137,7 +131,6 @@ public class PlayerInputHandler : MonoBehaviour
             HookInput = true;
             HookCancel = false;
             _hookStartTime = Time.time;
-            Debug.Log("hook");
         } 
         if(ctx.canceled)
         {
@@ -151,7 +144,6 @@ public class PlayerInputHandler : MonoBehaviour
             GuardInput = true;
             GuardCancel = false;
             _guardStartTime = Time.time;
-            Debug.Log("guard");
         } 
         if(ctx.canceled)
         {
@@ -165,7 +157,6 @@ public class PlayerInputHandler : MonoBehaviour
             InteractionInput = true;
             InteractionCancel = false;
             _interactionStartTime = Time.time;
-            Debug.Log("interaction");
         } 
         if(ctx.canceled)
         {

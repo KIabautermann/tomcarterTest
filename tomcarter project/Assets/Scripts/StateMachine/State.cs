@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
 {
     protected T _target;
-
     public UnityEvent onTransitionIn;
     public UnityEvent onLogicUpdate;
     public UnityEvent onPhysicsUpdate;
@@ -28,6 +27,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public void TriggerLogicUpdate()
     {
         DoLogicUpdate();
+        TransitionChecks();
         onTransitionOut.Invoke();
     }
     protected abstract void DoLogicUpdate();
