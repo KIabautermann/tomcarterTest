@@ -4,12 +4,14 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
+using UnityEngine.SceneManagement;
 
-public class SaveLoad : MonoBehaviour
+public class SaveLoadController : MonoBehaviour
 {
-    private void Awake() {
-        LoadGame();
+    private void OnEnable() {
+        SceneManager.sceneLoaded += LoadGame;
     }
+    
     public static event EventHandler<OnSaveCalledEventArgs> OnSaveCalled;
     public class OnSaveCalledEventArgs : EventArgs {
         public GameState gameState;
@@ -26,7 +28,7 @@ public class SaveLoad : MonoBehaviour
         file.Close();
     }
 
-    public void LoadGame()
+    private void LoadGame(Scene scene, LoadSceneMode mode)
     {
         if (File.Exists(Application.persistentDataPath + FILE_NAME))
         {

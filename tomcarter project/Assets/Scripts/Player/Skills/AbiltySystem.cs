@@ -34,7 +34,7 @@ public class AbiltySystem : LoadableObject
     {
         ReadFromSerializedAbilities(gameState.unlockedAbilities);
     }
-    protected override void SaveToGameState(object sender, SaveLoad.OnSaveCalledEventArgs onSaveArguments) 
+    protected override void SaveToGameState(object sender, SaveLoadController.OnSaveCalledEventArgs onSaveArguments) 
     {
         onSaveArguments.gameState.unlockedAbilities = new UnlockedAbilitiesData(this);
     }

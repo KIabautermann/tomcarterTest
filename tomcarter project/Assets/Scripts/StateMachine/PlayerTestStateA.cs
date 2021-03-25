@@ -42,7 +42,7 @@ public class PlayerTestStateA : PlayerState
             {
                 Debug.Log("Cant change to state A since it's not unlocked. Let me unlock it for you");
                 abiltySystem.UnlockSkill(AbiltySystem.PlayerSkill.SPORE_DASH); 
-                SaveLoad saveLoad = FindObjectOfType<SaveLoad>();
+                SaveLoadController saveLoad = FindObjectOfType<SaveLoadController>();
                 saveLoad.SaveGame();
                 return;
             }
