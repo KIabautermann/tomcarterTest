@@ -31,6 +31,6 @@ public class PlayerIdleState : PlayerGroundedState
 
     protected override void TransitionChecks()
     {
-        
+        base.TransitionChecks();
     }
 }

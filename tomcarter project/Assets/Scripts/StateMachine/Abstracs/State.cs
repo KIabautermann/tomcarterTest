@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
 {
     protected T _target;
+    public bool isExiting;
     public UnityEvent onTransitionIn;
     public UnityEvent onLogicUpdate;
     public UnityEvent onPhysicsUpdate;
@@ -22,6 +23,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
         DoChecks();
         DoTransitionIn();
         onTransitionIn.Invoke();  
+        isExiting = false;
     }
     protected abstract void DoTransitionIn();
 
@@ -45,6 +47,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     {
         DoTransitionOut();
         onLogicUpdate.Invoke();
+        isExiting = true;
     }
     protected abstract void DoTransitionOut();
 
