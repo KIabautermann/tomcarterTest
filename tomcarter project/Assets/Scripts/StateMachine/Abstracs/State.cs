@@ -10,6 +10,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public UnityEvent onLogicUpdate;
     public UnityEvent onPhysicsUpdate;
     public UnityEvent onTransitionOut;
+    public string stateName;
 
     public virtual void Init(T target)
     {
@@ -20,7 +21,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     {
         DoChecks();
         DoTransitionIn();
-        onTransitionIn.Invoke();   
+        onTransitionIn.Invoke();  
     }
     protected abstract void DoTransitionIn();
 
