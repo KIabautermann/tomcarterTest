@@ -20,22 +20,25 @@ public class PlayerStateMachine : MonoBehaviour
     }
     public void ChangeState<T>() where T : State<PlayerStateMachine>
     {
-        if(!_currentState.isExiting){
-            var newState = GetComponent<T>();
-            if(_currentState != null && newState != null)
-            {
-                _currentState.TriggerTransitionOut();
+        if(_currentState != null){
+            if(_currentState.isExiting){
+                return;
             }
-            if(newState != null)
-            {
-                _currentState = newState;
-                _currentStateDisplay.text = newState.stateName;
-                _currentState.TriggerTransitionIn();
-            }
-            else
-            {
-                Debug.LogWarning("Can't Transition");
-            }      
+        }
+        var newState = GetComponent<T>();
+        if(_currentState != null && newState != null)
+        {
+            _currentState.TriggerTransitionOut();
+        }
+        if(newState != null)
+        {
+            _currentState = newState;
+            _currentStateDisplay.text = newState.stateName;
+            _currentState.TriggerTransitionIn();
+        }
+        else
+        {
+            Debug.LogWarning("Can't Transition");
         }       
     }
     private void Update() 
