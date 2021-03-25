@@ -32,10 +32,23 @@ public class PlayerTestStateA : PlayerState
 
     protected override void TransitionChecks()
     {
+            
         if(inputs.JumpInput)
         {
-            _target.ChangeState<PlayerTestStateB>();
+            Debug.Log("Frame with jump input");
             inputs.UsedJump();
+            // TODO: Borrar esto, esta de placeholder. No se que es lo que deberia triggerear un SaveFile
+            if (!abiltySystem.IsUnlocked(AbiltySystem.PlayerSkill.SPORE_DASH)) 
+            {
+                Debug.Log("Cant change to state A since it's not unlocked. Let me unlock it for you");
+                abiltySystem.UnlockSkill(AbiltySystem.PlayerSkill.SPORE_DASH); 
+                SaveLoad saveLoad = FindObjectOfType<SaveLoad>();
+                saveLoad.SaveGame();
+                return;
+            }
+
+            _target.ChangeState<PlayerTestStateB>();
         }
     }
+
 }

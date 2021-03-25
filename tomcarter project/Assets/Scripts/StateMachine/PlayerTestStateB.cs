@@ -3,23 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTestStateB : PlayerState
-{
-    public override bool Equals(object other)
-    {
-        return base.Equals(other);
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
-    public override string ToString()
-    {
-        return base.ToString();
-    }
-
-    protected override void DoChecks()
+{   
+     protected override void DoChecks()
     {
         
     }
@@ -36,7 +21,9 @@ public class PlayerTestStateB : PlayerState
 
     protected override void DoTransitionIn()
     {
+        
         Debug.Log("State B");
+
     }
 
     protected override void DoTransitionOut()
