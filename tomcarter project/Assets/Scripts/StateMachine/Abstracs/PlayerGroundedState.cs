@@ -22,11 +22,13 @@ public abstract class PlayerGroundedState : PlayerState
 
     protected override void DoTransitionIn()
     {
+        base.DoTransitionIn();
         isExiting = false;
     }
 
     protected override void DoTransitionOut()
     {
+        base.DoTransitionOut();
         isExiting = true;
     }
 
@@ -55,6 +57,10 @@ public abstract class PlayerGroundedState : PlayerState
         else if(inputs.GuardInput){
             _target.ChangeState<PlayerGuardState>();
             inputs.UsedGuard();
+        }
+        else if(inputs.RootsInput){
+            _target.ChangeState<PlayerRootsState>();
+            inputs.UsedRoots();
         }
     }
 }

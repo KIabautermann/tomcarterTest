@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class PlayerSkillState : PlayerState
 {
+    protected bool abilityDone;
     protected override void DoChecks()
     {
         
@@ -11,7 +12,7 @@ public abstract class PlayerSkillState : PlayerState
 
     protected override void DoLogicUpdate()
     {
-       
+  
     }
 
     protected override void DoPhysicsUpdate()
@@ -21,12 +22,12 @@ public abstract class PlayerSkillState : PlayerState
 
     protected override void DoTransitionIn()
     {
-        
+        base.DoTransitionIn();
     }
 
     protected override void DoTransitionOut()
     {
-        
+        base.DoTransitionOut();
     }
 
     protected override void TransitionChecks()
