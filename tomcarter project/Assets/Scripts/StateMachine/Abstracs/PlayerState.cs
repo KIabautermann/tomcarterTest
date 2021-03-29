@@ -6,11 +6,13 @@ public abstract class PlayerState : State<PlayerStateMachine>
 {  
     protected PlayerInputHandler inputs;
     protected PlayerData stats;
+    protected MovementController controller;
 
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
         inputs = GetComponent<PlayerInputHandler>();
+        controller = GetComponent<MovementController>();
         stats = target.stats;
     }
 
