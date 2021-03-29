@@ -22,13 +22,15 @@ public abstract class PlayerGroundedState : PlayerState
 
     protected override void DoTransitionIn()
     {
-        base.DoTransitionIn();
+        base.DoTransitionIn();        
+        // TODO: Esto hace falta? Siempre se llama en el contexto de Trigger Transition in, que por definicion settea is Exiting en false
         isExiting = false;
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        // TODO: Esto hace falta?
         isExiting = true;
     }
 

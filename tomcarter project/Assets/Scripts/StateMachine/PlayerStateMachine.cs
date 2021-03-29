@@ -33,7 +33,6 @@ public class PlayerStateMachine : MonoBehaviour
         if(newState != null)
         {
             _currentState = newState;
-            _currentStateDisplay.text = newState.stateName;
             _currentState.TriggerTransitionIn();
         }
         else
@@ -45,6 +44,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if(_currentState != null)
         {
+            _currentStateDisplay.text = _currentState.stateName;
             _currentState.TriggerLogicUpdate();
         }
     }

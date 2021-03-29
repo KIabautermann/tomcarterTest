@@ -16,6 +16,8 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoTransitionIn()
     {
+        // Idle esta pasando a idle, disparando multiples veces estos eventos. No se si esta contemplado
+        // Cada estado que llame a este base, esta condenado a terminar en idle?
         StartCoroutine(ToIdle());
     }
 

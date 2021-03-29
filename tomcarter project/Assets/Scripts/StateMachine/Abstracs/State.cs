@@ -8,6 +8,8 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     protected T _target;
     public bool isExiting;
     public UnityEvent onTransitionIn;
+    
+    // Se disparan eventos per logic update? Son una vez por frame si el current state no es nulo (nunca deberia)
     public UnityEvent onLogicUpdate;
     public UnityEvent onPhysicsUpdate;
     public UnityEvent onTransitionOut;
@@ -31,7 +33,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     {
         DoLogicUpdate();
         TransitionChecks();
-        onTransitionOut.Invoke();
+        onLogicUpdate.Invoke();
     }
     protected abstract void DoLogicUpdate();
 
@@ -39,15 +41,15 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     {
         DoChecks();
         DoPhysicsUpdate();
-        onTransitionOut.Invoke();
+        onPhysicsUpdate.Invoke();
     }
     protected abstract void DoPhysicsUpdate();
 
     public void TriggerTransitionOut()
     {
         DoTransitionOut();
-        onLogicUpdate.Invoke();
         isExiting = true;
+        onTransitionOut.Invoke();
     }
     protected abstract void DoTransitionOut();
 
