@@ -1,0 +1,120 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MovementController : MonoBehaviour
+{
+    
+    #region Components
+    private Rigidbody _rb;
+    #endregion
+
+    #region Checks
+    [SerializeField]
+    private Transform[] _groundCheck;
+    [SerializeField]
+    private Transform[] _wallCheck;
+    [SerializeField]
+    private float _detectionLenght;
+    [SerializeField]
+    private LayerMask _walkwable;
+    #endregion
+    
+    public Vector2 CurrentVelocity { get; private set; }
+    public float AcelerationIndex { get; private set; }
+    public int facingDirection { get; private set; } 
+    private Vector2 workspace;
+
+
+    private void Start() 
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
+    #region Check Functions
+         public bool Grounded()
+    {
+        float n = 0;
+        for(int i = 0; i<_groundCheck.Length; i++)
+        {
+            if(Physics.Raycast(_groundCheck[i].position, -Vector3.up,_detectionLenght,_walkwable)) 
+            {
+                n++;
+            }         
+        }
+        return n!= 0;
+    }
+    public bool OnWall()
+    {
+        float n = 0;
+        for(int i = 0; i<_groundCheck.Length; i++)
+        {
+            if(Physics.Raycast(_wallCheck[i].position, -Vector3.up,_detectionLenght,_walkwable)) 
+            {
+                n++;
+            }         
+        }
+        return n!= 0;
+    }
+    public void FlipCheck(int xInput)
+    {
+        if (xInput != 0 && xInput != facingDirection)
+        {
+            Flip();
+        }
+    }
+    #endregion
+   
+    #region Set Functions
+
+    
+    public void SetVelocityX(float x)
+    {
+        workspace.Set(x * AcelerationIndex, CurrentVelocity.y);
+        _rb.velocity = workspace;
+        CurrentVelocity = workspace;
+    }
+    public void SetVelocityY(float y)
+    {
+        workspace.Set(CurrentVelocity.x, y);
+        _rb.velocity = workspace;
+        CurrentVelocity = workspace;
+    }
+    public void SetTotalVelocity(float speed, Vector2 direction)
+    {
+        workspace = direction * speed;
+        _rb.velocity = workspace;
+        CurrentVelocity = workspace;
+    }
+    public void SetDrag(float drag)
+    {
+        _rb.drag = drag;
+    }
+    public void SetAcceleration(float acceleration)
+    {
+        AcelerationIndex = Mathf.Clamp(acceleration,0,1);
+    }
+    public void Accelerate(float acceleration)
+    {
+        AcelerationIndex += acceleration;
+        AcelerationIndex = Mathf.Clamp(AcelerationIndex, 0, 1);
+    }
+    #endregion
+    
+    #region DoFunctions
+    private void Flip()
+    {
+        facingDirection *= -1;
+        transform.Rotate(0.0f, 180.0f, 0.0f);
+        SetAcceleration(.25f);
+    }
+    public void Force(Vector2 direction, float force)
+    {
+        _rb.AddForce(direction * force);
+    }
+
+    #endregion
+    
+}
+
+
+
