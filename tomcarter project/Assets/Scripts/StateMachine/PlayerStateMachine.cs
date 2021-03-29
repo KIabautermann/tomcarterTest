@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
+using System;
 
 public class PlayerStateMachine : MonoBehaviour
 {
@@ -9,14 +11,17 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _currentStateDisplay;
     public PlayerData stats;
+    private Dictionary<Type, State<PlayerStateMachine>> allStates;
     void Start()
     {
-        var allStates = GetComponents<State<PlayerStateMachine>>();
-        foreach(var state in allStates)
+        var allComponents = GetComponents<State<PlayerStateMachine>>();
+        
+        allStates = allComponents.ToDictionary(s => s.GetType(), s => s);
+        foreach(var state in allStates.Values)
         {
             state.Init(this);
         }
-        ChangeState<PlayerGroundedState>();
+        ChangeState<PlayerIdleState>();
     }
     public void ChangeState<T>() where T : State<PlayerStateMachine>
     {
@@ -25,7 +30,9 @@ public class PlayerStateMachine : MonoBehaviour
                 return;
             }
         }
-        var newState = GetComponent<T>();
+
+        if (!allStates.TryGetValue(typeof(T), out State<PlayerStateMachine> newState)) newState = null;
+
         if(_currentState != null && newState != null)
         {
             _currentState.TriggerTransitionOut();
@@ -33,6 +40,7 @@ public class PlayerStateMachine : MonoBehaviour
         if(newState != null)
         {
             _currentState = newState;
+            _currentStateDisplay.text = _currentState.stateName;
             _currentState.TriggerTransitionIn();
         }
         else
@@ -44,7 +52,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if(_currentState != null)
         {
-            _currentStateDisplay.text = _currentState.stateName;
             _currentState.TriggerLogicUpdate();
         }
     }
