@@ -23,6 +23,7 @@ public abstract class PlayerSkillState : PlayerState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        abilityDone = false;
     }
 
     protected override void DoTransitionOut()
@@ -32,6 +33,23 @@ public abstract class PlayerSkillState : PlayerState
 
     protected override void TransitionChecks()
     {
-        
+        if(abilityDone)
+        {
+            if(!grounded)
+            {
+                _target.ChangeState<PlayerOnAirState>();
+            }
+            else
+            {
+                if(inputs.FixedAxis.x != 0)
+                {
+                    _target.ChangeState<PlayerMovementState>();
+                }
+                else
+                {
+                    _target.ChangeState<PlayerIdleState>(); 
+                }
+            }
+        }
     }
 }

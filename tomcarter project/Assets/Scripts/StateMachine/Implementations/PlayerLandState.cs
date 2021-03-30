@@ -21,7 +21,15 @@ public class PlayerLandState : PlayerGroundedState
 
     protected override void DoTransitionIn()
     {
-        base.DoTransitionIn();
+        
+        if(inputs.FixedAxis.x != 0)
+            {
+                _target.ChangeState<PlayerMovementState>();
+            }
+            else
+            {
+                _target.ChangeState<PlayerIdleState>(); 
+            }
     }
 
     protected override void DoTransitionOut()

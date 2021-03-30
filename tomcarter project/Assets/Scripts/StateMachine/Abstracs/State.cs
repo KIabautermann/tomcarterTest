@@ -15,6 +15,8 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public UnityEvent onTransitionOut;
     public string stateName;
 
+    protected float startTime;
+
     public virtual void Init(T target)
     {
         _target = target;
@@ -22,6 +24,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
    
     public void TriggerTransitionIn()
     {
+        startTime = Time.time;
         DoChecks();
         DoTransitionIn();
         onTransitionIn.Invoke();  

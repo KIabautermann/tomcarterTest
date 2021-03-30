@@ -7,13 +7,12 @@ public class MovementController : MonoBehaviour
     
     #region Components
     private Rigidbody _rb;
+
+    [SerializeField]
+    private Collider _collider;
     #endregion
 
     #region Checks
-    [SerializeField]
-    private Transform[] _groundCheck;
-    [SerializeField]
-    private Transform[] _wallCheck;
     [SerializeField]
     private float _detectionLenght;
     [SerializeField]
@@ -23,38 +22,56 @@ public class MovementController : MonoBehaviour
     public Vector2 CurrentVelocity { get; private set; }
     public float AcelerationIndex { get; private set; }
     public int facingDirection { get; private set; } 
+    private Vector2 _cornerA;
+    private Vector2 _cornerB;
+    private Vector2 _cornerC;
     private Vector2 workspace;
 
 
+    private void Awake() 
+    {
+        facingDirection = 1;      
+    }
     private void Start() 
     {
         _rb = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
     }
     #region Check Functions
-         public bool Grounded()
+
+    private void Update() 
     {
-        float n = 0;
-        for(int i = 0; i<_groundCheck.Length; i++)
+        _cornerA = new Vector2(_collider.bounds.max.x-.01f, _collider.bounds.max.y-.01f);
+        _cornerB = new Vector2(_collider.bounds.max.x-.01f, _collider.bounds.min.y+.01f);
+        _cornerC = new Vector2(_collider.bounds.min.x+.01f, _collider.bounds.min.y+.01f);
+    }
+    public bool Grounded()
+    {
+       int n = 0;
+       if(Physics.Raycast(_cornerC, -Vector2.up, _detectionLenght, _walkwable))
         {
-            if(Physics.Raycast(_groundCheck[i].position, -Vector3.up,_detectionLenght,_walkwable)) 
-            {
-                n++;
-            }         
+           n++;
         }
-        return n!= 0;
+       if(Physics.Raycast(_cornerB, -Vector2.up, _detectionLenght, _walkwable))
+        {
+            n++;
+        }
+       return n!=0 && _rb.velocity.y <= .1f;
     }
     public bool OnWall()
     {
-        float n = 0;
-        for(int i = 0; i<_groundCheck.Length; i++)
+       int n = 0;
+       if(Physics.Raycast(_cornerA, Vector3.right * facingDirection, _detectionLenght, _walkwable))
         {
-            if(Physics.Raycast(_wallCheck[i].position, -Vector3.up,_detectionLenght,_walkwable)) 
-            {
-                n++;
-            }         
+           n++;
         }
-        return n!= 0;
+       if(Physics.Raycast(_cornerB, Vector3.right * facingDirection, _detectionLenght, _walkwable))
+        {
+            n++;
+        }
+       return n!=0;
     }
+    
     public void FlipCheck(int xInput)
     {
         if (xInput != 0 && xInput != facingDirection)
@@ -65,22 +82,23 @@ public class MovementController : MonoBehaviour
     #endregion
    
     #region Set Functions
-
-    
     public void SetVelocityX(float x)
     {
+        CurrentVelocity = _rb.velocity;
         workspace.Set(x * AcelerationIndex, CurrentVelocity.y);
         _rb.velocity = workspace;
         CurrentVelocity = workspace;
     }
     public void SetVelocityY(float y)
     {
+        CurrentVelocity = _rb.velocity;
         workspace.Set(CurrentVelocity.x, y);
         _rb.velocity = workspace;
         CurrentVelocity = workspace;
     }
     public void SetTotalVelocity(float speed, Vector2 direction)
     {
+        CurrentVelocity = _rb.velocity;
         workspace = direction * speed;
         _rb.velocity = workspace;
         CurrentVelocity = workspace;
@@ -113,6 +131,18 @@ public class MovementController : MonoBehaviour
     }
 
     #endregion
+
+    private void OnDrawGizmos() 
+    {
+       Vector2 cornerA = new Vector2(_collider.bounds.max.x-.01f, _collider.bounds.max.y-.01f);
+       Vector2 cornerB = new Vector2(_collider.bounds.max.x-.01f, _collider.bounds.min.y+.01f);
+       Vector2 cornerC = new Vector2(_collider.bounds.min.x+.01f, _collider.bounds.min.y+.01f);
+       Gizmos.DrawLine(cornerC, cornerC - Vector2.up * _detectionLenght);
+       Gizmos.DrawLine(cornerB, cornerB - Vector2.up * _detectionLenght);
+       Gizmos.DrawLine(cornerA, cornerA + Vector2.right * _detectionLenght);
+       Gizmos.DrawLine(cornerB, cornerB + Vector2.right * _detectionLenght);
+
+    }
     
 }
 

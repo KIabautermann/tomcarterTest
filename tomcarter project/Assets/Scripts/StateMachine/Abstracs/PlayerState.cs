@@ -7,6 +7,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected PlayerInputHandler inputs;
     protected PlayerData stats;
     protected MovementController controller;
+    protected bool grounded;
 
     public override void Init(PlayerStateMachine target)
     {
@@ -16,11 +17,19 @@ public abstract class PlayerState : State<PlayerStateMachine>
         stats = target.stats;
     }
 
+    protected override void DoChecks()
+    {
+        grounded = controller.Grounded();
+    }
+
     protected override void DoTransitionIn()
     {
-        // Idle esta pasando a idle, disparando multiples veces estos eventos. No se si esta contemplado
-        // Cada estado que llame a este base, esta condenado a terminar en idle?
-        StartCoroutine(ToIdle());
+        
+    }
+
+    protected override void DoPhysicsUpdate()
+    {
+       
     }
 
     protected override void DoTransitionOut()
@@ -28,9 +37,11 @@ public abstract class PlayerState : State<PlayerStateMachine>
         StopAllCoroutines();
     }
 
-    public IEnumerator ToIdle()
+    protected void ClampYVelocity()
     {
-        yield return new WaitForSeconds(1);
-        _target.ChangeState<PlayerIdleState>();
+        if (controller.CurrentVelocity.y <= stats.maxFallVelocity)
+        {
+            controller.SetVelocityY(stats.maxFallVelocity);
+        }
     }
 }
