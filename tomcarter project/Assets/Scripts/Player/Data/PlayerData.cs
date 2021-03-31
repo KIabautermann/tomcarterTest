@@ -48,4 +48,10 @@ public class PlayerData : ScriptableObject
     public float hedgeDetectionLenght = .1f;
     public float hedgeDetectionRadius = .25f;
     public LayerMask hedge;
+    
+    [Header("Root State")]
+    public float rootChannelingDuration = 2f;
+
+    [Header("Damaged State")]
+    public float damagedDuration = 1f;
 }

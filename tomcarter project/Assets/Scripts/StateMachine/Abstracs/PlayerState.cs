@@ -7,6 +7,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected PlayerInputHandler inputs;
     protected PlayerData stats;
     protected MovementController controller;
+    protected PlayerHealth playerHealth;
     protected bool grounded;
 
     public override void Init(PlayerStateMachine target)
@@ -14,6 +15,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
         base.Init(target);
         inputs = GetComponent<PlayerInputHandler>();
         controller = GetComponent<MovementController>();
+        playerHealth = GetComponent<PlayerHealth>();
         stats = target.stats;
     }
 
@@ -35,8 +37,16 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected override void DoTransitionOut()
     {
         StopAllCoroutines();
-    }
+    } 
 
+    protected override void TransitionChecks()
+    {
+        if (playerHealth.TakingDamage)
+        {
+            // Problema, el taking damage va a seguir en true si el DamagedState termina antes que el invulnerability
+            _target.ChangeState<PlayerDamagedState>();
+        }
+    }
     protected void ClampYVelocity()
     {
         if (controller.CurrentVelocity.y <= stats.maxFallVelocity)

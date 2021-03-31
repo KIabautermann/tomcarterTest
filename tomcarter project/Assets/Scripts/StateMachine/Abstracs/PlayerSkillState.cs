@@ -7,7 +7,7 @@ public abstract class PlayerSkillState : PlayerState
     protected bool abilityDone;
     protected override void DoChecks()
     {
-        
+        base.DoChecks();
     }
 
     protected override void DoLogicUpdate()
@@ -33,6 +33,7 @@ public abstract class PlayerSkillState : PlayerState
 
     protected override void TransitionChecks()
     {
+        base.TransitionChecks();
         if(abilityDone)
         {
             if(!grounded)

@@ -39,6 +39,7 @@ public class PlayerStateMachine : MonoBehaviour
             _currentState.TriggerTransitionOut();
         }
 
+        Debug.Log($"Transitioned to: {typeof(T).ToString()}");
         _currentState = newState;
         _currentStateDisplay.text = _currentState.stateName;
         _currentState.TriggerTransitionIn();
