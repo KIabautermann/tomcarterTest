@@ -38,7 +38,7 @@ public abstract class PlayerSkillState : PlayerState
         if(abilityDone)
         {
             Debug.Log(controller.CurrentVelocity.y);
-            if (grounded && controller.CurrentVelocity.y < .01f)
+            if (grounded)
             {
                 _target.ChangeState<PlayerIdleState>();
             }

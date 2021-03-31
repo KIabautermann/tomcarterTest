@@ -35,14 +35,14 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public void TriggerLogicUpdate()
     {
         DoLogicUpdate();
+        DoChecks();
         TransitionChecks();
         onLogicUpdate.Invoke();
     }
     protected abstract void DoLogicUpdate();
 
     public void TriggerPhysicsUpdate()
-    {
-        DoChecks();
+    {      
         DoPhysicsUpdate();
         onPhysicsUpdate.Invoke();
     }

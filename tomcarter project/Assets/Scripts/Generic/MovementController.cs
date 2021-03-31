@@ -56,7 +56,7 @@ public class MovementController : MonoBehaviour
         {
             n++;
         }
-       return n!=0;
+       return n!=0 && CurrentVelocity.y < .01f;
     }
     public bool OnWall()
     {
