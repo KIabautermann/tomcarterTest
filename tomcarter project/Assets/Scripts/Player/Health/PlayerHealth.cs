@@ -9,24 +9,28 @@ public class PlayerHealth : MonoBehaviour
     private float _lastTimeHit = 0;
 
     [SerializeField]
-    public float invulnerabilityPeriod = 1f;
-    
-    private void Start() {
-        // Subscribe to some damage event
+    public float _invulnerabilityPeriod = 1f;
 
-        // Something += PlayerHealth_OnDamageTaken;
-    }
-    public void PlayerHealth_OnDamageTaken(object sender, EventArgs eventArgs) 
+    [SerializeField]
+    private LayerMask _damageLayer;
+    
+    private void PlayerHealth_OnDamageTaken() 
     {
         TakingDamage = true;
         _lastTimeHit = Time.time;
     }
 
-    // Update is called once per frame
+    private void OnCollisionEnter(Collision other) 
+    {    
+        if (other.gameObject.layer == Math.Log(_damageLayer.value, 2))
+        {
+            PlayerHealth_OnDamageTaken();
+        }
+    }
+
     void Update()
     {
-        // Damage Condition
-        if (Time.time > _lastTimeHit + invulnerabilityPeriod) 
+        if (Time.time > _lastTimeHit + _invulnerabilityPeriod) 
         {
             TakingDamage = false;
         }

@@ -43,7 +43,7 @@ public class PlayerRootsState : PlayerSkillState
     protected override void TransitionChecks()
     {
         if (_channelFinished) {
-            // Hacer lo que pinte...
+            // Add post rooting logic
             abilityDone = true;
         }
 

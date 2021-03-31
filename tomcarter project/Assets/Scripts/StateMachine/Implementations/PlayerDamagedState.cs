@@ -6,7 +6,7 @@ public class PlayerDamagedState : PlayerState
 {
    protected override void DoChecks()
     {
-        
+        base.DoChecks();
     }
 
     protected override void DoLogicUpdate()
@@ -31,7 +31,7 @@ public class PlayerDamagedState : PlayerState
 
     protected override void TransitionChecks()
     {
-        if (Time.time > startTime + playerHealth.invulnerabilityPeriod) 
+        if (Time.time > startTime + playerHealth._invulnerabilityPeriod) 
         {
             if(!grounded)
             {
@@ -48,6 +48,8 @@ public class PlayerDamagedState : PlayerState
                     _target.ChangeState<PlayerIdleState>(); 
                 }
             }
+
+            base.TransitionChecks();
         }
     }
 

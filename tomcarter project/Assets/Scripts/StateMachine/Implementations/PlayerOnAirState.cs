@@ -67,6 +67,8 @@ public class PlayerOnAirState : PlayerState
         {
             _target.ChangeState<PlayerHookState>();
         }
+
+        base.TransitionChecks();
     }
 
     private void JumpCoyoteTimeCheck()

@@ -60,5 +60,7 @@ public abstract class PlayerGroundedState : PlayerState
             _target.ChangeState<PlayerRootsState>();
             inputs.UsedRoots();
         }
+
+        base.TransitionChecks();
     }
 }

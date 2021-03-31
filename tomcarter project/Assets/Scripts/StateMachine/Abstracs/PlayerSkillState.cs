@@ -34,6 +34,7 @@ public abstract class PlayerSkillState : PlayerState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
+        
         if(abilityDone)
         {
             if(!grounded)

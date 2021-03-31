@@ -43,7 +43,6 @@ public abstract class PlayerState : State<PlayerStateMachine>
     {
         if (playerHealth.TakingDamage)
         {
-            // Problema, el taking damage va a seguir en true si el DamagedState termina antes que el invulnerability
             _target.ChangeState<PlayerDamagedState>();
         }
     }
