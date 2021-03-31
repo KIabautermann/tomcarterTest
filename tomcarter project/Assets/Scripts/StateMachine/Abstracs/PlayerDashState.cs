@@ -27,6 +27,8 @@ public abstract class PlayerDashState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        controller.SetTotalVelocity(0,Vector2.zero);
+        controller.SetAcceleration(1);
         controller.SetGravity(false);
         controller.SetDrag(stats.drag);
         coyoteTime = false;

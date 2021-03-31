@@ -21,9 +21,10 @@ public class PlayerData : ScriptableObject
 
     [Header("Dash State")]
     public float dashCooldown = .3f;
-    public float HoldTime = 1f;
-    public float dashLenght = .2f;
-    public float dashSpeed = 30f;
+    public float dashLenght = .4f;
+    public float blinkDashLenght = .2f;  
+    public float dashSpeed = 15f;
+    public float blinkDashSpeed = 30f;
     public float drag = 10f;
     public float dashEndMultiplier= .7f;
     public float collisionDetection= 1f;

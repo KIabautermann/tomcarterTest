@@ -12,3 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23deb08ef567294ba86bfa0e2561b55, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
+  movementVelocity: 7
+  groundedAccelerationTime: 0.2
+  airAccelerationTime: 0.4
+  jumpVelocity: 10
+  fallMultiplier: 1.2
+  minJumpVelocity: 1
+  coyoteTime: 0.2
+  shortHopMultiplier: 0.5
+  maxFallVelocity: -15
+  amountOfJumps: 1
+  dashCooldown: 0.3
+  dashLenght: 0.2
+  blinkDashLenght: 0.2
+  dashSpeed: 16
+  blinkDashSpeed: 30
+  drag: 10
+  dashEndMultiplier: 0.7
+  collisionDetection: 1
+  dashJumpVelocityX: 12
+  dashJumpAccelerationTime: 1
+  dashJumpFallMultiplier: 2
+  minDashJumpVelocity: 1
+  dashCoyoteTime: 0.3
+  jumpHandicapTime: 0.2
+  hookSpeed: 15
+  circularSpeed: 5
+  hookDetectionRadius: 0.1
+  maxAngle: 45
+  hookCooldown: 0.5
+  hookTarget: {x: 0, y: 0, z: 0}
+  hedgeDetectionLenght: 0.1
+  hedgeDetectionRadius: 0.25
+  hedge:
+    serializedVersion: 2
+    m_Bits: 0
+  rootChannelingDuration: 2
+  damagedDuration: 1

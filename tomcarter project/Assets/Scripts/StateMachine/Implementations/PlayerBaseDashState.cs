@@ -2,50 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerSkillState : PlayerState
-{
-    protected bool abilityDone;
+public class PlayerBaseDashState : PlayerDashState
+{  
     protected override void DoChecks()
     {
         base.DoChecks();
     }
-
     protected override void DoLogicUpdate()
     {
-  
+        base.DoLogicUpdate();
+        controller.SetVelocityX(controller.facingDirection * stats.dashSpeed);
     }
-
     protected override void DoPhysicsUpdate()
     {
-        
+        base.DoPhysicsUpdate();
     }
-
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        abilityDone = false;
+        controller.SetVelocityX(controller.facingDirection * stats.dashSpeed);
     }
-
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
     }
-
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        
-        if(abilityDone)
+        if(Time.time > startTime + stats.dashLenght)
         {
-            Debug.Log(controller.CurrentVelocity.y);
-            if (grounded && controller.CurrentVelocity.y < .01f)
-            {
-                _target.ChangeState<PlayerIdleState>();
-            }
-            else
-            {
-                _target.ChangeState<PlayerOnAirState>();
-            }           
+            abilityDone = true;
+            controller.SetDrag(0);
+            controller.SetGravity(true);
+            controller.SetAcceleration(1);
         }
     }
 }

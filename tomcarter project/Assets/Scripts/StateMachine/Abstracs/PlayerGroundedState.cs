@@ -37,7 +37,7 @@ public abstract class PlayerGroundedState : PlayerState
             inputs.UsedJump();        
         }
         else if(inputs.DashInput){
-            _target.ChangeState<PlayerDashState>();
+            _target.ChangeState<PlayerBaseDashState>();
             inputs.UsedDash();     
         }
         else if(inputs.MeleeInput){
