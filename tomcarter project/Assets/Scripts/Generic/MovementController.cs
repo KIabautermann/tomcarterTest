@@ -107,6 +107,11 @@ public class MovementController : MonoBehaviour
     {
         _rb.drag = drag;
     }
+
+    public void SetGravity(bool useGravity)
+    {
+        _rb.useGravity = useGravity;
+    }
     public void SetAcceleration(float acceleration)
     {
         AcelerationIndex = Mathf.Clamp(acceleration,0,1);

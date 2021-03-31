@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDashState : PlayerSkillState
+public abstract class PlayerDashState : PlayerSkillState
 {
+    protected float lastDashTime;
+    protected Vector2 direction;
+    protected bool coyoteTime;
+    protected bool wastedCoyoteTime;
+    protected float coyoteStartTime;
     protected override void DoChecks()
     {
-         base.DoChecks();
+        base.DoChecks();
     }
 
     protected override void DoLogicUpdate()
@@ -22,27 +27,26 @@ public class PlayerDashState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        controller.SetGravity(false);
+        controller.SetDrag(stats.drag);
+        coyoteTime = false;
+        wastedCoyoteTime = !controller.Grounded();
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        lastDashTime = Time.time;
     }
 
     protected override void TransitionChecks()
     {
-        if(inputs.JumpInput)
+        base.TransitionChecks();
+        if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge))
         {
-            _target.ChangeState<PlayerDashJumpState>();
-            inputs.UsedJump();
-        }
-        else if(inputs.GuardInput){
-            _target.ChangeState<PlayerGuardState>();
-            inputs.UsedGuard();
-        }
-        else
-        {
-            base.TransitionChecks();
-        }       
+            _target.ChangeState<PlayerHedgeState>();
+            controller.SetDrag(0);
+        }      
     }
+    public bool CanDash() => Time.time >= lastDashTime + stats.dashCooldown;
 }
