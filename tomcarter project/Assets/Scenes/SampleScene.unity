@@ -1100,7 +1100,6 @@ GameObject:
   - component: {fileID: 1677930219}
   - component: {fileID: 1677930218}
   - component: {fileID: 1677930217}
-  - component: {fileID: 1677930216}
   - component: {fileID: 1677930215}
   - component: {fileID: 1677930214}
   - component: {fileID: 1677930213}
@@ -1227,8 +1226,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6875, y: 0.625, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.62217045, y: 0.5295857, z: 0.2}
+  m_Center: {x: -0.00066661835, y: -0.015941799, z: 0}
 --- !u!114 &1677930205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1634,32 +1633,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   stateName: Hedge
---- !u!114 &1677930216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1677930199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9874d400bb3e5ce4b986ef226d3b6b23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isExiting: 0
-  onTransitionIn:
-    m_PersistentCalls:
-      m_Calls: []
-  onLogicUpdate:
-    m_PersistentCalls:
-      m_Calls: []
-  onPhysicsUpdate:
-    m_PersistentCalls:
-      m_Calls: []
-  onTransitionOut:
-    m_PersistentCalls:
-      m_Calls: []
-  stateName: Dash
 --- !u!114 &1677930217
 MonoBehaviour:
   m_ObjectHideFlags: 0
