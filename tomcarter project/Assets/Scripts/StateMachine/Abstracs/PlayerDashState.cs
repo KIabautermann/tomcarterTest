@@ -48,7 +48,12 @@ public abstract class PlayerDashState : PlayerSkillState
         {
             _target.ChangeState<PlayerHedgeState>();
             controller.SetDrag(0);
-        }      
+        }  
+        else if(inputs.JumpInput)
+        {
+            _target.ChangeState<PlayerDashJumpState>();
+            inputs.UsedJump();            
+        }    
     }
     public bool CanDash() => Time.time >= lastDashTime + stats.dashCooldown;
 }

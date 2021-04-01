@@ -31,7 +31,7 @@ MonoBehaviour:
   dashEndMultiplier: 0.7
   collisionDetection: 1
   dashJumpVelocityX: 12
-  dashJumpAccelerationTime: 1
+  dashJumpAccelerationTime: 0.1
   dashJumpFallMultiplier: 2
   minDashJumpVelocity: 1
   dashCoyoteTime: 0.3
