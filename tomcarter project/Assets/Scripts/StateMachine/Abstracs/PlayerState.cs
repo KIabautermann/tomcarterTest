@@ -11,6 +11,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected PlayerHealth playerHealth;
     protected bool grounded;
     protected static bool tookDamage;
+    
 
     public override void Init(PlayerStateMachine target)
     {

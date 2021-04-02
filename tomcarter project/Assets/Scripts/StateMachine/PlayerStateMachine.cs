@@ -27,15 +27,15 @@ public class PlayerStateMachine : MonoBehaviour
     public void ChangeState<T>() where T : State<PlayerStateMachine>
     {
         if (!allStates.GetInstance<T>(out State<PlayerStateMachine> newState)) newState = null;
-        
-        if(newState == null) 
-        {
-            Debug.LogWarning("Can't Transition");
-            return;
-        }
-
+              
         if(_currentState != null)
         {
+            if(newState == null || newState.OnCoolDown()) 
+            {
+                Debug.LogWarning("Can't Transition");
+                return;
+            }
+
             if (_currentState.isExiting) return;
             _currentState.TriggerTransitionOut();
         }

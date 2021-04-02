@@ -10,6 +10,12 @@ public abstract class PlayerDashState : PlayerSkillState
     protected bool wastedCoyoteTime;
     protected float coyoteStartTime;
     protected float currentSpeed;
+
+    public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        coolDown = stats.dashCooldown;
+    }
     protected override void DoChecks()
     {
         base.DoChecks();
