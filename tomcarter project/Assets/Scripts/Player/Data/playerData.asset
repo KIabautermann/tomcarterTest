@@ -16,10 +16,10 @@ MonoBehaviour:
   groundedAccelerationTime: 0.2
   airAccelerationTime: 0.4
   jumpVelocity: 10
-  fallMultiplier: 1.2
+  fallMultiplier: 1.1
   minJumpVelocity: 1
   coyoteTime: 0.2
-  shortHopMultiplier: 0.5
+  shortHopMultiplier: 0.3
   maxFallVelocity: -15
   amountOfJumps: 1
   dashCooldown: 0.3

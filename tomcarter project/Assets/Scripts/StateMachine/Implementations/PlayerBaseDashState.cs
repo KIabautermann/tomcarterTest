@@ -11,7 +11,6 @@ public class PlayerBaseDashState : PlayerDashState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        controller.SetVelocityX(controller.facingDirection * stats.dashSpeed);
     }
     protected override void DoPhysicsUpdate()
     {
@@ -20,7 +19,8 @@ public class PlayerBaseDashState : PlayerDashState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        controller.SetVelocityX(controller.facingDirection * stats.dashSpeed);
+        direction = new Vector2(controller.facingDirection,0);
+        currentSpeed = stats.dashSpeed;
     }
     protected override void DoTransitionOut()
     {
@@ -34,7 +34,6 @@ public class PlayerBaseDashState : PlayerDashState
             stateDone = true;
             controller.SetDrag(0);
             controller.SetGravity(true);
-            controller.SetAcceleration(1);
         }
     }
 }

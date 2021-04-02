@@ -9,6 +9,7 @@ public abstract class PlayerDashState : PlayerSkillState
     protected bool coyoteTime;
     protected bool wastedCoyoteTime;
     protected float coyoteStartTime;
+    protected float currentSpeed;
     protected override void DoChecks()
     {
         base.DoChecks();
@@ -17,6 +18,7 @@ public abstract class PlayerDashState : PlayerSkillState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
+        controller.SetTotalVelocity(currentSpeed,direction);
     }
 
     protected override void DoPhysicsUpdate()
@@ -39,6 +41,17 @@ public abstract class PlayerDashState : PlayerSkillState
     {
         base.DoTransitionOut();
         lastDashTime = Time.time;
+        if(direction.x !=0)
+        {
+            if(inputs.FixedAxis.x == direction.x)
+            {
+                controller.SetAcceleration(1);
+            }
+            else
+            {
+                controller.SetAcceleration(.5f);
+            }
+        }
     }
 
     protected override void TransitionChecks()
