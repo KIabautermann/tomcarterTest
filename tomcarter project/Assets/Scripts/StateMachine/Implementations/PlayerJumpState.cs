@@ -29,7 +29,7 @@ public class PlayerJumpState : PlayerSkillState
     {
         base.DoTransitionIn();
         controller.SetVelocityY(stats.jumpVelocity);
-        abilityDone = true;
+        stateDone = true;
     }
 
     protected override void DoTransitionOut()

@@ -6,7 +6,7 @@ public class PlayerLandState : PlayerGroundedState
 {
     protected override void DoChecks()
     {
-         base.DoChecks();
+        base.DoChecks();
     }
 
     protected override void DoLogicUpdate()
@@ -21,15 +21,14 @@ public class PlayerLandState : PlayerGroundedState
 
     protected override void DoTransitionIn()
     {
-        
         if(inputs.FixedAxis.x != 0)
-            {
-                _target.ChangeState<PlayerMovementState>();
-            }
-            else
-            {
-                _target.ChangeState<PlayerIdleState>(); 
-            }
+        {
+            _target.ChangeState<PlayerMovementState>();
+        }
+        else
+        {
+            _target.ChangeState<PlayerIdleState>(); 
+        }
     }
 
     protected override void DoTransitionOut()

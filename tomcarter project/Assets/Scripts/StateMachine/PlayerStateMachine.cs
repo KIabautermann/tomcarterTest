@@ -7,38 +7,6 @@ using System;
 
 public class PlayerStateMachine : MonoBehaviour
 {
-    private class ComponentCache<T> where T : MonoBehaviour 
-    {
-        private Dictionary<Type, T> allComponents;
-        public ComponentCache() { allComponents = new Dictionary<Type, T>(); }
-        public ComponentCache(IEnumerable<T> instances) 
-        {
-            allComponents = new Dictionary<Type, T>(); 
-            instances.ToList().ForEach((T instance) => AddInstance(instance));
-        }
-
-        public IEnumerable<T> GetAllInstances()
-        {
-            return allComponents.Values.Distinct();
-        }
-
-        public bool GetInstance<V>(out T instance) where V : T 
-        {
-            return allComponents.TryGetValue(typeof(V), out instance);
-        }
-
-        public void AddInstance(T instance)
-        {
-            Type getType = instance.GetType();
-
-            while (getType != typeof(T)) 
-            {
-                allComponents[getType] = instance;
-                getType = getType.BaseType;
-            }
-        }
-
-    }
     private State<PlayerStateMachine> _currentState;
     [SerializeField]
     private TextMeshProUGUI _currentStateDisplay;
@@ -90,5 +58,10 @@ public class PlayerStateMachine : MonoBehaviour
         {
             _currentState.TriggerPhysicsUpdate();
         }
+    }
+
+    public bool IsCurrentState(State<PlayerStateMachine> state) 
+    {
+        return state == _currentState;
     }
 }

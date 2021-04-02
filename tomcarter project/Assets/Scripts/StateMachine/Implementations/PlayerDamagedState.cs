@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDamagedState : PlayerState
+public class PlayerDamagedState : PlayerTransientState
 {
    protected override void DoChecks()
     {
@@ -31,23 +31,10 @@ public class PlayerDamagedState : PlayerState
 
     protected override void TransitionChecks()
     {
+        // TODO: Hay un bug que si dasheas en el aire antes de entrar a este estado, el movimiento del Bushy se vuelve mas lento que Maradona intentando leer en ingles
         if (Time.time > startTime + playerHealth._invulnerabilityPeriod) 
         {
-            if(!grounded)
-            {
-                _target.ChangeState<PlayerOnAirState>();
-            }
-            else
-            {
-                if(inputs.FixedAxis.x != 0)
-                {
-                    _target.ChangeState<PlayerMovementState>();
-                }
-                else
-                {
-                    _target.ChangeState<PlayerIdleState>(); 
-                }
-            }
+            stateDone = true;
 
             base.TransitionChecks();
         }

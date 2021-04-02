@@ -3,6 +3,14 @@ using UnityEngine;
 using System.Linq;
 using System;
 
+// La mecha de esta gilada, que es medio cabeza, es que es un "reverse" Map, donde en vez de tener un mapa de Type -> List<Type>
+// donde la lista representa todos los types que la instancia Es y Hereda, planteamos el Mapa de manera inversa.
+// De esta manera, dado un Type que busquemos (sea instancia, base, o abstracto), ya lo tenemos mappeado a una instancia
+// Es similar al GetComponent<> en el sentido que es "arbitraria" que instancia se devuelve al pedir un Type de tipo abstracto,
+// que puede tener multiples interpretaciones.
+// A futuro, si queremos hacer menos arbiraria esta decision, podemos poner cierto grado de "prioridad" para que, por ejemplo si hay dos instancias,
+// que compiten por el Type key de la clase abstracta de la que ambos heredan, una de ellas siempre va a ganar esa Key:
+//      - Ej: si queremos agregar ambos DashSkillStates, pero que al pedir el Abstract DashSkill, siempre se priorize el DashBaseSkill
 public class ComponentCache<T> where T : MonoBehaviour 
 {
     private Dictionary<Type, T> allComponents;

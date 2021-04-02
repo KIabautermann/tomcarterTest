@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerSkillState : PlayerState
+public abstract class PlayerSkillState : PlayerTransientState
 {
-    protected bool abilityDone;
     protected override void DoChecks()
     {
         base.DoChecks();
@@ -23,7 +22,6 @@ public abstract class PlayerSkillState : PlayerState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        abilityDone = false;
     }
 
     protected override void DoTransitionOut()
@@ -34,18 +32,5 @@ public abstract class PlayerSkillState : PlayerState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        
-        if(abilityDone)
-        {
-            Debug.Log(controller.CurrentVelocity.y);
-            if (grounded)
-            {
-                _target.ChangeState<PlayerIdleState>();
-            }
-            else
-            {
-                _target.ChangeState<PlayerOnAirState>();
-            }           
-        }
     }
 }

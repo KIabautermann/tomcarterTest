@@ -52,6 +52,8 @@ public class PlayerInputHandler : MonoBehaviour
     #endregion
     [SerializeField]
     private float _inputHoldTime;
+    [SerializeField]
+    private float _inputRecordTime;
     //-------------------------------------------------------------Functions
     private void Update() => holdTime();
     public void OnMovementInput(InputAction.CallbackContext ctx)
@@ -169,7 +171,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             JumpInput = false;
         }
-        if(Time.time > _rootsStartTime + _inputHoldTime)
+        if(Time.time > _rootsStartTime + _inputRecordTime)
         {
             RootsInput = false;
         }

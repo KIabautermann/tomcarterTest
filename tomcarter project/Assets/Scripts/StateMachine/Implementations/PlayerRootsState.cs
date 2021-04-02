@@ -14,7 +14,7 @@ public class PlayerRootsState : PlayerSkillState
     {
         if (inputs.RootsCancel) 
         {
-            abilityDone = true;
+            stateDone = true;
         }
         else if (Time.time > startTime + stats.rootChannelingDuration)
         {
@@ -32,19 +32,21 @@ public class PlayerRootsState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         _channelFinished = false;
+        controller.SetAcceleration(0f);
+        controller.SetVelocityX(0f);
         base.DoTransitionIn();
     }
 
     protected override void DoTransitionOut()
     {
+        // Add post rooting logic
         base.DoTransitionOut();
     }
 
     protected override void TransitionChecks()
     {
         if (_channelFinished) {
-            // Add post rooting logic
-            abilityDone = true;
+            stateDone = true;
         }
 
         base.TransitionChecks();

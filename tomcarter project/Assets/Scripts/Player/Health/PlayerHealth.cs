@@ -14,25 +14,15 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private LayerMask _damageLayer;
     
-    private void PlayerHealth_OnDamageTaken() 
-    {
-        TakingDamage = true;
-        _lastTimeHit = Time.time;
-    }
 
     private void OnCollisionEnter(Collision other) 
     {    
         if (other.gameObject.layer == Math.Log(_damageLayer.value, 2))
         {
-            PlayerHealth_OnDamageTaken();
+            TakingDamage = true;
+            _lastTimeHit = Time.time;   
+            PlayerHealthEventSystem.GetInstance().TriggerPlayerHasTakenDamage();
         }
     }
 
-    void Update()
-    {
-        if (Time.time > _lastTimeHit + _invulnerabilityPeriod) 
-        {
-            TakingDamage = false;
-        }
-    }
 }

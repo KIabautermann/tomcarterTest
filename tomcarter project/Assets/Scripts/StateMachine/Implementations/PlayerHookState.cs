@@ -21,11 +21,23 @@ public class PlayerHookState : PlayerSkillState
 
     protected override void DoTransitionIn()
     {
+        // Place Holder
+        controller.SetVelocityX(0f);
+        controller.SetAcceleration(0f);
+        StartCoroutine(WaitAndEndAbility());
+        // End Place Holder
         base.DoTransitionIn();
     }
 
+    private IEnumerator WaitAndEndAbility()
+    { 
+        yield return new WaitForSeconds(1.5f); 
+        stateDone = true;
+    }
+    
     protected override void DoTransitionOut()
     {
+        StopAllCoroutines();
         base.DoTransitionOut();
     }
 

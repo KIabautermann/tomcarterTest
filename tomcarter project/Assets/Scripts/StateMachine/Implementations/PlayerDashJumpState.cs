@@ -55,7 +55,7 @@ public class PlayerDashJumpState : PlayerSkillState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if (grounded && !abilityDone)
+        if (grounded && !stateDone)
         {
             _target.ChangeState<PlayerLandState>();        
         }

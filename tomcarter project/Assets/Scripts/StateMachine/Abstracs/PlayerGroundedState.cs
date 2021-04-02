@@ -32,7 +32,11 @@ public abstract class PlayerGroundedState : PlayerState
 
     protected override void TransitionChecks()
     {
-        if(inputs.JumpInput){
+        if(inputs.RootsInput && !inputs.RootsCancel){
+            _target.ChangeState<PlayerRootsState>();
+            inputs.UsedRoots();
+        }
+        else if(inputs.JumpInput){
             _target.ChangeState<PlayerJumpState>();
             inputs.UsedJump();        
         }
@@ -55,10 +59,6 @@ public abstract class PlayerGroundedState : PlayerState
         else if(inputs.GuardInput){
             _target.ChangeState<PlayerGuardState>();
             inputs.UsedGuard();
-        }
-        else if(inputs.RootsInput){
-            _target.ChangeState<PlayerRootsState>();
-            inputs.UsedRoots();
         }
 
         base.TransitionChecks();
