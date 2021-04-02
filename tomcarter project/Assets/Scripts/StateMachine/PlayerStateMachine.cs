@@ -7,17 +7,50 @@ using System;
 
 public class PlayerStateMachine : MonoBehaviour
 {
+    private class ComponentCache<T> where T : MonoBehaviour 
+    {
+        private Dictionary<Type, T> allComponents;
+        public ComponentCache() { allComponents = new Dictionary<Type, T>(); }
+        public ComponentCache(IEnumerable<T> instances) 
+        {
+            allComponents = new Dictionary<Type, T>(); 
+            instances.ToList().ForEach((T instance) => AddInstance(instance));
+        }
+
+        public IEnumerable<T> GetAllInstances()
+        {
+            return allComponents.Values.Distinct();
+        }
+
+        public bool GetInstance<V>(out T instance) where V : T 
+        {
+            return allComponents.TryGetValue(typeof(V), out instance);
+        }
+
+        public void AddInstance(T instance)
+        {
+            Type getType = instance.GetType();
+
+            while (getType != typeof(T)) 
+            {
+                allComponents[getType] = instance;
+                getType = getType.BaseType;
+            }
+        }
+
+    }
     private State<PlayerStateMachine> _currentState;
     [SerializeField]
     private TextMeshProUGUI _currentStateDisplay;
     public PlayerData stats;
-    private Dictionary<Type, State<PlayerStateMachine>> allStates;
+    private ComponentCache<State<PlayerStateMachine>> allStates;
     void Start()
     {
         var allComponents = GetComponents<State<PlayerStateMachine>>();
+
+        allStates = new ComponentCache<State<PlayerStateMachine>>(allComponents);
         
-        allStates = allComponents.ToDictionary(s => s.GetType(), s => s);
-        foreach(var state in allStates.Values)
+        foreach(var state in allStates.GetAllInstances())
         {
             state.Init(this);
         }
@@ -25,7 +58,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
     public void ChangeState<T>() where T : State<PlayerStateMachine>
     {
-        if (!allStates.TryGetValue(typeof(T), out State<PlayerStateMachine> newState)) newState = null;
+        if (!allStates.GetInstance<T>(out State<PlayerStateMachine> newState)) newState = null;
         
         if(newState == null) 
         {

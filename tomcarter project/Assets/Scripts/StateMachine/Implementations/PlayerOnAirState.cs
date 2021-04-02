@@ -60,7 +60,7 @@ public class PlayerOnAirState : PlayerState
             }
             else
             {
-               _target.ChangeState<PlayerBaseDashState>();
+               _target.ChangeState<PlayerDashState>();
             }            
         }
         else if (inputs.HookInput)
