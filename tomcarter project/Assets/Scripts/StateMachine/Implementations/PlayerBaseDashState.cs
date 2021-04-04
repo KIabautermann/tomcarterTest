@@ -19,7 +19,6 @@ public class PlayerBaseDashState : PlayerDashState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        direction = new Vector2(controller.facingDirection,0);
         currentSpeed = stats.dashSpeed;
     }
     protected override void DoTransitionOut()

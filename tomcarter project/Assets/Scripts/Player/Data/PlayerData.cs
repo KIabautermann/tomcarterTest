@@ -49,6 +49,11 @@ public class PlayerData : ScriptableObject
     public float hedgeDetectionLenght = .1f;
     public float hedgeDetectionRadius = .25f;
     public LayerMask hedge;
+
+    [Header("Dialogue State")]
+    public float npcDetectionLenght = 10f;
+    public float npcDetectionRadius = .25f;
+    public LayerMask npc;
     
     [Header("Root State")]
     public float rootChannelingDuration = 2f;

@@ -46,6 +46,11 @@ MonoBehaviour:
   hedgeDetectionRadius: 0.25
   hedge:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
+  npcDetectionLenght: 3
+  npcDetectionRadius: 0.25
+  npc:
+    serializedVersion: 2
+    m_Bits: 4096
   rootChannelingDuration: 2
   damagedDuration: 1

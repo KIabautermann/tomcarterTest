@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class PlayerGroundedState : PlayerState
 {
-
+    private Vector2 direction;
     protected override void DoChecks()
     {
-        
+        direction = new Vector2(controller.facingDirection,0);
     }
 
     protected override void DoLogicUpdate()
@@ -22,6 +22,7 @@ public abstract class PlayerGroundedState : PlayerState
 
     protected override void DoTransitionIn()
     {
+        direction = new Vector2(controller.facingDirection,0);
         base.DoTransitionIn();        
     }
 
@@ -35,6 +36,13 @@ public abstract class PlayerGroundedState : PlayerState
         if(inputs.RootsInput && !inputs.RootsCancel){
             _target.ChangeState<PlayerRootsState>();
             inputs.UsedRoots();
+        }
+        else if (inputs.InteractionInput && !inputs.InteractionCancel) {
+            if(Physics.Raycast(_target.transform.position, direction,stats.npcDetectionLenght, stats.npc))
+            {
+                _target.ChangeState<PlayerDialogueState>();
+            }
+            inputs.UsedInteraction();
         }
         else if(inputs.JumpInput){
             _target.ChangeState<PlayerJumpState>();
