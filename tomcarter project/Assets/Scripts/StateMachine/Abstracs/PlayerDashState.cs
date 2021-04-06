@@ -66,6 +66,7 @@ public abstract class PlayerDashState : PlayerSkillState
         if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge))
         {
             _target.ChangeState<PlayerHedgeState>();
+            controller.SetAcceleration(1);
             controller.SetDrag(0);
         }  
         else if(inputs.JumpInput)
@@ -74,5 +75,7 @@ public abstract class PlayerDashState : PlayerSkillState
             inputs.UsedJump();            
         }    
     }
+
+   
     public bool CanDash() => Time.time >= lastDashTime + stats.dashCooldown;
 }

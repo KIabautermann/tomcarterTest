@@ -64,4 +64,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         return state == _currentState;
     }
+
+   
 }

@@ -8,8 +8,7 @@ public class MovementController : MonoBehaviour
     #region Components
     private Rigidbody _rb;
 
-    [SerializeField]
-    private Collider _collider;
+    public Collider myCollider;
     #endregion
 
     #region Checks
@@ -35,15 +34,15 @@ public class MovementController : MonoBehaviour
     private void Start() 
     {
         _rb = GetComponent<Rigidbody>();
-        _collider = GetComponent<Collider>();
+        myCollider = GetComponent<Collider>();
     }
     #region Check Functions
 
     private void Update() 
     {
-        _cornerA = new Vector2(_collider.bounds.max.x-.01f, _collider.bounds.max.y-.01f);
-        _cornerB = new Vector2(_collider.bounds.max.x-.01f, _collider.bounds.min.y+.01f);
-        _cornerC = new Vector2(_collider.bounds.min.x+.01f, _collider.bounds.min.y+.01f);
+        _cornerA = new Vector2(myCollider.bounds.max.x-.01f, myCollider.bounds.max.y-.01f);
+        _cornerB = new Vector2(myCollider.bounds.max.x-.01f, myCollider.bounds.min.y+.01f);
+        _cornerC = new Vector2(myCollider.bounds.min.x+.01f, myCollider.bounds.min.y+.01f);
     }
     public bool Grounded()
     {
@@ -99,7 +98,7 @@ public class MovementController : MonoBehaviour
     public void SetTotalVelocity(float speed, Vector2 direction)
     {
         CurrentVelocity = _rb.velocity;
-        workspace = direction * speed;
+        workspace = direction * speed * AcelerationIndex;
         _rb.velocity = workspace;
         CurrentVelocity = workspace;
     }
@@ -139,9 +138,9 @@ public class MovementController : MonoBehaviour
 
     private void OnDrawGizmos() 
     {
-       Vector2 cornerA = new Vector2(_collider.bounds.max.x-.01f, _collider.bounds.max.y-.01f);
-       Vector2 cornerB = new Vector2(_collider.bounds.max.x-.01f, _collider.bounds.min.y+.01f);
-       Vector2 cornerC = new Vector2(_collider.bounds.min.x+.01f, _collider.bounds.min.y+.01f);
+       Vector2 cornerA = new Vector2(myCollider.bounds.max.x-.01f, myCollider.bounds.max.y-.01f);
+       Vector2 cornerB = new Vector2(myCollider.bounds.max.x-.01f, myCollider.bounds.min.y+.01f);
+       Vector2 cornerC = new Vector2(myCollider.bounds.min.x+.01f, myCollider.bounds.min.y+.01f);
        Gizmos.DrawLine(cornerC, cornerC - Vector2.up * _detectionLenght);
        Gizmos.DrawLine(cornerB, cornerB - Vector2.up * _detectionLenght);
        Gizmos.DrawLine(cornerA, cornerA + Vector2.right * _detectionLenght);
