@@ -41,7 +41,7 @@ MonoBehaviour:
   hookDetectionRadius: 0.1
   maxAngle: 45
   hookCooldown: 0.5
-  hookTarget: {x: 0, y: 0, z: 0}
+  hookTarget: {x: 2.5, y: 2.5, z: 0}
   hedgeDetectionLenght: 0.1
   hedgeDetectionRadius: 0.25
   hedge:
@@ -54,3 +54,6 @@ MonoBehaviour:
     m_Bits: 4096
   rootChannelingDuration: 2
   damagedDuration: 1
+  walkable:
+    serializedVersion: 2
+    m_Bits: 256

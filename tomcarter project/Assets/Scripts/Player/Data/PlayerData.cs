@@ -60,4 +60,7 @@ public class PlayerData : ScriptableObject
 
     [Header("Damaged State")]
     public float damagedDuration = 1f;
+
+    [Header("LayerMasks")]
+    public LayerMask walkable;
 }

@@ -10,6 +10,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected MovementController controller;
     protected PlayerHealth playerHealth;
     protected bool grounded;
+    protected bool onWall;
     protected static bool tookDamage;
     
 
@@ -26,6 +27,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected override void DoChecks()
     {
         grounded = controller.Grounded();
+        onWall = controller.OnWall();
     }
 
     protected override void DoTransitionIn()
