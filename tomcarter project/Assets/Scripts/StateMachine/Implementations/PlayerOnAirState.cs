@@ -105,5 +105,5 @@ public class PlayerOnAirState : PlayerState
 
     public void DashJumpCoyoteTimeStart() => _dashJumpCoyoteTime = true;
 
-    public void SetJump() => _isJumping = true;
+    public void SetJump(bool set) => _isJumping = set;
 }

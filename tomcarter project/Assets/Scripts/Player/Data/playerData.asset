@@ -26,9 +26,9 @@ MonoBehaviour:
   dashLenght: 0.2
   blinkDashLenght: 0.1
   dashSpeed: 15
-  blinkDashSpeed: 30
+  blinkDashSpeed: 50
   drag: 10
-  dashEndMultiplier: 0.2
+  dashEndMultiplier: 0.3
   collisionDetection: 1
   dashJumpVelocityX: 12
   dashJumpAccelerationTime: 0.1

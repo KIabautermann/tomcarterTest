@@ -35,7 +35,7 @@ public class PlayerJumpState : PlayerSkillState
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
-        onAir.SetJump();
+        onAir.SetJump(true);
     }
 
     protected override void TransitionChecks()
