@@ -20,6 +20,7 @@ public class PlayerBaseDashState : PlayerDashState
     {
         base.DoTransitionIn();
         currentSpeed = stats.dashSpeed;
+        direction = new Vector2(controller.facingDirection,0);
     }
     protected override void DoTransitionOut()
     {

@@ -35,7 +35,6 @@ public abstract class PlayerDashState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        direction = new Vector2(controller.facingDirection,0);
         controller.SetTotalVelocity(0,Vector2.zero);
         controller.SetAcceleration(1);
         controller.SetGravity(false);

@@ -48,8 +48,7 @@ public class PlayerData : ScriptableObject
     [Header("Hedge State")]
     public float hedgeDetectionLenght = .1f;
     public float hedgeDetectionRadius = .25f;
-    public LayerMask hedge;
-
+    
     [Header("Dialogue State")]
     public float npcDetectionLenght = 10f;
     public float npcDetectionRadius = .25f;
@@ -63,4 +62,6 @@ public class PlayerData : ScriptableObject
 
     [Header("LayerMasks")]
     public LayerMask walkable;
+    public LayerMask hedge;
+
 }

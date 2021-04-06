@@ -24,11 +24,11 @@ MonoBehaviour:
   amountOfJumps: 1
   dashCooldown: 0.3
   dashLenght: 0.2
-  blinkDashLenght: 0.2
-  dashSpeed: 16
+  blinkDashLenght: 0.1
+  dashSpeed: 15
   blinkDashSpeed: 30
   drag: 10
-  dashEndMultiplier: 0.7
+  dashEndMultiplier: 0.2
   collisionDetection: 1
   dashJumpVelocityX: 12
   dashJumpAccelerationTime: 0.1
@@ -44,9 +44,6 @@ MonoBehaviour:
   hookTarget: {x: 2.5, y: 2.5, z: 0}
   hedgeDetectionLenght: 0.1
   hedgeDetectionRadius: 0.25
-  hedge:
-    serializedVersion: 2
-    m_Bits: 1024
   npcDetectionLenght: 3
   npcDetectionRadius: 0.25
   npc:
@@ -57,3 +54,6 @@ MonoBehaviour:
   walkable:
     serializedVersion: 2
     m_Bits: 256
+  hedge:
+    serializedVersion: 2
+    m_Bits: 1024
