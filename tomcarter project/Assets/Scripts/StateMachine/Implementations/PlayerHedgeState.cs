@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerHedgeState : PlayerSkillState
 {
-    private Vector3 direction;
-    private bool exitingHedge;
-    private bool enteringHedge;
+    private Vector3 _direction;
+    private bool _exitingHedge;
+    private bool _enteringHedge;
+    private float _currentSpeed;
 
     protected override void DoChecks()
     {
@@ -16,19 +17,26 @@ public class PlayerHedgeState : PlayerSkillState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        if(enteringHedge)
+        if(_enteringHedge)
         {
-            controller.Accelerate(-1 / stats.airAccelerationTime * Time.deltaTime);
-            if(controller.CurrentVelocity.magnitude <=.1f)
+            controller.Accelerate(-1 / stats.groundedAccelerationTime * Time.deltaTime);
+            _currentSpeed = stats.hedgeTransitionInPush;
+            if(controller.CurrentVelocity.magnitude <=stats.hedgeTransitionInMinSpeed)
             {
-                enteringHedge = false;
+                _enteringHedge = false;
             }
         }
-        if(!exitingHedge && !enteringHedge)
+        else if(_exitingHedge)
         {
+            controller.SetAcceleration(1);
+            _currentSpeed = stats.hedgeTransitionOutPush;
+        }
+        else if(!_exitingHedge && !_enteringHedge)
+        {
+            _currentSpeed = stats.movementVelocity;
             if(inputs.FixedAxis.magnitude !=0)
             {
-                direction = new Vector3(inputs.FixedAxis.x, inputs.FixedAxis.y,0).normalized;
+                _direction = new Vector3(inputs.FixedAxis.x, inputs.FixedAxis.y,0).normalized;
             }     
             controller.FlipCheck(inputs.FixedAxis.x);
             controller.Accelerate((inputs.FixedAxis.magnitude != 0 ? 1 / stats.groundedAccelerationTime : -1 / stats.groundedAccelerationTime) * Time.deltaTime);
@@ -38,36 +46,32 @@ public class PlayerHedgeState : PlayerSkillState
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        if(!exitingHedge)
-        {
-            controller.SetTotalVelocity(stats.movementVelocity, direction);          
-        }
         Vector3 checkDirection = controller.CurrentVelocity.normalized;
         Vector3 checkPosition = transform.position + checkDirection * stats.hedgeDetectionOffset;
         Collider[] check = Physics.OverlapBox(checkPosition, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
         if(check.Length == 0)
         {
-            exitingHedge = true;
+            _exitingHedge = true;
             controller.SetTotalVelocity(0, Vector3.zero);
-            controller.Force(direction,stats.hedgeTransitionOutPush);
+            controller.Force(_direction,stats.hedgeTransitionOutPush);
         }
         else
         {
-             exitingHedge = false;
+            _exitingHedge = false;
         }  
+        controller.SetTotalVelocity(_currentSpeed, _direction);    
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        Physics.IgnoreLayerCollision(9,10,true);
-        exitingHedge = false;
-        enteringHedge = true;
+        Debug.Log(controller.CurrentVelocity);
         controller.SetAcceleration(1);
-        direction = controller.CurrentVelocity.normalized;     
+        _direction = controller.CurrentVelocity.normalized;  
+        Physics.IgnoreLayerCollision(9,10,true);
+        _exitingHedge = false;
+        _enteringHedge = true;         
         controller.SetGravity(false);       
-        controller.Force(direction, stats.hedgeTransitionInPush); 
-        Debug.Log(direction);
     }
 
     protected override void DoTransitionOut()
@@ -75,7 +79,7 @@ public class PlayerHedgeState : PlayerSkillState
         base.DoTransitionOut();
         controller.SetGravity(true);
         Physics.IgnoreLayerCollision(9,10,false);
-        if(inputs.FixedAxis.x != 0)
+        if(_direction.x != 0)
         {
             controller.SetAcceleration(1);
         }
@@ -86,14 +90,13 @@ public class PlayerHedgeState : PlayerSkillState
         if(!controller.Grounded())
         {
             airState.JumpCoyoteTimeStart();
-            airState.DashJumpCoyoteTimeStart();
         }
     }
 
     protected override void TransitionChecks()
     {
         base.TransitionChecks(); 
-        if(exitingHedge)
+        if(_exitingHedge)
         {
             if(inputs.JumpInput)
             {

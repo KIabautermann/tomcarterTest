@@ -50,6 +50,7 @@ public class PlayerData : ScriptableObject
     public float hedgeDetectionOffset;
     public float hedgeTransitionInPush;
     public float hedgeTransitionOutPush;
+    public float hedgeTransitionInMinSpeed;
   
     [Header("Dialogue State")]
     public float npcDetectionLenght = 10f;

@@ -31,27 +31,28 @@ public class PlayerBlinkDashState : PlayerDashState
         else
         {
             direction = new Vector2(controller.facingDirection,0);
-        }
-       
+        }     
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
-        if (controller.CurrentVelocity.y > 0)
+        if(stateDone)
         {
-            controller.SetVelocityY(controller.CurrentVelocity.y * stats.dashEndMultiplier);
-        }
-        if(controller.CurrentVelocity.x != 0)
-        {
-            controller.SetAcceleration(1);
-        }
-        else
-        {
-            controller.SetAcceleration(0);
-        }
+            if (controller.CurrentVelocity.y > 0)
+            {
+                controller.SetVelocityY(controller.CurrentVelocity.y * stats.dashEndMultiplier);
+            }
+            if(controller.CurrentVelocity.x != 0)
+            {
+                controller.SetAcceleration(1);
+            }
+            else
+            {
+                controller.SetAcceleration(0);
+            }
+        }       
     }
-
     protected override void TransitionChecks()
     {
         base.TransitionChecks();

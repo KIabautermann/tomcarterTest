@@ -26,7 +26,7 @@ MonoBehaviour:
   dashLenght: 0.2
   blinkDashLenght: 0.1
   dashSpeed: 15
-  blinkDashSpeed: 40
+  blinkDashSpeed: 30
   drag: 10
   dashEndMultiplier: 0.1
   collisionDetection: 1
@@ -42,10 +42,11 @@ MonoBehaviour:
   maxAngle: 45
   hookCooldown: 0.5
   hookTarget: {x: 2.5, y: 2.5, z: 0}
-  hedgeDetectionLenght: 0.6
+  hedgeDetectionLenght: 0.7
   hedgeDetectionOffset: 0.5
-  hedgeTransitionInPush: 650
-  hedgeTransitionOutPush: 350
+  hedgeTransitionInPush: 12
+  hedgeTransitionOutPush: 7
+  hedgeTransitionInMinSpeed: 5
   npcDetectionLenght: 3
   npcDetectionRadius: 0.25
   npc:

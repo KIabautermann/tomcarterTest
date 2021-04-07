@@ -76,10 +76,7 @@ public abstract class PlayerDashState : PlayerSkillState
         base.TransitionChecks();
         if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge))
         {
-            _target.ChangeState<PlayerHedgeState>();
-            controller.SetTotalVelocity(0,Vector3.zero);
-            controller.Force(direction, stats.hedgeTransitionInPush);       
-            controller.SetAcceleration(1);
+            _target.ChangeState<PlayerHedgeState>();  
             controller.SetDrag(0);
         }  
         else if(inputs.JumpInput && dashJumpCoyoteTime)
