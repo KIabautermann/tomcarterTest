@@ -58,7 +58,19 @@ public class PlayerHedgeState : PlayerSkillState
         base.DoTransitionOut();
         controller.SetGravity(true);
         Physics.IgnoreLayerCollision(9,10,false);
-        Debug.Log(coolDown);
+        if(inputs.FixedAxis.x != 0)
+        {
+            controller.SetAcceleration(1);
+        }
+        else
+        {
+            controller.SetAcceleration(0);
+        }
+        if(!controller.Grounded())
+        {
+            airState.JumpCoyoteTimeStart();
+            airState.DashJumpCoyoteTimeStart();
+        }
     }
 
     protected override void TransitionChecks()
@@ -66,26 +78,20 @@ public class PlayerHedgeState : PlayerSkillState
         base.TransitionChecks(); 
         if(exitingHedge)
         {
-            Collider[] check = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
-            if(check.Length == 0)
+            if(inputs.JumpInput)
             {
-                if(inputs.FixedAxis.x != 0)
-                {
-                    controller.SetAcceleration(1);
-                }
-                else
-                {
-                 controller.SetAcceleration(0);
-                }
-                stateDone = true;
-            }  
-        }  
-        
+                _target.ChangeState<PlayerJumpState>();
+                inputs.UsedJump();
+                airState.DashJumpCoyoteTimeStart();
+            }
+            else
+            {
+                Collider[] check = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
+                if(check.Length == 0)
+                {                  
+                    stateDone = true;
+                }  
+            }           
+        }         
     } 
-
-    private void OnDrawGizmos() 
-    {
-        Gizmos.DrawWireCube((transform.position + direction*stats.hedgeDetectionOffset), controller.myCollider.bounds.size);
-        Gizmos.DrawWireCube(transform.position, controller.myCollider.bounds.size);
-    }
 }

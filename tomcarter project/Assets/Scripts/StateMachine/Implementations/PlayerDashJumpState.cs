@@ -54,14 +54,23 @@ public class PlayerDashJumpState : PlayerSkillState
 
     protected override void TransitionChecks()
     {
+        Vector3 direction = controller.CurrentVelocity.normalized;
         base.TransitionChecks();
-        if (grounded && !stateDone)
+        if (controller.Grounded() && !stateDone)
         {
             _target.ChangeState<PlayerLandState>();        
         }
         else if (inputs.HookInput)
         {
             _target.ChangeState<PlayerHookState>();
+        }
+        else if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge) && direction.y > 0)
+        {
+            _target.ChangeState<PlayerHedgeState>();
+            controller.SetTotalVelocity(0,Vector3.zero);
+            controller.Force(direction, stats.hedgeTransitionInPush);       
+            controller.SetAcceleration(1);
+            controller.SetDrag(0);
         }
     }
 

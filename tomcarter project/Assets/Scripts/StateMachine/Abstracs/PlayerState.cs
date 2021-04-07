@@ -9,9 +9,10 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected PlayerData stats;
     protected MovementController controller;
     protected PlayerHealth playerHealth;
-    protected bool grounded;
     protected bool onWall;
     protected static bool tookDamage;
+
+    protected PlayerOnAirState airState;
     
 
     public override void Init(PlayerStateMachine target)
@@ -22,12 +23,17 @@ public abstract class PlayerState : State<PlayerStateMachine>
         playerHealth = GetComponent<PlayerHealth>();
         stats = target.stats;
         PlayerHealthEventSystem.GetInstance().OnDamageTaken += OnPlayerTakenDamageHandler;
+        airState = GetComponent<PlayerOnAirState>();
     }
 
     protected override void DoChecks()
     {
-        grounded = controller.Grounded();
         onWall = controller.OnWall();
+    }
+
+    protected override void DoLogicUpdate()
+    {
+        
     }
 
     protected override void DoTransitionIn()
@@ -37,7 +43,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoPhysicsUpdate()
     {
-       
+      
     }
 
     protected override void DoTransitionOut()

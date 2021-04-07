@@ -18,7 +18,7 @@ MonoBehaviour:
   jumpVelocity: 10
   fallMultiplier: 1.1
   minJumpVelocity: 1
-  coyoteTime: 0.2
+  coyoteTime: 0.1
   shortHopMultiplier: 0.3
   maxFallVelocity: -15
   amountOfJumps: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
   dashLenght: 0.2
   blinkDashLenght: 0.1
   dashSpeed: 15
-  blinkDashSpeed: 50
+  blinkDashSpeed: 40
   drag: 10
   dashEndMultiplier: 0.1
   collisionDetection: 1
@@ -34,8 +34,8 @@ MonoBehaviour:
   dashJumpAccelerationTime: 0.1
   dashJumpFallMultiplier: 2
   minDashJumpVelocity: 1
-  dashCoyoteTime: 0.3
-  jumpHandicapTime: 0.2
+  dashCoyoteTime: 0.1
+  jumpHandicapTime: 0.1
   hookSpeed: 15
   circularSpeed: 5
   hookDetectionRadius: 0.1

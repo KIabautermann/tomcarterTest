@@ -41,7 +41,6 @@ public abstract class PlayerDashState : PlayerSkillState
         controller.SetGravity(false);
         controller.SetDrag(stats.drag);
         coyoteTime = false;
-        wastedCoyoteTime = !controller.Grounded();
     }
 
     protected override void DoTransitionOut()
@@ -67,11 +66,12 @@ public abstract class PlayerDashState : PlayerSkillState
         if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge))
         {
             _target.ChangeState<PlayerHedgeState>();
+            controller.SetTotalVelocity(0,Vector3.zero);
             controller.Force(direction, stats.hedgeTransitionInPush);       
             controller.SetAcceleration(1);
             controller.SetDrag(0);
         }  
-        else if(inputs.JumpInput)
+        else if(inputs.JumpInput && controller.Grounded())
         {
             _target.ChangeState<PlayerDashJumpState>();
             inputs.UsedJump();            

@@ -27,12 +27,12 @@ public class PlayerHookState : PlayerSkillState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        _hookTarget = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y, 0);
-        controller.Accelerate(-1 / stats.groundedAccelerationTime * Time.deltaTime);
+        _hookTarget = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y, 0);       
         controller.SetVelocityX(stats.movementVelocity * controller.facingDirection);
         float currentDistance = Vector3.Distance(_startPoint, _hookPoint.position);
         if (!_hooked)
         {
+            controller.Accelerate(-1 / stats.groundedAccelerationTime * Time.deltaTime);
             if (currentDistance >= stats.hookTarget.magnitude)
             {
                 stateDone = true;
@@ -43,13 +43,14 @@ public class PlayerHookState : PlayerSkillState
                 Collider[] hookDetecion = Physics.OverlapSphere(_hookPoint.position, stats.hookDetectionRadius, stats.walkable);
                 if(hookDetecion.Length > 0)
                 {
-                    if (grounded)
+                    if (controller.Grounded())
                     {
                         stateDone = true;
                     }
                     else
                     {
                         _hooked = true;
+                        controller.SetAcceleration(1);
                         dist = Vector3.Distance(_hookPoint.position, _target.transform.position);
                         controller.SetTotalVelocity(0,Vector3.zero);
                         controller.SetGravity(false);
@@ -67,8 +68,7 @@ public class PlayerHookState : PlayerSkillState
             target = _hookPoint.position + target.normalized * dist;
             _direction = (target - _target.transform.position).normalized;
             float angle = Vector3.SignedAngle(Vector3.up, (_hookPoint.position - _target.transform.position).normalized, Vector3.forward);
-            Debug.Log(angle);
-            if (angle >= stats.maxAngle * controller.facingDirection &&controller.facingDirection > 0)
+            if (angle >= stats.maxAngle * controller.facingDirection && controller.facingDirection > 0)
             {
                 stateDone = true;
                 controller.SetAcceleration(1);
@@ -78,7 +78,7 @@ public class PlayerHookState : PlayerSkillState
                 stateDone = true;
                 controller.SetAcceleration(1);
             }
-            else if(grounded || onWall)
+            else if(controller.Grounded() || onWall)
             {
                 stateDone = true;
                 controller.SetTotalVelocity(0, Vector3.zero);

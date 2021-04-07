@@ -29,6 +29,7 @@ public class PlayerJumpState : PlayerSkillState
     {
         base.DoTransitionIn();
         controller.SetVelocityY(stats.jumpVelocity);
+        inputs.UsedJump();
         stateDone = true;
     }
 

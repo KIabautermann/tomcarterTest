@@ -6,13 +6,7 @@ using System;
 public class PlayerTransientState : PlayerState
 {
     protected bool stateDone;
-    protected PlayerOnAirState airState;
 
-    public override void Init(PlayerStateMachine target)
-    {
-        base.Init(target);
-        airState = GetComponent<PlayerOnAirState>();
-    }
     protected override void DoChecks()
     {
         base.DoChecks();
@@ -45,7 +39,7 @@ public class PlayerTransientState : PlayerState
 
         if(stateDone)
         {
-            if (grounded)
+            if (controller.Grounded())
             {
                 _target.ChangeState<PlayerIdleState>();
             }
