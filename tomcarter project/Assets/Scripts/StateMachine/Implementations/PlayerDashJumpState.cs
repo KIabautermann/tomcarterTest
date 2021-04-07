@@ -56,22 +56,18 @@ public class PlayerDashJumpState : PlayerSkillState
     {
         Vector3 direction = controller.CurrentVelocity.normalized;
         base.TransitionChecks();
-        if (controller.Grounded() && !stateDone)
+        if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge))
         {
-            _target.ChangeState<PlayerLandState>();        
+            _target.ChangeState<PlayerHedgeState>();             
         }
         else if (inputs.HookInput)
         {
             _target.ChangeState<PlayerHookState>();
         }
-        else if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge) && direction.y > 0)
+        else if (controller.Grounded() && !stateDone)
         {
-            _target.ChangeState<PlayerHedgeState>();
-            controller.SetTotalVelocity(0,Vector3.zero);
-            controller.Force(direction, stats.hedgeTransitionInPush);       
-            controller.SetAcceleration(1);
-            controller.SetDrag(0);
-        }
+            _target.ChangeState<PlayerLandState>();        
+        }      
     }
 
     private void setJumpVelocity()

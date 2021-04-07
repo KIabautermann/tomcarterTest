@@ -6,6 +6,7 @@ public class PlayerHedgeState : PlayerSkillState
 {
     private Vector3 direction;
     private bool exitingHedge;
+    private bool enteringHedge;
 
     protected override void DoChecks()
     {
@@ -15,7 +16,15 @@ public class PlayerHedgeState : PlayerSkillState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        if(!exitingHedge)
+        if(enteringHedge)
+        {
+            controller.Accelerate(-1 / stats.airAccelerationTime * Time.deltaTime);
+            if(controller.CurrentVelocity.magnitude <=.1f)
+            {
+                enteringHedge = false;
+            }
+        }
+        if(!exitingHedge && !enteringHedge)
         {
             if(inputs.FixedAxis.magnitude !=0)
             {
@@ -31,26 +40,34 @@ public class PlayerHedgeState : PlayerSkillState
         base.DoPhysicsUpdate();
         if(!exitingHedge)
         {
-            controller.SetTotalVelocity(stats.movementVelocity, direction);
-            Vector3 checkPosition = transform.position + direction * stats.hedgeDetectionOffset;
-            Collider[] check = Physics.OverlapBox(checkPosition, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
-            if(check.Length == 0)
-            {
-                exitingHedge = true;
-                controller.SetTotalVelocity(0, Vector3.zero);
-                controller.Force(direction,stats.hedgeTransitionOutPush);
-            }  
+            controller.SetTotalVelocity(stats.movementVelocity, direction);          
         }
+        Vector3 checkDirection = controller.CurrentVelocity.normalized;
+        Vector3 checkPosition = transform.position + checkDirection * stats.hedgeDetectionOffset;
+        Collider[] check = Physics.OverlapBox(checkPosition, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
+        if(check.Length == 0)
+        {
+            exitingHedge = true;
+            controller.SetTotalVelocity(0, Vector3.zero);
+            controller.Force(direction,stats.hedgeTransitionOutPush);
+        }
+        else
+        {
+             exitingHedge = false;
+        }  
     }
 
     protected override void DoTransitionIn()
     {
-        exitingHedge = false;
         base.DoTransitionIn();
-        direction=Vector2.right * controller.facingDirection;
-        controller.SetGravity(false);
-        direction = controller.CurrentVelocity.normalized;
         Physics.IgnoreLayerCollision(9,10,true);
+        exitingHedge = false;
+        enteringHedge = true;
+        controller.SetAcceleration(1);
+        direction = controller.CurrentVelocity.normalized;     
+        controller.SetGravity(false);       
+        controller.Force(direction, stats.hedgeTransitionInPush); 
+        Debug.Log(direction);
     }
 
     protected override void DoTransitionOut()

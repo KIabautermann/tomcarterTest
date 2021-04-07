@@ -7,9 +7,9 @@ public abstract class PlayerDashState : PlayerSkillState
     protected float lastDashTime;
     protected Vector2 direction;
     protected bool coyoteTime;
-    protected bool wastedCoyoteTime;
     protected float coyoteStartTime;
     protected float currentSpeed;
+    protected bool dashJumpCoyoteTime;
 
     public override void Init(PlayerStateMachine target)
     {
@@ -25,6 +25,16 @@ public abstract class PlayerDashState : PlayerSkillState
     {
         base.DoLogicUpdate();
         controller.SetTotalVelocity(currentSpeed,direction);
+        DashJumpCoyoteTimeCheck();
+        if(controller.Grounded())
+        {
+            dashJumpCoyoteTime = true;
+            coyoteStartTime = Time.time;
+        }
+        else
+        {
+            DashJumpCoyoteTimeCheck();
+        }
     }
 
     protected override void DoPhysicsUpdate()
@@ -41,6 +51,7 @@ public abstract class PlayerDashState : PlayerSkillState
         controller.SetGravity(false);
         controller.SetDrag(stats.drag);
         coyoteTime = false;
+        dashJumpCoyoteTime = controller.Grounded();
     }
 
     protected override void DoTransitionOut()
@@ -71,13 +82,21 @@ public abstract class PlayerDashState : PlayerSkillState
             controller.SetAcceleration(1);
             controller.SetDrag(0);
         }  
-        else if(inputs.JumpInput && controller.Grounded())
+        else if(inputs.JumpInput && dashJumpCoyoteTime)
         {
             _target.ChangeState<PlayerDashJumpState>();
             inputs.UsedJump();            
         }    
     }
+    public void DashJumpCoyoteTimeStart() => dashJumpCoyoteTime = true;
 
+    private void DashJumpCoyoteTimeCheck()
+    {
+        if (dashJumpCoyoteTime && Time.time > startTime + stats.jumpHandicapTime)
+        {
+            dashJumpCoyoteTime = false;
+        }
+    }
    
     public bool CanDash() => Time.time >= lastDashTime + stats.dashCooldown;
 }
