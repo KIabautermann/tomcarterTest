@@ -43,8 +43,9 @@ MonoBehaviour:
   hookCooldown: 0.5
   hookTarget: {x: 2.5, y: 2.5, z: 0}
   hedgeDetectionLenght: 0.5
-  hedgeDetectionOffset: 0.25
-  hedgeTransitionPush: 1000
+  hedgeDetectionOffset: 0.5
+  hedgeTransitionInPush: 500
+  hedgeTransitionOutPush: 350
   npcDetectionLenght: 3
   npcDetectionRadius: 0.25
   npc:

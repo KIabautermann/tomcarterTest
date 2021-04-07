@@ -67,7 +67,7 @@ public abstract class PlayerDashState : PlayerSkillState
         if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge))
         {
             _target.ChangeState<PlayerHedgeState>();
-            controller.Force(direction, stats.hedgeTransitionPush);       
+            controller.Force(direction, stats.hedgeTransitionInPush);       
             controller.SetAcceleration(1);
             controller.SetDrag(0);
         }  
