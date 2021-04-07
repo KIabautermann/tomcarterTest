@@ -35,6 +35,7 @@ public abstract class PlayerDashState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        inputs.UsedDash();
         controller.SetTotalVelocity(0,Vector2.zero);
         controller.SetAcceleration(1);
         controller.SetGravity(false);
@@ -66,6 +67,7 @@ public abstract class PlayerDashState : PlayerSkillState
         if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge))
         {
             _target.ChangeState<PlayerHedgeState>();
+            controller.Force(direction, stats.hedgeTransitionPush);       
             controller.SetAcceleration(1);
             controller.SetDrag(0);
         }  

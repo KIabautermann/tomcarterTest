@@ -32,7 +32,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             if(newState == null || newState.OnCoolDown()) 
             {
-                Debug.LogWarning("Can't Transition");
+                Debug.LogWarning($"Can't Transition to {typeof(T).ToString()}");
                 return;
             }
 
@@ -64,6 +64,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         return state == _currentState;
     }
+    
 
    
 }

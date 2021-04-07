@@ -44,7 +44,6 @@ public class PlayerOnAirState : PlayerState
 
     protected override void TransitionChecks()
     {
-        Debug.Log(grounded);
         if (grounded)
         {
             _target.ChangeState<PlayerLandState>();

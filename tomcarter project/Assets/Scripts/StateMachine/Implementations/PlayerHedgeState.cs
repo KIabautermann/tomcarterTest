@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerHedgeState : PlayerSkillState
 {
-    private Vector2 direction;
+    private Vector3 direction;
+
+
     protected override void DoChecks()
     {
          base.DoChecks();
@@ -15,8 +17,7 @@ public class PlayerHedgeState : PlayerSkillState
         base.DoLogicUpdate();
         if(inputs.FixedAxis.magnitude !=0)
         {
-            direction = inputs.FixedAxis;
-            direction = direction.normalized;
+            direction = new Vector3(inputs.FixedAxis.x, inputs.FixedAxis.y,0).normalized;
         }     
         controller.FlipCheck(inputs.FixedAxis.x);
         controller.Accelerate((inputs.FixedAxis.magnitude != 0 ? 1 / stats.groundedAccelerationTime : -1 / stats.groundedAccelerationTime) * Time.deltaTime);
@@ -31,6 +32,7 @@ public class PlayerHedgeState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        direction=Vector2.right * controller.facingDirection;
         controller.SetGravity(false);
         direction = controller.CurrentVelocity.normalized;
         Physics.IgnoreLayerCollision(9,10,true);
@@ -41,26 +43,25 @@ public class PlayerHedgeState : PlayerSkillState
         base.DoTransitionOut();
         controller.SetGravity(true);
         Physics.IgnoreLayerCollision(9,10,false);
+        Debug.Log(coolDown);
     }
 
     protected override void TransitionChecks()
     {
-        base.TransitionChecks();
-        Vector3 detection = controller.myCollider.bounds.size;
-        Collider[] hedgeDetection = Physics.OverlapBox(_target.transform.position, detection/2, Quaternion.identity, stats.hedge);
-        if(hedgeDetection.Length == 0)
+        base.TransitionChecks();   
+        Vector3 checkPosition = transform.position + (direction*stats.hedgeDetectionOffset);
+        Collider[] check = Physics.OverlapBox(checkPosition, controller.myCollider.bounds.size, Quaternion.identity,stats.hedge);  
+        if(check.Length == 0)
         {
-            stateDone = true;
-            if(inputs.FixedAxis.x == 0)
-            {
-                controller.SetAcceleration(0);
-            }
-            else
+            if(inputs.FixedAxis.x != 0)
             {
                 controller.SetAcceleration(1);
             }
-        }
-    }
-
-     
+            else
+            {
+                controller.SetAcceleration(0);
+            }
+            stateDone = true;
+        }  
+    } 
 }

@@ -47,8 +47,9 @@ public class PlayerData : ScriptableObject
 
     [Header("Hedge State")]
     public float hedgeDetectionLenght = .1f;
-    public float hedgeDetectionRadius = .25f;
-    
+    public float hedgeDetectionOffset;
+    public float hedgeTransitionPush;
+  
     [Header("Dialogue State")]
     public float npcDetectionLenght = 10f;
     public float npcDetectionRadius = .25f;

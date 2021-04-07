@@ -22,7 +22,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public virtual void Init(T target)
     {
        coolDown = 0;
-       endTime = 0;
+       endTime = Time.time;
         _target = target;
     }
    
@@ -65,6 +65,6 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
 
     protected abstract void TransitionChecks();
 
-    public bool OnCoolDown() => Time.time <= endTime + coolDown;
+    public bool OnCoolDown() => Time.time < endTime + coolDown;
 
 }

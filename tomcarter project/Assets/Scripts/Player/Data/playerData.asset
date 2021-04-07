@@ -42,8 +42,9 @@ MonoBehaviour:
   maxAngle: 45
   hookCooldown: 0.5
   hookTarget: {x: 2.5, y: 2.5, z: 0}
-  hedgeDetectionLenght: 0.7
-  hedgeDetectionRadius: 0.25
+  hedgeDetectionLenght: 0.5
+  hedgeDetectionOffset: 0.25
+  hedgeTransitionPush: 1000
   npcDetectionLenght: 3
   npcDetectionRadius: 0.25
   npc:
