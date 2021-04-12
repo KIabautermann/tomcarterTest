@@ -28,7 +28,7 @@ public class PlayerOnAirState : PlayerState
         base.DoPhysicsUpdate();
         if(controller.CurrentVelocity.y < stats.minJumpVelocity)
         {
-            controller.Force(Physics.gravity, stats.fallMultiplier);
+            controller.Force(Physics.gravity, stats.fallMultiplier, ForceMode.Force);
         }
     }
 
@@ -66,6 +66,11 @@ public class PlayerOnAirState : PlayerState
         else if (inputs.HookInput)
         {
             _target.ChangeState<PlayerHookState>();
+        }
+        else if(inputs.GuardInput)
+        {
+            _target.ChangeState<PlayerHardenState>();
+            inputs.UsedGuard();
         }
 
         base.TransitionChecks();

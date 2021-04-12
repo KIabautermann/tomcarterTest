@@ -18,7 +18,7 @@ public class MovementController : MonoBehaviour
     private LayerMask _walkwable;
     #endregion
     
-    public Vector2 CurrentVelocity { get; private set; }
+    public Vector2 CurrentVelocity;
     public float AcelerationIndex { get; private set; }
     public int facingDirection { get; private set; } 
     private Vector2 _cornerA;
@@ -43,6 +43,7 @@ public class MovementController : MonoBehaviour
         _cornerA = new Vector2(myCollider.bounds.max.x-.01f, myCollider.bounds.max.y-.01f);
         _cornerB = new Vector2(myCollider.bounds.max.x-.01f, myCollider.bounds.min.y+.01f);
         _cornerC = new Vector2(myCollider.bounds.min.x+.01f, myCollider.bounds.min.y+.01f);
+        CurrentVelocity = _rb.velocity;
     }
     public bool Grounded()
     {
@@ -129,9 +130,9 @@ public class MovementController : MonoBehaviour
         transform.Rotate(0.0f, 180.0f, 0.0f);
         SetAcceleration(.25f);
     }
-    public void Force(Vector2 direction, float force)
+    public void Force(Vector2 direction, float force, ForceMode mode)
     {
-        _rb.AddForce(direction * force);
+        _rb.AddForce(direction * force, mode);
     }
 
     #endregion

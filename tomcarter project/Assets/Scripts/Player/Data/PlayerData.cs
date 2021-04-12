@@ -63,6 +63,14 @@ public class PlayerData : ScriptableObject
     [Header("Damaged State")]
     public float damagedDuration = 1f;
 
+    [Header("Harden State")]
+    public float hardenTime = 2f;
+    public float hardenMovementSpeed = 5f;
+    public float breakVelocity = 10f;
+    public float minHookAngle=0;
+
+    public float hardenHookImpulse = 500;
+
     [Header("LayerMasks")]
     public LayerMask walkable;
     public LayerMask hedge;

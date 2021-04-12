@@ -53,7 +53,7 @@ public class PlayerHedgeState : PlayerSkillState
         {
             _exitingHedge = true;
             controller.SetTotalVelocity(0, Vector3.zero);
-            controller.Force(_direction,stats.hedgeTransitionOutPush);
+            controller.Force(_direction,stats.hedgeTransitionOutPush,ForceMode.Force);
         }
         else
         {
@@ -65,7 +65,6 @@ public class PlayerHedgeState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        Debug.Log(controller.CurrentVelocity);
         controller.SetAcceleration(1);
         _direction = controller.CurrentVelocity.normalized;  
         Physics.IgnoreLayerCollision(9,10,true);

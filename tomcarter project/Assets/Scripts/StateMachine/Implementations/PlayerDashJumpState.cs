@@ -32,7 +32,7 @@ public class PlayerDashJumpState : PlayerSkillState
         base.DoPhysicsUpdate();
         if (controller.CurrentVelocity.y < stats.minDashJumpVelocity)
         {
-            controller.Force(Physics.gravity, stats.dashJumpFallMultiplier);
+            controller.Force(Physics.gravity, stats.dashJumpFallMultiplier, ForceMode.Force);
         }
     }
 

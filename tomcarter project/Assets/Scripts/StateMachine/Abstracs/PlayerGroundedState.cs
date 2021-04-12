@@ -67,8 +67,9 @@ public abstract class PlayerGroundedState : PlayerState
             _target.ChangeState<PlayerHookState>();
             inputs.UsedHook();
         }
-        else if(inputs.GuardInput){
-            _target.ChangeState<PlayerGuardState>();
+        else if(inputs.GuardInput)
+        {
+            _target.ChangeState<PlayerHardenState>();
             inputs.UsedGuard();
         }
         else if(!controller.Grounded())

@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerHookState : PlayerSkillState
 {
     private bool _hooked;
+    private bool _hardenInputPressed;
+    private bool _readyToHarden;
     private float _distance;
     private Vector3 _startPoint;
     private Vector3 _hookTarget;
@@ -14,11 +16,6 @@ public class PlayerHookState : PlayerSkillState
     [SerializeField]
     private Transform _hookPoint;
 
-    public override void Init(PlayerStateMachine target)
-    {
-        base.Init(target);
-        coolDown = 0;
-    }
     protected override void DoChecks()
     {
          base.DoChecks();
@@ -28,11 +25,11 @@ public class PlayerHookState : PlayerSkillState
     {
         base.DoLogicUpdate();
         _hookTarget = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y, 0);       
-        controller.SetVelocityX(stats.movementVelocity * controller.facingDirection);
         float currentDistance = Vector3.Distance(_startPoint, _hookPoint.position);
         if (!_hooked)
         {
             controller.Accelerate(-1 / stats.groundedAccelerationTime * Time.deltaTime);
+            controller.SetVelocityX(stats.movementVelocity * controller.facingDirection);
             if (currentDistance >= stats.hookTarget.magnitude)
             {
                 stateDone = true;
@@ -58,7 +55,7 @@ public class PlayerHookState : PlayerSkillState
                 }
             }
         }
-         else
+        else
         {
             _direction = (_hookPoint.position - _target.transform.position).normalized;
             Quaternion rotation = Quaternion.Euler(0, 0, -90 * controller.facingDirection);
@@ -69,14 +66,23 @@ public class PlayerHookState : PlayerSkillState
             _direction = (target - _target.transform.position).normalized;
             float angle = Vector3.SignedAngle(Vector3.up, (_hookPoint.position - _target.transform.position).normalized, Vector3.forward);
             if (angle >= stats.maxAngle * controller.facingDirection && controller.facingDirection > 0)
-            {
-                stateDone = true;
+            {               
                 controller.SetAcceleration(1);
+                stateDone=true;
             }
             else if(angle <= stats.maxAngle * controller.facingDirection && controller.facingDirection < 0)
-            {
-                stateDone = true;
+            {                
                 controller.SetAcceleration(1);
+                stateDone=true;
+            }
+            if (angle >= stats.minHookAngle * controller.facingDirection && controller.facingDirection > 0)
+            {
+                _readyToHarden = true;
+                
+            }
+            else if(angle <= stats.minHookAngle * controller.facingDirection && controller.facingDirection < 0)
+            {
+                _readyToHarden = true;
             }
             else if(controller.Grounded() || onWall)
             {
@@ -84,9 +90,13 @@ public class PlayerHookState : PlayerSkillState
                 controller.SetTotalVelocity(0, Vector3.zero);
                 controller.SetAcceleration(0);
             }
-        }
-    
+            if(inputs.GuardInput)
+            {
+                _hardenInputPressed = true;
+            }  
+        }       
     }
+    
 
     protected override void DoPhysicsUpdate()
     {
@@ -104,6 +114,8 @@ public class PlayerHookState : PlayerSkillState
         _hookPoint.position = _target.transform.position;       
         _hookPoint.parent = null;
         _startPoint = _target.transform.position;
+        _readyToHarden = false;
+        _hardenInputPressed = false;
         if (inputs.FixedAxis.x != 0)
         {
             controller.SetAcceleration(.5f);
@@ -128,8 +140,10 @@ public class PlayerHookState : PlayerSkillState
 
     protected override void TransitionChecks()
     {
-        if(inputs.GuardInput){
-            _target.ChangeState<PlayerGuardState>();
+        if(_readyToHarden && _hardenInputPressed)
+        {
+            controller.SetTotalVelocity(controller.CurrentVelocity.magnitude,_direction);
+            _target.ChangeState<PlayerHardenState>();          
             inputs.UsedGuard();
         }
         else
