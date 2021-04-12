@@ -10,11 +10,22 @@ public class PlayerHookState : PlayerSkillState
     private float _distance;
     private Vector3 _startPoint;
     private Vector3 _hookTarget;
+    private LineRenderer _line;
+    private SpriteRenderer _hookSprite;
     private float dist;
     [SerializeField]
     private Vector3 _direction;
     [SerializeField]
     private Transform _hookPoint;
+
+    public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        _line = _hookPoint.GetComponent<LineRenderer>();
+        _hookSprite = _hookPoint.GetComponent<SpriteRenderer>();
+        _line.enabled = false;
+        _hookSprite.enabled = false;
+    }
 
     protected override void DoChecks()
     {
@@ -94,8 +105,15 @@ public class PlayerHookState : PlayerSkillState
             {
                 _hardenInputPressed = true;
             }  
-        }       
+        } 
+        if(_line.enabled)
+        {
+            _line.SetPosition(0,transform.position);   
+            _line.SetPosition(1,_hookPoint.position); 
+        } 
+        
     }
+
     
 
     protected override void DoPhysicsUpdate()
@@ -109,7 +127,7 @@ public class PlayerHookState : PlayerSkillState
 
     protected override void DoTransitionIn()
     {
-        base.DoTransitionIn();
+        base.DoTransitionIn();       
         _hooked = false;
         _hookPoint.position = _target.transform.position;       
         _hookPoint.parent = null;
@@ -123,7 +141,11 @@ public class PlayerHookState : PlayerSkillState
         else
         {
             controller.SetAcceleration(0);
-        }      
+        }
+        _line.SetPosition(0,transform.position);   
+        _line.SetPosition(1,_hookPoint.position); 
+        _line.enabled = true;
+        _hookSprite.enabled = true;      
     }
 
     
@@ -136,6 +158,8 @@ public class PlayerHookState : PlayerSkillState
             controller.SetAcceleration(.5f);
         }
         _hookPoint.parent = _target.transform;
+        _line.enabled = false;
+        _hookSprite.enabled = false;
     }
 
     protected override void TransitionChecks()
