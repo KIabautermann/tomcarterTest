@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
+public abstract class State <T> : MonoBehaviour where T : StateMachine
 {
     protected T _target;
     public bool isExiting;
