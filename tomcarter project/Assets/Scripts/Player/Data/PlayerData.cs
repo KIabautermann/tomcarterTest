@@ -55,7 +55,6 @@ public class PlayerData : ScriptableObject
     [Header("Dialogue State")]
     public float npcDetectionLenght = 10f;
     public float npcDetectionRadius = .25f;
-    public LayerMask npc;
     
     [Header("Root State")]
     public float rootChannelingDuration = 2f;
@@ -74,5 +73,7 @@ public class PlayerData : ScriptableObject
     [Header("LayerMasks")]
     public LayerMask walkable;
     public LayerMask hedge;
+    public LayerMask npc;
+    public LayerMask rootable;
 
 }

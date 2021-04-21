@@ -26,9 +26,9 @@ public class ComponentCache<T> where T : MonoBehaviour
         return allComponents.Values.Distinct();
     }
 
-    public bool GetInstance<V>(out T instance) where V : T 
+    public bool GetInstance(Type type, out T instance)
     {
-        return allComponents.TryGetValue(typeof(V), out instance);
+        return allComponents.TryGetValue(type, out instance);
     }
 
     public void AddInstance(T instance)
@@ -41,5 +41,18 @@ public class ComponentCache<T> where T : MonoBehaviour
             getType = getType.BaseType;
         }
     }
+    public List<T> RemoveInstance(Type type)
+    {
+        T instance = allComponents[type];
+     
+        List<T> removedInstances = new List<T>() { instance };
 
+        var entriesToRemove = allComponents.Where(v => v.Value == instance).ToList();
+        foreach(var entry in entriesToRemove)
+        {
+            removedInstances.Add(entry.Value);
+            allComponents.Remove(entry.Key);
+        }
+        return removedInstances;
+    }
 }

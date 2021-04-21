@@ -8,7 +8,7 @@ public class PlayerJumpState : PlayerSkillState
 
    private void Start() 
    {
-       onAir=GetComponent<PlayerOnAirState>();      
+       onAir = GetComponent<PlayerOnAirState>();      
    }
    protected override void DoChecks()
     {

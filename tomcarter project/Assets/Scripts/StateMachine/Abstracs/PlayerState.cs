@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -22,7 +22,6 @@ public abstract class PlayerState : State<PlayerStateMachine>
         controller = GetComponent<MovementController>();
         playerHealth = GetComponent<PlayerHealth>();
         stats = target.stats;
-        PlayerHealthEventSystem.GetInstance().OnDamageTaken += OnPlayerTakenDamageHandler;
         airState = GetComponent<PlayerOnAirState>();
     }
 
@@ -33,12 +32,11 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoLogicUpdate()
     {
-        
     }
 
     protected override void DoTransitionIn()
     {
-        
+        PlayerHealthEventSystem.GetInstance().OnDamageTaken += OnPlayerTakenDamageHandler;
     }
 
     protected override void DoPhysicsUpdate()
@@ -48,6 +46,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoTransitionOut()
     {
+        PlayerHealthEventSystem.GetInstance().OnDamageTaken -= OnPlayerTakenDamageHandler;
         StopAllCoroutines();
     } 
 
@@ -67,12 +66,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     private void OnPlayerTakenDamageHandler(object sender, EventArgs e)
     {
-        // Tecnicamente no pasa nada si todos los estados corren el handler, pero mierda que esto es una solucion polemica.
-        // Hay alguna manera de que la clase abstracta tenga este codigo, pero no todos corran su handlers?
-        if (_target.IsCurrentState(this))
-        {
-            tookDamage = true;
-        }
+        tookDamage = true;
     }
 
     protected void ClampYVelocity()

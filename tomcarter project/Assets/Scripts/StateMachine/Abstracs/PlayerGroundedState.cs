@@ -6,7 +6,7 @@ public abstract class PlayerGroundedState : PlayerState
 {
     private Vector2 direction;
     protected override void DoChecks()
-    {
+    {   
         direction = new Vector2(controller.facingDirection,0);
     }
 
@@ -34,7 +34,7 @@ public abstract class PlayerGroundedState : PlayerState
 
     protected override void TransitionChecks()
     {
-        if(inputs.RootsInput && !inputs.RootsCancel){
+        if(controller.OnRootable() && inputs.RootsInput){
             _target.ChangeState<PlayerRootsState>();
             inputs.UsedRoots();
         }
