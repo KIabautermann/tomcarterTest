@@ -24,14 +24,15 @@ public class PlayerHardenState : PlayerSkillState
             controller.SetVelocityX(stats.hardenMovementSpeed * controller.facingDirection);                    
         }   
         RaycastHit hit;
-            if(Physics.Raycast(transform.position, controller.CurrentVelocity.normalized,out hit, 1))
+        if(Physics.Raycast(transform.position, controller.CurrentVelocity.normalized,out hit, 1))
+        {
+            // Hacer algo mas rapido que pedir un GetComponent por cada frame que hay un hit del ray cast. Usar layers?
+            if (hit.collider.gameObject.GetComponent<IBreakable>() != null)
             {
-                if (hit.collider.gameObject.GetComponent<IBreakable>() != null)
-                {
-                    hit.collider.gameObject.GetComponent<IBreakable>().onBreak(controller.CurrentVelocity);     
-                    stateDone = true;               
-                }                
-            }                   
+                hit.collider.gameObject.GetComponent<IBreakable>().onBreak(controller.CurrentVelocity);     
+                stateDone = true;               
+            }                
+        }                   
     }
 
     protected override void DoPhysicsUpdate()

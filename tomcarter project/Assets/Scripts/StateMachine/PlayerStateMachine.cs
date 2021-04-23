@@ -7,27 +7,33 @@ using System;
 
 public class PlayerStateMachine : MonoBehaviour
 {
-    private State<PlayerStateMachine> _currentState;
+    protected State<PlayerStateMachine> _currentState;
+    
     [SerializeField]
     private TextMeshProUGUI _currentStateDisplay;
     public PlayerData stats;
-    private ComponentCache<State<PlayerStateMachine>> allStates;
-    void Start()
-    {
-        var allComponents = GetComponents<State<PlayerStateMachine>>();
+    private PlayerAbilitySystem abilitySystem;    
+    private ComponentCache<State<PlayerStateMachine>> allStates; 
 
-        allStates = new ComponentCache<State<PlayerStateMachine>>(allComponents);
+    public virtual void Start()
+    {
+        abilitySystem = GetComponent<PlayerAbilitySystem>();
+        abilitySystem.OnAbilityUnlocked += AbilityUnlocked_Handler;
+
+        var allComponents = abilitySystem.GetAvailableStates().Select(t => this.gameObject.AddComponent(t) as State<PlayerStateMachine>).ToList();
         
-        foreach(var state in allStates.GetAllInstances())
+        foreach(var state in allComponents)
         {
             state.Init(this);
         }
+        allStates = new ComponentCache<State<PlayerStateMachine>>(allComponents);
+        
         ChangeState<PlayerIdleState>();
     }
     public void ChangeState<T>() where T : State<PlayerStateMachine>
     {
-        if (!allStates.GetInstance<T>(out State<PlayerStateMachine> newState)) newState = null;
-              
+        if (!allStates.GetInstance(typeof(T), out State<PlayerStateMachine> newState)) newState = null;
+
         if(_currentState != null)
         {
             if(newState == null || newState.OnCoolDown()) 
@@ -36,15 +42,14 @@ public class PlayerStateMachine : MonoBehaviour
                 return;
             }
 
-            if (_currentState.isExiting) return;
+           if (_currentState.isExiting) return;
             _currentState.TriggerTransitionOut();
         }
-
-        //Debug.Log($"Transitioned to: {typeof(T).ToString()}");
         _currentState = newState;
         _currentStateDisplay.text = _currentState.stateName;
         _currentState.TriggerTransitionIn();
     }
+
     private void Update() 
     {
         if(_currentState != null)
@@ -60,11 +65,19 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
-    public bool IsCurrentState(State<PlayerStateMachine> state) 
+    public void AbilityUnlocked_Handler(object sender, PlayerAbilitySystem.AbiltyUnlockedEventArgs args)
     {
-        return state == _currentState;
+        foreach (Type t in args.added)
+        {
+            var instance = this.gameObject.AddComponent(t) as State<PlayerStateMachine>;
+            instance.Init(this);
+            allStates.AddInstance(instance);
+        }
+        foreach (Type t in args.removed)
+        {
+            List<State<PlayerStateMachine>> removedInstances = allStates.RemoveInstance(t);
+            removedInstances.ForEach(s => Destroy(s));
+        }
     }
-    
-
    
 }

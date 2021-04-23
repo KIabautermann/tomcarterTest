@@ -16,6 +16,8 @@ public class MovementController : MonoBehaviour
     private float _detectionLenght;
     [SerializeField]
     private LayerMask _walkwable;
+    [SerializeField]
+    private LayerMask _rootable;
     #endregion
     
     public Vector2 CurrentVelocity;
@@ -25,6 +27,10 @@ public class MovementController : MonoBehaviour
     private Vector2 _cornerB;
     private Vector2 _cornerC;
     private Vector2 workspace;
+
+    #region RayCast Hits
+    private RaycastHit rootableHit;
+    #endregion
 
 
     private void Awake() 
@@ -57,6 +63,21 @@ public class MovementController : MonoBehaviour
             n++;
         }
        return n!=0 && CurrentVelocity.y < .01f;
+    }
+    public bool OnRootable()
+    {
+        int n = 0;
+        if(Physics.Raycast(_cornerC, -Vector2.up, out RaycastHit hit, _detectionLenght, _rootable))
+        {
+            rootableHit = hit;
+            n++;
+        }
+        if(Physics.Raycast(_cornerB, -Vector2.up, out hit, _detectionLenght, _rootable))
+        {
+            rootableHit = hit;
+            n++;
+        }
+        return n!=0 && CurrentVelocity.y < .01f;
     }
     public bool OnWall()
     {
@@ -149,6 +170,12 @@ public class MovementController : MonoBehaviour
 
     }
     
+    #region RaycastHit Getters
+    public RaycastHit GetRootableHit()
+    {
+        return rootableHit;
+    }
+    #endregion
 }
 
 

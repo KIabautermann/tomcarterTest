@@ -28,6 +28,13 @@ public class SaveLoadController : MonoBehaviour
         file.Close();
     }
 
+    public void ResetGame()
+    {
+        Debug.Log("Resetting game file");
+        if (File.Exists(Application.persistentDataPath + FILE_NAME)) {
+            File.Delete(Application.persistentDataPath + FILE_NAME);
+        }
+    }
     private void LoadGame(Scene scene, LoadSceneMode mode)
     {
         if (File.Exists(Application.persistentDataPath + FILE_NAME))
