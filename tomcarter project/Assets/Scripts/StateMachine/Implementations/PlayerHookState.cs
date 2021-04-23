@@ -10,17 +10,19 @@ public class PlayerHookState : PlayerSkillState
     private float _distance;
     private Vector3 _startPoint;
     private Vector3 _hookTarget;
+    private float dist;    
+    private Vector3 _direction;
+    
+    #region Init Variables
     private LineRenderer _line;
     private SpriteRenderer _hookSprite;
-    private float dist;
-    [SerializeField]
-    private Vector3 _direction;
-    [SerializeField]
     private Transform _hookPoint;
+    #endregion
 
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
+        _hookPoint = GetComponentInChildren<HookPoint>().transform;
         _line = _hookPoint.GetComponent<LineRenderer>();
         _hookSprite = _hookPoint.GetComponent<SpriteRenderer>();
         _line.enabled = false;
