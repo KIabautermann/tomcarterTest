@@ -65,7 +65,7 @@ public class PlayerAbilitySystem : LoadableObject
     public void UnlockAbility(PlayerSkill skill)
     {
         if (unlockedSkills[skill]) return;
-        
+
         unlockedSkills[skill] = true;
         var eventArgs = new AbiltyUnlockedEventArgs();
         eventArgs.removed = new List<Type>();
@@ -100,12 +100,12 @@ public class PlayerAbilitySystem : LoadableObject
     };
     protected override void LoadFromSavedGameState(GameState gameState)
     {
-        Debug.Log("Loaded save data for Unlocked abilities");
         var unlockedAbilities = gameState.unlockedAbilities;
         unlockedSkills[PlayerSkill.SPORE_DASH] = unlockedAbilities._hasSporeDashUnlocked;
         unlockedSkills[PlayerSkill.ROOT_ATTACK] = unlockedAbilities._hasRootAttackUnlocked;
         unlockedSkills[PlayerSkill.VINE_HOOK] = unlockedAbilities._hasVineHookUnlocked;
         unlockedSkills[PlayerSkill.BARK_GUARD] = unlockedAbilities._hasBarkGuardUnlocked;
+        unlockedSkills[PlayerSkill.HEDGE_CLIMB] = unlockedAbilities._hasHedgeClimbUnlocked;
     }
     protected override void SaveToGameState(object sender, SaveLoadController.OnSaveCalledEventArgs onSaveArguments) 
     {
@@ -114,6 +114,7 @@ public class PlayerAbilitySystem : LoadableObject
         unlockedAbilitiesData._hasRootAttackUnlocked = unlockedSkills[PlayerSkill.ROOT_ATTACK];
         unlockedAbilitiesData._hasVineHookUnlocked = unlockedSkills[PlayerSkill.VINE_HOOK];
         unlockedAbilitiesData._hasBarkGuardUnlocked = unlockedSkills[PlayerSkill.BARK_GUARD];
+        unlockedAbilitiesData._hasHedgeClimbUnlocked = unlockedSkills[PlayerSkill.HEDGE_CLIMB];
         onSaveArguments.gameState.unlockedAbilities = unlockedAbilitiesData;
     }
 
