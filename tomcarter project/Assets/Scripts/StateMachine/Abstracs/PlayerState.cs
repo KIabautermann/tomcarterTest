@@ -36,7 +36,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoTransitionIn()
     {
-        PlayerHealthEventSystem.GetInstance().OnDamageTaken += OnPlayerTakenDamageHandler;
+        PlayerEventSystem.GetInstance().OnDamageTaken += OnPlayerTakenDamageHandler;
     }
 
     protected override void DoPhysicsUpdate()
@@ -46,7 +46,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoTransitionOut()
     {
-        PlayerHealthEventSystem.GetInstance().OnDamageTaken -= OnPlayerTakenDamageHandler;
+        PlayerEventSystem.GetInstance().OnDamageTaken -= OnPlayerTakenDamageHandler;
         StopAllCoroutines();
     } 
 
@@ -76,4 +76,6 @@ public abstract class PlayerState : State<PlayerStateMachine>
             controller.SetVelocityY(stats.maxFallVelocity);
         }
     }
+
+    protected override void OnDestroyHandler() {}
 }

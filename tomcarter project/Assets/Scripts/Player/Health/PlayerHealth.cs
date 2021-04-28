@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
         {
             TakingDamage = true;
             _lastTimeHit = Time.time;   
-            PlayerHealthEventSystem.GetInstance().TriggerPlayerHasTakenDamage();
+            PlayerEventSystem.GetInstance().TriggerPlayerHasTakenDamage();
         }
     }
 

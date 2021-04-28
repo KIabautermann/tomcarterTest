@@ -21,6 +21,7 @@ public class PlayerLandState : PlayerGroundedState
 
     protected override void DoTransitionIn()
     {
+        PlayerEventSystem.GetInstance().TriggerPlayerHasLanded(transform.position);
         if(inputs.FixedAxis.x != 0)
         {
             _target.ChangeState<PlayerMovementState>();

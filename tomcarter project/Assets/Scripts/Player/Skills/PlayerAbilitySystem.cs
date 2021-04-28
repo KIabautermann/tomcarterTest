@@ -18,48 +18,35 @@ public class PlayerAbilitySystem : LoadableObject
         HEDGE_CLIMB
     }
 
-    public List<Type> GetAvailableStates()
+    public ComponentCache<PlayerState> GetAvailableStates()
     {
         Debug.Log("Get available states");
-        var states = new List<Type>();
+        var activeStates = new List<PlayerState>();
+        var inactiveStates = new List<PlayerState>();
+        var stateListMap = new Dictionary<bool, List<PlayerState>>() {
+            { true, activeStates},
+            { false, inactiveStates}
+        };
+        
+        activeStates.Add(this.gameObject.AddComponent<PlayerIdleState>());
+        activeStates.Add(this.gameObject.AddComponent<PlayerMovementState>());
+        activeStates.Add(this.gameObject.AddComponent<PlayerLandState>());
+        activeStates.Add(this.gameObject.AddComponent<PlayerOnAirState>());
+        activeStates.Add(this.gameObject.AddComponent<PlayerJumpState>());
+        activeStates.Add(this.gameObject.AddComponent<PlayerRootsState>());
+        activeStates.Add(this.gameObject.AddComponent<PlayerMeleeState>());
+        activeStates.Add(this.gameObject.AddComponent<PlayerDashJumpState>());
+        activeStates.Add(this.gameObject.AddComponent<PlayerDamagedState>());
+        activeStates.Add(this.gameObject.AddComponent<PlayerDialogueState>());
 
-        states.Add(typeof(PlayerIdleState));
-        states.Add(typeof(PlayerMovementState));
-        states.Add(typeof(PlayerLandState));
-        states.Add(typeof(PlayerOnAirState));
-        states.Add(typeof(PlayerJumpState));
-        states.Add(typeof(PlayerRootsState));
-        states.Add(typeof(PlayerMeleeState));
-        states.Add(typeof(PlayerDashJumpState));
-        states.Add(typeof(PlayerDamagedState));
-        states.Add(typeof(PlayerDialogueState));
-
-        if (unlockedSkills[PlayerSkill.SPORE_DASH]) 
-        {
-            states.Add(typeof(PlayerBlinkDashState));
-        }
-        else
-        {
-            states.Add(typeof(PlayerBaseDashState));
-        }
-        if (unlockedSkills[PlayerSkill.ROOT_ATTACK])
-        {
-            states.Add(typeof(PlayerRangeState));
-        }
-        if (unlockedSkills[PlayerSkill.VINE_HOOK])
-        {
-            states.Add(typeof(PlayerHookState));
-        }
-        if (unlockedSkills[PlayerSkill.BARK_GUARD])
-        {
-            states.Add(typeof(PlayerHardenState));
-        }
-        if (unlockedSkills[PlayerSkill.HEDGE_CLIMB])
-        {
-            states.Add(typeof(PlayerHedgeState));
-        }
-
-        return states;
+        stateListMap[unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.AddComponent<PlayerBlinkDashState>());
+        stateListMap[!unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.AddComponent<PlayerBaseDashState>());
+        stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.AddComponent<PlayerRangeState>());
+        stateListMap[unlockedSkills[PlayerSkill.VINE_HOOK]].Add(this.gameObject.AddComponent<PlayerHookState>());
+        stateListMap[unlockedSkills[PlayerSkill.BARK_GUARD]].Add(this.gameObject.AddComponent<PlayerHardenState>());
+        stateListMap[unlockedSkills[PlayerSkill.HEDGE_CLIMB]].Add(this.gameObject.AddComponent<PlayerHedgeState>());
+       
+        return new ComponentCache<PlayerState>(stateListMap[true], stateListMap[false]);
     }
 
     public void UnlockAbility(PlayerSkill skill)

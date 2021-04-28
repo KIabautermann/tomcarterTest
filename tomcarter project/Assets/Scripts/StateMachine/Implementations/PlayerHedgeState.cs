@@ -11,7 +11,7 @@ public class PlayerHedgeState : PlayerSkillState
 
     protected override void DoChecks()
     {
-         base.DoChecks();
+        base.DoChecks();
     }
 
     protected override void DoLogicUpdate()
@@ -65,6 +65,7 @@ public class PlayerHedgeState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        PlayerEventSystem.GetInstance().TriggerPlayerEnteredHedge();
         controller.SetAcceleration(1);
         _direction = controller.CurrentVelocity.normalized;  
         Physics.IgnoreLayerCollision(9,10,true);
@@ -100,7 +101,7 @@ public class PlayerHedgeState : PlayerSkillState
             if(inputs.JumpInput)
             {
                 _target.ChangeState<PlayerJumpState>();
-                inputs.UsedJump();
+            inputs.UsedJump();
                 airState.DashJumpCoyoteTimeStart();
             }
             else

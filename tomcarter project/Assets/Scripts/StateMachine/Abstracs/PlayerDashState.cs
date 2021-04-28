@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class PlayerDashState : PlayerSkillState
 {
@@ -15,6 +16,8 @@ public abstract class PlayerDashState : PlayerSkillState
     {
         base.Init(target);
         coolDown = stats.dashCooldown;
+        PlayerEventSystem.GetInstance().OnGroundLand += OnGround_Handler;
+        PlayerEventSystem.GetInstance().OnHedgeEnter += OnHedge_Handler;
     }
     protected override void DoChecks()
     {
@@ -56,6 +59,8 @@ public abstract class PlayerDashState : PlayerSkillState
 
     protected override void DoTransitionOut()
     {
+        if (!controller.Grounded()) { isLocked = true; }
+
         base.DoTransitionOut();
         lastDashTime = Time.time;
         if(direction.x !=0)
@@ -96,4 +101,16 @@ public abstract class PlayerDashState : PlayerSkillState
     }
    
     public bool CanDash() => Time.time >= lastDashTime + stats.dashCooldown;
+
+    private void OnGround_Handler(object sender, PlayerEventSystem.OnLandEventArgs args) {
+        ToggleLock(false);
+    }
+    private void OnHedge_Handler(object sender, EventArgs args) {
+        ToggleLock(false);
+    }
+    protected override void OnDestroyHandler() {
+        PlayerEventSystem.GetInstance().OnGroundLand -= OnGround_Handler;
+        PlayerEventSystem.GetInstance().OnHedgeEnter -= OnHedge_Handler;
+        base.OnDestroyHandler();
+    }
 }

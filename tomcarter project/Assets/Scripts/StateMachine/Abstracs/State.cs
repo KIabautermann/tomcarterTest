@@ -23,8 +23,8 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public string stateName;
     protected float coolDown;
     protected float startTime;
-
     protected float endTime;
+    protected bool isLocked = false;
 
     public virtual void Init(T target)
     {
@@ -73,6 +73,14 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
 
     protected abstract void TransitionChecks();
 
+    protected abstract void OnDestroyHandler();
+
     public bool OnCoolDown() => Time.time < endTime + coolDown;
+    public bool IsLocked() => isLocked;
+    public void ToggleLock(bool isLock) => isLocked = isLock;
+
+    private void OnDestroy() {
+        OnDestroyHandler();
+    }
 
 }

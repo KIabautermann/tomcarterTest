@@ -13,45 +13,69 @@ using System;
 //      - Ej: si queremos agregar ambos DashSkillStates, pero que al pedir el Abstract DashSkill, siempre se priorize el DashBaseSkill
 public class ComponentCache<T> where T : MonoBehaviour 
 {
-    private Dictionary<Type, T> allComponents;
-    public ComponentCache() { allComponents = new Dictionary<Type, T>(); }
-    public ComponentCache(IEnumerable<T> instances) 
+    private Dictionary<Type, T> inactiveComponents;
+    private Dictionary<Type, T> activeComponents;
+    public ComponentCache() { activeComponents = new Dictionary<Type, T>(); inactiveComponents = new Dictionary<Type, T>(); }
+    public ComponentCache(IEnumerable<T> instances, IEnumerable<T> inactive) 
     {
-        allComponents = new Dictionary<Type, T>(); 
-        instances.ToList().ForEach((T instance) => AddInstance(instance));
+        ValidateInputs(instances, inactive);
+        activeComponents = new Dictionary<Type, T>(); 
+        inactiveComponents = new Dictionary<Type, T>();
+        instances.ToList().ForEach((T instance) => AddActiveInstance(instance));
+        inactive.ToList().ForEach((T instance) => inactiveComponents[instance.GetType()] = instance);
+    }
+
+    private void ValidateInputs(IEnumerable<T> instances, IEnumerable<T> inactive) 
+    {
+        var sum = instances.ToList();
+        sum.AddRange(inactive);
+        if (sum.Distinct().Count() != (instances.Count() + inactive.Count())) {
+            Debug.LogWarning("There are duplicated instances being stored in the Component Cache");
+        }
     }
 
     public IEnumerable<T> GetAllInstances()
     {
-        return allComponents.Values.Distinct();
+        var allComponents = activeComponents.Values.Distinct().ToList();
+        allComponents.AddRange(inactiveComponents.Values.Distinct());
+        return allComponents;
     }
 
     public bool GetInstance(Type type, out T instance)
     {
-        return allComponents.TryGetValue(type, out instance);
+        return activeComponents.TryGetValue(type, out instance);
     }
 
-    public void AddInstance(T instance)
+    public void SetActive(Type type) {
+        AddActiveInstance(inactiveComponents[type]);
+        inactiveComponents.Remove(type);
+    }
+    public void SetInactive(Type type) {
+        inactiveComponents[type] = activeComponents[type];
+        RemoveActiveInstance(type);
+    }
+
+    private void AddActiveInstance(T instance)
     {
         Type getType = instance.GetType();
 
         while (getType != typeof(T)) 
         {
-            allComponents[getType] = instance;
+            activeComponents[getType] = instance;
             getType = getType.BaseType;
         }
     }
-    public List<T> RemoveInstance(Type type)
+    private List<T> RemoveActiveInstance(Type type)
     {
-        T instance = allComponents[type];
+        T instance = activeComponents[type];
      
         List<T> removedInstances = new List<T>() { instance };
 
-        var entriesToRemove = allComponents.Where(v => v.Value == instance).ToList();
+        var entriesToRemove = activeComponents.Where(v => v.Value == instance).ToList();
         foreach(var entry in entriesToRemove)
         {
             removedInstances.Add(entry.Value);
-            allComponents.Remove(entry.Key);
+            activeComponents.Remove(entry.Key);
         }
         return removedInstances;
     }

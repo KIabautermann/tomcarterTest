@@ -13,30 +13,29 @@ public class PlayerStateMachine : MonoBehaviour
     private TextMeshProUGUI _currentStateDisplay;
     public PlayerData stats;
     private PlayerAbilitySystem abilitySystem;    
-    private ComponentCache<State<PlayerStateMachine>> allStates; 
+    private ComponentCache<PlayerState> allStates; 
 
     public virtual void Start()
     {
         abilitySystem = GetComponent<PlayerAbilitySystem>();
         abilitySystem.OnAbilityUnlocked += AbilityUnlocked_Handler;
 
-        var allComponents = abilitySystem.GetAvailableStates().Select(t => this.gameObject.AddComponent(t) as State<PlayerStateMachine>).ToList();
+        allStates = abilitySystem.GetAvailableStates();
         
-        foreach(var state in allComponents)
+        foreach(var state in allStates.GetAllInstances())
         {
             state.Init(this);
         }
-        allStates = new ComponentCache<State<PlayerStateMachine>>(allComponents);
         
         ChangeState<PlayerIdleState>();
     }
-    public void ChangeState<T>() where T : State<PlayerStateMachine>
+    public void ChangeState<T>() where T : PlayerState
     {
-        if (!allStates.GetInstance(typeof(T), out State<PlayerStateMachine> newState)) newState = null;
+        if (!allStates.GetInstance(typeof(T), out PlayerState newState)) newState = null;
 
         if(_currentState != null)
         {
-            if(newState == null || newState.OnCoolDown()) 
+            if(newState == null || newState.OnCoolDown() || newState.IsLocked()) 
             {
                 Debug.LogWarning($"Can't Transition to {typeof(T).ToString()}");
                 return;
@@ -69,14 +68,11 @@ public class PlayerStateMachine : MonoBehaviour
     {
         foreach (Type t in args.added)
         {
-            var instance = this.gameObject.AddComponent(t) as State<PlayerStateMachine>;
-            instance.Init(this);
-            allStates.AddInstance(instance);
+            allStates.SetActive(t);
         }
         foreach (Type t in args.removed)
         {
-            List<State<PlayerStateMachine>> removedInstances = allStates.RemoveInstance(t);
-            removedInstances.ForEach(s => Destroy(s));
+            allStates.SetInactive(t);
         }
     }
    
