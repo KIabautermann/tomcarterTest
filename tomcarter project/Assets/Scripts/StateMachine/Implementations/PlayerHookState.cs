@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerHookState : PlayerSkillState
 {
     private bool _hooked;
-    private bool _hardenInputPressed;
-    private bool _readyToHarden;
     private float _distance;
     private Vector3 _startPoint;
     private Vector3 _hookTarget;
@@ -88,32 +86,18 @@ public class PlayerHookState : PlayerSkillState
                 controller.SetAcceleration(1);
                 stateDone=true;
             }
-            if (angle >= stats.minHookAngle * controller.facingDirection && controller.facingDirection > 0)
-            {
-                _readyToHarden = true;
-                
-            }
-            else if(angle <= stats.minHookAngle * controller.facingDirection && controller.facingDirection < 0)
-            {
-                _readyToHarden = true;
-            }
             else if(controller.Grounded() || onWall)
             {
                 stateDone = true;
                 controller.SetTotalVelocity(0, Vector3.zero);
                 controller.SetAcceleration(0);
             }
-            if(inputs.GuardInput)
-            {
-                _hardenInputPressed = true;
-            }  
         } 
         if(_line.enabled)
         {
             _line.SetPosition(0,transform.position);   
             _line.SetPosition(1,_hookPoint.position); 
-        } 
-        
+        }       
     }
 
     
@@ -134,8 +118,6 @@ public class PlayerHookState : PlayerSkillState
         _hookPoint.position = _target.transform.position;       
         _hookPoint.parent = null;
         _startPoint = _target.transform.position;
-        _readyToHarden = false;
-        _hardenInputPressed = false;
         if (inputs.FixedAxis.x != 0)
         {
             controller.SetAcceleration(.5f);
@@ -155,10 +137,8 @@ public class PlayerHookState : PlayerSkillState
     {
         base.DoTransitionOut();
         controller.SetGravity(true);
-        if(inputs.FixedAxis.x != 0)
-        {
-            controller.SetAcceleration(.5f);
-        }
+        controller.SetAcceleration(.5f);
+        controller.SetVelocityY(controller.CurrentVelocity.y * stats.yVelocityMultiplier);
         _hookPoint.parent = _target.transform;
         _line.enabled = false;
         _hookSprite.enabled = false;
@@ -166,15 +146,6 @@ public class PlayerHookState : PlayerSkillState
 
     protected override void TransitionChecks()
     {
-        if(_readyToHarden && _hardenInputPressed)
-        {
-            controller.SetTotalVelocity(controller.CurrentVelocity.magnitude,_direction);
-            _target.ChangeState<PlayerHardenState>();          
-            inputs.UsedGuard();
-        }
-        else
-        {
-            base.TransitionChecks();
-        }      
+        base.TransitionChecks();   
     }
 }

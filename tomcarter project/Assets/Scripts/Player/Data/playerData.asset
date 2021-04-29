@@ -16,7 +16,7 @@ MonoBehaviour:
   groundedAccelerationTime: 0.2
   airAccelerationTime: 0.4
   jumpVelocity: 10
-  fallMultiplier: 1.1
+  fallMultiplier: 0.5
   minJumpVelocity: 1
   coyoteTime: 0.1
   shortHopMultiplier: 0.3
@@ -39,9 +39,10 @@ MonoBehaviour:
   hookSpeed: 15
   circularSpeed: 4
   hookDetectionRadius: 0.1
-  maxAngle: 50
+  maxAngle: 70
   hookCooldown: 0.5
-  hookTarget: {x: 2.5, y: 2.5, z: 0}
+  yVelocityMultiplier: 0.8
+  hookTarget: {x: 2.2, y: 2.2, z: 0}
   hedgeDetectionLenght: 1
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 20
@@ -49,9 +50,6 @@ MonoBehaviour:
   hedgeTransitionInMinSpeed: 5
   npcDetectionLenght: 3
   npcDetectionRadius: 0.25
-  npc:
-    serializedVersion: 2
-    m_Bits: 4096
   rootChannelingDuration: 2
   damagedDuration: 1
   hardenTime: 1
@@ -65,3 +63,9 @@ MonoBehaviour:
   hedge:
     serializedVersion: 2
     m_Bits: 1024
+  npc:
+    serializedVersion: 2
+    m_Bits: 4096
+  rootable:
+    serializedVersion: 2
+    m_Bits: 0
