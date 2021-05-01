@@ -55,6 +55,16 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField]
     private float _inputRecordTime;
     //-------------------------------------------------------------Functions
+    private void Awake() {
+        JumpCancel = true;
+        RootsCancel = true;
+        DashCancel = true;
+        HookCancel = true;
+        GuardCancel = true;
+        MeleeCancel = true;
+        RangeCancel = true;
+        InteractionCancel = true;
+    }
     private void Update() => holdTime();
     public void OnMovementInput(InputAction.CallbackContext ctx)
     {

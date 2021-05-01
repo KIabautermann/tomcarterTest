@@ -10,6 +10,7 @@ public class PlayerHookState : PlayerSkillState
     private Vector3 _hookTarget;
     private float dist;    
     private Vector3 _direction;
+    private bool _pressedHarden;
     
     #region Init Variables
     private LineRenderer _line;
@@ -78,13 +79,15 @@ public class PlayerHookState : PlayerSkillState
             float angle = Vector3.SignedAngle(Vector3.up, (_hookPoint.position - _target.transform.position).normalized, Vector3.forward);
             if (angle >= stats.maxAngle * controller.facingDirection && controller.facingDirection > 0)
             {               
-                controller.SetAcceleration(1);
+                controller.SetVelocityY(controller.CurrentVelocity.y * stats.yVelocityMultiplier);
                 stateDone=true;
+                controller.SetAcceleration(.5f);
             }
             else if(angle <= stats.maxAngle * controller.facingDirection && controller.facingDirection < 0)
             {                
-                controller.SetAcceleration(1);
+                controller.SetVelocityY(controller.CurrentVelocity.y * stats.yVelocityMultiplier);
                 stateDone=true;
+                controller.SetAcceleration(.5f);
             }
             else if(controller.Grounded() || onWall)
             {
@@ -99,8 +102,6 @@ public class PlayerHookState : PlayerSkillState
             _line.SetPosition(1,_hookPoint.position); 
         }       
     }
-
-    
 
     protected override void DoPhysicsUpdate()
     {
@@ -137,8 +138,6 @@ public class PlayerHookState : PlayerSkillState
     {
         base.DoTransitionOut();
         controller.SetGravity(true);
-        controller.SetAcceleration(.5f);
-        controller.SetVelocityY(controller.CurrentVelocity.y * stats.yVelocityMultiplier);
         _hookPoint.parent = _target.transform;
         _line.enabled = false;
         _hookSprite.enabled = false;
@@ -147,5 +146,12 @@ public class PlayerHookState : PlayerSkillState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();   
+        if(!inputs.GuardCancel && stateDone){
+            _target.ChangeState<PlayerHardenState>();
+            controller.SetVelocityX(0);
+            controller.SetAcceleration(0);
+            controller.SetVelocityY(controller.CurrentVelocity.y * stats.hardenHookMultiplier);
+        }      
     }
+
 }

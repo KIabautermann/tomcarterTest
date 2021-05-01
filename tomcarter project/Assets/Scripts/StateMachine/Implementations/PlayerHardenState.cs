@@ -38,6 +38,10 @@ public class PlayerHardenState : PlayerSkillState
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
+        if(controller.CurrentVelocity.y < stats.minJumpVelocity)
+        {
+            controller.Force(Physics.gravity, stats.fallMultiplier, ForceMode.Force);
+        }
     }
 
     protected override void DoTransitionIn()

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerBlinkDashState : PlayerDashState
 {
-       protected override void DoChecks()
+    private bool hardenRequest;
+    private bool readyToHarden;
+    private float hardenCounter;
+    protected override void DoChecks()
     {
         base.DoChecks();
     }
@@ -12,6 +15,15 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
+        if(inputs.GuardInput && !hardenRequest){
+            hardenRequest = true;
+            controller.SetAcceleration(.5f);
+            hardenCounter = Time.time;
+            inputs.UsedGuard();
+        }
+        if(hardenRequest){
+            HardenSetout();
+        }
     }
 
     protected override void DoPhysicsUpdate()
@@ -22,6 +34,8 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        hardenRequest = false;
+        readyToHarden = false;
         currentSpeed = stats.blinkDashSpeed;
         if(inputs.FixedAxis != Vector2.zero)
         {
@@ -56,11 +70,27 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if(Time.time > startTime + stats.blinkDashLenght)
+        if(Time.time > startTime + stats.blinkDashLenght && !hardenRequest)
         {
             stateDone = true;
             controller.SetDrag(0);
             controller.SetGravity(true);
+        }
+        if(readyToHarden)
+        {
+            controller.SetDrag(0);
+            controller.SetGravity(true);
+            controller.SetAcceleration(1);
+            controller.SetVelocityX(20 * controller.facingDirection);
+            _target.ChangeState<PlayerHardenState>();
+        }
+    }
+
+    private void HardenSetout()
+    {
+        controller.Accelerate(-1 / stats.airAccelerationTime * Time.deltaTime);
+        if(Time.time >= hardenCounter + stats.hardenDashChannelingTime){
+            readyToHarden = true;
         }
     }
 }

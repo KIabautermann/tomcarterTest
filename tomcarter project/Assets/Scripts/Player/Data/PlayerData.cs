@@ -66,10 +66,9 @@ public class PlayerData : ScriptableObject
     [Header("Harden State")]
     public float hardenTime = 2f;
     public float hardenMovementSpeed = 5f;
-    public float breakVelocity = 10f;
-    public float minHookAngle=0;
-
-    public float hardenHookImpulse = 500;
+    public float hardenHookMultiplier = 1.2f;
+    public float hardenDashMultiplier = .5f;
+    public float hardenDashChannelingTime = 1f;
 
     [Header("LayerMasks")]
     public LayerMask walkable;

@@ -37,7 +37,14 @@ public class PlayerStateMachine : MonoBehaviour
         {
             if(newState == null || newState.OnCoolDown() || newState.IsLocked()) 
             {
-                Debug.LogWarning($"Can't Transition to {typeof(T).ToString()}");
+                //Debug.LogWarning($"Can't Transition to {typeof(T).ToString()}");
+                if(newState.IsLocked()){
+                    Debug.LogWarning("The state is locked");
+                }
+                else if(newState.OnCoolDown()){
+                    Debug.LogWarning("The state is on cooldown");
+                }
+                
                 return;
             }
 
