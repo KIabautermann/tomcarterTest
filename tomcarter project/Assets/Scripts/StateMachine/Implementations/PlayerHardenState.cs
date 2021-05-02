@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerHardenState : PlayerSkillState
 {
+    
+    private bool _wasGrounded;
     public override string ToString()
     {
         return base.ToString();
@@ -47,6 +49,7 @@ public class PlayerHardenState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        _wasGrounded=controller.Grounded();
     }
 
     protected override void DoTransitionOut()
@@ -60,6 +63,10 @@ public class PlayerHardenState : PlayerSkillState
         if(Time.time >= startTime + stats.hardenTime)
         {
             stateDone = true;
+        }
+        else if(_wasGrounded!=controller.Grounded() && controller.Grounded()){
+            _wasGrounded=controller.Grounded();
+            _target.ChangeState<PlayerHardenLandState>();
         }
     }
 }

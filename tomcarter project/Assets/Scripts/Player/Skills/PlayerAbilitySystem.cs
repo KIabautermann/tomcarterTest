@@ -15,6 +15,7 @@ public class PlayerAbilitySystem : LoadableObject
         ROOT_ATTACK,
         VINE_HOOK,
         BARK_GUARD,
+        HARD_LAND,
         HEDGE_CLIMB
     }
 
@@ -38,6 +39,7 @@ public class PlayerAbilitySystem : LoadableObject
         activeStates.Add(this.gameObject.AddComponent<PlayerDashJumpState>());
         activeStates.Add(this.gameObject.AddComponent<PlayerDamagedState>());
         activeStates.Add(this.gameObject.AddComponent<PlayerDialogueState>());
+        activeStates.Add(this.gameObject.AddComponent<PlayerHardenLandState>());
 
         stateListMap[unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.AddComponent<PlayerBlinkDashState>());
         stateListMap[!unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.AddComponent<PlayerBaseDashState>());
@@ -45,6 +47,7 @@ public class PlayerAbilitySystem : LoadableObject
         stateListMap[unlockedSkills[PlayerSkill.VINE_HOOK]].Add(this.gameObject.AddComponent<PlayerHookState>());
         stateListMap[unlockedSkills[PlayerSkill.BARK_GUARD]].Add(this.gameObject.AddComponent<PlayerHardenState>());
         stateListMap[unlockedSkills[PlayerSkill.HEDGE_CLIMB]].Add(this.gameObject.AddComponent<PlayerHedgeState>());
+        stateListMap[unlockedSkills[PlayerSkill.HARD_LAND]].Add(this.gameObject.AddComponent<PlayerHardenLandState>());
        
         return new ComponentCache<PlayerState>(stateListMap[true], stateListMap[false]);
     }
@@ -74,6 +77,9 @@ public class PlayerAbilitySystem : LoadableObject
             case PlayerSkill.HEDGE_CLIMB:
                 eventArgs.added = new List<Type>() { typeof(PlayerHedgeState) };
                 break;
+            case PlayerSkill.HARD_LAND:
+                eventArgs.added= new List<Type>() {typeof(PlayerHardenLandState)};
+                break;
         }
         OnAbilityUnlocked?.Invoke(this, eventArgs);
     }
@@ -83,7 +89,8 @@ public class PlayerAbilitySystem : LoadableObject
         { PlayerSkill.ROOT_ATTACK, false },
         { PlayerSkill.VINE_HOOK, false },
         { PlayerSkill.BARK_GUARD, false },
-        { PlayerSkill.HEDGE_CLIMB, false }
+        { PlayerSkill.HEDGE_CLIMB, false },
+        { PlayerSkill.HARD_LAND, false }
     };
     protected override void LoadFromSavedGameState(GameState gameState)
     {
@@ -93,6 +100,7 @@ public class PlayerAbilitySystem : LoadableObject
         unlockedSkills[PlayerSkill.VINE_HOOK] = unlockedAbilities._hasVineHookUnlocked;
         unlockedSkills[PlayerSkill.BARK_GUARD] = unlockedAbilities._hasBarkGuardUnlocked;
         unlockedSkills[PlayerSkill.HEDGE_CLIMB] = unlockedAbilities._hasHedgeClimbUnlocked;
+        unlockedSkills[PlayerSkill.HARD_LAND] = unlockedAbilities._hasBarkGuardUnlocked;
     }
     protected override void SaveToGameState(object sender, SaveLoadController.OnSaveCalledEventArgs onSaveArguments) 
     {
