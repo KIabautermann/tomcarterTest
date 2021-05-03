@@ -34,7 +34,10 @@ public class PlayerHardenState : PlayerSkillState
                 hit.collider.gameObject.GetComponent<IBreakable>().onBreak(controller.CurrentVelocity);     
                 stateDone = true;               
             }                
-        }                   
+        }  
+        if(_wasGrounded!=controller.Grounded() && controller.Grounded()){
+            PlayerEventSystem.GetInstance().TriggerPlayerHasLanded(transform.position);
+        }                 
     }
 
     protected override void DoPhysicsUpdate()
@@ -63,10 +66,6 @@ public class PlayerHardenState : PlayerSkillState
         if(Time.time >= startTime + stats.hardenTime)
         {
             stateDone = true;
-        }
-        else if(_wasGrounded!=controller.Grounded() && controller.Grounded()){
-            _wasGrounded=controller.Grounded();
-            _target.ChangeState<PlayerHardenLandState>();
-        }
+        }      
     }
 }
