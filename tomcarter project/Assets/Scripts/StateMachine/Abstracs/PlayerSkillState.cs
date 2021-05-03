@@ -11,7 +11,7 @@ public abstract class PlayerSkillState : PlayerTransientState
 
     protected override void DoLogicUpdate()
     {
-  
+        base.DoLogicUpdate();
     }
 
     protected override void DoPhysicsUpdate()

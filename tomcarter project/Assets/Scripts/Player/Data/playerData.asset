@@ -16,11 +16,11 @@ MonoBehaviour:
   groundedAccelerationTime: 0.2
   airAccelerationTime: 0.4
   jumpVelocity: 10
-  fallMultiplier: 0.5
-  minJumpVelocity: 1
+  fallMultiplier: 0.3
+  minJumpVelocity: 5
   coyoteTime: 0.1
   shortHopMultiplier: 0.3
-  maxFallVelocity: -15
+  maxFallVelocity: -20
   amountOfJumps: 1
   dashCooldown: 0.3
   dashLenght: 0.2
@@ -32,7 +32,7 @@ MonoBehaviour:
   collisionDetection: 1
   dashJumpVelocityX: 12
   dashJumpAccelerationTime: 0.1
-  dashJumpFallMultiplier: 2
+  dashJumpFallMultiplier: 0.5
   minDashJumpVelocity: 1
   dashCoyoteTime: 0.1
   jumpHandicapTime: 0.1
@@ -54,9 +54,11 @@ MonoBehaviour:
   damagedDuration: 1
   hardenTime: 1
   hardenMovementSpeed: 3
-  breakVelocity: 20
-  minHookAngle: 10
-  hardenHookImpulse: 10
+  hardenHookMultiplier: 1.2
+  hardenDashMultiplier: 0.5
+  hardenDashChannelingTime: 1
+  minBreakVelocity: 10
+  ceilingExceptionMultiplier: 1.7
   walkable:
     serializedVersion: 2
     m_Bits: 1280

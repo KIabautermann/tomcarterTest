@@ -14,7 +14,7 @@ public class PlayerTransientState : PlayerState
 
     protected override void DoLogicUpdate()
     {
-  
+        base.DoLogicUpdate();
     }
 
     protected override void DoPhysicsUpdate()

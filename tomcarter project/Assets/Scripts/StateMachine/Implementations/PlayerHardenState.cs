@@ -6,6 +6,7 @@ public class PlayerHardenState : PlayerSkillState
 {
     
     private bool _wasGrounded;
+    private bool _hasCollided;
     public override string ToString()
     {
         return base.ToString();
@@ -26,14 +27,13 @@ public class PlayerHardenState : PlayerSkillState
             controller.SetVelocityX(stats.hardenMovementSpeed * controller.facingDirection);                    
         }   
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, controller.CurrentVelocity.normalized,out hit, 1))
+        if(Physics.Raycast(transform.position, controller.CurrentVelocity.normalized,out hit, 1, stats.walkable) && CanBreak())
         {
-            // Hacer algo mas rapido que pedir un GetComponent por cada frame que hay un hit del ray cast. Usar layers?
             if (hit.collider.gameObject.GetComponent<IBreakable>() != null)
             {
-                hit.collider.gameObject.GetComponent<IBreakable>().onBreak(controller.CurrentVelocity);     
-                stateDone = true;               
-            }                
+                hit.collider.gameObject.GetComponent<IBreakable>().onBreak(FastestAxis());             
+            }  
+            _hasCollided = true;              
         }  
         if(_wasGrounded!=controller.Grounded() && controller.Grounded()){
             PlayerEventSystem.GetInstance().TriggerPlayerHasLanded(transform.position);
@@ -52,6 +52,7 @@ public class PlayerHardenState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        _hasCollided = false;
         _wasGrounded=controller.Grounded();
     }
 
@@ -67,5 +68,19 @@ public class PlayerHardenState : PlayerSkillState
         {
             stateDone = true;
         }      
+    }
+
+    bool CanBreak() => controller.CurrentVelocity.magnitude >= stats.minBreakVelocity && !_hasCollided;
+
+    float FastestAxis(){
+        if(Mathf.Abs(controller.CurrentVelocity.x) > Mathf.Abs(controller.CurrentVelocity.y)){
+            return Mathf.Abs(controller.CurrentVelocity.x);
+        }
+        else if(controller.CurrentVelocity.y < 0){
+            return Mathf.Abs(controller.CurrentVelocity.y);
+        }
+        else{
+            return controller.CurrentVelocity.y * stats.ceilingExceptionMultiplier;
+        }
     }
 }

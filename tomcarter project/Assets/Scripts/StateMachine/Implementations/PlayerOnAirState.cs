@@ -20,7 +20,6 @@ public class PlayerOnAirState : PlayerState
         JumpCoyoteTimeCheck();
         DashJumpCoyoteTimeCheck();
         SetJumpVelocity();
-        ClampYVelocity();
     }
 
     protected override void DoPhysicsUpdate()

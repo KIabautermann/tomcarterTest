@@ -117,6 +117,13 @@ public class MovementController : MonoBehaviour
         _rb.velocity = workspace;
         CurrentVelocity = workspace;
     }
+    public void ClampYVelocity(float value)
+    {
+        if (CurrentVelocity.y <= value)
+        {
+            SetVelocityY(value);
+        }
+    }
     public void SetTotalVelocity(float speed, Vector2 direction)
     {
         CurrentVelocity = _rb.velocity;
