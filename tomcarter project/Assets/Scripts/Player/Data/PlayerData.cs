@@ -69,7 +69,9 @@ public class PlayerData : ScriptableObject
     public float hardenHookMultiplier = 1.2f;
     public float hardenDashMultiplier = .5f;
     public float hardenDashChannelingTime = 1f;
-    
+    public float minBreakVelocity = 10;
+    public float ceilingExceptionMultiplier = 1.7f;
+
     [Header("LayerMasks")]
     public LayerMask walkable;
     public LayerMask hedge;

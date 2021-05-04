@@ -6,15 +6,10 @@ public class BreakableWall : MonoBehaviour, IBreakable
 {
     [SerializeField]
     private float endurance;
-    public void onBreak(Vector3 velocity)
+    public void onBreak(float velocity)
     {
-       if(Mathf.Abs(velocity.x) > endurance)
-       {
-           Debug.Log("break");
-       }
-       else
-       {
-           Debug.Log("weak");
-       }
+        if(velocity >= endurance){
+            Destroy(gameObject);
+        }  
     }
 }

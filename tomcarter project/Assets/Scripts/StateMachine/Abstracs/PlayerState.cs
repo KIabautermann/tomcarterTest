@@ -32,6 +32,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoLogicUpdate()
     {
+        controller.ClampYVelocity(stats.maxFallVelocity);
     }
 
     protected override void DoTransitionIn()
@@ -67,14 +68,6 @@ public abstract class PlayerState : State<PlayerStateMachine>
     private void OnPlayerTakenDamageHandler(object sender, EventArgs e)
     {
         tookDamage = true;
-    }
-
-    protected void ClampYVelocity()
-    {
-        if (controller.CurrentVelocity.y <= stats.maxFallVelocity)
-        {
-            controller.SetVelocityY(stats.maxFallVelocity);
-        }
     }
 
     protected override void OnDestroyHandler() {}

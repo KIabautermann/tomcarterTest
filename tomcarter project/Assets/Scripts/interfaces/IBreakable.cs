@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IBreakable
 {
-    void onBreak(Vector3 velocity);
+    void onBreak(float velocity);
 }
