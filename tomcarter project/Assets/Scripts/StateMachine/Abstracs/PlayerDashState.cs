@@ -6,7 +6,6 @@ using System;
 
 public abstract class PlayerDashState : PlayerUnlockableSkill
 {
-    protected float lastDashTime;
     protected Vector2 direction;
     protected bool coyoteTime;
     protected float coyoteStartTime;
@@ -31,7 +30,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        controller.SetTotalVelocity(currentSpeed,direction);
         DashJumpCoyoteTimeCheck();
         if(controller.Grounded())
         {
@@ -42,6 +40,9 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         {
             DashJumpCoyoteTimeCheck();
         }
+        if(StartedDash()){
+            controller.SetTotalVelocity(currentSpeed,direction);
+        }      
     }
 
     protected override void DoPhysicsUpdate()
@@ -61,12 +62,13 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         dashJumpCoyoteTime = controller.Grounded();
     }
 
+    protected bool StartedDash() => Time.time > startTime + stats.dashStartUp;
+
     protected override void DoTransitionOut()
     {
         if (!controller.Grounded()) { isLocked = true; }
 
         base.DoTransitionOut();
-        lastDashTime = Time.time;
         if(direction.x !=0)
         {
             if(inputs.FixedAxis.x == direction.x)
@@ -104,7 +106,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         }
     }
    
-    public bool CanDash() => Time.time >= lastDashTime + stats.dashCooldown;
 
     #region Event Handlers
     private void OnGround_Handler(object sender, PlayerEventSystem.OnLandEventArgs args) {

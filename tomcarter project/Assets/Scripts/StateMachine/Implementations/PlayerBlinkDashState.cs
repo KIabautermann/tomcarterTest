@@ -15,9 +15,9 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        if(inputs.GuardInput && !hardenRequest){
+        if((inputs.GuardInput || !inputs.GuardCancel) && !hardenRequest && !controller.Grounded() && !StartedDash()){
             hardenRequest = true;
-            controller.SetAcceleration(.5f);
+            controller.SetAcceleration(0);
             hardenCounter = Time.time;
             inputs.UsedGuard();
         }
@@ -34,7 +34,7 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        hardenRequest = false;
+        hardenRequest = inputs.GuardInput || !inputs.GuardCancel;
         readyToHarden = false;
         currentSpeed = stats.blinkDashSpeed;
         if(inputs.FixedAxis != Vector2.zero)

@@ -54,6 +54,9 @@ public class PlayerHardenState : PlayerUnlockableSkill
         base.DoTransitionIn();
         _hasCollided = false;
         _wasGrounded=controller.Grounded();
+        if(inputs.DashInput || !inputs.DashCancel){
+            _target.ChangeState<PlayerDashState>();
+        }
     }
 
     protected override void DoTransitionOut()

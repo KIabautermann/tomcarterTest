@@ -23,10 +23,11 @@ MonoBehaviour:
   maxFallVelocity: -20
   amountOfJumps: 1
   dashCooldown: 0.3
+  dashStartUp: 0.05
   dashLenght: 0.2
-  blinkDashLenght: 0.1
+  blinkDashLenght: 0.15
   dashSpeed: 15
-  blinkDashSpeed: 30
+  blinkDashSpeed: 25
   drag: 10
   dashEndMultiplier: 0.1
   collisionDetection: 1
@@ -52,7 +53,7 @@ MonoBehaviour:
   npcDetectionRadius: 0.25
   rootChannelingDuration: 2
   damagedDuration: 1
-  hardenTime: 1
+  hardenTime: 0.5
   hardenMovementSpeed: 3
   hardenHookMultiplier: 1.2
   hardenDashMultiplier: 0.5
