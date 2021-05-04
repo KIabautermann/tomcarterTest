@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHookState : PlayerSkillState
+public class PlayerHookState : PlayerUnlockableSkill
 {
     private bool _hooked;
     private float _distance;

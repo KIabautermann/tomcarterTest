@@ -10,14 +10,14 @@ public class PlayerAbilitySystem : LoadableObject
         public List<Type> added;
         public List<Type> removed;
     }
-    public enum PlayerSkill {
-        SPORE_DASH,
-        ROOT_ATTACK,
-        VINE_HOOK,
-        BARK_GUARD,
-        HEDGE_CLIMB
-    }
-
+    private Dictionary<PlayerSkill, bool> unlockedSkills = new Dictionary<PlayerSkill, bool>() 
+    {
+        { PlayerSkill.SPORE_DASH, false },
+        { PlayerSkill.ROOT_ATTACK, false },
+        { PlayerSkill.VINE_HOOK, false },
+        { PlayerSkill.BARK_GUARD, false },
+        { PlayerSkill.HEDGE_CLIMB, false },
+    };
     public ComponentCache<PlayerState> GetAvailableStates()
     {
         Debug.Log("Get available states");
@@ -49,42 +49,64 @@ public class PlayerAbilitySystem : LoadableObject
         return new ComponentCache<PlayerState>(stateListMap[true], stateListMap[false]);
     }
 
-    public void UnlockAbility(PlayerSkill skill)
+    public bool IsPermanentlyUnlocked(Type state) {
+        if (!AbilitySystemConstants.StateSkillDictionary.TryGetValue(state, out PlayerSkill skill)) return true;
+        return unlockedSkills[skill];
+    }
+
+    public int GetSkillUsesAmount(Type state) {
+        if (!AbilitySystemConstants.StateSkillDictionary.TryGetValue(state, out PlayerSkill skill)) return int.MaxValue;
+        return AbilitySystemConstants.SkillLimitedUses[skill];
+    }
+    public void ExpireSkillStateUses(Type state) {
+        if (!AbilitySystemConstants.StateSkillDictionary.TryGetValue(state, out PlayerSkill skill)) return;
+        ToggleLockAbility(skill, false);
+    }
+
+    public void PermanentlyUnlockAbility(PlayerSkill skill) {
+        
+        // La habilidad ya esta desbloqueada y se pide desbloquear de vuelta
+        if (unlockedSkills[skill]) {
+            Debug.LogWarning("Se esta intentando desbloquear permanentemente una habilidad ya desbloqueada");
+            return;
+        }
+        ToggleLockAbility(skill, true);
+        unlockedSkills[skill] = true;
+    }
+    public void ToggleLockAbility(PlayerSkill skill, bool unlock)
     {
+        // La habilidad ya esta desbloqueada permanentemente
         if (unlockedSkills[skill]) return;
 
-        unlockedSkills[skill] = true;
-        var eventArgs = new AbiltyUnlockedEventArgs();
-        eventArgs.removed = new List<Type>();
+        List<Type> typesToSwap_1 = new List<Type>();
+        List<Type> typesToSwap_2 = new List<Type>();
         switch (skill) 
         {
             case PlayerSkill.SPORE_DASH:
-                eventArgs.added = new List<Type>() { typeof(PlayerBlinkDashState) };
-                eventArgs.removed = new List<Type>() { typeof(PlayerBaseDashState) };
+                typesToSwap_1 = new List<Type>() { typeof(PlayerBlinkDashState) };
+                typesToSwap_2 = new List<Type>() { typeof(PlayerBaseDashState) };
                 break;
             case PlayerSkill.ROOT_ATTACK:
-                eventArgs.added = new List<Type>() { typeof(PlayerRangeState) };
+                typesToSwap_1 = new List<Type>() { typeof(PlayerRangeState) };
                 break;
             case PlayerSkill.VINE_HOOK:
-                eventArgs.added = new List<Type>() { typeof(PlayerHookState) };
+                typesToSwap_1 = new List<Type>() { typeof(PlayerHookState) };
                 break;
             case PlayerSkill.BARK_GUARD:
-                eventArgs.added = new List<Type>() { typeof(PlayerHardenState) };
+                typesToSwap_1 = new List<Type>() { typeof(PlayerHardenState) };
                 break;
             case PlayerSkill.HEDGE_CLIMB:
-                eventArgs.added = new List<Type>() { typeof(PlayerHedgeState) };
+                typesToSwap_1 = new List<Type>() { typeof(PlayerHedgeState) };
                 break;
         }
+        
+        var eventArgs = new AbiltyUnlockedEventArgs();
+        eventArgs.removed = !unlock ? typesToSwap_1 : typesToSwap_2;
+        eventArgs.added = unlock ? typesToSwap_1 : typesToSwap_2;
+
         OnAbilityUnlocked?.Invoke(this, eventArgs);
     }
-    private Dictionary<PlayerSkill, bool> unlockedSkills = new Dictionary<PlayerSkill, bool>() 
-    {
-        { PlayerSkill.SPORE_DASH, false },
-        { PlayerSkill.ROOT_ATTACK, false },
-        { PlayerSkill.VINE_HOOK, false },
-        { PlayerSkill.BARK_GUARD, false },
-        { PlayerSkill.HEDGE_CLIMB, false },
-    };
+    
     protected override void LoadFromSavedGameState(GameState gameState)
     {
         var unlockedAbilities = gameState.unlockedAbilities;

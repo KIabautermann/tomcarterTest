@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRangeState : PlayerSkillState
+public class PlayerRangeState : PlayerUnlockableSkill
 {
     protected override void DoChecks()
     {

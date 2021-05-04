@@ -54,7 +54,11 @@ public class PlayerRootsState : PlayerSkillState
     protected override void DoTransitionOut()
     {
         if (_channelFinished) {
-            abilitySystem.UnlockAbility(rootAreaComponent.GetSkill());
+            if (rootAreaComponent.IsPermanentUnlock()) {
+                abilitySystem.PermanentlyUnlockAbility(rootAreaComponent.GetSkill());
+            } else {
+                abilitySystem.ToggleLockAbility(rootAreaComponent.GetSkill(), true);
+            }
         }
         base.DoTransitionOut();
     }

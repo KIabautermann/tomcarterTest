@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHardenState : PlayerSkillState
+public class PlayerHardenState : PlayerUnlockableSkill
 {
     
     private bool _wasGrounded;

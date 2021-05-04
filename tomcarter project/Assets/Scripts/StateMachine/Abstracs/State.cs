@@ -14,12 +14,12 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     // no pueden estar todas escuchando el mismo evento
     // A menos que parte del parametro sea el propio this o parent del game object, cosa de quien se subscribio al evento solo lo escucha si el parametro
     // que viene es la instancia que SI quiere escuchar. Onda, que un subscriptor al evento solo actue si comparte el parent del game object con el del State que notifico
-    public UnityEvent onTransitionIn;
+    public UnityEvent onTransitionIn = new UnityEvent();
     
     // Se disparan eventos per logic update? Son una vez por frame si el current state no es nulo (nunca deberia)
-    public UnityEvent onLogicUpdate;
-    public UnityEvent onPhysicsUpdate;
-    public UnityEvent onTransitionOut;
+    public UnityEvent onLogicUpdate = new UnityEvent();
+    public UnityEvent onPhysicsUpdate = new UnityEvent();
+    public UnityEvent onTransitionOut = new UnityEvent();
     public string stateName;
     protected float coolDown;
     protected float startTime;

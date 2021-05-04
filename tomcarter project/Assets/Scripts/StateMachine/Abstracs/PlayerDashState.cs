@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 
-public abstract class PlayerDashState : PlayerSkillState
+public abstract class PlayerDashState : PlayerUnlockableSkill
 {
     protected float lastDashTime;
     protected Vector2 direction;
@@ -12,13 +13,16 @@ public abstract class PlayerDashState : PlayerSkillState
     protected float currentSpeed;
     protected bool dashJumpCoyoteTime;
 
+    private PlayerHedgeState playerHedgeState;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
         coolDown = stats.dashCooldown;
+        playerHedgeState = GetComponent<PlayerHedgeState>();
+        playerHedgeState.onTransitionIn.AddListener(OnHedge_Handler);
         PlayerEventSystem.GetInstance().OnGroundLand += OnGround_Handler;
-        PlayerEventSystem.GetInstance().OnHedgeEnter += OnHedge_Handler;
     }
+
     protected override void DoChecks()
     {
         base.DoChecks();
@@ -102,15 +106,18 @@ public abstract class PlayerDashState : PlayerSkillState
    
     public bool CanDash() => Time.time >= lastDashTime + stats.dashCooldown;
 
+    #region Event Handlers
     private void OnGround_Handler(object sender, PlayerEventSystem.OnLandEventArgs args) {
         ToggleLock(false);
     }
-    private void OnHedge_Handler(object sender, EventArgs args) {
+    private void OnHedge_Handler() {
         ToggleLock(false);
     }
     protected override void OnDestroyHandler() {
         PlayerEventSystem.GetInstance().OnGroundLand -= OnGround_Handler;
-        PlayerEventSystem.GetInstance().OnHedgeEnter -= OnHedge_Handler;
+        playerHedgeState.onTransitionIn.RemoveListener(OnHedge_Handler);
         base.OnDestroyHandler();
     }
+
+    #endregion
 }

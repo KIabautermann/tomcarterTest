@@ -5,9 +5,9 @@ using UnityEngine;
 public class RootArea : MonoBehaviour
 {
     [SerializeField]
-    private PlayerAbilitySystem.PlayerSkill unlockableSkill;
-    public PlayerAbilitySystem.PlayerSkill GetSkill()
-    {
-        return unlockableSkill;
-    }
+    private bool isPermanent;
+    [SerializeField]
+    private PlayerSkill unlockableSkill;
+    public PlayerSkill GetSkill() => unlockableSkill;
+    public bool IsPermanentUnlock() => isPermanent;
 }

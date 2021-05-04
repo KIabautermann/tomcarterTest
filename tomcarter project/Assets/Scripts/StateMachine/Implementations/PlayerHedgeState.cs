@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHedgeState : PlayerSkillState
+public class PlayerHedgeState : PlayerUnlockableSkill
 {
     private Vector3 _direction;
     private bool _exitingHedge;
@@ -63,7 +63,7 @@ public class PlayerHedgeState : PlayerSkillState
     }
 
     protected override void DoTransitionIn()
-    {
+    {   
         base.DoTransitionIn();
         PlayerEventSystem.GetInstance().TriggerPlayerEnteredHedge();
         controller.SetAcceleration(1);

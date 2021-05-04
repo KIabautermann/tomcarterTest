@@ -7,7 +7,7 @@ public class PlayerDashJumpState : PlayerSkillState
     private bool _isJumping;
     protected override void DoChecks()
     {
-         base.DoChecks();
+        base.DoChecks();
     }
 
     protected override void DoLogicUpdate()

@@ -47,10 +47,12 @@ public class ComponentCache<T> where T : MonoBehaviour
     }
 
     public void SetActive(Type type) {
+        if (activeComponents.ContainsKey(type)) return;
         AddActiveInstance(inactiveComponents[type]);
         inactiveComponents.Remove(type);
     }
     public void SetInactive(Type type) {
+        if (inactiveComponents.ContainsKey(type)) return;
         inactiveComponents[type] = activeComponents[type];
         RemoveActiveInstance(type);
     }
