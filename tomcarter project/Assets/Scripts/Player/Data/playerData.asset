@@ -44,7 +44,7 @@ MonoBehaviour:
   hookCooldown: 0.5
   yVelocityMultiplier: 0.8
   hookTarget: {x: 2.2, y: 2.2, z: 0}
-  hedgeDetectionLenght: 1
+  hedgeDetectionLenght: 0.5
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 20
   hedgeTransitionOutPush: 7
