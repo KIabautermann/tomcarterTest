@@ -89,7 +89,7 @@ public class PlayerHookState : PlayerUnlockableSkill
                 stateDone=true;
                 controller.SetAcceleration(.5f);
             }
-            else if(controller.Grounded() || onWall)
+            else if(controller.Grounded() || controller.OnWall() || controller.OnCeiling())
             {
                 stateDone = true;
                 controller.SetTotalVelocity(0, Vector3.zero);
@@ -100,7 +100,7 @@ public class PlayerHookState : PlayerUnlockableSkill
         {
             _line.SetPosition(0,transform.position);   
             _line.SetPosition(1,_hookPoint.position); 
-        }       
+        }  
     }
 
     protected override void DoPhysicsUpdate()

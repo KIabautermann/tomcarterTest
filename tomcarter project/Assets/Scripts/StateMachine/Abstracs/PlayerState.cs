@@ -9,7 +9,6 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected PlayerData stats;
     protected MovementController controller;
     protected PlayerHealth playerHealth;
-    protected bool onWall;
     protected static bool tookDamage;
 
     protected PlayerOnAirState airState;
@@ -27,7 +26,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoChecks()
     {
-        onWall = controller.OnWall();
+        
     }
 
     protected override void DoLogicUpdate()

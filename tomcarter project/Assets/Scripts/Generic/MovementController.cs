@@ -18,14 +18,18 @@ public class MovementController : MonoBehaviour
     private LayerMask _walkwable;
     [SerializeField]
     private LayerMask _rootable;
+    [SerializeField]
+    private Transform[] groundCheck;
+    [SerializeField]
+    private Transform[] wallCheck;
+    [SerializeField]
+    private Transform[] ceilingCheck;
+
     #endregion
     
     public Vector2 CurrentVelocity;
     public float AcelerationIndex { get; private set; }
     public int facingDirection { get; private set; } 
-    private Vector2 _cornerA;
-    private Vector2 _cornerB;
-    private Vector2 _cornerC;
     private Vector2 workspace;
 
     #region RayCast Hits
@@ -35,61 +39,59 @@ public class MovementController : MonoBehaviour
 
     private void Awake() 
     {
-        facingDirection = 1;      
+        facingDirection = 1;                   
     }
     private void Start() 
     {
         _rb = GetComponent<Rigidbody>();
         myCollider = GetComponent<Collider>();
+        SetChecks();      
     }
     #region Check Functions
 
     private void Update() 
     {
-        _cornerA = new Vector2(myCollider.bounds.max.x-.01f, myCollider.bounds.max.y-.01f);
-        _cornerB = new Vector2(myCollider.bounds.max.x-.01f, myCollider.bounds.min.y+.01f);
-        _cornerC = new Vector2(myCollider.bounds.min.x+.01f, myCollider.bounds.min.y+.01f);
         CurrentVelocity = _rb.velocity;
     }
     public bool Grounded()
     {
        int n = 0;
-       if(Physics.Raycast(_cornerC, -Vector2.up, _detectionLenght, _walkwable))
-        {
-           n++;
-        }
-       if(Physics.Raycast(_cornerB, -Vector2.up, _detectionLenght, _walkwable))
-        {
-            n++;
-        }
+       for(int i = 0; i < groundCheck.Length; i++){
+           if(Physics.Raycast(groundCheck[i].position, -Vector2.up,_detectionLenght, _walkwable )){
+               n++;
+           }
+       }
        return n!=0 && CurrentVelocity.y < .01f;
     }
     public bool OnRootable()
     {
-        int n = 0;
-        if(Physics.Raycast(_cornerC, -Vector2.up, out RaycastHit hit, _detectionLenght, _rootable))
-        {
-            rootableHit = hit;
-            n++;
-        }
-        if(Physics.Raycast(_cornerB, -Vector2.up, out hit, _detectionLenght, _rootable))
-        {
-            rootableHit = hit;
-            n++;
-        }
-        return n!=0 && CurrentVelocity.y < .01f;
+       int n = 0;
+       for(int i = 0; i < groundCheck.Length; i++){
+           if(Physics.Raycast(groundCheck[i].position, -Vector2.up,_detectionLenght, _rootable )){
+               n++;
+           }
+       }
+       return n!=0 && CurrentVelocity.y < .01f;
     }
     public bool OnWall()
     {
        int n = 0;
-       if(Physics.Raycast(_cornerA, Vector3.right * facingDirection, _detectionLenght, _walkwable))
-        {
-           n++;
-        }
-       if(Physics.Raycast(_cornerB, Vector3.right * facingDirection, _detectionLenght, _walkwable))
-        {
-            n++;
-        }
+       for(int i = 0; i < wallCheck.Length; i++){
+           if(Physics.Raycast(wallCheck[i].position, Vector2.right * facingDirection,_detectionLenght, _walkwable )){
+               n++;
+           }
+       }
+       return n!=0;
+    }
+
+    public bool OnCeiling()
+    {
+       int n = 0;
+       for(int i = 0; i < ceilingCheck.Length; i++){
+           if(Physics.Raycast(ceilingCheck[i].position, Vector2.up,_detectionLenght, _walkwable)){
+               n++;
+           }
+       }
        return n!=0;
     }
     
@@ -149,6 +151,19 @@ public class MovementController : MonoBehaviour
         AcelerationIndex += acceleration;
         AcelerationIndex = Mathf.Clamp(AcelerationIndex, 0, 1);
     }
+
+    private void SetChecks(){
+        float Xmax = myCollider.bounds.max.x - .01f;
+        float Ymax = myCollider.bounds.max.y - .01f;
+        float Xmin = myCollider.bounds.min.x + .01f;
+        float Ymin = myCollider.bounds.min.y + .01f;
+        groundCheck[0].position = new Vector2(Xmin,Ymin);
+        groundCheck[1].position = new Vector2(Xmax,Ymin);
+        wallCheck[0].position = new Vector2(Xmax,Ymax);
+        wallCheck[1].position = new Vector2(Xmax,Ymin);
+        ceilingCheck[0].position = new Vector2(Xmin,Ymax);
+        ceilingCheck[1].position = new Vector2(Xmax,Ymax);
+    }
     #endregion
     
     #region DoFunctions
@@ -167,14 +182,15 @@ public class MovementController : MonoBehaviour
 
     private void OnDrawGizmos() 
     {
-       Vector2 cornerA = new Vector2(myCollider.bounds.max.x-.01f, myCollider.bounds.max.y-.01f);
-       Vector2 cornerB = new Vector2(myCollider.bounds.max.x-.01f, myCollider.bounds.min.y+.01f);
-       Vector2 cornerC = new Vector2(myCollider.bounds.min.x+.01f, myCollider.bounds.min.y+.01f);
-       Gizmos.DrawLine(cornerC, cornerC - Vector2.up * _detectionLenght);
-       Gizmos.DrawLine(cornerB, cornerB - Vector2.up * _detectionLenght);
-       Gizmos.DrawLine(cornerA, cornerA + Vector2.right * _detectionLenght);
-       Gizmos.DrawLine(cornerB, cornerB + Vector2.right * _detectionLenght);
-
+       for(int i = 0; i<groundCheck.Length; i++){
+           Gizmos.DrawLine(groundCheck[i].position, groundCheck[i].position + (-Vector3.up * _detectionLenght));
+       }
+       for(int i = 0; i<wallCheck.Length; i++){
+           Gizmos.DrawLine(wallCheck[i].position, wallCheck[i].position + (Vector3.right * facingDirection * _detectionLenght));
+       }
+       for(int i = 0; i<ceilingCheck.Length; i++){
+           Gizmos.DrawLine(ceilingCheck[i].position, ceilingCheck[i].position + (Vector3.up * _detectionLenght));
+       }
     }
     
     #region RaycastHit Getters
