@@ -85,7 +85,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge))
+        if(Physics.Raycast(controller.myCollider.bounds.center, controller.DirectionalDetection(), stats.hedgeDetectionLenght, stats.hedge))
         {
             _target.ChangeState<PlayerHedgeState>();  
             controller.SetDrag(0);

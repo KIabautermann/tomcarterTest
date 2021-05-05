@@ -9,6 +9,8 @@ public class MovementController : MonoBehaviour
     private Rigidbody _rb;
 
     public Collider myCollider;
+    public float colliderX {get; private set;}
+    public float colliderY {get; private set;}
     #endregion
 
     #region Checks
@@ -63,6 +65,7 @@ public class MovementController : MonoBehaviour
        }
        return n!=0 && CurrentVelocity.y < .01f;
     }
+    
     public bool OnRootable()
     {
        int n = 0;
@@ -101,6 +104,11 @@ public class MovementController : MonoBehaviour
         {
             Flip();
         }
+    }
+
+    public Vector3 DirectionalDetection(){
+        Vector3 direction = CurrentVelocity.normalized;
+        return new Vector3(direction.x * colliderX, direction.y * colliderY,0);
     }
     #endregion
    
@@ -163,6 +171,8 @@ public class MovementController : MonoBehaviour
         wallCheck[1].position = new Vector2(Xmax,Ymin);
         ceilingCheck[0].position = new Vector2(Xmin,Ymax);
         ceilingCheck[1].position = new Vector2(Xmax,Ymax);
+        colliderX = myCollider.bounds.size.x;
+        colliderY = myCollider.bounds.size.y;
     }
     #endregion
     

@@ -46,8 +46,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        Vector3 checkDirection = controller.CurrentVelocity.normalized;
-        Vector3 checkPosition = transform.position + checkDirection * stats.hedgeDetectionOffset;
+        Vector3 checkPosition = controller.myCollider.bounds.center + controller.DirectionalDetection() * stats.hedgeDetectionOffset;
         Collider[] check = Physics.OverlapBox(checkPosition, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
         if(check.Length == 0)
         {
@@ -106,7 +105,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
             }
             else
             {
-                Collider[] check = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
+                Collider[] check = Physics.OverlapBox(controller.myCollider.bounds.center, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
                 if(check.Length == 0)
                 {                  
                     stateDone = true;

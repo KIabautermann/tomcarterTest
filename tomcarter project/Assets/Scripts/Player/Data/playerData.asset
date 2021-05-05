@@ -44,7 +44,7 @@ MonoBehaviour:
   hookCooldown: 0.5
   yVelocityMultiplier: 0.8
   hookTarget: {x: 2.2, y: 2.2, z: 0}
-  hedgeDetectionLenght: 0.5
+  hedgeDetectionLenght: 0.6
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 20
   hedgeTransitionOutPush: 7
@@ -57,7 +57,7 @@ MonoBehaviour:
   hardenMovementSpeed: 3
   hardenHookMultiplier: 1.2
   hardenDashMultiplier: 0.5
-  hardenDashChannelingTime: 1
+  hardenDashChannelingTime: 0.5
   minBreakVelocity: 10
   ceilingExceptionMultiplier: 1.7
   walkable:

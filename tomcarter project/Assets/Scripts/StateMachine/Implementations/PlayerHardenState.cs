@@ -27,7 +27,7 @@ public class PlayerHardenState : PlayerUnlockableSkill
             controller.SetVelocityX(stats.hardenMovementSpeed * controller.facingDirection);                    
         }   
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, controller.CurrentVelocity.normalized,out hit, 1, stats.walkable) && CanBreak())
+        if(Physics.Raycast(controller.myCollider.bounds.center, controller.DirectionalDetection(),out hit, stats.hedgeDetectionLenght, stats.walkable) && CanBreak())
         {
             if (hit.collider.gameObject.GetComponent<IBreakable>() != null)
             {

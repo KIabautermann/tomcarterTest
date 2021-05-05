@@ -34,7 +34,7 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        hardenRequest = inputs.GuardInput || !inputs.GuardCancel;
+        hardenRequest = false;
         readyToHarden = false;
         currentSpeed = stats.blinkDashSpeed;
         if(inputs.FixedAxis != Vector2.zero)
