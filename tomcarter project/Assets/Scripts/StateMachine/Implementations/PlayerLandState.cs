@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlayerLandState : PlayerGroundedState
 {
+    
+    public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        animationTrigger = stats.landTrigger;
+    }
+    
     protected override void DoChecks()
     {
         base.DoChecks();

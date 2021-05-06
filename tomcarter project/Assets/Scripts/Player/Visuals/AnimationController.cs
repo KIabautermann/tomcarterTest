@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    private List<Animator> animators;
+    public List<Animator> animators;
     
     private void Awake() {
         GetAnimators(this.transform);

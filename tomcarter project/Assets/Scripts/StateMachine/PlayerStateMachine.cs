@@ -14,6 +14,7 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerData stats;
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates; 
+    private AnimationController animations;
 
     public virtual void Start()
     {
@@ -21,6 +22,8 @@ public class PlayerStateMachine : MonoBehaviour
         abilitySystem.OnAbilityUnlocked += AbilityUnlocked_Handler;
 
         allStates = abilitySystem.GetAvailableStates();
+
+        animations = GetComponent<AnimationController>();
         
         foreach(var state in allStates.GetAllInstances())
         {
@@ -51,12 +54,19 @@ public class PlayerStateMachine : MonoBehaviour
                 return;
             }
 
-           if (_currentState.isExiting) return;
+            if (_currentState.isExiting) return;
             _currentState.TriggerTransitionOut();
+            if(newState != _currentState){
+                animations.SetBool(_currentState.animationTrigger,false);
+            }  
+            else{
+                animations.SetTrigger("repeat");
+            }        
         }
         _currentState = newState;
-        _currentStateDisplay.text = _currentState.stateName;
+        _currentStateDisplay.text = _currentState.animationTrigger;
         _currentState.TriggerTransitionIn();
+        animations.SetBool(_currentState.animationTrigger,true);
     }
 
     private void Update() 

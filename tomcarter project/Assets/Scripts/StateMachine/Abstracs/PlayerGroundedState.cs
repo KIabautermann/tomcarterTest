@@ -47,8 +47,7 @@ public abstract class PlayerGroundedState : PlayerState
         }
         else if(inputs.JumpInput){
             _target.ChangeState<PlayerJumpState>();
-            inputs.UsedJump(); 
-            airState.SetJump(true);      
+            inputs.UsedJump();     
             airState.DashJumpCoyoteTimeStart(); 
         }
         else if(inputs.DashInput){

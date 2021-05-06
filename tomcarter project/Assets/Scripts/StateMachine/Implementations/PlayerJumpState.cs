@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerJumpState : PlayerSkillState
-{
-   private PlayerOnAirState onAir;
-
-   private void Start() 
-   {
-       onAir = GetComponent<PlayerOnAirState>();      
-   }
+{ 
+   public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        animationTrigger = stats.jumpTrigger;
+    }
+   
    protected override void DoChecks()
     {
-         base.DoChecks();
+        base.DoChecks();
     }
 
     protected override void DoLogicUpdate()
@@ -36,7 +36,6 @@ public class PlayerJumpState : PlayerSkillState
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
-        onAir.SetJump(true);
     }
 
     protected override void TransitionChecks()

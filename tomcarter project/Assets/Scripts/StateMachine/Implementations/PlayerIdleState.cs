@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerGroundedState
 {
+   
+   public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        animationTrigger = stats.idleTrigger;
+    }
     protected override void DoChecks()
     {
          base.DoChecks();

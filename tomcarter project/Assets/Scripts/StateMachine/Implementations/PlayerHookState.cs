@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHookState : PlayerUnlockableSkill
 {
+    
     private bool _hooked;
     private float _distance;
     private Vector3 _startPoint;
@@ -26,6 +27,7 @@ public class PlayerHookState : PlayerUnlockableSkill
         _hookSprite = _hookPoint.GetComponent<SpriteRenderer>();
         _line.enabled = false;
         _hookSprite.enabled = false;
+        animationTrigger = stats.hookTrigger;
     }
 
     protected override void DoChecks()

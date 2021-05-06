@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerMovementState : PlayerGroundedState
 {
+ 
+ 
+    public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        animationTrigger = stats.movementTrigger;
+    }
+
     protected override void DoChecks()
     {
          base.DoChecks();

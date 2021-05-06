@@ -20,7 +20,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public UnityEvent onLogicUpdate = new UnityEvent();
     public UnityEvent onPhysicsUpdate = new UnityEvent();
     public UnityEvent onTransitionOut = new UnityEvent();
-    public string stateName;
+    public string animationTrigger;
     protected float coolDown;
     protected float startTime;
     protected float endTime;
@@ -31,7 +31,6 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
        coolDown = 0;
        endTime = Time.time;
         _target = target;
-        stateName = this.GetType().ToString();
     }
    
     public void TriggerTransitionIn()

@@ -7,7 +7,6 @@ public class MovementController : MonoBehaviour
     
     #region Components
     private Rigidbody _rb;
-
     public Collider myCollider;
     public float colliderX {get; private set;}
     public float colliderY {get; private set;}
@@ -32,6 +31,7 @@ public class MovementController : MonoBehaviour
     public Vector2 CurrentVelocity;
     public float AcelerationIndex { get; private set; }
     public int facingDirection { get; private set; } 
+    public int lastDirection { get; private set; } 
     private Vector2 workspace;
 
     #region RayCast Hits
@@ -41,7 +41,8 @@ public class MovementController : MonoBehaviour
 
     private void Awake() 
     {
-        facingDirection = 1;                   
+        facingDirection = 1;      
+        lastDirection = 1;             
     }
     private void Start() 
     {
@@ -97,7 +98,11 @@ public class MovementController : MonoBehaviour
        }
        return n!=0;
     }
-    
+    public void DirectionCheck(int xInput){
+        if(xInput != 0 && xInput != lastDirection){
+            DirectionChange();
+        }
+    }
     public void FlipCheck(int xInput)
     {
         if (xInput != 0 && xInput != facingDirection)
@@ -180,7 +185,12 @@ public class MovementController : MonoBehaviour
     private void Flip()
     {
         facingDirection *= -1;
+        lastDirection = facingDirection;
         transform.Rotate(0.0f, 180.0f, 0.0f);
+        DirectionChange();
+    }
+    private void DirectionChange(){
+        lastDirection *= -1;
         SetAcceleration(.25f);
     }
     public void Force(Vector2 direction, float force, ForceMode mode)

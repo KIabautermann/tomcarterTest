@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerRootsState : PlayerSkillState
 {
+    
     protected PlayerAbilitySystem abilitySystem;
     private RootArea rootAreaComponent;
     private bool _channelFinished = false;
@@ -77,5 +78,6 @@ public class PlayerRootsState : PlayerSkillState
     {
         abilitySystem = GetComponent<PlayerAbilitySystem>();
         base.Init(target);
+        animationTrigger = stats.rootTrigger;
     }
 }

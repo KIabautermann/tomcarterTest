@@ -5,12 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewPlayerData", menuName = "Data/PlayerData/PlayerBaseData")]
 public class PlayerData : ScriptableObject
 {
-     [Header("Move State")]
+    [Header("General")]
+    public float collisionDetection = .1f;
+    [Header("Move State")]
+    public string idleTrigger = "idle";
+    public string movementTrigger = "run";
     public float movementVelocity = 10;
     public float groundedAccelerationTime = .2f;
     public float airAccelerationTime = .4f;
 
     [Header("Jump State")]
+    public string airTrigger = "air";
+    public string jumpTrigger = "jump";
+    public string landTrigger = "land";
     public float jumpVelocity = 15;
     public float fallMultiplier = 2;
     public float minJumpVelocity = 1;
@@ -20,6 +27,8 @@ public class PlayerData : ScriptableObject
     public int amountOfJumps = 1;
 
     [Header("Dash State")]
+    public string dashTrigger = "dash";
+    public string blinkTrigger = "blink";
     public float dashCooldown = .3f;
     public float dashStartUp = .05f;
     public float dashLenght = .4f;
@@ -28,9 +37,9 @@ public class PlayerData : ScriptableObject
     public float blinkDashSpeed = 30f;
     public float drag = 10f;
     public float dashEndMultiplier= .7f;
-    public float collisionDetection= 1f;
 
     [Header("DashJump State")]
+    public string dashJumpTrigger = "dash_jump";
     public float dashJumpVelocityX = 12;
     public float dashJumpAccelerationTime = 1f;
     public float dashJumpFallMultiplier = 2;
@@ -39,6 +48,7 @@ public class PlayerData : ScriptableObject
     public float jumpHandicapTime = .2f;
 
     [Header("Hook State")]
+    public string hookTrigger = "hook";
     public float hookSpeed = 15;
     public float circularSpeed = 5;
     public float hookDetectionRadius = .1f;
@@ -48,23 +58,28 @@ public class PlayerData : ScriptableObject
     public Vector3 hookTarget;
 
     [Header("Hedge State")]
-    public float hedgeDetectionLenght = .1f;
+
+    public string hedgeTrigger = "hedge";
     public float hedgeDetectionOffset;
     public float hedgeTransitionInPush;
     public float hedgeTransitionOutPush;
-    public float hedgeTransitionInMinSpeed;
+    public float hedgeTransitionInTime;
   
     [Header("Dialogue State")]
+    public string dialogueTrigger = "talk";
     public float npcDetectionLenght = 10f;
     public float npcDetectionRadius = .25f;
     
     [Header("Root State")]
     public float rootChannelingDuration = 2f;
+    public string rootTrigger = "root";
 
     [Header("Damaged State")]
+    public string damageTrigger = "damage";
     public float damagedDuration = 1f;
 
     [Header("Harden State")]
+    public string hardenTrigger = "harden";
     public float hardenTime = 2f;
     public float hardenMovementSpeed = 5f;
     public float hardenHookMultiplier = 1.2f;
@@ -72,6 +87,15 @@ public class PlayerData : ScriptableObject
     public float hardenDashChannelingTime = 1f;
     public float minBreakVelocity = 10;
     public float ceilingExceptionMultiplier = 1.7f;
+
+    [Header("Melee State")]
+
+    public string meleeTrigger = "melee";
+    public float meleeStartupTime = .5f;
+    public float meleeHitboxTime = .5f;
+    public float meleerecoveryTime = .5f;
+    public Vector2 meleeHitbox = Vector2.one;
+    public Vector2 meleeHiboxOffset;
 
     [Header("LayerMasks")]
     public LayerMask walkable;

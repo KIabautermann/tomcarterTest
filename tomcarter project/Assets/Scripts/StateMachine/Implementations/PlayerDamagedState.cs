@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PlayerDamagedState : PlayerTransientState
 {
-   protected override void DoChecks()
+    public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        animationTrigger = stats.damageTrigger;
+    }
+    protected override void DoChecks()
     {
         base.DoChecks();
     }

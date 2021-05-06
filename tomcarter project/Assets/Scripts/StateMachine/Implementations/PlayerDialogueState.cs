@@ -7,6 +7,13 @@ public class PlayerDialogueState : PlayerInteractionState
     private NpcDialogue npcDialogueComponent;
     private bool requestNextLine;
     private bool finishedLines;
+
+    public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        animationTrigger = stats.dialogueTrigger;
+    }
+
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();

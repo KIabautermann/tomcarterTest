@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBaseDashState : PlayerDashState
-{  
+{
+
+    public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        animationTrigger = stats.dashTrigger;
+    }
     protected override void DoChecks()
     {
         base.DoChecks();

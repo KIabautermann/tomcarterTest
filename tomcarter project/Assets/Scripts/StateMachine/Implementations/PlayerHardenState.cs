@@ -7,6 +7,13 @@ public class PlayerHardenState : PlayerUnlockableSkill
     
     private bool _wasGrounded;
     private bool _hasCollided;
+
+    public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        animationTrigger = stats.hardenTrigger;
+    }
+    
     public override string ToString()
     {
         return base.ToString();
@@ -27,7 +34,7 @@ public class PlayerHardenState : PlayerUnlockableSkill
             controller.SetVelocityX(stats.hardenMovementSpeed * controller.facingDirection);                    
         }   
         RaycastHit hit;
-        if(Physics.Raycast(controller.myCollider.bounds.center, controller.DirectionalDetection(),out hit, stats.hedgeDetectionLenght, stats.walkable) && CanBreak())
+        if(Physics.Raycast(controller.myCollider.bounds.center, controller.DirectionalDetection(),out hit, stats.collisionDetection, stats.walkable) && CanBreak())
         {
             if (hit.collider.gameObject.GetComponent<IBreakable>() != null)
             {

@@ -9,6 +9,12 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     private bool _enteringHedge;
     private float _currentSpeed;
 
+    public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        animationTrigger = stats.hedgeTrigger;
+    }
+
     protected override void DoChecks()
     {
         base.DoChecks();
@@ -19,9 +25,8 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         base.DoLogicUpdate();
         if(_enteringHedge)
         {
-            controller.Accelerate(-1 / stats.groundedAccelerationTime * Time.deltaTime);
             _currentSpeed = stats.hedgeTransitionInPush;
-            if(controller.CurrentVelocity.magnitude <=stats.hedgeTransitionInMinSpeed)
+            if(Time.time >= startTime+stats.hedgeTransitionInTime)
             {
                 _enteringHedge = false;
             }
@@ -86,31 +91,18 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         {
             controller.SetAcceleration(0);
         }
-        if(!controller.Grounded())
-        {
-            airState.JumpCoyoteTimeStart();
-        }
     }
 
     protected override void TransitionChecks()
     {
         base.TransitionChecks(); 
         if(_exitingHedge)
-        {
-            if(inputs.JumpInput)
-            {
-                _target.ChangeState<PlayerJumpState>();
-            inputs.UsedJump();
-                airState.DashJumpCoyoteTimeStart();
-            }
-            else
-            {
-                Collider[] check = Physics.OverlapBox(controller.myCollider.bounds.center, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
-                if(check.Length == 0)
-                {                  
-                    stateDone = true;
-                }  
+        {          
+            Collider[] check = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
+            if(check.Length == 0)
+            {                  
+                stateDone = true;
             }           
-        }         
+        }      
     } 
 }

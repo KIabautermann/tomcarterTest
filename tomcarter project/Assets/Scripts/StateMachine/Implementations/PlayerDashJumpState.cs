@@ -5,6 +5,13 @@ using UnityEngine;
 public class PlayerDashJumpState : PlayerSkillState
 {
     private bool _isJumping;
+    
+    
+    public override void Init(PlayerStateMachine target)
+    {
+        base.Init(target);
+        animationTrigger = stats.dashJumpTrigger;
+    }
     protected override void DoChecks()
     {
         base.DoChecks();
@@ -56,7 +63,7 @@ public class PlayerDashJumpState : PlayerSkillState
     {
         Vector3 direction = controller.CurrentVelocity.normalized;
         base.TransitionChecks();
-        if(Physics.Raycast(_target.transform.position, direction,stats.hedgeDetectionLenght, stats.hedge))
+        if(Physics.Raycast(_target.transform.position, direction,stats.collisionDetection, stats.hedge))
         {
             _target.ChangeState<PlayerHedgeState>();             
         }

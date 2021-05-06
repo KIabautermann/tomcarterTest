@@ -12,31 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23deb08ef567294ba86bfa0e2561b55, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
+  collisionDetection: 0.6
+  idleTrigger: idle
+  movementTrigger: run
   movementVelocity: 7
   groundedAccelerationTime: 0.2
   airAccelerationTime: 0.4
+  airTrigger: air
+  jumpTrigger: jump
+  landTrigger: land
   jumpVelocity: 10
   fallMultiplier: 0.3
-  minJumpVelocity: 5
+  minJumpVelocity: 1
   coyoteTime: 0.1
   shortHopMultiplier: 0.3
   maxFallVelocity: -20
   amountOfJumps: 1
+  dashTrigger: dash
+  blinkTrigger: blink
   dashCooldown: 0.3
   dashStartUp: 0.05
   dashLenght: 0.2
   blinkDashLenght: 0.15
   dashSpeed: 15
-  blinkDashSpeed: 25
+  blinkDashSpeed: 30
   drag: 10
-  dashEndMultiplier: 0.1
-  collisionDetection: 1
+  dashEndMultiplier: 0.2
+  dashJumpTrigger: dash_jump
   dashJumpVelocityX: 12
   dashJumpAccelerationTime: 0.1
-  dashJumpFallMultiplier: 0.5
+  dashJumpFallMultiplier: 0.3
   minDashJumpVelocity: 1
   dashCoyoteTime: 0.1
   jumpHandicapTime: 0.1
+  hookTrigger: hook
   hookSpeed: 15
   circularSpeed: 4
   hookDetectionRadius: 0.1
@@ -44,15 +53,19 @@ MonoBehaviour:
   hookCooldown: 0.5
   yVelocityMultiplier: 0.8
   hookTarget: {x: 2.2, y: 2.2, z: 0}
-  hedgeDetectionLenght: 0.6
+  hedgeTrigger: hedge
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 20
   hedgeTransitionOutPush: 7
-  hedgeTransitionInMinSpeed: 5
+  hedgeTransitionInTime: 0.1
+  dialogueTrigger: talk
   npcDetectionLenght: 3
   npcDetectionRadius: 0.25
   rootChannelingDuration: 2
+  rootTrigger: root
+  damageTrigger: dmg
   damagedDuration: 1
+  hardenTrigger: harden
   hardenTime: 0.5
   hardenMovementSpeed: 3
   hardenHookMultiplier: 1.2
@@ -60,6 +73,12 @@ MonoBehaviour:
   hardenDashChannelingTime: 0.5
   minBreakVelocity: 10
   ceilingExceptionMultiplier: 1.7
+  meleeTrigger: melee
+  meleeStartupTime: 0.0625
+  meleeHitboxTime: 0.125
+  meleerecoveryTime: 0.125
+  meleeHitbox: {x: 1, y: 1}
+  meleeHiboxOffset: {x: 1, y: 0}
   walkable:
     serializedVersion: 2
     m_Bits: 1280

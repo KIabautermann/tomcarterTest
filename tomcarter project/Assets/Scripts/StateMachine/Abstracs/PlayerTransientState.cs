@@ -45,7 +45,6 @@ public class PlayerTransientState : PlayerState
             }
             else
             {
-                airState.SetJump(false);
                 _target.ChangeState<PlayerOnAirState>();
             }           
         }
