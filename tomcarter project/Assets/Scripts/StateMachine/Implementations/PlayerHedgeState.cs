@@ -26,7 +26,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         if(_enteringHedge)
         {
             _currentSpeed = stats.hedgeTransitionInPush;
-            if(Time.time >= startTime+stats.hedgeTransitionInTime)
+            if(counter >= stats.hedgeTransitionInTime)
             {
                 _enteringHedge = false;
             }

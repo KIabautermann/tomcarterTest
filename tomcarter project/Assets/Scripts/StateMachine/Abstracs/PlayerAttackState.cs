@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackState : PlayerSkillState
+public abstract class PlayerAttackState : PlayerSkillState
 {
     protected float startupTime;
     protected float hitboxTime;
     protected float recoveryTime;
     protected bool activeHitbox;
-    protected Vector2 hitbox;
+    protected Vector2 hitbox; 
     protected Vector3 hitboxOffset;
-    protected bool chainAttack;
     
     protected override void DoChecks()
     {
@@ -20,15 +19,15 @@ public class PlayerAttackState : PlayerSkillState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        if(Time.time >= startTime + startupTime && !activeHitbox){
+        if(counter >=  startupTime && !activeHitbox){
             activeHitbox = true;
         }
-        if(Time.time >= startTime + startupTime + hitboxTime && activeHitbox){
+        if(counter >=  startupTime + hitboxTime && activeHitbox){
             activeHitbox = false;
         }
-        if(Time.time >= startTime + startupTime + hitboxTime + recoveryTime && !chainAttack){
+        if(counter >=  startupTime + hitboxTime + recoveryTime){
             stateDone = true;
-        }       
+        }    
     }
 
     protected override void DoPhysicsUpdate()
@@ -39,12 +38,14 @@ public class PlayerAttackState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        chainAttack = false;
+        controller.LockFlip(true);
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        controller.LockFlip(false);
+        controller.FlipCheck(inputs.FixedAxis.x);
     }
 
     protected override void OnDestroyHandler()

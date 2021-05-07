@@ -13,7 +13,7 @@ public abstract class PlayerGroundedState : PlayerState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        controller.SetVelocityX(stats.movementVelocity * controller.facingDirection);
+        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
     }
 
     protected override void DoPhysicsUpdate()
@@ -48,7 +48,6 @@ public abstract class PlayerGroundedState : PlayerState
         else if(inputs.JumpInput){
             _target.ChangeState<PlayerJumpState>();
             inputs.UsedJump();     
-            airState.DashJumpCoyoteTimeStart(); 
         }
         else if(inputs.DashInput){
             _target.ChangeState<PlayerDashState>();

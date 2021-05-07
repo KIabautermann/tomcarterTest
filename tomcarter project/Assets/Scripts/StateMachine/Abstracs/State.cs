@@ -22,9 +22,10 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public UnityEvent onTransitionOut = new UnityEvent();
     public string animationTrigger;
     protected float coolDown;
-    protected float startTime;
+    public float counter;
     protected float endTime;
     protected bool isLocked = false;
+    public bool asynchronous;
 
     public virtual void Init(T target)
     {
@@ -35,7 +36,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
    
     public void TriggerTransitionIn()
     {
-        startTime = Time.time;
+        counter = 0;
         DoChecks();
         DoTransitionIn();
         onTransitionIn?.Invoke();  
@@ -49,6 +50,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
         DoChecks();
         TransitionChecks();
         onLogicUpdate?.Invoke();
+        counter+= Time.deltaTime;
     }
     protected abstract void DoLogicUpdate();
 

@@ -8,22 +8,25 @@ using System;
 public class PlayerStateMachine : MonoBehaviour
 {
     protected State<PlayerStateMachine> _currentState;
+    protected State<PlayerStateMachine> _currentSubstate;
     
     [SerializeField]
     private TextMeshProUGUI _currentStateDisplay;
     public PlayerData stats;
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates; 
-    private AnimationController animations;
+    private AnimationController _animations;
 
     public virtual void Start()
     {
         abilitySystem = GetComponent<PlayerAbilitySystem>();
         abilitySystem.OnAbilityUnlocked += AbilityUnlocked_Handler;
 
+        _currentSubstate = null;
+
         allStates = abilitySystem.GetAvailableStates();
 
-        animations = GetComponent<AnimationController>();
+        _animations = GetComponent<AnimationController>();
         
         foreach(var state in allStates.GetAllInstances())
         {
@@ -35,53 +38,43 @@ public class PlayerStateMachine : MonoBehaviour
     public void ChangeState<T>() where T : PlayerState
     {
         if (!allStates.GetInstance(typeof(T), out PlayerState newState)) newState = null;
+        if(newState.OnCoolDown() || newState.IsLocked() || newState == null) return;
 
-        if(_currentState != null)
-        {
-            if(newState == null || newState.OnCoolDown() || newState.IsLocked()) 
-            {
-                //Debug.LogWarning($"Can't Transition to {typeof(T).ToString()}");
-                if(newState == null){
-                    Debug.LogWarning("State does not exist");
+        else{
+            if(newState.asynchronous){
+                if(_currentSubstate == null){
+
+                    _currentSubstate = newState;
+                    _animations.SetBool(_currentSubstate.animationTrigger,true);
+                    _currentStateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
+                    _currentSubstate.TriggerTransitionIn();
                 }
-                else if(newState.IsLocked()){
-                    Debug.LogWarning("The state is locked");
-                }
-                else if(newState.OnCoolDown()){
-                    Debug.LogWarning("The state is on cooldown");
-                }
-                
-                return;
             }
-
-            if (_currentState.isExiting) return;
-            _currentState.TriggerTransitionOut();
-            if(newState != _currentState){
-                animations.SetBool(_currentState.animationTrigger,false);
-            }  
             else{
-                animations.SetTrigger("repeat");
-            }        
-        }
-        _currentState = newState;
-        _currentStateDisplay.text = _currentState.animationTrigger;
-        _currentState.TriggerTransitionIn();
-        animations.SetBool(_currentState.animationTrigger,true);
+                if(_currentState!= null){
+                    _currentState.TriggerTransitionOut();
+                    _animations.SetBool(_currentState.animationTrigger,false);  
+                }    
+                _currentState = newState;
+                _animations.SetBool(_currentState.animationTrigger,true);
+                _currentState.TriggerTransitionIn();   
+                if(_currentSubstate!=null) _currentStateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
+                else _currentStateDisplay.text = _currentState.animationTrigger;
+            }
+        }             
     }
 
     private void Update() 
     {
-        if(_currentState != null)
-        {
-            _currentState.TriggerLogicUpdate();
-        }
+        if(_currentState != null) _currentState.TriggerLogicUpdate();
+
+        if(_currentSubstate != null) _currentSubstate.TriggerLogicUpdate();
     }
     private void FixedUpdate() 
     {
-        if(_currentState != null)
-        {
-            _currentState.TriggerPhysicsUpdate();
-        }
+        if(_currentState != null) _currentState.TriggerPhysicsUpdate();
+
+        if(_currentSubstate != null)  _currentSubstate.TriggerPhysicsUpdate();
     }
 
     public void AbilityUnlocked_Handler(object sender, PlayerAbilitySystem.AbiltyUnlockedEventArgs args)
@@ -94,6 +87,12 @@ public class PlayerStateMachine : MonoBehaviour
         {
             allStates.SetInactive(t);
         }
+    }
+
+    public void removeSubState(){
+        _animations.SetBool(_currentSubstate.animationTrigger, false);
+        _currentSubstate.TriggerTransitionOut();
+        _currentSubstate = null;
     }
    
 }

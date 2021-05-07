@@ -19,6 +19,7 @@ public class PlayerData : ScriptableObject
     public string jumpTrigger = "jump";
     public string landTrigger = "land";
     public float jumpVelocity = 15;
+    public float jumpLenght = 1;
     public float fallMultiplier = 2;
     public float minJumpVelocity = 1;
     public float coyoteTime = .2f;

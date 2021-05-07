@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerOnAirState : PlayerState
 {
     private bool _jumpCoyoteTime;
-    private bool _dashJumpCoyoteTime;
-    private bool _falling;
 
     public override void Init(PlayerStateMachine target)
     {
@@ -23,25 +21,22 @@ public class PlayerOnAirState : PlayerState
     {
         controller.FlipCheck(inputs.FixedAxis.x);
         controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
-        controller.SetVelocityX(stats.movementVelocity * controller.facingDirection);
+        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
         JumpCoyoteTimeCheck();
-        DashJumpCoyoteTimeCheck();
-        SetJumpVelocity();
     }
 
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        /*if(controller.CurrentVelocity.y < stats.minJumpVelocity && !controller.Grounded())
+        if(controller.CurrentVelocity.y < stats.minJumpVelocity && !controller.Grounded())
         {
-            controller.Force(Physics.gravity.normalized,Physics.gravity.magnitude * stats.fallMultiplier, ForceMode.Force);
-        }*/
+            controller.Force(Physics.gravity.normalized,stats.fallMultiplier, ForceMode.Force);
+        }
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        _falling = controller.CurrentVelocity.y < 0; 
     }
 
     protected override void DoTransitionOut()
@@ -61,15 +56,8 @@ public class PlayerOnAirState : PlayerState
             inputs.UsedJump();
         }
         else if (inputs.DashInput)
-        {
-            if(_dashJumpCoyoteTime)
-            {
-                _target.ChangeState<PlayerDashJumpState>();
-            }
-            else
-            {
-               _target.ChangeState<PlayerDashState>();
-            }  
+        {       
+            _target.ChangeState<PlayerDashState>();          
             inputs.UsedDash();          
         }
         else if (inputs.HookInput)
@@ -92,31 +80,13 @@ public class PlayerOnAirState : PlayerState
 
     private void JumpCoyoteTimeCheck()
     {
-        if(_jumpCoyoteTime && Time.time > startTime + stats.coyoteTime)
+        if(_jumpCoyoteTime && counter > + stats.coyoteTime)
         {
             _jumpCoyoteTime = false;
         }
     }
-    private void DashJumpCoyoteTimeCheck()
-    {
-        if (_dashJumpCoyoteTime && Time.time > startTime + stats.jumpHandicapTime)
-        {
-            _dashJumpCoyoteTime = false;
-        }
-    }
-    private void SetJumpVelocity()
-    {
-        if (controller.CurrentVelocity.y > 0 && !_falling)
-        {
-            if (inputs.JumpCancel)
-            {
-                controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
-                _falling=true;
-            }            
-        }
-    }
+    
     
     public void JumpCoyoteTimeStart() => _jumpCoyoteTime = true;
 
-    public void DashJumpCoyoteTimeStart() => _dashJumpCoyoteTime = true;
 }

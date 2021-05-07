@@ -74,7 +74,7 @@ public class PlayerHardenState : PlayerUnlockableSkill
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if(Time.time >= startTime + stats.hardenTime)
+        if(counter >= stats.hardenTime)
         {
             stateDone = true;
         }      

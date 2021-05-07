@@ -36,6 +36,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoTransitionIn()
     {
+        counter = 0;
         PlayerEventSystem.GetInstance().OnDamageTaken += OnPlayerTakenDamageHandler;
     }
 

@@ -19,7 +19,7 @@ public class PlayerRootsState : PlayerSkillState
         {
             stateDone = true;
         }
-        else if (Time.time > startTime + stats.rootChannelingDuration)
+        else if (counter > stats.rootChannelingDuration)
         {
             _channelFinished = true;
         }

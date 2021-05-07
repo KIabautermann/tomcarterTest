@@ -62,7 +62,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         dashJumpCoyoteTime = controller.Grounded();
     }
 
-    protected bool StartedDash() => Time.time > startTime + stats.dashStartUp;
+    protected bool StartedDash() => counter > + stats.dashStartUp;
 
     protected override void DoTransitionOut()
     {
@@ -100,7 +100,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
 
     private void DashJumpCoyoteTimeCheck()
     {
-        if (dashJumpCoyoteTime && Time.time > startTime + stats.jumpHandicapTime)
+        if (dashJumpCoyoteTime && counter > + stats.jumpHandicapTime)
         {
             dashJumpCoyoteTime = false;
         }

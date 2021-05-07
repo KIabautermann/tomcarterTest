@@ -25,6 +25,8 @@ public class MovementController : MonoBehaviour
     private Transform[] wallCheck;
     [SerializeField]
     private Transform[] ceilingCheck;
+    private bool canFlip;
+    private bool flipRequest;
 
     #endregion
     
@@ -42,7 +44,8 @@ public class MovementController : MonoBehaviour
     private void Awake() 
     {
         facingDirection = 1;      
-        lastDirection = 1;             
+        lastDirection = 1;      
+        canFlip = true;       
     }
     private void Start() 
     {
@@ -55,6 +58,9 @@ public class MovementController : MonoBehaviour
     private void Update() 
     {
         CurrentVelocity = _rb.velocity;
+        if(flipRequest && canFlip){
+            Flip();
+        }
     }
     public bool Grounded()
     {
@@ -98,16 +104,11 @@ public class MovementController : MonoBehaviour
        }
        return n!=0;
     }
-    public void DirectionCheck(int xInput){
-        if(xInput != 0 && xInput != lastDirection){
-            DirectionChange();
-        }
-    }
     public void FlipCheck(int xInput)
     {
-        if (xInput != 0 && xInput != facingDirection)
+        if (xInput != 0 && xInput != lastDirection)
         {
-            Flip();
+            ChangeDirection();
         }
     }
 
@@ -182,16 +183,24 @@ public class MovementController : MonoBehaviour
     #endregion
     
     #region DoFunctions
-    private void Flip()
+    private void ChangeDirection()
     {
-        facingDirection *= -1;
-        lastDirection = facingDirection;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
-        DirectionChange();
-    }
-    private void DirectionChange(){
         lastDirection *= -1;
         SetAcceleration(.25f);
+        flipRequest = true;          
+    }
+
+    private void Flip(){
+        if(facingDirection != lastDirection){
+            transform.Rotate(0.0f, 180.0f, 0.0f);
+            facingDirection = lastDirection;
+            flipRequest = false;
+        }
+    }
+
+    public void LockFlip(bool locked){
+        canFlip = !locked;
+        Debug.Log("flip locked = " + locked);
     }
     public void Force(Vector2 direction, float force, ForceMode mode)
     {

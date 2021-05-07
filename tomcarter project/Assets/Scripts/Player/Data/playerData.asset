@@ -22,10 +22,11 @@ MonoBehaviour:
   jumpTrigger: jump
   landTrigger: land
   jumpVelocity: 10
-  fallMultiplier: 0.3
+  jumpLenght: 0.15
+  fallMultiplier: 5
   minJumpVelocity: 1
   coyoteTime: 0.1
-  shortHopMultiplier: 0.3
+  shortHopMultiplier: 0.4
   maxFallVelocity: -20
   amountOfJumps: 1
   dashTrigger: dash
@@ -37,7 +38,7 @@ MonoBehaviour:
   dashSpeed: 15
   blinkDashSpeed: 30
   drag: 10
-  dashEndMultiplier: 0.2
+  dashEndMultiplier: 0.1
   dashJumpTrigger: dash_jump
   dashJumpVelocityX: 12
   dashJumpAccelerationTime: 0.1

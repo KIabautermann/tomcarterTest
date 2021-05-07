@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerJumpState : PlayerSkillState
 { 
-   public override void Init(PlayerStateMachine target)
+    private bool _dashJumpCoyoteTime;
+    public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
         animationTrigger = stats.jumpTrigger;
@@ -18,28 +19,47 @@ public class PlayerJumpState : PlayerSkillState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
+        
     }
 
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
+        if(inputs.JumpCancel || counter >= stats.jumpLenght){
+            controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
+            stateDone = true;
+        }
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
         controller.SetVelocityY(stats.jumpVelocity);
+        controller.SetGravity(false);
         inputs.UsedJump();
-        stateDone = true;
+        _dashJumpCoyoteTime = true;
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        controller.SetGravity(true);
     }
 
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
+        if(_dashJumpCoyoteTime)
+        {
+            _target.ChangeState<PlayerDashJumpState>();
+        }
+    }
+
+    private void DashJumpCoyoteTimeCheck()
+    {
+        if (_dashJumpCoyoteTime && counter > stats.jumpHandicapTime)
+        {
+            _dashJumpCoyoteTime = false;
+        }
     }
 }
