@@ -49,7 +49,7 @@ public class PlayerJumpState : PlayerSkillState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if(_dashJumpCoyoteTime)
+        if(_dashJumpCoyoteTime && inputs.DashInput)
         {
             _target.ChangeState<PlayerDashJumpState>();
         }
