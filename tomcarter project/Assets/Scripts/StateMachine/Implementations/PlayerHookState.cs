@@ -12,7 +12,7 @@ public class PlayerHookState : PlayerUnlockableSkill
     private float dist;    
     private Vector3 _direction;
     private bool _pressedHarden;
-    
+
     #region Init Variables
     private LineRenderer _line;
     private SpriteRenderer _hookSprite;
@@ -196,4 +196,12 @@ public class PlayerHookState : PlayerUnlockableSkill
         }      
     }
 
+
+    private void OnDrawGizmos() {
+        Vector3 targetA = (Quaternion.Euler(0,0,stats.hookAimAssistConeAngle) * stats.hookTarget) + transform.position;
+        Vector3 targetB = (Quaternion.Euler(0,0,-stats.hookAimAssistConeAngle) * stats.hookTarget) + transform.position;
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, targetA);
+        Gizmos.DrawLine(transform.position, targetB);
+    }
 }
