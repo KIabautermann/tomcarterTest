@@ -23,7 +23,7 @@ MonoBehaviour:
   landTrigger: land
   jumpVelocity: 10
   jumpLenght: 0.15
-  fallMultiplier: 5
+  fallMultiplier: 3
   minJumpVelocity: 1
   coyoteTime: 0.1
   shortHopMultiplier: 0.4
@@ -53,7 +53,7 @@ MonoBehaviour:
   maxAngle: 70
   hookCooldown: 0.5
   yVelocityMultiplier: 0.8
-  hookTarget: {x: 2.2, y: 2.2, z: 0}
+  hookTarget: {x: 2.2, y: 1.6, z: 0}
   hedgeTrigger: hedge
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 20

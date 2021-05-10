@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class PlayerHookState : PlayerUnlockableSkill
     private bool _hooked;
     private float _distance;
     private Vector3 _startPoint;
-    private Vector3 _hookTarget;
+    private Vector3 _hookVector;
     private float dist;    
     private Vector3 _direction;
     private bool _pressedHarden;
@@ -38,7 +38,6 @@ public class PlayerHookState : PlayerUnlockableSkill
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        _hookTarget = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y, 0);       
         float currentDistance = Vector3.Distance(_startPoint, _hookPoint.position);
         if (!_hooked)
         {
@@ -50,7 +49,7 @@ public class PlayerHookState : PlayerUnlockableSkill
             }
             else
             {
-                _hookPoint.position += _hookTarget.normalized * stats.hookSpeed * Time.deltaTime;
+                _hookPoint.position += _hookVector.normalized * stats.hookSpeed * Time.deltaTime;
                 Collider[] hookDetecion = Physics.OverlapSphere(_hookPoint.position, stats.hookDetectionRadius, stats.walkable);
                 if(hookDetecion.Length > 0)
                 {
@@ -116,7 +115,8 @@ public class PlayerHookState : PlayerUnlockableSkill
 
     protected override void DoTransitionIn()
     {
-        base.DoTransitionIn();       
+        base.DoTransitionIn();    
+
         _hooked = false;
         _hookPoint.position = _target.transform.position;       
         _hookPoint.parent = null;
@@ -133,8 +133,47 @@ public class PlayerHookState : PlayerUnlockableSkill
         _line.SetPosition(1,_hookPoint.position); 
         _line.enabled = true;
         _hookSprite.enabled = true;      
+
+        _hookVector = GetAimAssistedHookVector();  
+        Debug.Log(_hookVector);
     }
 
+    private Vector3 GetAimAssistedHookVector()
+    {
+        Vector3 tmpHookVector = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y, 0);  
+        float fov = 40f;
+        Vector3 origin = Vector3.zero;
+        int rayCount = 10;
+        float angle = 0f;
+        float angleIncrease = fov / rayCount;
+        float hookDistance = tmpHookVector.magnitude;
+        Vector3[] raycastedVectors = new Vector3[rayCount + 1];
+        raycastedVectors[0] = tmpHookVector;
+        for (int i = 1; i <= rayCount / 2; i++) {
+            float currentAngle = angle + i * angleIncrease;
+            Vector3 vertexLeft = Quaternion.Euler(0, 0, currentAngle) * tmpHookVector;
+            Vector3 vertexRight = Quaternion.Euler(0, 0, -1 * currentAngle) * tmpHookVector;
+            raycastedVectors[i * 2 - 1] = vertexLeft;
+            raycastedVectors[i * 2] = vertexRight;
+
+            RaycastHit hit;
+            if (Physics.Raycast(_startPoint, vertexLeft, out hit, hookDistance, stats.walkable)) {
+                return (hit.point - _startPoint).normalized * hookDistance;
+            }
+
+            if (Physics.Raycast(_startPoint, vertexRight, out hit, hookDistance, stats.walkable)) {
+                return (hit.point - _startPoint).normalized * hookDistance;
+            }
+        }
+
+        return tmpHookVector;
+    }
+
+    private Vector3 GetVectorFromAngle(float angle)
+    {
+        float angleRad = angle * (Mathf.PI/180f);
+        return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+    }
     
     protected override void DoTransitionOut()
     {
