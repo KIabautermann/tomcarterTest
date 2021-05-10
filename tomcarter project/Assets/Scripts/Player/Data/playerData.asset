@@ -54,7 +54,8 @@ MonoBehaviour:
   hookCooldown: 0.5
   yVelocityMultiplier: 0.8
   hookAimAssistConeAngle: 10
-  hookTarget: {x: 2.2, y: 1.6, z: 0}
+  hookTarget: {x: 0.8, y: 0.6, z: 0}
+  hookMaxDistance: 3
   hedgeTrigger: hedge
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 20
@@ -70,7 +71,7 @@ MonoBehaviour:
   hardenTrigger: harden
   hardenTime: 0.5
   hardenMovementSpeed: 3
-  hardenHookMultiplier: 1.5
+  hardenHookMultiplier: 1.2
   hardenDashVelocity: 20
   hardenDashChannelingTime: 0.5
   minBreakVelocity: 10

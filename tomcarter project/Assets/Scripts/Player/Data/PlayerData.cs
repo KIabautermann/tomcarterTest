@@ -58,6 +58,7 @@ public class PlayerData : ScriptableObject
     public float yVelocityMultiplier = .8f;
     public float hookAimAssistConeAngle = 20f;
     public Vector3 hookTarget;
+    public float hookMaxDistance;
 
     [Header("Hedge State")]
 

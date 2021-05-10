@@ -42,7 +42,7 @@ public class PlayerHookState : PlayerUnlockableSkill
         if (!_hooked)
         {
             controller.Accelerate(-1 / stats.groundedAccelerationTime * Time.deltaTime);
-            if (currentDistance >= stats.hookTarget.magnitude)
+            if (currentDistance >= stats.hookMaxDistance)
             {
                 stateDone = true;
             }
@@ -142,7 +142,7 @@ public class PlayerHookState : PlayerUnlockableSkill
 
     private Vector3 GetAimAssistedHookVector()
     {
-        Vector3 tmpHookVector = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y, 0);  
+        Vector3 tmpHookVector = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y, 0) * stats.hookMaxDistance;  
         Vector3 origin = Vector3.zero;
         int rayCount = 10;
         float angle = 0f;
@@ -167,7 +167,7 @@ public class PlayerHookState : PlayerUnlockableSkill
             }
         }
 
-        return tmpHookVector;
+        return Vector2.one * stats.hookMaxDistance;
     }
 
     private Vector3 GetVectorFromAngle(float angle)
@@ -198,8 +198,8 @@ public class PlayerHookState : PlayerUnlockableSkill
 
 
     private void OnDrawGizmos() {
-        Vector3 targetA = (Quaternion.Euler(0,0,stats.hookAimAssistConeAngle) * stats.hookTarget) + transform.position;
-        Vector3 targetB = (Quaternion.Euler(0,0,-stats.hookAimAssistConeAngle) * stats.hookTarget) + transform.position;
+        Vector3 targetA = (Quaternion.Euler(0,0,stats.hookAimAssistConeAngle) * stats.hookTarget * stats.hookMaxDistance) + transform.position;
+        Vector3 targetB = (Quaternion.Euler(0,0,-stats.hookAimAssistConeAngle) * stats.hookTarget * stats.hookMaxDistance) + transform.position;
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, targetA);
         Gizmos.DrawLine(transform.position, targetB);
