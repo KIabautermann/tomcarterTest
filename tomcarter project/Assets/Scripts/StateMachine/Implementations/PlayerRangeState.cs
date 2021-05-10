@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerRangeState : PlayerAttackState
 {
 
+    Vector3 initialVelocity;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
@@ -26,13 +27,10 @@ public class PlayerRangeState : PlayerAttackState
         base.DoLogicUpdate();
         if(counter >=  startupTime){
             controller.SetGravity(true);
-            controller.SetAcceleration(.25f);
-            if(controller.CurrentVelocity.y < stats.minJumpVelocity && !controller.Grounded())
-            {
-                controller.Force(Physics.gravity.normalized,stats.fallMultiplier, ForceMode.Force);
-            }
+            controller.SetAcceleration(1f);
             controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
         }
+        else controller.Accelerate(-1 / stats.groundedAccelerationTime * Time.deltaTime);
         if(counter >=  startupTime + hitboxTime){
             stateDone=true;
         }       
@@ -44,13 +42,16 @@ public class PlayerRangeState : PlayerAttackState
         if(counter>=startupTime){
             controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
         }
+        else{
+            controller.SetTotalVelocity(initialVelocity.magnitude, initialVelocity.normalized);
+        }
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
         controller.SetGravity(false);    
-        controller.SetTotalVelocity(stats.rangeMovementSpeed, controller.CurrentVelocity.normalized);   
+        initialVelocity = controller.CurrentVelocity;
     }
 
     protected override void DoTransitionOut()

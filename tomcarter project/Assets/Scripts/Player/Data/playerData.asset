@@ -89,7 +89,7 @@ MonoBehaviour:
   rangeCooldown: 0
   rangeHitbox: {x: 1, y: 1}
   rangeHiboxOffset: {x: 0, y: 0}
-  rangeMovementSpeed: 0.25
+  rangeMovementSpeed: 1
   walkable:
     serializedVersion: 2
     m_Bits: 1280
