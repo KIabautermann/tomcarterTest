@@ -74,6 +74,10 @@ public class PlayerJumpState : PlayerSkillState
             _target.ChangeState<PlayerHardenState>();
             inputs.UsedGuard();
         }
+        else if(inputs.RangeInput){
+            _target.ChangeState<PlayerRangeState>();
+            inputs.UsedRange();
+        }
         base.TransitionChecks();
     }
 

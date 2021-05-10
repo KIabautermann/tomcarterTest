@@ -38,30 +38,34 @@ public class PlayerStateMachine : MonoBehaviour
     public void ChangeState<T>() where T : PlayerState
     {
         if (!allStates.GetInstance(typeof(T), out PlayerState newState)) newState = null;
-        if(newState.OnCoolDown() || newState.IsLocked() || newState == null) return;
 
-        else{
-            if(newState.asynchronous){
-                if(_currentSubstate == null){
+        if(newState != null){
+            if(!newState.OnCoolDown() && !newState.IsLocked()){
+                if(newState.asynchronous){
+                    if(_currentSubstate == null){
 
-                    _currentSubstate = newState;
-                    _animations.SetBool(_currentSubstate.animationTrigger,true);
-                    _currentStateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
-                    _currentSubstate.TriggerTransitionIn();
+                        _currentSubstate = newState;
+                        _animations.SetBool(_currentSubstate.animationTrigger,true);
+                        _currentStateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
+                        _currentSubstate.TriggerTransitionIn();
+                    }
                 }
-            }
-            else{
-                if(_currentState!= null){
-                    _currentState.TriggerTransitionOut();
-                    _animations.SetBool(_currentState.animationTrigger,false);  
-                }    
-                _currentState = newState;
-                _animations.SetBool(_currentState.animationTrigger,true);
-                _currentState.TriggerTransitionIn();   
-                if(_currentSubstate!=null) _currentStateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
-                else _currentStateDisplay.text = _currentState.animationTrigger;
-            }
-        }             
+                else{
+                    if(_currentState!= null){
+                        _currentState.TriggerTransitionOut();
+                        _animations.SetBool(_currentState.animationTrigger,false);  
+                    }    
+                    _currentState = newState;
+                    _animations.SetBool(_currentState.animationTrigger,true);
+                    _currentState.TriggerTransitionIn();   
+                    if(_currentSubstate!=null) _currentStateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
+                    else _currentStateDisplay.text = _currentState.animationTrigger;
+                }
+            }           
+        }  
+        else{
+            Debug.Log("There's no state");
+        }    
     }
 
     private void Update() 

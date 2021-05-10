@@ -99,6 +99,19 @@ public class PlayerData : ScriptableObject
     public Vector2 meleeHitbox = Vector2.one;
     public Vector2 meleeHiboxOffset;
 
+
+    [Header("Range State")]
+
+    public string rangeTrigger = "range";
+    public float rangeStartupTime = .5f;
+    public float rangeHitboxTime = .5f;
+    public float rangerecoveryTime = .5f;
+    public float rangeCooldown;
+    public Vector2 rangeHitbox = Vector2.one;
+    public Vector2 rangeHiboxOffset;
+
+    public float rangeMovementSpeed;
+
     [Header("LayerMasks")]
     public LayerMask walkable;
     public LayerMask hedge;

@@ -77,7 +77,7 @@ public class MovementController : MonoBehaviour
     {
        int n = 0;
        for(int i = 0; i < groundCheck.Length; i++){
-           if(Physics.Raycast(groundCheck[i].position, -Vector2.up,_detectionLenght, _rootable )){
+           if(Physics.Raycast(groundCheck[i].position, -Vector2.up,out rootableHit, _detectionLenght, _rootable )){
                n++;
            }
        }

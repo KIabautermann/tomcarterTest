@@ -69,6 +69,11 @@ public class PlayerDashJumpState : PlayerSkillState
         else if (inputs.HookInput)
         {
             _target.ChangeState<PlayerHookState>();
+            inputs.UsedHook();
+        }
+        else if(inputs.RangeInput){
+            _target.ChangeState<PlayerRangeState>();
+            inputs.UsedRange();
         }
         else if (controller.Grounded() && !stateDone)
         {
