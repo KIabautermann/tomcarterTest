@@ -141,11 +141,10 @@ public class PlayerHookState : PlayerUnlockableSkill
     private Vector3 GetAimAssistedHookVector()
     {
         Vector3 tmpHookVector = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y, 0);  
-        float fov = 40f;
         Vector3 origin = Vector3.zero;
         int rayCount = 10;
         float angle = 0f;
-        float angleIncrease = fov / rayCount;
+        float angleIncrease = stats.hookAimAssistConeAngle / rayCount;
         float hookDistance = tmpHookVector.magnitude;
         Vector3[] raycastedVectors = new Vector3[rayCount + 1];
         raycastedVectors[0] = tmpHookVector;
