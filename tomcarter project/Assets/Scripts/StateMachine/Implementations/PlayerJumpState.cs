@@ -18,41 +18,63 @@ public class PlayerJumpState : PlayerSkillState
 
     protected override void DoLogicUpdate()
     {
-        base.DoLogicUpdate();
-        
+        base.DoLogicUpdate();     
+        controller.FlipCheck(inputs.FixedAxis.x);
+        controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
+        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);       
     }
 
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        if(inputs.JumpCancel || counter >= stats.jumpLenght){
-            controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
-            stateDone = true;
-        }
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        controller.SetVelocityY(stats.jumpVelocity);
-        controller.SetGravity(false);
         inputs.UsedJump();
+        controller.SetVelocityY(stats.jumpVelocity);
         _dashJumpCoyoteTime = true;
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
-        controller.SetGravity(true);
     }
 
     protected override void TransitionChecks()
     {
-        base.TransitionChecks();
-        if(_dashJumpCoyoteTime && inputs.DashInput)
-        {
-            _target.ChangeState<PlayerDashJumpState>();
+        if(inputs.JumpCancel){
+            controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
+            stateDone = true;
         }
+        else if(controller.CurrentVelocity.y <=0){
+            stateDone = true;
+        }      
+        else if (controller.Grounded())
+        {
+            _target.ChangeState<PlayerLandState>();
+        }
+        else if (inputs.DashInput && _dashJumpCoyoteTime)
+        {       
+            _target.ChangeState<PlayerDashState>();          
+            inputs.UsedDash();          
+        }
+        else if (inputs.HookInput)
+        {
+            _target.ChangeState<PlayerHookState>();
+            inputs.UsedHook();
+        }
+        else if(inputs.MeleeInput){
+            _target.ChangeState<PlayerMeleeState>();
+            inputs.UsedMelee();
+        }
+        else if(inputs.GuardInput)
+        {
+            _target.ChangeState<PlayerHardenState>();
+            inputs.UsedGuard();
+        }
+        base.TransitionChecks();
     }
 
     private void DashJumpCoyoteTimeCheck()

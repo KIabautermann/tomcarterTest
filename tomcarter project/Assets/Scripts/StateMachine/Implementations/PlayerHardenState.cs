@@ -52,7 +52,7 @@ public class PlayerHardenState : PlayerUnlockableSkill
         base.DoPhysicsUpdate();
         if(controller.CurrentVelocity.y < stats.minJumpVelocity)
         {
-            controller.Force(Physics.gravity, stats.fallMultiplier, ForceMode.Force);
+            controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
         }
     }
 

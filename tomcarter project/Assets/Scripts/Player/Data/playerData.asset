@@ -21,9 +21,9 @@ MonoBehaviour:
   airTrigger: air
   jumpTrigger: jump
   landTrigger: land
-  jumpVelocity: 10
+  jumpVelocity: 9
   jumpLenght: 0.15
-  fallMultiplier: 3
+  fallMultiplier: 5
   minJumpVelocity: 1
   coyoteTime: 0.1
   shortHopMultiplier: 0.4
@@ -34,9 +34,9 @@ MonoBehaviour:
   dashCooldown: 0.3
   dashStartUp: 0.05
   dashLenght: 0.2
-  blinkDashLenght: 0.15
+  blinkDashLenght: 0.2
   dashSpeed: 15
-  blinkDashSpeed: 30
+  blinkDashSpeed: 20
   drag: 10
   dashEndMultiplier: 0.1
   dashJumpTrigger: dash_jump
@@ -53,6 +53,7 @@ MonoBehaviour:
   maxAngle: 70
   hookCooldown: 0.5
   yVelocityMultiplier: 0.8
+  hookAimAssistConeAngle: 20
   hookTarget: {x: 2.2, y: 1.6, z: 0}
   hedgeTrigger: hedge
   hedgeDetectionOffset: 0.5
