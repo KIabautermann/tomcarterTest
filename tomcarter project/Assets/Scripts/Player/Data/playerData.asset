@@ -38,7 +38,7 @@ MonoBehaviour:
   dashSpeed: 15
   blinkDashSpeed: 20
   drag: 10
-  dashEndMultiplier: 0.1
+  dashEndMultiplier: 0.2
   dashJumpTrigger: dash_jump
   dashJumpVelocityX: 12
   dashJumpAccelerationTime: 0.1
@@ -70,8 +70,8 @@ MonoBehaviour:
   hardenTrigger: harden
   hardenTime: 0.5
   hardenMovementSpeed: 3
-  hardenHookMultiplier: 1.2
-  hardenDashMultiplier: 0.5
+  hardenHookMultiplier: 1.5
+  hardenDashVelocity: 20
   hardenDashChannelingTime: 0.5
   minBreakVelocity: 10
   ceilingExceptionMultiplier: 1.7

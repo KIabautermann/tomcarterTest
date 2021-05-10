@@ -87,7 +87,7 @@ public class PlayerBlinkDashState : PlayerDashState
             controller.SetDrag(0);
             controller.SetGravity(true);
             controller.SetAcceleration(1);
-            controller.SetVelocityX(20 * controller.facingDirection);
+            controller.SetVelocityX(stats.hardenDashVelocity * controller.lastDirection);
             _target.ChangeState<PlayerHardenState>();
         }
     }

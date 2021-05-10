@@ -30,8 +30,6 @@ public class PlayerDashJumpState : PlayerSkillState
         {
             controller.Accelerate(1f / stats.dashJumpAccelerationTime * Time.deltaTime);
         }
-
-        controller.SetVelocityX(stats.dashJumpVelocityX * controller.facingDirection);
     }
 
     protected override void DoPhysicsUpdate()
@@ -39,8 +37,9 @@ public class PlayerDashJumpState : PlayerSkillState
         base.DoPhysicsUpdate();
         if (controller.CurrentVelocity.y < stats.minDashJumpVelocity)
         {
-            controller.Force(Physics.gravity, stats.dashJumpFallMultiplier, ForceMode.Force);
+            controller.Force(Physics.gravity.normalized, stats.dashJumpFallMultiplier, ForceMode.Force);
         }
+        controller.SetVelocityX(stats.dashJumpVelocityX * controller.lastDirection);
     }
 
     protected override void DoTransitionIn()

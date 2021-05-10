@@ -42,7 +42,6 @@ public class PlayerHookState : PlayerUnlockableSkill
         if (!_hooked)
         {
             controller.Accelerate(-1 / stats.groundedAccelerationTime * Time.deltaTime);
-            controller.SetVelocityX(stats.movementVelocity * controller.facingDirection);
             if (currentDistance >= stats.hookTarget.magnitude)
             {
                 stateDone = true;
@@ -110,6 +109,9 @@ public class PlayerHookState : PlayerUnlockableSkill
         if (_hooked)
         {
             controller.SetTotalVelocity(stats.circularSpeed * dist, _direction);
+        }
+        else{
+            controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
         }
     }
 

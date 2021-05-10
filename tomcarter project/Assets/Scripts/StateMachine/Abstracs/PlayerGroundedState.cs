@@ -13,12 +13,12 @@ public abstract class PlayerGroundedState : PlayerState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
     }
 
     protected override void DoPhysicsUpdate()
     {
-        
+        base.DoPhysicsUpdate();
+        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
     }
 
     protected override void DoTransitionIn()

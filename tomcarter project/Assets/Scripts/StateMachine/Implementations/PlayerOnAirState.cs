@@ -21,7 +21,6 @@ public class PlayerOnAirState : PlayerState
     {
         controller.FlipCheck(inputs.FixedAxis.x);
         controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
-        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
         JumpCoyoteTimeCheck();
     }
 
@@ -32,6 +31,7 @@ public class PlayerOnAirState : PlayerState
         {
             controller.Force(Physics.gravity.normalized,stats.fallMultiplier, ForceMode.Force);
         }
+        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
     }
 
     protected override void DoTransitionIn()
