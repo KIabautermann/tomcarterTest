@@ -8,7 +8,7 @@ public class PlayerRangeState : PlayerAttackState
     Vector3 initialVelocity;
     public override void Init(PlayerStateMachine target)
     {
-        base.Init(target);
+        base.Init(target);       
         coolDown = stats.rangeCooldown;
         startupTime = stats.rangeStartupTime;
         hitboxTime = stats.rangeHitboxTime;
@@ -44,7 +44,6 @@ public class PlayerRangeState : PlayerAttackState
         }
         else{
             controller.SetTotalVelocity(initialVelocity.magnitude, initialVelocity.normalized);
-            Debug.Log(initialVelocity.magnitude + " " + initialVelocity.normalized);
         }
     }
 
@@ -66,5 +65,12 @@ public class PlayerRangeState : PlayerAttackState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
+    }
+
+    private void OnDrawGizmos() {
+        if(activeHitbox){
+            Vector3 offset = new Vector3(hitboxOffset.x * controller.facingDirection, hitboxOffset.y,0);
+            Gizmos.DrawWireCube(transform.position + offset, hitbox);
+        }       
     }
 }

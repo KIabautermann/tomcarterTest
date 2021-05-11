@@ -7,13 +7,13 @@ public class PlayerMeleeState : PlayerAttackState
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
+        asynchronous = true;
         startupTime = stats.meleeStartupTime;
         hitboxTime = stats.meleeHitboxTime;
         recoveryTime = stats.meleerecoveryTime;
         hitbox = stats.meleeHitbox;
         hitboxOffset = stats.meleeHiboxOffset;
         animationTrigger = stats.meleeTrigger;
-        asynchronous = true;
     }
 
     
@@ -52,7 +52,7 @@ public class PlayerMeleeState : PlayerAttackState
 
     private void OnDrawGizmos() {
         if(activeHitbox){
-            Vector3 offset = stats.meleeHiboxOffset;
+            Vector3 offset = new Vector3(hitboxOffset.x * controller.facingDirection, hitboxOffset.y,0);
             Gizmos.DrawWireCube(transform.position + offset, hitbox);
         }
     }

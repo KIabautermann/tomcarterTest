@@ -137,7 +137,6 @@ public class PlayerHookState : PlayerUnlockableSkill
         _hookSprite.enabled = true;      
 
         _hookVector = GetAimAssistedHookVector();  
-        Debug.Log(_hookVector);
     }
 
     private Vector3 GetAimAssistedHookVector()
@@ -198,8 +197,9 @@ public class PlayerHookState : PlayerUnlockableSkill
 
 
     private void OnDrawGizmos() {
-        Vector3 targetA = (Quaternion.Euler(0,0,stats.hookAimAssistConeAngle) * stats.hookTarget * stats.hookMaxDistance) + transform.position;
-        Vector3 targetB = (Quaternion.Euler(0,0,-stats.hookAimAssistConeAngle) * stats.hookTarget * stats.hookMaxDistance) + transform.position;
+        Vector3 facingTarget = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y ,0);
+        Vector3 targetA = (Quaternion.Euler(0,0,stats.hookAimAssistConeAngle) * facingTarget * stats.hookMaxDistance) + transform.position;
+        Vector3 targetB = (Quaternion.Euler(0,0,-stats.hookAimAssistConeAngle) * facingTarget * stats.hookMaxDistance) + transform.position;
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, targetA);
         Gizmos.DrawLine(transform.position, targetB);

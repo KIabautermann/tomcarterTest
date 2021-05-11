@@ -80,15 +80,15 @@ MonoBehaviour:
   meleeStartupTime: 0.0625
   meleeHitboxTime: 0.125
   meleerecoveryTime: 0.125
-  meleeHitbox: {x: 1, y: 1}
-  meleeHiboxOffset: {x: 1, y: 0}
+  meleeHitbox: {x: 1.5, y: 0.7}
+  meleeHiboxOffset: {x: 0.7, y: 0}
   rangeTrigger: range
   rangeStartupTime: 0.5625
   rangeHitboxTime: 0.1875
   rangerecoveryTime: 0.25
-  rangeCooldown: 0
-  rangeHitbox: {x: 1, y: 1}
-  rangeHiboxOffset: {x: 0, y: 0}
+  rangeCooldown: 1
+  rangeHitbox: {x: 3.5, y: 0.5}
+  rangeHiboxOffset: {x: 2, y: 0}
   rangeMovementSpeed: 1
   walkable:
     serializedVersion: 2
