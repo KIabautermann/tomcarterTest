@@ -167,7 +167,7 @@ public class PlayerHookState : PlayerUnlockableSkill
             }
         }
 
-        return Vector2.one * stats.hookMaxDistance;
+        return new Vector3(1 * controller.facingDirection, 1, 0).normalized * stats.hookMaxDistance;
     }
 
     private Vector3 GetVectorFromAngle(float angle)
