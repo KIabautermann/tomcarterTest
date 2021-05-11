@@ -19,7 +19,7 @@ public class PlayerRangeState : PlayerAttackState
     }
     protected override void DoChecks()
     {
-         base.DoChecks();
+        base.DoChecks();
     }
 
     protected override void DoLogicUpdate()
@@ -30,7 +30,7 @@ public class PlayerRangeState : PlayerAttackState
             controller.SetAcceleration(1f);
             controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
         }
-        else controller.Accelerate(-1 / stats.groundedAccelerationTime * Time.deltaTime);
+        else controller.Accelerate(-1 / stats.airAccelerationTime * Time.deltaTime);
         if(counter >=  startupTime + hitboxTime){
             stateDone=true;
         }       
@@ -44,14 +44,17 @@ public class PlayerRangeState : PlayerAttackState
         }
         else{
             controller.SetTotalVelocity(initialVelocity.magnitude, initialVelocity.normalized);
+            Debug.Log(initialVelocity.magnitude + " " + initialVelocity.normalized);
         }
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        controller.SetGravity(false);    
         initialVelocity = controller.CurrentVelocity;
+        Debug.Log(initialVelocity);
+        controller.SetAcceleration(1);
+        controller.SetGravity(false);          
     }
 
     protected override void DoTransitionOut()

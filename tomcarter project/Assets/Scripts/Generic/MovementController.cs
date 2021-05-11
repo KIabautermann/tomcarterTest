@@ -200,7 +200,6 @@ public class MovementController : MonoBehaviour
 
     public void LockFlip(bool locked){
         canFlip = !locked;
-        Debug.Log("flip locked = " + locked);
     }
     public void Force(Vector2 direction, float force, ForceMode mode)
     {
