@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRangeState : PlayerAttackState
+public class PlayerChargedRangeState : PlayerAttackState
 {
+     Vector3 initialVelocity;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);       
         startupTime = 0;
         hitboxTime = stats.rangeHitboxTime;
         recoveryTime = stats.rangerecoveryTime;
-        hitbox = stats.rangeHitbox;
-        hitboxOffset = stats.rangeHiboxOffset;
-        animationTrigger = stats.rangeTrigger;
+        hitbox = stats.chargedRangeHitbox;
+        hitboxOffset = stats.chargedRangeHiboxOffset;
+        animationTrigger = stats.longRangeTrigger;
     }
     protected override void DoChecks()
     {
@@ -32,7 +33,7 @@ public class PlayerRangeState : PlayerAttackState
 
     protected override void DoTransitionIn()
     {
-        base.DoTransitionIn();       
+        base.DoTransitionIn();
         controller.SetTotalVelocity(.5f, controller.CurrentVelocity.normalized);
         if(inputs.FixedAxis.x !=0){
             controller.SetVelocityX(stats.rangeInitialImpulse * controller.facingDirection);

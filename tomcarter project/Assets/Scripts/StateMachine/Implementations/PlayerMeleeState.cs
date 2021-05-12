@@ -26,7 +26,7 @@ public class PlayerMeleeState : PlayerAttackState
     {
         base.DoLogicUpdate();
         if(counter >= startupTime + hitboxTime + recoveryTime){
-            StateEnd();  
+            _target.removeSubState();
         }
     }
 
@@ -55,9 +55,5 @@ public class PlayerMeleeState : PlayerAttackState
             Vector3 offset = new Vector3(hitboxOffset.x * controller.facingDirection, hitboxOffset.y,0);
             Gizmos.DrawWireCube(transform.position + offset, hitbox);
         }
-    }
-
-    public void StateEnd(){
-        _target.removeSubState();
     }
 }

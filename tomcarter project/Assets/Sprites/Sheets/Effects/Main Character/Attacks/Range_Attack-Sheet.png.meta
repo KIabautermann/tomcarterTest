@@ -38,6 +38,36 @@ TextureImporter:
   - first:
       213: -6834003586712735089
     second: Range_Attack-Sheet_11
+  - first:
+      213: 2246871920675522180
+    second: Range_Attack-Sheet_12
+  - first:
+      213: -29803969216220089
+    second: Range_Attack-Sheet_13
+  - first:
+      213: -3480802707467646025
+    second: Range_Attack-Sheet_14
+  - first:
+      213: 8382374740477080869
+    second: Range_Attack-Sheet_15
+  - first:
+      213: -5384213267006595629
+    second: Range_Attack-Sheet_16
+  - first:
+      213: -8584934086142013385
+    second: Range_Attack-Sheet_17
+  - first:
+      213: 1991951403502127896
+    second: Range_Attack-Sheet_18
+  - first:
+      213: 28896810306296814
+    second: Range_Attack-Sheet_19
+  - first:
+      213: 3403020968643448902
+    second: Range_Attack-Sheet_20
+  - first:
+      213: -7936133311985016575
+    second: Range_Attack-Sheet_21
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,8 +157,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 128
+        y: 256
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -147,9 +177,9 @@ TextureImporter:
       name: Range_Attack-Sheet_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 192
-        width: 128
+        x: 256
+        y: 256
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -168,9 +198,9 @@ TextureImporter:
       name: Range_Attack-Sheet_2
       rect:
         serializedVersion: 2
-        x: 256
-        y: 192
-        width: 128
+        x: 512
+        y: 256
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -189,9 +219,9 @@ TextureImporter:
       name: Range_Attack-Sheet_3
       rect:
         serializedVersion: 2
-        x: 384
-        y: 192
-        width: 128
+        x: 768
+        y: 256
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -210,9 +240,9 @@ TextureImporter:
       name: Range_Attack-Sheet_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 128
+        x: 1024
+        y: 256
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -231,9 +261,9 @@ TextureImporter:
       name: Range_Attack-Sheet_5
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
+        x: 0
+        y: 192
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -253,8 +283,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 128
-        width: 128
+        y: 192
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -273,9 +303,9 @@ TextureImporter:
       name: Range_Attack-Sheet_7
       rect:
         serializedVersion: 2
-        x: 384
-        y: 128
-        width: 128
+        x: 512
+        y: 192
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -294,9 +324,9 @@ TextureImporter:
       name: Range_Attack-Sheet_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 128
+        x: 768
+        y: 192
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -315,9 +345,9 @@ TextureImporter:
       name: Range_Attack-Sheet_9
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 128
+        x: 1024
+        y: 192
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -336,9 +366,9 @@ TextureImporter:
       name: Range_Attack-Sheet_10
       rect:
         serializedVersion: 2
-        x: 256
-        y: 64
-        width: 128
+        x: 0
+        y: 128
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -357,9 +387,9 @@ TextureImporter:
       name: Range_Attack-Sheet_11
       rect:
         serializedVersion: 2
-        x: 384
-        y: 64
-        width: 128
+        x: 256
+        y: 128
+        width: 256
         height: 64
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -370,6 +400,216 @@ TextureImporter:
       bones: []
       spriteID: f82fd3c22fdb821a0800000000000000
       internalID: -6834003586712735089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Attack-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 256
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4860aaf7b1e7e2f10800000000000000
+      internalID: 2246871920675522180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Attack-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 256
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74478f9a27d169ff0800000000000000
+      internalID: -29803969216220089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Attack-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 128
+        width: 256
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bb4c203164b1bfc0800000000000000
+      internalID: -3480802707467646025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Attack-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 256
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 525f75c2a6d245470800000000000000
+      internalID: 8382374740477080869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Attack-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 256
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd50297f8e6745b0800000000000000
+      internalID: -5384213267006595629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Attack-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 64
+        width: 256
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 730dc5ffeef2cd880800000000000000
+      internalID: -8584934086142013385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Attack-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 64
+        width: 256
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81bc5976f35d4ab10800000000000000
+      internalID: 1991951403502127896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Attack-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 64
+        width: 256
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eebd271fe79a66000800000000000000
+      internalID: 28896810306296814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Attack-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640d23f7a85f93f20800000000000000
+      internalID: 3403020968643448902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Attack-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1012df8dcc03dd190800000000000000
+      internalID: -7936133311985016575
       vertices: []
       indices: 
       edges: []

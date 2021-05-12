@@ -24,7 +24,7 @@ MonoBehaviour:
   jumpVelocity: 9
   jumpLenght: 0.15
   fallMultiplier: 5
-  minJumpVelocity: 1
+  minJumpVelocity: -1
   coyoteTime: 0.1
   shortHopMultiplier: 0.4
   maxFallVelocity: -20
@@ -53,7 +53,7 @@ MonoBehaviour:
   maxAngle: 70
   hookCooldown: 0.5
   yVelocityMultiplier: 0.8
-  hookAimAssistConeAngle: 10
+  hookAimAssistConeAngle: 15
   hookTarget: {x: 0.8, y: 0.6, z: 0}
   hookMaxDistance: 3
   hedgeTrigger: hedge
@@ -83,13 +83,18 @@ MonoBehaviour:
   meleeHitbox: {x: 1.5, y: 0.7}
   meleeHiboxOffset: {x: 0.7, y: 0}
   rangeTrigger: range
+  longRangeTrigger: long_range
+  chargeTrigger: charge
   rangeStartupTime: 0.5625
   rangeHitboxTime: 0.1875
-  rangerecoveryTime: 0.25
+  rangerecoveryTime: 0
   rangeCooldown: 1
+  rangeChargeTime: 0.75
   rangeHitbox: {x: 3.5, y: 0.5}
   rangeHiboxOffset: {x: 2, y: 0}
-  rangeMovementSpeed: 1
+  chargedRangeHitbox: {x: 5.5, y: 0.5}
+  chargedRangeHiboxOffset: {x: 2.7, y: 0}
+  rangeInitialImpulse: 10
   walkable:
     serializedVersion: 2
     m_Bits: 1280

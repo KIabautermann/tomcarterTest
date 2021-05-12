@@ -75,7 +75,7 @@ public class PlayerOnAirState : PlayerState
             inputs.UsedGuard();
         }
         else if(inputs.RangeInput){
-            _target.ChangeState<PlayerRangeState>();
+           _target.ChangeState<PlayerRangeChargeState>();
             inputs.UsedRange();
         }
 

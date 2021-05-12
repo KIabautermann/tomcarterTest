@@ -10,24 +10,29 @@ public class AnimationController : MonoBehaviour
         GetAnimators(this.transform);
     }
 
-    public void SetFloat(string parameter, float n){
+    public void SetFloat(string param, float n){
         for(int i = 0; i<animators.Count; i++){
-            animators[i].SetFloat(parameter, n);
+            if(HasParameter(param, animators[i])){
+                animators[i].SetFloat(param, n);
+            }           
         }
     }
 
-    public void SetBool(string parameter, bool n){
+    public void SetBool(string param, bool n){
         for(int i = 0; i<animators.Count; i++){
-            animators[i].SetBool(parameter, n);
+            if(HasParameter(param, animators[i])){
+                animators[i].SetBool(param, n);
+            }           
         }
     }
 
-    public void SetTrigger(string parameter){
+    public void SetTrigger(string param){
         for(int i = 0; i<animators.Count; i++){
-            animators[i].SetTrigger(parameter);
+            if(HasParameter(param, animators[i])){
+                animators[i].SetTrigger(param);
+            }           
         }
     }
-
     private void GetAnimators(Transform target){
         int count = target.childCount;
         if(target.GetComponent<Animator>() != null){
@@ -40,4 +45,14 @@ public class AnimationController : MonoBehaviour
             GetAnimators(target.GetChild(i));
         }
     }
+
+    private bool HasParameter( string paramName, Animator animator )
+{
+    foreach( AnimatorControllerParameter param in animator.parameters )
+    {
+        if( param.name == paramName )
+            return true;
+    }
+    return false;
+}
 }
