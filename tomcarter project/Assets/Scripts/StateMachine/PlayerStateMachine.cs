@@ -15,7 +15,7 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerData stats;
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates; 
-    private AnimationController _animations;
+    public AnimationController _animations;
 
     public virtual void Start()
     {

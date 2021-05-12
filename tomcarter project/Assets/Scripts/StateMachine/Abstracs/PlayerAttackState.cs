@@ -27,6 +27,7 @@ public abstract class PlayerAttackState : PlayerSkillState
         }
         if(counter >=  startupTime + hitboxTime + recoveryTime){
             stateDone = true;
+            Debug.Log("asd");
         }    
     }
 
