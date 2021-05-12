@@ -141,21 +141,17 @@ public class PlayerHookState : PlayerUnlockableSkill
 
     private Vector3 GetAimAssistedHookVector()
     {
-        Vector3 tmpHookVector = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y, 0) * stats.hookMaxDistance;  
+        Vector3 tmpHookVector = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y, 0).normalized * stats.hookMaxDistance;  
         Vector3 origin = Vector3.zero;
         int rayCount = 10;
         float angle = 0f;
         float angleIncrease = stats.hookAimAssistConeAngle / rayCount;
         float hookDistance = tmpHookVector.magnitude;
-        Vector3[] raycastedVectors = new Vector3[rayCount + 1];
-        raycastedVectors[0] = tmpHookVector;
         for (int i = 1; i <= rayCount / 2; i++) {
             float currentAngle = angle + i * angleIncrease;
             Vector3 vertexLeft = Quaternion.Euler(0, 0, currentAngle) * tmpHookVector;
             Vector3 vertexRight = Quaternion.Euler(0, 0, -1 * currentAngle) * tmpHookVector;
-            raycastedVectors[i * 2 - 1] = vertexLeft;
-            raycastedVectors[i * 2] = vertexRight;
-
+            
             RaycastHit hit;
             if (Physics.Raycast(_startPoint, vertexLeft, out hit, hookDistance, stats.walkable)) {
                 return (hit.point - _startPoint).normalized * hookDistance;

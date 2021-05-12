@@ -53,8 +53,8 @@ MonoBehaviour:
   maxAngle: 70
   hookCooldown: 0.5
   yVelocityMultiplier: 0.8
-  hookAimAssistConeAngle: 10
-  hookTarget: {x: 0.8, y: 0.6, z: 0}
+  hookAimAssistConeAngle: 30
+  hookTarget: {x: 0.8, y: 0.4, z: 0}
   hookMaxDistance: 3
   hedgeTrigger: hedge
   hedgeDetectionOffset: 0.5

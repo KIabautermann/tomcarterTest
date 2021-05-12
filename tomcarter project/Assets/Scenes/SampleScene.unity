@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595b702583ab89346b885938d67ca3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endurance: 20
+  endurance: 15
 --- !u!212 &11456981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1912,7 +1912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595b702583ab89346b885938d67ca3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endurance: 20
+  endurance: 15
 --- !u!212 &441615175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4054,7 +4054,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.860032, y: 9.587494, z: -10}
+  m_LocalPosition: {x: -5.05, y: 9.589999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
