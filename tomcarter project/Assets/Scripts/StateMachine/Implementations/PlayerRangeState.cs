@@ -51,6 +51,7 @@ public class PlayerRangeState : PlayerAttackState
     {
         base.DoTransitionIn();
         initialVelocity = controller.CurrentVelocity;
+        Debug.Log(initialVelocity);
         controller.SetAcceleration(1);
         controller.SetGravity(false);          
     }
