@@ -67,6 +67,7 @@ public class PlayerData : ScriptableObject
     public float hedgeTransitionInPush;
     public float hedgeTransitionOutPush;
     public float hedgeTransitionInTime;
+    public float hedgeJumpHandicapTime = 0.4f;
   
     [Header("Dialogue State")]
     public string dialogueTrigger = "talk";

@@ -31,15 +31,15 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     {
         base.DoLogicUpdate();
         DashJumpCoyoteTimeCheck();
-        if(controller.Grounded())
-        {
-            dashJumpCoyoteTime = true;
-            coyoteStartTime = Time.time;
-        }
-        else
-        {
-            DashJumpCoyoteTimeCheck();
-        }
+        // if(controller.Grounded())
+        // {
+        //     dashJumpCoyoteTime = true;
+        //     coyoteStartTime = Time.time;
+        // }
+        // else
+        // {
+        //     DashJumpCoyoteTimeCheck();
+        // }
         if(StartedDash()){
             controller.SetTotalVelocity(currentSpeed,direction);
         }      
@@ -100,7 +100,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
 
     private void DashJumpCoyoteTimeCheck()
     {
-        if (dashJumpCoyoteTime && counter > + stats.jumpHandicapTime)
+        if (dashJumpCoyoteTime && counter > stats.jumpHandicapTime)
         {
             dashJumpCoyoteTime = false;
         }

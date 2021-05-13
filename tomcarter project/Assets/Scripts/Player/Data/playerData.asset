@@ -47,7 +47,7 @@ MonoBehaviour:
   dashCoyoteTime: 0.1
   jumpHandicapTime: 0.1
   hookTrigger: hook
-  hookSpeed: 15
+  hookSpeed: 20
   circularSpeed: 4
   hookDetectionRadius: 0.1
   maxAngle: 70
@@ -61,6 +61,7 @@ MonoBehaviour:
   hedgeTransitionInPush: 20
   hedgeTransitionOutPush: 7
   hedgeTransitionInTime: 0.1
+  hedgeJumpHandicapTime: 0.2
   dialogueTrigger: talk
   npcDetectionLenght: 3
   npcDetectionRadius: 0.25

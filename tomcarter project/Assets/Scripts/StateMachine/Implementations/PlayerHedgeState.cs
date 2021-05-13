@@ -8,6 +8,8 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     private bool _exitingHedge;
     private bool _enteringHedge;
     private float _currentSpeed;
+    private bool _hedgeJumpCoyoteTime;
+    public float _hedgeJumpStart;
 
     public override void Init(PlayerStateMachine target)
     {
@@ -23,6 +25,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
+        HedgeJumpCoyoteTimeCheck();
         if(_enteringHedge)
         {
             _currentSpeed = stats.hedgeTransitionInPush;
@@ -74,7 +77,8 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         _direction = controller.CurrentVelocity.normalized;  
         Physics.IgnoreLayerCollision(9,10,true);
         _exitingHedge = false;
-        _enteringHedge = true;         
+        _enteringHedge = true;        
+        _hedgeJumpCoyoteTime = false; 
         controller.SetGravity(false);       
     }
 
@@ -85,6 +89,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         Physics.IgnoreLayerCollision(9,10,false);
         if(_direction.x != 0)
         {
+            controller.SetTotalVelocity(_currentSpeed, new Vector2(_direction.x, 0));
             controller.SetAcceleration(1);
         }
         else
@@ -96,13 +101,33 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     protected override void TransitionChecks()
     {
         base.TransitionChecks(); 
+        if (inputs.JumpInput) 
+        {
+            _hedgeJumpStart = counter;
+            _hedgeJumpCoyoteTime = true; 
+        }
+        if (inputs.JumpCancel)
+        {
+            _hedgeJumpCoyoteTime = false; 
+        }
         if(_exitingHedge)
         {          
             Collider[] check = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
             if(check.Length == 0)
             {                  
+                if (_hedgeJumpCoyoteTime) 
+                {
+                    _target.ChangeState<PlayerJumpState>();
+                }
                 stateDone = true;
             }           
         }      
+    }
+    private void HedgeJumpCoyoteTimeCheck()
+    {
+        if (_hedgeJumpCoyoteTime && counter > (stats.hedgeJumpHandicapTime + _hedgeJumpStart))
+        {
+            _hedgeJumpCoyoteTime = false;
+        }
     } 
 }

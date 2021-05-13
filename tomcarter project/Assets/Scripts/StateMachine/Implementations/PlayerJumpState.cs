@@ -19,6 +19,7 @@ public class PlayerJumpState : PlayerSkillState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();     
+        DashJumpCoyoteTimeCheck();
         controller.FlipCheck(inputs.FixedAxis.x);
         controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime); 
     }
@@ -44,7 +45,16 @@ public class PlayerJumpState : PlayerSkillState
 
     protected override void TransitionChecks()
     {
-        if(inputs.JumpCancel){
+        if (inputs.DashInput && _dashJumpCoyoteTime)
+        {       
+            if (_dashJumpCoyoteTime) {
+                _target.ChangeState<PlayerDashJumpState>();   
+            } else {
+                _target.ChangeState<PlayerDashState>();
+            }    
+            inputs.UsedDash();          
+        }
+        else if(inputs.JumpCancel){
             controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
             stateDone = true;
         }
@@ -54,11 +64,6 @@ public class PlayerJumpState : PlayerSkillState
         else if (controller.Grounded())
         {
             _target.ChangeState<PlayerLandState>();
-        }
-        else if (inputs.DashInput && _dashJumpCoyoteTime)
-        {       
-            _target.ChangeState<PlayerDashState>();          
-            inputs.UsedDash();          
         }
         else if (inputs.HookInput)
         {
