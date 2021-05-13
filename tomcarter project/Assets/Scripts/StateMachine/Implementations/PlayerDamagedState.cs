@@ -26,7 +26,7 @@ public class PlayerDamagedState : PlayerTransientState
 
     protected override void DoTransitionIn()
     {
-    
+        _target.removeSubState();  
     }
 
     protected override void DoTransitionOut()

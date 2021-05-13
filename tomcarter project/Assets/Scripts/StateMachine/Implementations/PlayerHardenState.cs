@@ -60,6 +60,7 @@ public class PlayerHardenState : PlayerUnlockableSkill
     {
         base.DoTransitionIn();
         _hasCollided = false;
+        _target.removeSubState();
         _wasGrounded=controller.Grounded();
         if(inputs.DashInput || !inputs.DashCancel){
             _target.ChangeState<PlayerDashState>();

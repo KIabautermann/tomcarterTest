@@ -120,6 +120,7 @@ public class PlayerHookState : PlayerUnlockableSkill
         base.DoTransitionIn();    
 
         _hooked = false;
+        _target.removeSubState();
         _hookPoint.position = _target.transform.position;       
         _hookPoint.parent = null;
         _startPoint = _target.transform.position;

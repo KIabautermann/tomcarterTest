@@ -94,9 +94,10 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     public void removeSubState(){
-        _animations.SetBool(_currentSubstate.animationTrigger, false);
-        _currentSubstate.TriggerTransitionOut();
-        _currentSubstate = null;
-    }
-   
+        if(_currentSubstate!=null){
+            _animations.SetBool(_currentSubstate.animationTrigger, false);
+            _currentSubstate.TriggerTransitionOut();
+            _currentSubstate = null;
+        }       
+    }   
 }

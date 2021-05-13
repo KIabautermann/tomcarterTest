@@ -80,6 +80,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         _hedgeJumpCoyoteTime = false; 
         Physics.IgnoreLayerCollision(9,10,true);
         controller.SetGravity(false);   
+        _target.removeSubState();
         controller.SetDrag(0);    
     }
 

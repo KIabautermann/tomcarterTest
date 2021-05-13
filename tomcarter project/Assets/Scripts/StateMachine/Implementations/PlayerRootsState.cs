@@ -35,6 +35,7 @@ public class PlayerRootsState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         _channelFinished = false;
+        _target.removeSubState();
         controller.SetAcceleration(0f);
         controller.SetVelocityX(0f);
     

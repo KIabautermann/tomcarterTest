@@ -20,6 +20,7 @@ public class PlayerDialogueState : PlayerInteractionState
 
         finishedLines = false;
         requestNextLine = true;
+        _target.removeSubState();
 
         if(Physics.Raycast(_target.transform.position, direction, out RaycastHit rayCastHit, stats.npcDetectionLenght, stats.npc))
         {
