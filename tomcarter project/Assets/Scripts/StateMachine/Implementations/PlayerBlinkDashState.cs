@@ -76,7 +76,7 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if(counter >= stats.blinkDashLenght && !hardenRequest)
+        if(counter >= stats.blinkDashLenght && !hardenRequest && !stateDone)
         {
             stateDone = true;
             controller.SetDrag(0);

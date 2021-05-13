@@ -35,7 +35,7 @@ public class PlayerBaseDashState : PlayerDashState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if(counter > + stats.dashLenght)
+        if(counter > + stats.dashLenght && !stateDone)
         {
             stateDone = true;
             controller.SetDrag(0);
