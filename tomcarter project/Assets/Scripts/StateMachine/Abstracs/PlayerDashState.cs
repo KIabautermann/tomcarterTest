@@ -11,6 +11,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected float coyoteStartTime;
     protected float currentSpeed;
     protected bool dashJumpCoyoteTime;
+    private bool _velocityUpdated;
 
     private PlayerHedgeState playerHedgeState;
     public override void Init(PlayerStateMachine target)
@@ -31,18 +32,13 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     {
         base.DoLogicUpdate();
         DashJumpCoyoteTimeCheck();
-        // if(controller.Grounded())
-        // {
-        //     dashJumpCoyoteTime = true;
-        //     coyoteStartTime = Time.time;
-        // }
-        // else
-        // {
-        //     DashJumpCoyoteTimeCheck();
-        // }
         if(StartedDash()){
             controller.SetTotalVelocity(currentSpeed,direction);
-        }      
+            _velocityUpdated = true;
+        } 
+        if(!_velocityUpdated && Physics.Raycast(transform.position, direction, stats.collisionDetection, stats.hedge)) {
+            controller.SetTotalVelocity(currentSpeed,direction);
+        }  
     }
 
     protected override void DoPhysicsUpdate()
@@ -60,6 +56,8 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         controller.SetDrag(stats.drag);
         coyoteTime = false;
         dashJumpCoyoteTime = controller.Grounded();
+        Physics.IgnoreLayerCollision(9,10,true);
+        _velocityUpdated = false;
     }
 
     protected bool StartedDash() => counter > + stats.dashStartUp;
@@ -68,6 +66,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     {
         if (!controller.Grounded()) { isLocked = true; }
 
+        Physics.IgnoreLayerCollision(9,10,false);
         base.DoTransitionOut();
         if(direction.x !=0)
         {
@@ -85,11 +84,12 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if(Physics.Raycast(transform.position, controller.DirectionalDetection(), stats.collisionDetection, stats.hedge))
-        {
+        Collider[] check = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
+        if(check.Length != 0)
+        {                  
             _target.ChangeState<PlayerHedgeState>();  
             controller.SetDrag(0);
-        }  
+        }
         else if(inputs.JumpInput && dashJumpCoyoteTime)
         {
             _target.ChangeState<PlayerDashJumpState>();

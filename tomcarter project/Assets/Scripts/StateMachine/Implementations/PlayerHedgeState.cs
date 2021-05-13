@@ -75,11 +75,12 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         PlayerEventSystem.GetInstance().TriggerPlayerEnteredHedge();
         controller.SetAcceleration(1);
         _direction = controller.CurrentVelocity.normalized;  
-        Physics.IgnoreLayerCollision(9,10,true);
         _exitingHedge = false;
         _enteringHedge = true;        
         _hedgeJumpCoyoteTime = false; 
-        controller.SetGravity(false);       
+        Physics.IgnoreLayerCollision(9,10,true);
+        controller.SetGravity(false);   
+        controller.SetDrag(0);    
     }
 
     protected override void DoTransitionOut()

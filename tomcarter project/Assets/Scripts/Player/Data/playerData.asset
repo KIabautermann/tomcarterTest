@@ -58,7 +58,7 @@ MonoBehaviour:
   hookMaxDistance: 3
   hedgeTrigger: hedge
   hedgeDetectionOffset: 0.5
-  hedgeTransitionInPush: 20
+  hedgeTransitionInPush: 12
   hedgeTransitionOutPush: 7
   hedgeTransitionInTime: 0.1
   hedgeJumpHandicapTime: 0.2
