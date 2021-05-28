@@ -149,18 +149,18 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         float colliderVerticalWallAngle = (float) (Math.Acos(Math.Pow(extentsSize.magnitude, 2) * 2 - Math.Pow(colliderSize.x, 2) / (2 * extentsSize.magnitude * 2)) * (180/Math.PI));
         float baseAngle = (rotationAngle - 45) < 0 ? colliderSideWallAngle : colliderVerticalWallAngle;
         // Reduci un poco el angulo para no ser tan estrictos
-        baseAngle *= 0.75f;
+        baseAngle *= 0.85f;
         bool topHit = Physics.Raycast(
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
             Quaternion.Euler(0, 0, (baseAngle * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(direction.x, direction.y, 0), 
             out RaycastHit topHitInfo, 
-            stats.collisionDetection + Math.Max(colliderSize.x, colliderSize.y) * 2, 
+            stats.collisionDetection + Math.Max(extentsSize.x, extentsSize.y), 
             stats.hedge);
         bool bottomHit = Physics.Raycast(
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
             Quaternion.Euler(0, 0, (-baseAngle * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(direction.x, direction.y, 0), 
             out RaycastHit bottomHitInfo, 
-            stats.collisionDetection + Math.Max(colliderSize.x, colliderSize.y) * 2, 
+            stats.collisionDetection + Math.Max(extentsSize.x, extentsSize.y), 
             stats.hedge);   
         
         return topHit && bottomHit && topHitInfo.collider.gameObject == bottomHitInfo.collider.gameObject;
