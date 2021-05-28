@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using System.Linq;
 
 public abstract class PlayerDashState : PlayerUnlockableSkill
 {
@@ -12,6 +13,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected float currentSpeed;
     protected bool dashJumpCoyoteTime;
     private bool _velocityUpdated;
+    private Collider[] _hedgeCollisionsChecks;
 
     private PlayerHedgeState playerHedgeState;
     public override void Init(PlayerStateMachine target)
@@ -32,13 +34,24 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     {
         base.DoLogicUpdate();
         DashJumpCoyoteTimeCheck();
+        
+        _hedgeCollisionsChecks = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size, Quaternion.identity,stats.hedge); 
+
+        if (_hedgeCollisionsChecks.Length != 0 && !FitsInHedge()) {
+            Physics.IgnoreLayerCollision(9,10,false);
+            _velocityUpdated = true;
+        }
+
         if(StartedDash()){
             controller.SetTotalVelocity(currentSpeed,direction);
             _velocityUpdated = true;
         } 
-        if(!_velocityUpdated && Physics.Raycast(transform.position, direction, stats.collisionDetection, stats.hedge)) {
+
+        if(!_velocityUpdated && _hedgeCollisionsChecks.Length != 0 && FitsInHedge()) {
             controller.SetTotalVelocity(currentSpeed,direction);
-        }  
+            _velocityUpdated = true;
+        }
+        
     }
 
     protected override void DoPhysicsUpdate()
@@ -58,6 +71,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         dashJumpCoyoteTime = controller.Grounded();
         Physics.IgnoreLayerCollision(9,10,true);
         _velocityUpdated = false;
+        _hedgeCollisionsChecks = new Collider[0];
     }
 
     protected bool StartedDash() => counter > + stats.dashStartUp;
@@ -67,6 +81,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         if (!controller.Grounded()) { isLocked = true; }
 
         Physics.IgnoreLayerCollision(9,10,false);
+
         base.DoTransitionOut();
         if(direction.x !=0)
         {
@@ -83,9 +98,8 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
 
     protected override void TransitionChecks()
     {
-        base.TransitionChecks();
-        Collider[] check = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
-        if(check.Length != 0)
+        base.TransitionChecks();   
+        if (_hedgeCollisionsChecks.Length != 0 && FitsInHedge())
         {                  
             _target.ChangeState<PlayerHedgeState>();  
             controller.SetDrag(0);
@@ -96,6 +110,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
             inputs.UsedJump();            
         }    
     }
+
     public void DashJumpCoyoteTimeStart() => dashJumpCoyoteTime = true;
 
     private void DashJumpCoyoteTimeCheck()
@@ -104,6 +119,27 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         {
             dashJumpCoyoteTime = false;
         }
+    }
+
+    private bool FitsInHedge() 
+    {   
+        // If there's a hedge in proximity, check via raycast whether the player fits into the oncominghedge
+        Vector3 colliderSize = controller.myCollider.bounds.size;
+
+        bool topHit = Physics.Raycast(
+            new Vector3(transform.position.x, transform.position.y, transform.position.z),
+            Quaternion.Euler(0, 0, 10) * new Vector3(direction.x, direction.y, 0), 
+            out RaycastHit topHitInfo, 
+            stats.collisionDetection + colliderSize.x, 
+            stats.hedge);
+        bool bottomHit = Physics.Raycast(
+            new Vector3(transform.position.x, transform.position.y, transform.position.z),
+            Quaternion.Euler(0, 0, -10) * new Vector3(direction.x, direction.y, 0), 
+            out RaycastHit bottomHitInfo, 
+            stats.collisionDetection + direction.magnitude, 
+            stats.hedge);   
+        
+        return topHit && bottomHit && topHitInfo.collider.gameObject == bottomHitInfo.collider.gameObject;
     }
    
 
