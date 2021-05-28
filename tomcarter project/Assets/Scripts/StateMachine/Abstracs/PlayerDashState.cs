@@ -124,17 +124,29 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     private bool FitsInHedge() 
     {   
         // If there's a hedge in proximity, check via raycast whether the player fits into the oncominghedge
+        //
+        // Estimado Pedro del futuro: lamento que tengas que ver este codigo. No quiero poner a prueba tu sanidad, pero no quedo otra. Lo que
+        // hace esta bella funcion, es armar un cono de raycast para predecir si el Player deberia o no entrar en un hedge. Esta bueno
+        // particularmente para que evitar dejar al jugador entrar a hedges en situacions medio border, como que solo el punto medio del personaje
+        // este alineado con un hedge, pero el 50% del sprite esta afuera
+        //
+        // Entonces, disparamos 2 raycasts para ver si el hedge es lo suficientemente amplio. El problemita problemon, es que si queremos entrar en diagonal
+        // uno de los rayos tendria que ser mas grande que el otro para poder compensar que ambos van para el mismo valor del eje X, pero uno tiene que recorrer
+        // mucha mas distancia. Para solucionar esto, hacemos un calculo donde la amplitud del cono se reduce cuanto mas se acerca la direccion a los 45 grados.
+        // Esta hecho con trigonometria porque sos un drogadicto de mierda, y porque si se llega a usar analogico, esta bueno que se adapte en funcion a 
+        // FixedAxis mas expresivos que [0,1]
         Vector3 colliderSize = controller.myCollider.bounds.size;
-
+        Vector2 zeroedDirection = new Vector2(Math.Abs(direction.x), Math.Abs(direction.y)).normalized;
+        float rotationAngle = zeroedDirection.x == 1 ? 0 : zeroedDirection.y == 1 ? 90 :  (float) (Math.Atan(zeroedDirection.y / zeroedDirection.x) * (180/Math.PI));
         bool topHit = Physics.Raycast(
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
-            Quaternion.Euler(0, 0, 10) * new Vector3(direction.x, direction.y, 0), 
+            Quaternion.Euler(0, 0, (65 * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(direction.x, direction.y, 0), 
             out RaycastHit topHitInfo, 
             stats.collisionDetection + colliderSize.x, 
             stats.hedge);
         bool bottomHit = Physics.Raycast(
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
-            Quaternion.Euler(0, 0, -10) * new Vector3(direction.x, direction.y, 0), 
+            Quaternion.Euler(0, 0, (-65 * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(direction.x, direction.y, 0), 
             out RaycastHit bottomHitInfo, 
             stats.collisionDetection + direction.magnitude, 
             stats.hedge);   
