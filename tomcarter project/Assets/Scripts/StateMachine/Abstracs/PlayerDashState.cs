@@ -128,27 +128,39 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         // Estimado Pedro del futuro: lamento que tengas que ver este codigo. No quiero poner a prueba tu sanidad, pero no quedo otra. Lo que
         // hace esta bella funcion, es armar un cono de raycast para predecir si el Player deberia o no entrar en un hedge. Esta bueno
         // particularmente para que evitar dejar al jugador entrar a hedges en situacions medio border, como que solo el punto medio del personaje
-        // este alineado con un hedge, pero el 50% del sprite esta afuera
+        // este alineado con un hedge, pero el 50% del collider esta afuera
         //
         // Entonces, disparamos 2 raycasts para ver si el hedge es lo suficientemente amplio. El problemita problemon, es que si queremos entrar en diagonal
-        // uno de los rayos tendria que ser mas grande que el otro para poder compensar que ambos van para el mismo valor del eje X, pero uno tiene que recorrer
+        // uno de los rayos tendria que ser mas largo que el otro para poder compensar que ambos van para el mismo valor del eje X, pero uno tiene que recorrer
         // mucha mas distancia. Para solucionar esto, hacemos un calculo donde la amplitud del cono se reduce cuanto mas se acerca la direccion a los 45 grados.
         // Esta hecho con trigonometria porque sos un drogadicto de mierda, y porque si se llega a usar analogico, esta bueno que se adapte en funcion a 
         // FixedAxis mas expresivos que [0,1]
+        //
+        // La razon por la cual a 45 grados el cono se aplana es meramente porque los hedges tienen angulos de 90 grados alineados con la grid. Si esto llega a
+        // cambiar, tranquilamente podemos volver a tener casos donde se ve inverosimil la entrada al hedge
+        //
+        // Agregue tambien un cambio para que el angulo del cono se achique en funcion del tamaño del collider para que sea dinamico, sin importar si se vuelve mas
+        // angosto o mas ancho. Este codigo podriamos moverlo a algun util probablemente
         Vector3 colliderSize = controller.myCollider.bounds.size;
+        Vector3 extentsSize = controller.myCollider.bounds.extents;
         Vector2 zeroedDirection = new Vector2(Math.Abs(direction.x), Math.Abs(direction.y)).normalized;
         float rotationAngle = zeroedDirection.x == 1 ? 0 : zeroedDirection.y == 1 ? 90 :  (float) (Math.Atan(zeroedDirection.y / zeroedDirection.x) * (180/Math.PI));
+        float colliderSideWallAngle = (float) (Math.Acos(Math.Pow(extentsSize.magnitude, 2) * 2 - Math.Pow(colliderSize.y, 2) / (2 * extentsSize.magnitude * 2)) * (180/Math.PI));
+        float colliderVerticalWallAngle = (float) (Math.Acos(Math.Pow(extentsSize.magnitude, 2) * 2 - Math.Pow(colliderSize.x, 2) / (2 * extentsSize.magnitude * 2)) * (180/Math.PI));
+        float baseAngle = (rotationAngle - 45) < 0 ? colliderSideWallAngle : colliderVerticalWallAngle;
+        // Reduci un poco el angulo para no ser tan estrictos
+        baseAngle *= 0.75f;
         bool topHit = Physics.Raycast(
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
-            Quaternion.Euler(0, 0, (65 * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(direction.x, direction.y, 0), 
+            Quaternion.Euler(0, 0, (baseAngle * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(direction.x, direction.y, 0), 
             out RaycastHit topHitInfo, 
-            stats.collisionDetection + colliderSize.x, 
+            stats.collisionDetection + Math.Max(colliderSize.x, colliderSize.y) * 2, 
             stats.hedge);
         bool bottomHit = Physics.Raycast(
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
-            Quaternion.Euler(0, 0, (-65 * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(direction.x, direction.y, 0), 
+            Quaternion.Euler(0, 0, (-baseAngle * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(direction.x, direction.y, 0), 
             out RaycastHit bottomHitInfo, 
-            stats.collisionDetection + direction.magnitude, 
+            stats.collisionDetection + Math.Max(colliderSize.x, colliderSize.y) * 2, 
             stats.hedge);   
         
         return topHit && bottomHit && topHitInfo.collider.gameObject == bottomHitInfo.collider.gameObject;
