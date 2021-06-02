@@ -14,8 +14,9 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected bool dashJumpCoyoteTime;
     private bool _velocityUpdated;
     private Collider[] _hedgeCollisionsChecks;
-
     private PlayerHedgeState playerHedgeState;
+
+    // TODO: empezar a ver como la subscripcion de eventos deberia ser solo para el dash activo y no ambos. Podria traer muchos bardos
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
@@ -23,7 +24,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         playerHedgeState = GetComponent<PlayerHedgeState>();
         playerHedgeState.onTransitionIn.AddListener(OnHedge_Handler);
         PlayerEventSystem.GetInstance().OnGroundLand += OnGround_Handler;
-        PlayerEventSystem.GetInstance().OnHazardHit += OnGround_Handler;
+        PlayerEventSystem.GetInstance().OnHazardHit += OnHazard_Handler;
     }
 
     protected override void DoChecks()
@@ -35,7 +36,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     {
         base.DoLogicUpdate();
         DashJumpCoyoteTimeCheck();
-        
+
         _hedgeCollisionsChecks = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size, Quaternion.identity,stats.hedge); 
 
         if (_hedgeCollisionsChecks.Length != 0 && !FitsInHedge()) {
@@ -73,16 +74,21 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         Physics.IgnoreLayerCollision(9,10,true);
         _velocityUpdated = false;
         _hedgeCollisionsChecks = new Collider[0];
+        ToggleLock(!controller.Grounded());
     }
 
     protected bool StartedDash() => counter > + stats.dashStartUp;
 
     protected override void DoTransitionOut()
     {
-        if (!controller.Grounded()) { isLocked = true; }
-
         Physics.IgnoreLayerCollision(9,10,false);
 
+        if (controller.Grounded())
+        {
+            // No pasar la negacion de Grounded al toggle ya que podria estar en falso por impactar con un hazard
+            ToggleLock(false);
+        }
+        
         base.DoTransitionOut();
         if(direction.x !=0)
         {
@@ -172,7 +178,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     private void OnGround_Handler(object sender, PlayerEventSystem.OnLandEventArgs args) {
         ToggleLock(false);
     }
-    private void OnGround_Handler(object sender, EventArgs args) {
+    private void OnHazard_Handler(object sender, EventArgs args) {
         ToggleLock(false);
     }
     private void OnHedge_Handler() {
@@ -181,6 +187,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void OnDestroyHandler() {
         PlayerEventSystem.GetInstance().OnGroundLand -= OnGround_Handler;
         playerHedgeState.onTransitionIn.RemoveListener(OnHedge_Handler);
+        PlayerEventSystem.GetInstance().OnHazardHit -= OnHazard_Handler;
         base.OnDestroyHandler();
     }
 
