@@ -27,11 +27,15 @@ public class PlayerDamagedState : PlayerTransientState
     protected override void DoTransitionIn()
     {
         _target.removeSubState();  
+        controller.SetTotalVelocity(0f, Vector2.right);
+        controller.SetAcceleration(0f);
+        base.DoTransitionIn();
     }
 
     protected override void DoTransitionOut()
     {
-        
+        controller.SetTotalVelocity(0f, Vector2.right);
+        controller.SetAcceleration(0f);
     }
 
     protected override void TransitionChecks()
@@ -40,9 +44,9 @@ public class PlayerDamagedState : PlayerTransientState
         if (counter > + playerHealth._invulnerabilityPeriod) 
         {
             stateDone = true;
-
-            base.TransitionChecks();
         }
+        
+        base.TransitionChecks();
     }
 
 }

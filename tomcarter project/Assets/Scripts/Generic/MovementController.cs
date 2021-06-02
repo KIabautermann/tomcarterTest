@@ -38,6 +38,7 @@ public class MovementController : MonoBehaviour
 
     #region RayCast Hits
     private RaycastHit rootableHit;
+    private RaycastHit groundHit;
     #endregion
 
 
@@ -66,7 +67,7 @@ public class MovementController : MonoBehaviour
     {
        int n = 0;
        for(int i = 0; i < groundCheck.Length; i++){
-           if(Physics.Raycast(groundCheck[i].position, -Vector2.up,_detectionLenght, _walkwable )){
+           if(Physics.Raycast(groundCheck[i].position, -Vector2.up, out groundHit, _detectionLenght, _walkwable )){
                n++;
            }
        }
@@ -76,11 +77,14 @@ public class MovementController : MonoBehaviour
     public bool OnRootable()
     {
        int n = 0;
+       RaycastHit tmpHit = new RaycastHit();
        for(int i = 0; i < groundCheck.Length; i++){
-           if(Physics.Raycast(groundCheck[i].position, -Vector2.up,out rootableHit, _detectionLenght, _rootable )){
+           if(Physics.Raycast(groundCheck[i].position, -Vector2.up,out tmpHit, _detectionLenght, _rootable )){
                n++;
+               rootableHit = tmpHit;
            }
        }
+       if (n == 0) { rootableHit = tmpHit; }
        return n!=0 && CurrentVelocity.y < .01f;
     }
     public bool OnWall()
@@ -89,6 +93,7 @@ public class MovementController : MonoBehaviour
        for(int i = 0; i < wallCheck.Length; i++){
            if(Physics.Raycast(wallCheck[i].position, Vector2.right * facingDirection,_detectionLenght, _walkwable )){
                n++;
+               Debug.Log("Wall");
            }
        }
        return n!=0;
@@ -225,6 +230,11 @@ public class MovementController : MonoBehaviour
     public RaycastHit GetRootableHit()
     {
         return rootableHit;
+    }
+
+    public RaycastHit GetGroundHit() 
+    {
+        return groundHit;
     }
     #endregion
 }

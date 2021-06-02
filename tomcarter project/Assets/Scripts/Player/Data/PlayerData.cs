@@ -123,5 +123,8 @@ public class PlayerData : ScriptableObject
     public LayerMask hedge;
     public LayerMask npc;
     public LayerMask rootable;
+    public LayerMask solidGround;
+    public LayerMask hazard;
+    public LayerMask damage;
 
 }

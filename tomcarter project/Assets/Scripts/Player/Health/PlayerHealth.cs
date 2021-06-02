@@ -10,18 +10,22 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField]
     public float _invulnerabilityPeriod = 1f;
-
-    [SerializeField]
-    private LayerMask _damageLayer;
+    public PlayerData data;
     
 
     private void OnCollisionEnter(Collision other) 
     {    
-        if (other.gameObject.layer == Math.Log(_damageLayer.value, 2))
+        int collidedLayer = other.gameObject.layer;
+        if ((data.damage.value & 1 << collidedLayer) != 0 || (data.damage.value & 1 << collidedLayer) != 0)
         {
             TakingDamage = true;
             _lastTimeHit = Time.time;   
             PlayerEventSystem.GetInstance().TriggerPlayerHasTakenDamage();
+        }
+        
+        if (data.hazard == (data.hazard | (1 << collidedLayer)))
+        {
+            PlayerEventSystem.GetInstance().TriggerPlayerCollidedHazard();
         }
     }
 

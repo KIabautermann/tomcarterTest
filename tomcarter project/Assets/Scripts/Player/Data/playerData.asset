@@ -24,7 +24,7 @@ MonoBehaviour:
   jumpVelocity: 9
   jumpLenght: 0.15
   fallMultiplier: 5
-  minJumpVelocity: -1
+  minJumpVelocity: 1
   coyoteTime: 0.1
   shortHopMultiplier: 0.4
   maxFallVelocity: -20
@@ -51,7 +51,7 @@ MonoBehaviour:
   circularSpeed: 4
   hookDetectionRadius: 0.1
   maxAngle: 70
-  hookCooldown: 0.5
+  hookCooldown: 0.4
   yVelocityMultiplier: 0.8
   hookAimAssistConeAngle: 30
   hookTarget: {x: 0.8, y: 0.4, z: 0}
@@ -107,4 +107,13 @@ MonoBehaviour:
     m_Bits: 4096
   rootable:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
+  solidGround:
+    serializedVersion: 2
+    m_Bits: 256
+  hazard:
+    serializedVersion: 2
+    m_Bits: 16384
+  damage:
+    serializedVersion: 2
+    m_Bits: 18432

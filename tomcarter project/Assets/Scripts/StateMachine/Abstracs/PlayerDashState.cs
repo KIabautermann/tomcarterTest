@@ -23,6 +23,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         playerHedgeState = GetComponent<PlayerHedgeState>();
         playerHedgeState.onTransitionIn.AddListener(OnHedge_Handler);
         PlayerEventSystem.GetInstance().OnGroundLand += OnGround_Handler;
+        PlayerEventSystem.GetInstance().OnHazardHit += OnGround_Handler;
     }
 
     protected override void DoChecks()
@@ -148,7 +149,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         float colliderSideWallAngle = (float) (Math.Acos(Math.Pow(extentsSize.magnitude, 2) * 2 - Math.Pow(colliderSize.y, 2) / (2 * extentsSize.magnitude * 2)) * (180/Math.PI));
         float colliderVerticalWallAngle = (float) (Math.Acos(Math.Pow(extentsSize.magnitude, 2) * 2 - Math.Pow(colliderSize.x, 2) / (2 * extentsSize.magnitude * 2)) * (180/Math.PI));
         float baseAngle = (rotationAngle - 45) < 0 ? colliderSideWallAngle : colliderVerticalWallAngle;
-        // Reduci un poco el angulo para no ser tan estrictos
+        // Reduci un poco el angulo para no ser tan estrictos. Modificar a discrecion. No se si da hacerlo serializable/data, porque es absolutamente inreutilizable
         baseAngle *= 0.85f;
         bool topHit = Physics.Raycast(
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
@@ -169,6 +170,9 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
 
     #region Event Handlers
     private void OnGround_Handler(object sender, PlayerEventSystem.OnLandEventArgs args) {
+        ToggleLock(false);
+    }
+    private void OnGround_Handler(object sender, EventArgs args) {
         ToggleLock(false);
     }
     private void OnHedge_Handler() {

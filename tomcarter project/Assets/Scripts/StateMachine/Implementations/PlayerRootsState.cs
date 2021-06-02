@@ -39,7 +39,14 @@ public class PlayerRootsState : PlayerSkillState
         controller.SetAcceleration(0f);
         controller.SetVelocityX(0f);
     
-        Component rootArea = controller.GetRootableHit().transform.gameObject.GetComponent<RootArea>();
+        if (!controller.OnRootable()) 
+        {
+            Debug.LogWarning("Entered rootable, but already left after transition start");
+            stateDone = true;
+            return;
+        }
+        
+        Component rootArea = controller.GetRootableHit().collider.gameObject.GetComponent<RootArea>();
         if (rootArea == null) 
         {
             Debug.LogWarning("Root Layer game object does not have an RootArea component. Exiting state");

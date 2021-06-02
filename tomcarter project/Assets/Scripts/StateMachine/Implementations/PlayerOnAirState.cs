@@ -27,7 +27,7 @@ public class PlayerOnAirState : PlayerState
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        if(controller.CurrentVelocity.y < stats.minJumpVelocity && !controller.Grounded())
+        if(controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded())
         {
             controller.Force(Physics.gravity.normalized,stats.fallMultiplier, ForceMode.Force);
         }

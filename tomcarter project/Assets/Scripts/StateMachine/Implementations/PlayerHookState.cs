@@ -28,6 +28,7 @@ public class PlayerHookState : PlayerUnlockableSkill
         _line.enabled = false;
         _hookSprite.enabled = false;
         animationTrigger = stats.hookTrigger;
+        coolDown = stats.hookCooldown;
     }
 
     protected override void DoChecks()

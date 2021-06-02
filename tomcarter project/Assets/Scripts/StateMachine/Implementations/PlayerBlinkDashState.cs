@@ -57,21 +57,21 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
-        if(stateDone)
+        
+        controller.SetGravity(true);
+        controller.SetDrag(0);
+        if (controller.CurrentVelocity.y > 0)
         {
-            if (controller.CurrentVelocity.y > 0)
-            {
-                controller.SetVelocityY(controller.CurrentVelocity.y * stats.dashEndMultiplier);
-            }
-            if(controller.CurrentVelocity.x != 0)
-            {
-                controller.SetAcceleration(1);
-            }
-            else
-            {
-                controller.SetAcceleration(0);
-            }
-        }       
+            controller.SetVelocityY(controller.CurrentVelocity.y * stats.dashEndMultiplier);
+        }
+        if(controller.CurrentVelocity.x != 0)
+        {
+            controller.SetAcceleration(1);
+        }
+        else
+        {
+            controller.SetAcceleration(0);
+        }    
     }
     protected override void TransitionChecks()
     {
@@ -79,13 +79,9 @@ public class PlayerBlinkDashState : PlayerDashState
         if(counter >= stats.blinkDashLenght && !hardenRequest && !stateDone)
         {
             stateDone = true;
-            controller.SetDrag(0);
-            controller.SetGravity(true);
         }
         if(readyToHarden)
         {
-            controller.SetDrag(0);
-            controller.SetGravity(true);
             controller.SetAcceleration(1);
             controller.SetVelocityX(stats.hardenDashVelocity * controller.lastDirection);
             _target.ChangeState<PlayerHardenState>();
