@@ -66,11 +66,14 @@ public class MovementController : MonoBehaviour
     public bool Grounded()
     {
        int n = 0;
+       RaycastHit tmpHit = new RaycastHit();
        for(int i = 0; i < groundCheck.Length; i++){
-           if(Physics.Raycast(groundCheck[i].position, -Vector2.up, out groundHit, _detectionLenght, _walkwable )){
+           if(Physics.Raycast(groundCheck[i].position, -Vector2.up, out tmpHit, _detectionLenght, _walkwable )){
                n++;
+               groundHit = tmpHit;
            }
        }
+       if (n == 0) { groundHit = tmpHit; }
        return n!=0 && CurrentVelocity.y < .01f;
     }
     
