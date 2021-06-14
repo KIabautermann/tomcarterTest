@@ -8,6 +8,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected PlayerInputHandler inputs;
     protected PlayerData stats;
     protected MovementController controller;
+    protected Platform platformManager;
     protected PlayerHealth playerHealth;
     protected static bool tookDamage;
 
@@ -22,6 +23,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
         playerHealth = GetComponent<PlayerHealth>();
         stats = target.stats;
         airState = GetComponent<PlayerOnAirState>();
+        platformManager = GetComponent<Platform>();
     }
 
     protected override void DoChecks()

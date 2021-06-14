@@ -35,6 +35,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
+
         DashJumpCoyoteTimeCheck();
 
         _hedgeCollisionsChecks = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size, Quaternion.identity,stats.hedge); 
@@ -47,13 +48,13 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         if(StartedDash()){
             controller.SetTotalVelocity(currentSpeed,direction);
             _velocityUpdated = true;
+            platformManager.LogicUpdated();
         } 
 
         if(!_velocityUpdated && _hedgeCollisionsChecks.Length != 0 && FitsInHedge()) {
             controller.SetTotalVelocity(currentSpeed,direction);
             _velocityUpdated = true;
         }
-        
     }
 
     protected override void DoPhysicsUpdate()
@@ -82,6 +83,8 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void DoTransitionOut()
     {
         Physics.IgnoreLayerCollision(9,10,false);
+
+        platformManager.LogicExit();
 
         if (controller.Grounded())
         {

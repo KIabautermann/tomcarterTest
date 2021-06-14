@@ -126,5 +126,6 @@ public class PlayerData : ScriptableObject
     public LayerMask solidGround;
     public LayerMask hazard;
     public LayerMask damage;
+    public LayerMask platform;
 
 }

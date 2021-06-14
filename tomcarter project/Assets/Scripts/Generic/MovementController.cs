@@ -18,6 +18,8 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private LayerMask _walkwable;
     [SerializeField]
+    private LayerMask _platform;
+    [SerializeField]
     private LayerMask _rootable;
     [SerializeField]
     private Transform[] groundCheck;
@@ -75,6 +77,18 @@ public class MovementController : MonoBehaviour
        }
        if (n == 0) { groundHit = tmpHit; }
        return n!=0 && CurrentVelocity.y < .01f;
+    }
+
+    public bool OnPlatform()
+    {
+       int n = 0;
+       RaycastHit tmpHit = new RaycastHit();
+       for(int i = 0; i < groundCheck.Length; i++){
+           if(Physics.Raycast(groundCheck[i].position, -Vector2.up, out tmpHit, _detectionLenght, _platform)){
+               n++;
+           }
+       }
+       return n!=0;
     }
     
     public bool OnRootable()

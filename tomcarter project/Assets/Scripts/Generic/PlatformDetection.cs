@@ -6,6 +6,7 @@ public class PlatformDetection : MonoBehaviour
 {
     public Collider _myCollider;
     private List<Collider> _ignoredList;
+    private int _layerMask;
 
     private void Awake()
     {
@@ -18,32 +19,36 @@ public class PlatformDetection : MonoBehaviour
         IgnoreCheck();
     }
     void IgnoreCheck(){
-        Collider[] detection = Physics.OverlapBox(_myCollider.bounds.center, (_myCollider.bounds.size + Vector3.one) / 2, Quaternion.identity);
-        if (_ignoredList.Count != 0){
-            for (int i = 0; i < _ignoredList.Count; i++){
-                for (int j = 0; j < detection.Length; j++){
-                    if (detection[j].Equals(_ignoredList[i])){
-                        Physics.IgnoreCollision(_myCollider, detection[i], true);
-                    }
-                    else{
-                        Physics.IgnoreCollision(_myCollider, detection[j], Ignore(detection[j]));
-                    }
-                    if (_ignoredList[i].bounds.min.y > _myCollider.bounds.max.y || _ignoredList[i].bounds.max.y < _myCollider.bounds.min.y){
-                        _ignoredList.Remove(_ignoredList[i]);
-                    }
-                }
-            }
-        }
-        else
+        Collider[] detection = Physics.OverlapBox(_myCollider.bounds.center, (_myCollider.bounds.size + Vector3.one) / 2, Quaternion.identity, _layerMask);
+        for (int i = 0; i < detection.Length; i++)
         {
-            for (int i = 0; i < detection.Length; i++)
-            {
-                Physics.IgnoreCollision(_myCollider, detection[i], Ignore(detection[i]));
-            }
+            Physics.IgnoreCollision(_myCollider, detection[i], Ignore(detection[i]));
         }
+        // if (_ignoredList.Count != 0){
+        //     for (int i = 0; i < _ignoredList.Count; i++){
+        //         for (int j = 0; j < detection.Length; j++){
+        //             if (detection[j].Equals(_ignoredList[i])){
+        //                 Physics.IgnoreCollision(_myCollider, detection[i], true);
+        //             }
+        //             else{
+        //                 Physics.IgnoreCollision(_myCollider, detection[j], Ignore(detection[j]));
+        //             }
+        //             if (_ignoredList[i].bounds.min.y > _myCollider.bounds.max.y || _ignoredList[i].bounds.max.y < _myCollider.bounds.min.y){
+        //                 _ignoredList.Remove(_ignoredList[i]);
+        //             }
+        //         }
+        //     }
+        // }
+        // else
+        // {
+        //     for (int i = 0; i < detection.Length; i++)
+        //     {
+        //         Physics.IgnoreCollision(_myCollider, detection[i], Ignore(detection[i]));
+        //     }
+        // }
     }
     bool Ignore(Collider target){
-        if(target.bounds.min.y > _myCollider.bounds.max.y -.2f){
+        if(target.bounds.min.y - _myCollider.bounds.max.y < .2f){
             return false;
         }
         return true;

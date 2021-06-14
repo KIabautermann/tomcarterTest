@@ -98,7 +98,7 @@ MonoBehaviour:
   rangeInitialImpulse: 10
   walkable:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 34048
   hedge:
     serializedVersion: 2
     m_Bits: 1024
@@ -117,3 +117,6 @@ MonoBehaviour:
   damage:
     serializedVersion: 2
     m_Bits: 18432
+  platform:
+    serializedVersion: 2
+    m_Bits: 32768

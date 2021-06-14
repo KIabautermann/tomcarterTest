@@ -20,6 +20,7 @@ public class PlayerDashJumpState : PlayerSkillState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
+        platformManager.LogicUpdated();
         setJumpVelocity();
         controller.FlipCheck(inputs.FixedAxis.x);
         if (inputs.FixedAxis.x == 0)
@@ -55,6 +56,7 @@ public class PlayerDashJumpState : PlayerSkillState
 
     protected override void DoTransitionOut()
     {
+        platformManager.LogicExit();
         base.DoTransitionOut();
     }
 

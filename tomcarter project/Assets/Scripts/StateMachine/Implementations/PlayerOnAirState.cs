@@ -21,9 +21,10 @@ public class PlayerOnAirState : PlayerState
     {
         controller.FlipCheck(inputs.FixedAxis.x);
         controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
+        
         JumpCoyoteTimeCheck();
     }
-
+    
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();

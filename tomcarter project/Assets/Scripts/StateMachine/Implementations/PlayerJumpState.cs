@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerJumpState : PlayerSkillState
 { 
+    private bool _jumped;
     private bool _dashJumpCoyoteTime;
     public override void Init(PlayerStateMachine target)
     {
@@ -19,9 +20,19 @@ public class PlayerJumpState : PlayerSkillState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();     
+        
+        bool jumpDown = inputs.FixedAxis.y < 0 && controller.OnPlatform();
+
+        if (!_jumped) {
+            _dashJumpCoyoteTime = !jumpDown;
+            controller.SetVelocityY((jumpDown ? -2 : 1) * stats.jumpVelocity);
+            _jumped = true;
+        } 
+
         DashJumpCoyoteTimeCheck();
         controller.FlipCheck(inputs.FixedAxis.x);
         controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime); 
+        platformManager.LogicUpdated();
     }
 
     protected override void DoPhysicsUpdate()
@@ -34,12 +45,12 @@ public class PlayerJumpState : PlayerSkillState
     {
         base.DoTransitionIn();
         inputs.UsedJump();
-        controller.SetVelocityY(stats.jumpVelocity);
-        _dashJumpCoyoteTime = true;
+        _jumped = false;
     }
 
     protected override void DoTransitionOut()
     {
+        platformManager.LogicExit();
         base.DoTransitionOut();
     }
 
@@ -57,10 +68,10 @@ public class PlayerJumpState : PlayerSkillState
         else if(inputs.JumpCancel){
             controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
             stateDone = true;
-        }
+        }   
         else if(controller.CurrentVelocity.y <=0){
             stateDone = true;
-        }      
+        } 
         else if (controller.Grounded())
         {
             _target.ChangeState<PlayerLandState>();
