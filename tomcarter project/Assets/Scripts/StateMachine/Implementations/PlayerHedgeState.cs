@@ -96,6 +96,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         }
         else
         {
+            controller.SetTotalVelocity(_currentSpeed, new Vector2(0, _direction.y));
             controller.SetAcceleration(0);
         }
     }

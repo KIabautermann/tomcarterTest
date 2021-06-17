@@ -53,6 +53,8 @@ public abstract class PlayerState : State<PlayerStateMachine>
         StopAllCoroutines();
     } 
 
+    // Tenemos que considerar posibles casos donde un base state hace una transicion, la state machine ejecuta el codigo de las TransitionIn/Out, pero despues
+    // un override de este metodo tambien llama a ChangeState. En este caso se podrian disparar animaciones a un estado al que no se transiciona
     protected override void TransitionChecks()
     {
         // No me gusta tener esto en una variable estatica, pero no se me ocurrio una alternativa al caso donde el evento corra el handler

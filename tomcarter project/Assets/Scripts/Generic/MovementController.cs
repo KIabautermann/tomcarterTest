@@ -22,6 +22,8 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private LayerMask _rootable;
     [SerializeField]
+    private LayerMask _hedge;
+    [SerializeField]
     private Transform[] groundCheck;
     [SerializeField]
     private Transform[] wallCheck;
@@ -102,6 +104,16 @@ public class MovementController : MonoBehaviour
            }
        }
        if (n == 0) { rootableHit = tmpHit; }
+       return n!=0 && CurrentVelocity.y < .01f;
+    }
+    public bool OnHedge()
+    {
+       int n = 0;
+       for(int i = 0; i < groundCheck.Length; i++){
+           if(Physics.Raycast(groundCheck[i].position, -Vector2.up, _detectionLenght, _hedge )){
+               n++;
+           }
+       }
        return n!=0 && CurrentVelocity.y < .01f;
     }
     public bool OnWall()

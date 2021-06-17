@@ -16,6 +16,10 @@ public class PlayerBaseDashState : PlayerDashState
     }
     protected override void DoLogicUpdate()
     {
+        if (controller.OnHedge() && _hedgeUnlocked && inputs.FixedAxis.y < 0) {
+            direction = Vector2.down;
+        }
+
         base.DoLogicUpdate();
     }
     protected override void DoPhysicsUpdate()

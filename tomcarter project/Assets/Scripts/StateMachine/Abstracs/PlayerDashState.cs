@@ -15,6 +15,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     private bool _velocityUpdated;
     private Collider[] _hedgeCollisionsChecks;
     private PlayerHedgeState playerHedgeState;
+    protected bool _hedgeUnlocked;
 
     // TODO: empezar a ver como la subscripcion de eventos deberia ser solo para el dash activo y no ambos. Podria traer muchos bardos
     public override void Init(PlayerStateMachine target)
@@ -25,6 +26,8 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         playerHedgeState.onTransitionIn.AddListener(OnHedge_Handler);
         PlayerEventSystem.GetInstance().OnGroundLand += OnGround_Handler;
         PlayerEventSystem.GetInstance().OnHazardHit += OnHazard_Handler;
+        _hedgeUnlocked = abilitySystem.IsPermanentlyUnlocked(typeof(PlayerHedgeState));
+        abilitySystem.OnAbilityUnlocked += HedgeUnlockHandler;
     }
 
     protected override void DoChecks()
@@ -40,9 +43,8 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
 
         _hedgeCollisionsChecks = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size, Quaternion.identity,stats.hedge); 
 
-        if (_hedgeCollisionsChecks.Length != 0 && !FitsInHedge()) {
+        if (_hedgeCollisionsChecks.Length != 0 && !FitsInHedge(direction)) {
             Physics.IgnoreLayerCollision(9,10,false);
-            _velocityUpdated = true;
         }
 
         if(StartedDash()){
@@ -51,7 +53,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
             platformManager.LogicUpdated();
         } 
 
-        if(!_velocityUpdated && _hedgeCollisionsChecks.Length != 0 && FitsInHedge()) {
+        if(!_velocityUpdated && _hedgeCollisionsChecks.Length != 0 && FitsInHedge(direction)) {
             controller.SetTotalVelocity(currentSpeed,direction);
             _velocityUpdated = true;
         }
@@ -72,12 +74,17 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         controller.SetDrag(stats.drag);
         coyoteTime = false;
         dashJumpCoyoteTime = controller.Grounded();
-        Physics.IgnoreLayerCollision(9,10,true);
+        Debug.Log(playerHedgeState);
+        Physics.IgnoreLayerCollision(9,10, _hedgeUnlocked);
         _velocityUpdated = false;
         _hedgeCollisionsChecks = new Collider[0];
         ToggleLock(!controller.Grounded());
     }
 
+    private void HedgeUnlockHandler(object sender, PlayerAbilitySystem.AbiltyUnlockedEventArgs args) 
+    {
+        _hedgeUnlocked = args.added.Contains(typeof(PlayerHedgeState)) || !args.removed.Contains(typeof(PlayerHedgeState));
+    }
     protected bool StartedDash() => counter > + stats.dashStartUp;
 
     protected override void DoTransitionOut()
@@ -109,15 +116,15 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void TransitionChecks()
     {
         base.TransitionChecks();   
-        if (_hedgeCollisionsChecks.Length != 0 && FitsInHedge())
+        if (_hedgeCollisionsChecks.Length != 0 && FitsInHedge(direction))
         {                  
-            _target.ChangeState<PlayerHedgeState>();  
             controller.SetDrag(0);
+            _target.ChangeState<PlayerHedgeState>();  
         }
         else if(inputs.JumpInput && dashJumpCoyoteTime)
         {
-            _target.ChangeState<PlayerDashJumpState>();
-            inputs.UsedJump();            
+            inputs.UsedJump();       
+            _target.ChangeState<PlayerDashJumpState>();     
         }    
     }
 
@@ -131,7 +138,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         }
     }
 
-    private bool FitsInHedge() 
+    private bool FitsInHedge(Vector2 dir) 
     {   
         // If there's a hedge in proximity, check via raycast whether the player fits into the oncominghedge
         //
@@ -153,7 +160,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         // angosto o mas ancho. Este codigo podriamos moverlo a algun util probablemente
         Vector3 colliderSize = controller.myCollider.bounds.size;
         Vector3 extentsSize = controller.myCollider.bounds.extents;
-        Vector2 zeroedDirection = new Vector2(Math.Abs(direction.x), Math.Abs(direction.y)).normalized;
+        Vector2 zeroedDirection = new Vector2(Math.Abs(dir.x), Math.Abs(dir.y)).normalized;
         float rotationAngle = zeroedDirection.x == 1 ? 0 : zeroedDirection.y == 1 ? 90 :  (float) (Math.Atan(zeroedDirection.y / zeroedDirection.x) * (180/Math.PI));
         float colliderSideWallAngle = (float) (Math.Acos(Math.Pow(extentsSize.magnitude, 2) * 2 - Math.Pow(colliderSize.y, 2) / (2 * extentsSize.magnitude * 2)) * (180/Math.PI));
         float colliderVerticalWallAngle = (float) (Math.Acos(Math.Pow(extentsSize.magnitude, 2) * 2 - Math.Pow(colliderSize.x, 2) / (2 * extentsSize.magnitude * 2)) * (180/Math.PI));
@@ -162,13 +169,13 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         baseAngle *= 0.85f;
         bool topHit = Physics.Raycast(
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
-            Quaternion.Euler(0, 0, (baseAngle * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(direction.x, direction.y, 0), 
+            Quaternion.Euler(0, 0, (baseAngle * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(dir.x, dir.y, 0), 
             out RaycastHit topHitInfo, 
             stats.collisionDetection + Math.Max(extentsSize.x, extentsSize.y), 
             stats.hedge);
         bool bottomHit = Physics.Raycast(
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
-            Quaternion.Euler(0, 0, (-baseAngle * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(direction.x, direction.y, 0), 
+            Quaternion.Euler(0, 0, (-baseAngle * Math.Abs(rotationAngle - 45) / 45)) * new Vector3(dir.x, dir.y, 0), 
             out RaycastHit bottomHitInfo, 
             stats.collisionDetection + Math.Max(extentsSize.x, extentsSize.y), 
             stats.hedge);   
@@ -191,6 +198,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         PlayerEventSystem.GetInstance().OnGroundLand -= OnGround_Handler;
         playerHedgeState.onTransitionIn.RemoveListener(OnHedge_Handler);
         PlayerEventSystem.GetInstance().OnHazardHit -= OnHazard_Handler;
+        abilitySystem.OnAbilityUnlocked -= HedgeUnlockHandler;
         base.OnDestroyHandler();
     }
 
