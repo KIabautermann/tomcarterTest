@@ -27,7 +27,7 @@ public class PlayerHookState : PlayerUnlockableSkill
         _hookSprite = _hookPoint.GetComponent<SpriteRenderer>();
         _line.enabled = false;
         _hookSprite.enabled = false;
-        animationTrigger = stats.hookTrigger;
+        animationTrigger = stats.hookID;
         coolDown = stats.hookCooldown;
     }
 

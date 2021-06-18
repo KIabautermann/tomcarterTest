@@ -14,7 +14,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
-        animationTrigger = stats.hedgeTrigger;
+        animationTrigger = stats.hedgeID;
     }
 
     protected override void DoChecks()

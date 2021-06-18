@@ -10,7 +10,7 @@ public class PlayerRangeChargeState : PlayerState
     {
         base.Init(target);
         asynchronous = true;
-        animationTrigger = stats.chargeTrigger;
+        animationTrigger = stats.chargeID;
         coolDown = stats.rangeCooldown;
     }
 
@@ -25,7 +25,6 @@ public class PlayerRangeChargeState : PlayerState
         base.DoLogicUpdate();
         if(counter >= stats.rangeStartupTime + stats.rangeChargeTime && !charged){
             charged = true;
-            _target._animations.SetTrigger("full");
         }
     }
 

@@ -13,7 +13,7 @@ public class PlayerMeleeState : PlayerAttackState
         recoveryTime = stats.meleerecoveryTime;
         hitbox = stats.meleeHitbox;
         hitboxOffset = stats.meleeHiboxOffset;
-        animationTrigger = stats.meleeTrigger;
+        animationTrigger = stats.meleeID;
     }
 
     

@@ -8,7 +8,7 @@ public class PlayerIdleState : PlayerGroundedState
    public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
-        animationTrigger = stats.idleTrigger;
+        animationTrigger = stats.idleID;
     }
     protected override void DoChecks()
     {

@@ -8,7 +8,7 @@ public class PlayerLandState : PlayerGroundedState
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
-        animationTrigger = stats.landTrigger;
+        animationTrigger = stats.landID;
     }
     
     protected override void DoChecks()
