@@ -30,6 +30,7 @@ public class NpcDialogue : MonoBehaviour
     {
         popupDialogue = dialoguePopupPooler.GetItem(gameObject.transform.position, Quaternion.identity).GetComponent<PopupDialogue>();
         popupDialogue.LogicStart(dialogueDisplay);
+        popupDialogue.PoolCollected = () => popupDialogue = null;
     }
     public bool OutputNextLine()
     {
@@ -43,7 +44,7 @@ public class NpcDialogue : MonoBehaviour
 
     public void ExitDialoge()
     {
-        popupDialogue.Dispose();
+        popupDialogue.Display("");
     }
 
     private string GetNextLine() 

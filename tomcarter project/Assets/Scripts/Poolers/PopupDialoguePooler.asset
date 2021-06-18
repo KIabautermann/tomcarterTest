@@ -15,4 +15,4 @@ MonoBehaviour:
   poolName: Popup Pool
   prefabObject: {fileID: 2094967292157029285, guid: 06776c394abf4e7499b93eeaf3189c42,
     type: 3}
-  instanceAmount: 10
+  instanceAmount: 2

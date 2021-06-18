@@ -8,8 +8,6 @@ using System;
 using UnityEditor;
 #endif
 
-// Este pooler no es circular. No re encola los objetos apenas son solicitados. Puede que sea cuestionable ya que nos obliga a responsablemente volver a encolar los
-// objetos. No se si serviria para spammear particulas o proyectiles. Podemos considerar si armar otro Scriptable Object con esta feature
 [CreateAssetMenu(fileName = "NewObjectPooler", menuName = "Pooler")]
 [InitializeOnLoad]
 public class ObjectPooler : ScriptableObject
@@ -35,6 +33,8 @@ public class ObjectPooler : ScriptableObject
         gameObject.SetActive(true);
         gameObject.transform.position = position;
         gameObject.transform.rotation = quaternion;
+
+        objectPool.Enqueue(gameObject);
 
         return gameObject;
     }
@@ -62,7 +62,6 @@ public class ObjectPooler : ScriptableObject
         GameObject poolable = ((PoolableObject) sender).gameObject;
         borrowedElements[SceneManager.GetActiveScene().buildIndex].Remove(poolable);
         poolable.SetActive(false);
-        objectPool.Enqueue(poolable);
     }
 
     private void FreePooledObjects(Scene current, Scene next)
@@ -71,7 +70,7 @@ public class ObjectPooler : ScriptableObject
 
             PoolableObject poolable = gameObject.GetComponent<PoolableObject>();
             poolable.ResetSceneReferences();
-            objectPool.Enqueue(gameObject);
+            //objectPool.Enqueue(gameObject);
         }
         borrowedElements.Remove(current.buildIndex);
     }

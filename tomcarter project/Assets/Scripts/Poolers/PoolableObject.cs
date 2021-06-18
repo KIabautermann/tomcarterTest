@@ -11,5 +11,10 @@ public abstract class PoolableObject : MonoBehaviour
         DisposalRequested?.Invoke(this, new EventArgs());
         ResetSceneReferences();
     }
+    public void OnCollected() 
+    {
+        PoolCollected?.Invoke();
+    }
     public event EventHandler DisposalRequested;
+    public Action PoolCollected;
 }
