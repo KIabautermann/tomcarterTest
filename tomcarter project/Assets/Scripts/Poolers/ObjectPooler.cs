@@ -18,24 +18,31 @@ public class ObjectPooler : ScriptableObject
     public int instanceAmount;
     private Queue<GameObject> objectPool;
     private Dictionary<int, ISet<GameObject>> borrowedElements;
+    private Dictionary<GameObject, PoolableObject> poolableObjectComponents;
 
     public GameObject GetItem(Vector3 position, Quaternion quaternion)
     {
         GameObject gameObject = objectPool.Dequeue();
-        gameObject.GetComponent<PoolableObject>().OnCollected();
-        
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
         ISet<GameObject> set = borrowedElements.ContainsKey(sceneIndex) 
             ? borrowedElements[sceneIndex]
             : new HashSet<GameObject>();
 
+        // Si el game object esta activo, quiere decir que esta en uso y prestado
+        // Por lo tanto el pooler lo intentara recolectar, resetteandolo en el proceso
+        if (gameObject.activeSelf) poolableObjectComponents[gameObject].Collect();
+        
+        // Indicar que este game object esta en uso en la escena actualmente activa
         set.Add(gameObject);
         borrowedElements[sceneIndex] = set;
 
+        // Configuralo de manera inicial
         gameObject.SetActive(true);
         gameObject.transform.position = position;
         gameObject.transform.rotation = quaternion;
 
+        // Lo volvemos a encolar ya que esto es un pooler circular
         objectPool.Enqueue(gameObject);
 
         return gameObject;
@@ -44,6 +51,7 @@ public class ObjectPooler : ScriptableObject
     private void OnBegin() {
         objectPool = new Queue<GameObject>();
         borrowedElements = new Dictionary<int, ISet<GameObject>>();
+        poolableObjectComponents = new Dictionary<GameObject, PoolableObject>();
 
         parent = new GameObject();
         parent.name = poolName;
@@ -52,7 +60,9 @@ public class ObjectPooler : ScriptableObject
             GameObject instance = Instantiate(prefabObject, Vector3.zero, Quaternion.identity, parent.transform);
             instance.SetActive(false);
             objectPool.Enqueue(instance);
-            instance.GetComponent<PoolableObject>().DisposalRequested += DisposeFreeObject;
+            PoolableObject poolableObject = instance.GetComponent<PoolableObject>();
+            poolableObject.DisposalRequested += DisposeFreeObject;
+            poolableObjectComponents[instance] = poolableObject;
         }
         
         SceneManager.activeSceneChanged += FreePooledObjects;
@@ -71,8 +81,7 @@ public class ObjectPooler : ScriptableObject
         foreach (GameObject gameObject in borrowedElements[current.buildIndex]) {
 
             PoolableObject poolable = gameObject.GetComponent<PoolableObject>();
-            poolable.ResetSceneReferences();
-            //objectPool.Enqueue(gameObject);
+            poolable.Dispose();
         }
         borrowedElements.Remove(current.buildIndex);
     }
