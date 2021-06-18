@@ -52,12 +52,9 @@ public class PlayerDialogueState : PlayerInteractionState
         }
         else if (inputs.InteractionInput)
         {
-            Debug.Log("lei input");
             inputs.UsedInteraction();
             if (finishedLines) { interactionFinished = true; }
-            else { requestNextLine = true; 
-            
-            Debug.Log("cambie el reques next line");}
+            else { requestNextLine = true; }
         }
 
         base.DoLogicUpdate();
