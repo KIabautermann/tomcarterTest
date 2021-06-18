@@ -22,6 +22,8 @@ public class ObjectPooler : ScriptableObject
     public GameObject GetItem(Vector3 position, Quaternion quaternion)
     {
         GameObject gameObject = objectPool.Dequeue();
+        gameObject.GetComponent<PoolableObject>().OnCollected();
+        
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         ISet<GameObject> set = borrowedElements.ContainsKey(sceneIndex) 
             ? borrowedElements[sceneIndex]

@@ -28,9 +28,11 @@ public class NpcDialogue : MonoBehaviour
 
     public void Initialize()
     {
-        popupDialogue = dialoguePopupPooler.GetItem(gameObject.transform.position, Quaternion.identity).GetComponent<PopupDialogue>();
-        popupDialogue.LogicStart(dialogueDisplay);
-        popupDialogue.PoolCollected = () => popupDialogue = null;
+        if (popupDialogue == null) {
+            popupDialogue = dialoguePopupPooler.GetItem(gameObject.transform.position, Quaternion.identity).GetComponent<PopupDialogue>();
+            popupDialogue.LogicStart(dialogueDisplay);
+            popupDialogue.PoolCollected = () => popupDialogue = null;
+        }
     }
     public bool OutputNextLine()
     {

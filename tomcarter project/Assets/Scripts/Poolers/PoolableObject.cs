@@ -14,6 +14,7 @@ public abstract class PoolableObject : MonoBehaviour
     public void OnCollected() 
     {
         PoolCollected?.Invoke();
+        PoolCollected = null;
     }
     public event EventHandler DisposalRequested;
     public Action PoolCollected;
