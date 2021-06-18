@@ -166,6 +166,8 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if(ctx.started)
         {
+            
+            Debug.Log("Interaction input");
             InteractionInput = true;
             InteractionCancel = false;
             _interactionStartTime = Time.time;

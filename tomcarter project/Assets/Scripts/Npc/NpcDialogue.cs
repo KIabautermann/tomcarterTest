@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NpcDialogue : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class NpcDialogue : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI dialogueDisplay;
+    [SerializeField]
+    private ObjectPooler dialoguePopupPooler;
+    private PopupDialogue popupDialogue;
     private List<string> dialogueLines;
     private int currentLineIndex = 0;
 
@@ -22,17 +26,24 @@ public class NpcDialogue : MonoBehaviour
         dialogueLines = DialogueRepository.GetDialogueLines(npcNames).ToList();
     }
 
+    public void Initialize()
+    {
+        popupDialogue = dialoguePopupPooler.GetItem(gameObject.transform.position, Quaternion.identity).GetComponent<PopupDialogue>();
+        popupDialogue.LogicStart(dialogueDisplay);
+    }
     public bool OutputNextLine()
     {
         bool lastLine = currentLineIndex + 1 == dialogueLines.Count;
-        dialogueDisplay.text = GetNextLine();
-        if (!lastLine) { dialogueDisplay.text += NEXT_LINE_ENDING; }
+        string text = GetNextLine();
+        if (!lastLine) { text += NEXT_LINE_ENDING; }
+
+        popupDialogue.Display(text);
         return lastLine;
     }
 
     public void ExitDialoge()
     {
-        dialogueDisplay.text = "";
+        popupDialogue.Dispose();
     }
 
     private string GetNextLine() 

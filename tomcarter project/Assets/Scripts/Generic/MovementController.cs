@@ -122,7 +122,6 @@ public class MovementController : MonoBehaviour
        for(int i = 0; i < wallCheck.Length; i++){
            if(Physics.Raycast(wallCheck[i].position, Vector2.right * facingDirection,_detectionLenght, _walkwable )){
                n++;
-               Debug.Log("Wall");
            }
        }
        return n!=0;

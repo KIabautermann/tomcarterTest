@@ -56,16 +56,13 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         base.DoPhysicsUpdate();
         Vector3 checkPosition = controller.myCollider.bounds.center + controller.DirectionalDetection() * stats.hedgeDetectionOffset;
         Collider[] check = Physics.OverlapBox(checkPosition, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
-        if(check.Length == 0)
+        if(!_enteringHedge && check.Length == 0)
         {
             _exitingHedge = true;
             controller.SetTotalVelocity(0, Vector3.zero);
             controller.Force(_direction,stats.hedgeTransitionOutPush,ForceMode.Force);
         }
-        else
-        {
-            _exitingHedge = false;
-        }  
+        
         controller.SetTotalVelocity(_currentSpeed, _direction);    
     }
 

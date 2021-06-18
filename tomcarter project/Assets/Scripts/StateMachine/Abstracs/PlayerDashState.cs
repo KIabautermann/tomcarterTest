@@ -74,7 +74,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         controller.SetDrag(stats.drag);
         coyoteTime = false;
         dashJumpCoyoteTime = controller.Grounded();
-        Debug.Log(playerHedgeState);
         Physics.IgnoreLayerCollision(9,10, _hedgeUnlocked);
         _velocityUpdated = false;
         _hedgeCollisionsChecks = new Collider[0];

@@ -33,6 +33,7 @@ public class PlayerDialogueState : PlayerInteractionState
             else
             {
                 npcDialogueComponent = npcDialogue as NpcDialogue;
+                npcDialogueComponent.Initialize();
             }
         }
         else
@@ -51,9 +52,12 @@ public class PlayerDialogueState : PlayerInteractionState
         }
         else if (inputs.InteractionInput)
         {
+            Debug.Log("lei input");
             inputs.UsedInteraction();
             if (finishedLines) { interactionFinished = true; }
-            else { requestNextLine = true; }
+            else { requestNextLine = true; 
+            
+            Debug.Log("cambie el reques next line");}
         }
 
         base.DoLogicUpdate();

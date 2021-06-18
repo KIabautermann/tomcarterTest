@@ -85,10 +85,6 @@ public class Platform : MonoBehaviour
         
         _checkResolved = true;
         
-        // foreach (Collider collider in _currentIgnoredColliders) {
-        //     Physics.IgnoreCollision(controller.myCollider, collider, false);
-        // }
-        // _currentIgnoredColliders = new HashSet<Collider>();
         StartCoroutine(RemoveAllCollidersIgnored());
     }
 
