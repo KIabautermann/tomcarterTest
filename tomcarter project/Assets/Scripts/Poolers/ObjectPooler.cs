@@ -4,13 +4,9 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using System;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 [CreateAssetMenu(fileName = "NewObjectPooler", menuName = "Pooler")]
-[InitializeOnLoad]
-public class ObjectPooler : ScriptableObject
+public class ObjectPooler : PersistedScriptableObject
 {    
     public string poolName;
     private GameObject parent;
@@ -48,7 +44,7 @@ public class ObjectPooler : ScriptableObject
         return gameObject;
     }
 
-    private void OnBegin() {
+    protected override void OnBegin() {
         objectPool = new Queue<GameObject>();
         borrowedElements = new Dictionary<int, ISet<GameObject>>();
         poolableObjectComponents = new Dictionary<GameObject, PoolableObject>();
@@ -93,45 +89,13 @@ public class ObjectPooler : ScriptableObject
         poolable.OnDispose();
         poolable.gameObject.SetActive(false);
     }
-    private void OnEnd() 
+    protected override void OnEnd() 
     { 
         // No se si hace falta realmente destruir estos objetos ya que este OnEnd se llama al frenar la ejecucion del juego
+        // Pero por ahi es mejor tenerlo para el modo play del editor cosa de que no sobreviva ningun objeto
+        // BURN THEM ALL!
         if (objectPool != null ) objectPool.ToList().ForEach(go => DestroyImmediate(go));
         DestroyImmediate(parent);
         objectPool = new Queue<GameObject>();
     }
-
-    #if UNITY_EDITOR
-        protected void OnEnable()
-        {
-            EditorApplication.playModeStateChanged += OnPlayStateChange;
-        }
- 
-        protected void OnDisable()
-        {
-            EditorApplication.playModeStateChanged -= OnPlayStateChange;
-        }
- 
-        void OnPlayStateChange(PlayModeStateChange state)
-        {
-            if(state == PlayModeStateChange.EnteredPlayMode)
-            {
-                OnBegin();
-            }
-            else if(state == PlayModeStateChange.ExitingPlayMode)
-            {
-                OnEnd();
-            }
-        }
-    #else
-        protected void OnEnable()
-        {
-            OnBegin();
-        }
- 
-        protected void OnDisable()
-        {
-            OnEnd();
-        }
-    #endif
 }

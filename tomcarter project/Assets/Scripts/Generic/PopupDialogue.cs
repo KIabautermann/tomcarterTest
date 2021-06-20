@@ -49,8 +49,8 @@ public class PopupDialogue : PoolableObject
     
     private void Start() 
     {    
-        rt = GetComponent<RectTransform>();
-        parentRt = gameObject.GetComponentInParent<RectTransform>();
+        //rt = GetComponent<RectTransform>();
+        //parentRt = gameObject.GetComponentInParent<RectTransform>();
     }
     
     public override void ResetSceneReferences()
@@ -67,7 +67,7 @@ public class PopupDialogue : PoolableObject
     public void Display(string text)
     {
         _dialogueText.text = text;
-        Resize();
+        //Resize();
     }
 
     private void Resize() 
