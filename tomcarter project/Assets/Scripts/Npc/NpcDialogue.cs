@@ -40,6 +40,7 @@ public class NpcDialogue : MonoBehaviour
         string text = GetNextLine();
         if (!lastLine) { text += NEXT_LINE_ENDING; }
 
+        // Que pasa si alguien le saca el objeto antes de que termine la conversacion? No deberia ser posible, perooo
         popupDialogue.Display(text);
         return lastLine;
     }

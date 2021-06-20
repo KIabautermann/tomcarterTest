@@ -31,7 +31,7 @@ public class ObjectPooler : ScriptableObject
 
         // Si el game object esta activo, quiere decir que esta en uso y prestado
         // Por lo tanto el pooler lo intentara recolectar, resetteandolo en el proceso
-        if (gameObject.activeSelf) poolableObjectComponents[gameObject].Collect();
+        if (gameObject.activeSelf) DisposePoolable(poolableObjectComponents[gameObject]);
         
         // Indicar que este game object esta en uso en la escena actualmente activa
         set.Add(gameObject);
@@ -69,21 +69,29 @@ public class ObjectPooler : ScriptableObject
         DontDestroyOnLoad(this);
     }
 
+    // Hanlder para el Pooler cuando un PoolableObject avisa que el borrower lo libero
     private void DisposeFreeObject(object sender, EventArgs eventArgs) 
     {
-        GameObject poolable = ((PoolableObject) sender).gameObject;
-        borrowedElements[SceneManager.GetActiveScene().buildIndex].Remove(poolable);
-        poolable.SetActive(false);
+        PoolableObject poolable = (PoolableObject) sender;
+        GameObject gameObject = poolable.gameObject;
+        DisposePoolable(poolable);
+        borrowedElements[SceneManager.GetActiveScene().buildIndex].Remove(gameObject);
     }
 
+    // Handler para cuando hay un cambio de escenas y hace falta recolectar todos los objetos prestados en la escena
     private void FreePooledObjects(Scene current, Scene next)
     {
         foreach (GameObject gameObject in borrowedElements[current.buildIndex]) {
-
-            PoolableObject poolable = gameObject.GetComponent<PoolableObject>();
-            poolable.Dispose();
+            DisposePoolable(gameObject.GetComponent<PoolableObject>());
         }
         borrowedElements.Remove(current.buildIndex);
+    }
+
+    // Llama al OnDispose del objeto y desactiva su gameObject
+    private void DisposePoolable(PoolableObject poolable)
+    {
+        poolable.OnDispose();
+        poolable.gameObject.SetActive(false);
     }
     private void OnEnd() 
     { 
