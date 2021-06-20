@@ -9,7 +9,7 @@ public class PlayerOnAirState : PlayerState
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
-        animationTrigger = stats.airTrigger;
+        animationTrigger = stats.airID;
     }
 
     protected override void DoChecks()

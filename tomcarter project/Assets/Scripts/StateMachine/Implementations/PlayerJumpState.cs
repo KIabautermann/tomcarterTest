@@ -9,7 +9,7 @@ public class PlayerJumpState : PlayerSkillState
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
-        animationTrigger = stats.jumpTrigger;
+        animationTrigger = stats.jumpID;
     }
    
    protected override void DoChecks()

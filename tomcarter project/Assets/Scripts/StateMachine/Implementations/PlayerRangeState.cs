@@ -12,7 +12,7 @@ public class PlayerRangeState : PlayerAttackState
         recoveryTime = stats.rangerecoveryTime;
         hitbox = stats.rangeHitbox;
         hitboxOffset = stats.rangeHiboxOffset;
-        animationTrigger = stats.rangeTrigger;
+        animationTrigger = stats.rangeID;
     }
     protected override void DoChecks()
     {

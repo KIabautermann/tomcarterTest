@@ -11,7 +11,7 @@ public class PlayerBlinkDashState : PlayerDashState
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
-        animationTrigger = stats.blinkTrigger;
+        animationTrigger = stats.blinkID;
     }
     protected override void DoChecks()
     {

@@ -7,15 +7,14 @@ using System;
 
 public class PlayerStateMachine : MonoBehaviour
 {
-    protected State<PlayerStateMachine> _currentState;
-    protected State<PlayerStateMachine> _currentSubstate;
+    public State<PlayerStateMachine> _currentState {get; private set;}
+    public State<PlayerStateMachine> _currentSubstate {get; private set;}
     
     [SerializeField]
     private TextMeshProUGUI _currentStateDisplay;
     public PlayerData stats;
     private PlayerAbilitySystem abilitySystem;    
-    private ComponentCache<PlayerState> allStates; 
-    public AnimationController _animations;
+    private ComponentCache<PlayerState> allStates;
 
     public virtual void Start()
     {
@@ -25,8 +24,6 @@ public class PlayerStateMachine : MonoBehaviour
         _currentSubstate = null;
 
         allStates = abilitySystem.GetAvailableStates();
-
-        _animations = GetComponent<AnimationController>();
         
         foreach(var state in allStates.GetAllInstances())
         {
@@ -45,7 +42,6 @@ public class PlayerStateMachine : MonoBehaviour
                     if(_currentSubstate == null){
 
                         _currentSubstate = newState;
-                        _animations.SetBool(_currentSubstate.animationTrigger,true);
                         _currentStateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
                         _currentSubstate.TriggerTransitionIn();
                     }
@@ -53,10 +49,8 @@ public class PlayerStateMachine : MonoBehaviour
                 else{
                     if(_currentState!= null){
                         _currentState.TriggerTransitionOut();
-                        _animations.SetBool(_currentState.animationTrigger,false);  
                     }    
                     _currentState = newState;
-                    _animations.SetBool(_currentState.animationTrigger,true);
                     _currentState.TriggerTransitionIn();   
                     if(_currentSubstate!=null) _currentStateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
                     else _currentStateDisplay.text = _currentState.animationTrigger;
@@ -95,7 +89,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void removeSubState(){
         if(_currentSubstate!=null){
-            _animations.SetBool(_currentSubstate.animationTrigger, false);
             _currentSubstate.TriggerTransitionOut();
             _currentSubstate = null;
         }       

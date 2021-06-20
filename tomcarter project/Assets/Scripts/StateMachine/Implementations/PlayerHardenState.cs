@@ -11,7 +11,7 @@ public class PlayerHardenState : PlayerUnlockableSkill
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
-        animationTrigger = stats.hardenTrigger;
+        animationTrigger = stats.hardenID;
     }
     
     public override string ToString()
