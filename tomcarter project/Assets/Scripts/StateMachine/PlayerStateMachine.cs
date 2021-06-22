@@ -11,25 +11,33 @@ public class PlayerStateMachine : MonoBehaviour
     public State<PlayerStateMachine> _currentSubstate {get; private set;}
     
     [SerializeField]
+    public CanvasReference canvasReference;
     private TextMeshProUGUI _currentStateDisplay;
     public PlayerData stats;
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates;
-
     public virtual void Start()
     {
         abilitySystem = GetComponent<PlayerAbilitySystem>();
         abilitySystem.OnAbilityUnlocked += AbilityUnlocked_Handler;
-
         _currentSubstate = null;
-
+        
         allStates = abilitySystem.GetAvailableStates();
         
         foreach(var state in allStates.GetAllInstances())
         {
             state.Init(this);
         }
-        
+
+        StartCoroutine(LoadScriptableObjects());
+    }
+    
+    private IEnumerator LoadScriptableObjects() 
+    {
+        while (!canvasReference.IsLoaded) {
+            yield return new WaitForEndOfFrame();
+        }
+        _currentStateDisplay = canvasReference.GetTextMeshForGameObject(CanvasElement.TopBanner);
         ChangeState<PlayerIdleState>();
     }
     public void ChangeState<T>() where T : PlayerState

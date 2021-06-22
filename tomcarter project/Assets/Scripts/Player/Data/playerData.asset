@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   collisionDetection: 0.6
-  idleTrigger: idle
-  movementTrigger: run
+  idleID: idle
+  movementID: run
   movementVelocity: 7
   groundedAccelerationTime: 0.2
   airAccelerationTime: 0.4
-  airTrigger: air
-  jumpTrigger: jump
-  landTrigger: land
+  airID: air
+  jumpID: jump
+  landID: land
   jumpVelocity: 9
   jumpLenght: 0.15
   fallMultiplier: 5
@@ -29,8 +29,8 @@ MonoBehaviour:
   shortHopMultiplier: 0.4
   maxFallVelocity: -20
   amountOfJumps: 1
-  dashTrigger: dash
-  blinkTrigger: blink
+  dashID: dash
+  blinkID: blink
   dashCooldown: 0.3
   dashStartUp: 0.05
   dashLenght: 0.2
@@ -39,14 +39,14 @@ MonoBehaviour:
   blinkDashSpeed: 20
   drag: 10
   dashEndMultiplier: 0.2
-  dashJumpTrigger: dash_jump
+  dashJumpID: dash_jump
   dashJumpVelocityX: 12
   dashJumpAccelerationTime: 0.1
   dashJumpFallMultiplier: 0.3
   minDashJumpVelocity: 1
   dashCoyoteTime: 0.1
   jumpHandicapTime: 0.1
-  hookTrigger: hook
+  hookID: hook
   hookSpeed: 20
   circularSpeed: 4
   hookDetectionRadius: 0.1
@@ -55,21 +55,21 @@ MonoBehaviour:
   yVelocityMultiplier: 0.8
   hookAimAssistConeAngle: 30
   hookTarget: {x: 0.8, y: 0.4, z: 0}
-  hookMaxDistance: 3
-  hedgeTrigger: hedge
+  hookMaxDistance: 3.5
+  hedgeID: hedge
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 12
   hedgeTransitionOutPush: 7
   hedgeTransitionInTime: 0.1
   hedgeJumpHandicapTime: 0.2
-  dialogueTrigger: talk
+  dialogueID: talk
   npcDetectionLenght: 3
   npcDetectionRadius: 0.25
   rootChannelingDuration: 2
-  rootTrigger: root
+  rootID: root
   damageTrigger: dmg
   damagedDuration: 1
-  hardenTrigger: harden
+  hardenID: harden
   hardenTime: 0.5
   hardenMovementSpeed: 3
   hardenHookMultiplier: 1.2
@@ -77,15 +77,15 @@ MonoBehaviour:
   hardenDashChannelingTime: 0.5
   minBreakVelocity: 10
   ceilingExceptionMultiplier: 1.7
-  meleeTrigger: melee
+  meleeID: melee
   meleeStartupTime: 0.0625
   meleeHitboxTime: 0.125
   meleerecoveryTime: 0.125
   meleeHitbox: {x: 1.5, y: 0.7}
   meleeHiboxOffset: {x: 0.7, y: 0}
-  rangeTrigger: range
-  longRangeTrigger: long_range
-  chargeTrigger: charge
+  rangeID: range
+  longRangeID: long_range
+  chargeID: charge
   rangeStartupTime: 0.5625
   rangeHitboxTime: 0.1875
   rangerecoveryTime: 0

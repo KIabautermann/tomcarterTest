@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class SaveLoadController : MonoBehaviour
 {
-    private void OnEnable() {
-        SceneManager.sceneLoaded += LoadGame;
+    private void Awake() {
+        LoadGame();
     }
     
     public static event EventHandler<OnSaveCalledEventArgs> OnSaveCalled;
@@ -35,7 +35,7 @@ public class SaveLoadController : MonoBehaviour
             File.Delete(Application.persistentDataPath + FILE_NAME);
         }
     }
-    private void LoadGame(Scene scene, LoadSceneMode mode)
+    private void LoadGame()
     {
         if (File.Exists(Application.persistentDataPath + FILE_NAME))
         {

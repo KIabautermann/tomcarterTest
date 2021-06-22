@@ -12,9 +12,6 @@ public class NpcDialogue : MonoBehaviour
 
     [SerializeField]
     private DialogueRepository.NpcNames npcNames;
-
-    [SerializeField]
-    private TextMeshProUGUI dialogueDisplay;
     [SerializeField]
     private ObjectPooler dialoguePopupPooler;
     private PopupDialogue popupDialogue;
@@ -29,8 +26,10 @@ public class NpcDialogue : MonoBehaviour
     public void Initialize()
     {
         if (popupDialogue == null) {
-            popupDialogue = dialoguePopupPooler.GetItem(gameObject.transform.position, Quaternion.identity).GetComponent<PopupDialogue>();
-            popupDialogue.LogicStart(dialogueDisplay);
+            dialoguePopupPooler.GetItem(gameObject.transform.position, Quaternion.identity).GetInstance(typeof(PopupDialogue), out MonoBehaviour tmp);
+            popupDialogue = tmp as PopupDialogue;
+            Vector3 textPos = Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(0, 1.5f, 0));
+            popupDialogue.LogicStart(textPos);
             popupDialogue.PoolCollected = () => popupDialogue = null;
         }
     }
@@ -39,15 +38,15 @@ public class NpcDialogue : MonoBehaviour
         bool lastLine = currentLineIndex + 1 == dialogueLines.Count;
         string text = GetNextLine();
         if (!lastLine) { text += NEXT_LINE_ENDING; }
-
+        Vector3 textPos = Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(0, 1.5f, 0));
         // Que pasa si alguien le saca el objeto antes de que termine la conversacion? No deberia ser posible, perooo
-        popupDialogue.Display(text);
+        popupDialogue.Display(text, textPos);
         return lastLine;
     }
 
     public void ExitDialoge()
     {
-        popupDialogue.Display("");
+        popupDialogue.LogicEnd();
     }
 
     private string GetNextLine() 

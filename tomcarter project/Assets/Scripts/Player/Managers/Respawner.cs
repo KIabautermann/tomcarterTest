@@ -30,7 +30,7 @@ public class Respawner : MonoBehaviour
     }
     
     private void OnDestroy() {
-        StopCoroutine(safeZoneCheckRoutine);
+        if (safeZoneCheckRoutine != null) StopCoroutine(safeZoneCheckRoutine);
         PlayerEventSystem.GetInstance().OnHazardHit -= HazardHitHandler;
     }
 

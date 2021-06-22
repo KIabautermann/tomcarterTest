@@ -20,7 +20,6 @@ public class PlayerAbilitySystem : LoadableObject
     };
     public ComponentCache<PlayerState> GetAvailableStates()
     {
-        Debug.Log("Get available states");
         var activeStates = new List<PlayerState>();
         var inactiveStates = new List<PlayerState>();
         var stateListMap = new Dictionary<bool, List<PlayerState>>() {

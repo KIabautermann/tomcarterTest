@@ -15,8 +15,13 @@ public class ObjectPooler : PersistedScriptableObject
     private Queue<GameObject> objectPool;
     private Dictionary<int, ISet<GameObject>> borrowedElements;
     private Dictionary<GameObject, PoolableObject> poolableObjectComponents;
+    private Dictionary<GameObject, ComponentCache<MonoBehaviour>> componentCache;
 
-    public GameObject GetItem(Vector3 position, Quaternion quaternion)
+    // Devuelve una Cache de Componentes para evitar tener que pedir Scripts especificos cada vez que se Borrowea un GameObject 
+    // pooleable. Lo mas logico es que si alguien pide un objeto, es para referenciar a ciertos componentes suyos
+    // Si mas adelante, por ejemplo para proyectiles, queremos instanciar 200, 200 GetComponent<ProjectileScript>() nos
+    // saldria bastante caro
+    public ComponentCache<MonoBehaviour> GetItem(Vector3 position, Quaternion quaternion)
     {
         GameObject gameObject = objectPool.Dequeue();
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -41,24 +46,25 @@ public class ObjectPooler : PersistedScriptableObject
         // Lo volvemos a encolar ya que esto es un pooler circular
         objectPool.Enqueue(gameObject);
 
-        return gameObject;
+        return componentCache[gameObject];
     }
 
-    protected override void OnBegin() {
+    protected override void OnBeginImpl() {
         objectPool = new Queue<GameObject>();
         borrowedElements = new Dictionary<int, ISet<GameObject>>();
         poolableObjectComponents = new Dictionary<GameObject, PoolableObject>();
+        componentCache = new Dictionary<GameObject, ComponentCache<MonoBehaviour>>();
 
         parent = new GameObject();
         parent.name = poolName;
 
         for (int i = 0; i < instanceAmount; i++) {
             GameObject instance = Instantiate(prefabObject, Vector3.zero, Quaternion.identity, parent.transform);
-            instance.SetActive(false);
             objectPool.Enqueue(instance);
             PoolableObject poolableObject = instance.GetComponent<PoolableObject>();
             poolableObject.DisposalRequested += DisposeFreeObject;
             poolableObjectComponents[instance] = poolableObject;
+            componentCache[instance] = new ComponentCache<MonoBehaviour>(instance.GetComponentsInChildren<MonoBehaviour>(), new List<MonoBehaviour>());
         }
         
         SceneManager.activeSceneChanged += FreePooledObjects;
@@ -76,7 +82,8 @@ public class ObjectPooler : PersistedScriptableObject
 
     // Handler para cuando hay un cambio de escenas y hace falta recolectar todos los objetos prestados en la escena
     private void FreePooledObjects(Scene current, Scene next)
-    {
+    {   
+        if (current.buildIndex == -1) return; 
         foreach (GameObject gameObject in borrowedElements[current.buildIndex]) {
             DisposePoolable(gameObject.GetComponent<PoolableObject>());
         }
@@ -89,7 +96,7 @@ public class ObjectPooler : PersistedScriptableObject
         poolable.OnDispose();
         poolable.gameObject.SetActive(false);
     }
-    protected override void OnEnd() 
+    protected override void OnEndImpl() 
     { 
         // No se si hace falta realmente destruir estos objetos ya que este OnEnd se llama al frenar la ejecucion del juego
         // Pero por ahi es mejor tenerlo para el modo play del editor cosa de que no sobreviva ningun objeto

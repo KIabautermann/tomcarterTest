@@ -43,3 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37b010bd656e074b9575a83cbb98963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasReference: {fileID: 11400000, guid: 890af8292b2dce04cb75eb8270fc1db8, type: 2}
+  padding: {x: 10, y: 10}
+  maxSize: {x: 500, y: 400}
+  minSize: {x: 50, y: 25}

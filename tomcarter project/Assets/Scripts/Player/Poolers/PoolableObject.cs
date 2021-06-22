@@ -33,4 +33,8 @@ public abstract class PoolableObject : MonoBehaviour
     
     // Action para que el Borrower se entere de que un recurso que pidio prestado, se le quito
     public Action PoolCollected;
+
+    protected virtual void Start() {
+        this.gameObject.SetActive(false);
+    }
 }

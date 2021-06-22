@@ -8,8 +8,22 @@ using UnityEditor;
 [InitializeOnLoad]
 public abstract class PersistedScriptableObject : ScriptableObject
 {
-    protected abstract void OnBegin();
-    protected abstract void OnEnd();
+    private void OnBegin() 
+    {
+        DontDestroyOnLoad(this);
+        OnBeginImpl();
+        IsLoaded = true;
+    }
+    private void OnEnd()
+    {
+        OnEndImpl();
+        IsLoaded = false;
+    }
+
+    protected abstract void OnBeginImpl();
+    protected abstract void OnEndImpl();
+
+    public bool IsLoaded { get; private set; }
     
     #if UNITY_EDITOR
         protected void OnEnable()
