@@ -9,6 +9,8 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.Init(target);
         animationTrigger = stats.idleID;
+        stateIndex = stats.idleNumberID;
+    
     }
     protected override void DoChecks()
     {

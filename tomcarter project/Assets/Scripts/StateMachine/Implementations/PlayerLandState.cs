@@ -9,6 +9,7 @@ public class PlayerLandState : PlayerGroundedState
     {
         base.Init(target);
         animationTrigger = stats.landID;
+        stateIndex = stats.airNumberID;
     }
     
     protected override void DoChecks()
@@ -29,6 +30,7 @@ public class PlayerLandState : PlayerGroundedState
     protected override void DoTransitionIn()
     {
         PlayerEventSystem.GetInstance().TriggerPlayerHasLanded(transform.position);
+        animationIndex = 4;
         if(inputs.FixedAxis.x != 0)
         {
             _target.ChangeState<PlayerMovementState>();

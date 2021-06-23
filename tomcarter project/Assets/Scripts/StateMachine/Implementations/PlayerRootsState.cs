@@ -87,5 +87,6 @@ public class PlayerRootsState : PlayerSkillState
         abilitySystem = GetComponent<PlayerAbilitySystem>();
         base.Init(target);
         animationTrigger = stats.rootID;
+        stateIndex = stats.rootsNumberID;
     }
 }

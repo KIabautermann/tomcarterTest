@@ -21,6 +21,8 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public UnityEvent onPhysicsUpdate = new UnityEvent();
     public UnityEvent onTransitionOut = new UnityEvent();
     public string animationTrigger;
+    public int stateIndex;
+    public int animationIndex;
     protected float coolDown;
     public float counter;
     protected float endTime;
@@ -37,6 +39,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public void TriggerTransitionIn()
     {
         counter = 0;
+        animationIndex = 0;
         DoChecks();
         DoTransitionIn();
         onTransitionIn?.Invoke();  
@@ -75,6 +78,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     protected abstract void TransitionChecks();
 
     protected abstract void OnDestroyHandler();
+
 
     public bool OnCoolDown() => Time.time < endTime + coolDown;
     public bool IsLocked() => isLocked;

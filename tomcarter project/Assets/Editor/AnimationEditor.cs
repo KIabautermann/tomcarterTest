@@ -98,7 +98,7 @@ public class CustomTileData : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        return 30 * (x + 3);
+        return 32 * (x + 3);
     }
 }
 

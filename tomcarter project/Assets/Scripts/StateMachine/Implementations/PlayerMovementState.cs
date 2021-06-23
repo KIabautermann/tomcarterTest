@@ -10,6 +10,7 @@ public class PlayerMovementState : PlayerGroundedState
     {
         base.Init(target);
         animationTrigger = stats.movementID;
+        stateIndex = stats.runNumberID;
     }
 
     protected override void DoChecks()

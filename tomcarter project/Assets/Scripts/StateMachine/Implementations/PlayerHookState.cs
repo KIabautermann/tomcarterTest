@@ -28,6 +28,7 @@ public class PlayerHookState : PlayerUnlockableSkill
         _line.enabled = false;
         _hookSprite.enabled = false;
         animationTrigger = stats.hookID;
+        stateIndex = stats.hookNumberID;
         coolDown = stats.hookCooldown;
     }
 
@@ -60,6 +61,7 @@ public class PlayerHookState : PlayerUnlockableSkill
                     else
                     {
                         _hooked = true;
+                        animationIndex = 1;
                         controller.SetAcceleration(1);
                         dist = Vector3.Distance(_hookPoint.position, _target.transform.position);
                         controller.SetTotalVelocity(0,Vector3.zero);
