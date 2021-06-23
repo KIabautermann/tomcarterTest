@@ -80,14 +80,17 @@ public class PlayerStateMachine : MonoBehaviour
     private void Update() 
     {
         if(_currentState != null) _currentState.TriggerLogicUpdate();
-        if(_currentSubstate != null) _currentSubstate.TriggerLogicUpdate();
-        if(_currentState!=null) CheckForAnimation();      
+        if(_currentSubstate != null) _currentSubstate.TriggerLogicUpdate();    
     }
     private void FixedUpdate() 
     {
         if(_currentState != null) _currentState.TriggerPhysicsUpdate();
 
         if(_currentSubstate != null)  _currentSubstate.TriggerPhysicsUpdate();
+    }
+
+    private void LateUpdate() {
+        if(_currentState!=null) CheckForAnimation();          
     }
 
     public void AbilityUnlocked_Handler(object sender, PlayerAbilitySystem.AbiltyUnlockedEventArgs args)
