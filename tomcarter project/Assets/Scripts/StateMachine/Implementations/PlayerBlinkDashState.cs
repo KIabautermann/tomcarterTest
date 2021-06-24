@@ -51,7 +51,26 @@ public class PlayerBlinkDashState : PlayerDashState
         else
         {
             direction = new Vector2(controller.facingDirection,0);
-        }     
+        } 
+        if(direction.y == 0){
+            animationIndex = 2;
+        } 
+        else if(direction.x == 0){
+            if(direction.y>0){
+                animationIndex = 3;
+            }
+            else{
+                animationIndex = 4;
+            }
+        }
+        else{
+            if(direction.y>0){
+                animationIndex = 5;
+            }
+            else{
+                animationIndex = 6;
+            }         
+        }  
     }
 
     protected override void DoTransitionOut()
