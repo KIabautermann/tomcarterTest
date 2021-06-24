@@ -121,4 +121,8 @@ public class PlayerStateMachine : MonoBehaviour
             _currentSubstate = null;
         }       
     }   
+
+    public void EndTransientState(){
+        _currentState.GetComponent<PlayerTransientState>().ForceEnd();
+    }
 }

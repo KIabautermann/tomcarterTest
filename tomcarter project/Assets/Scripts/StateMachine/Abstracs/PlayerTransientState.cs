@@ -49,4 +49,8 @@ public class PlayerTransientState : PlayerState
             }           
         }
     }
+
+    public void ForceEnd(){
+        stateDone = true;
+    }
 }
