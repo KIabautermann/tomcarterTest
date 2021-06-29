@@ -70,12 +70,16 @@ public class Platform : MonoBehaviour
         {
             if (_currentIgnoredColliders.Contains(_detection[i])) {
                 float currPos_y = controller.myCollider.transform.position.y;
+                // Si el player ya cruzo la mitad, entonces ayudarlo a subir
                 if (_detection[i].transform.position.y <= currPos_y) {
+                    // Solo si no esta ya en tierra firme en la plataforma, o no tiene ya mas velocidad vertical que le sobre
                     if (!controller.OnPlatform() || controller.CurrentVelocity.y <= 0.1f) {
                         float forceToApply = Mathf.Max(_detection[i].bounds.max.y - controller.myCollider.bounds.min.y, 0) / (_detection[i].bounds.extents.y);
                         controller.SetVelocityY(2f * forceToApply);
                     }
-                } else {
+                }
+                // Si el player esta por debajo de la mitad Y del collider, empujarlo para abajo 
+                else {
                     controller.SetVelocityY(-2);
                 }
                 
@@ -85,6 +89,7 @@ public class Platform : MonoBehaviour
         
         _checkResolved = true;
         
+        // Borrar los ignore collider pero con algo de delay para permitirle al player que termine de cruzarlos
         StartCoroutine(RemoveAllCollidersIgnored());
     }
 

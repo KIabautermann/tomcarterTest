@@ -78,7 +78,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         Physics.IgnoreLayerCollision(9,10, _hedgeUnlocked);
         _velocityUpdated = false;
         _hedgeCollisionsChecks = new Collider[0];
-        ToggleLock(!controller.Grounded());
+        ToggleLock(true);
     }
 
     private void HedgeUnlockHandler(object sender, PlayerAbilitySystem.AbiltyUnlockedEventArgs args) 
@@ -93,9 +93,9 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
 
         platformManager.LogicExit();
 
+        // No pasar la negacion de Grounded al toggle ya que podria estar en falso por impactar con un hazard
         if (controller.Grounded())
         {
-            // No pasar la negacion de Grounded al toggle ya que podria estar en falso por impactar con un hazard
             ToggleLock(false);
         }
         
