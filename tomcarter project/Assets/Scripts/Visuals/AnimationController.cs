@@ -12,6 +12,7 @@ public class Animation2dArray
     public List<rowData> rows = new List<rowData>();
     public int x;
     public int y;
+    
 }
 
 public class AnimationController : MonoBehaviour
@@ -23,6 +24,11 @@ public class AnimationController : MonoBehaviour
     }
     public void PlayAnimation(int state, int index)
     {
-        _anim.Play(clips.rows[state].row[index].name);
+        if(clips.rows[state].row[index].name != null){
+            _anim.Play(clips.rows[state].row[index].name);
+        }     
+        else{
+            Debug.LogWarning("there's no animation");
+        }  
     }
 }

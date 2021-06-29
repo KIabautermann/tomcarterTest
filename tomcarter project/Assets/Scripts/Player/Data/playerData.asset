@@ -21,10 +21,10 @@ MonoBehaviour:
   airID: air
   jumpID: jump
   landID: land
-  jumpVelocity: 9
+  jumpVelocity: 10
   jumpLenght: 0.15
   fallMultiplier: 5
-  minJumpVelocity: 1
+  minJumpVelocity: 10
   coyoteTime: 0.1
   shortHopMultiplier: 0.4
   maxFallVelocity: -20
@@ -32,15 +32,15 @@ MonoBehaviour:
   dashID: dash
   blinkID: blink
   dashCooldown: 0.3
-  dashStartUp: 0.05
-  dashLenght: 0.2
+  dashStartUp: 0.02
+  dashLenght: 0.1
   blinkDashLenght: 0.2
-  dashSpeed: 15
-  blinkDashSpeed: 20
+  dashSpeed: 20
+  blinkDashSpeed: 30
   drag: 10
-  dashEndMultiplier: 0.2
+  dashEndMultiplier: 0.15
   dashJumpID: dash_jump
-  dashJumpVelocityX: 12
+  dashJumpVelocityX: 10
   dashJumpAccelerationTime: 0.1
   dashJumpFallMultiplier: 0.3
   minDashJumpVelocity: 1
@@ -120,3 +120,10 @@ MonoBehaviour:
   platform:
     serializedVersion: 2
     m_Bits: 32768
+  idleNumberID: 0
+  runNumberID: 1
+  airNumberID: 2
+  dashNumberID: 3
+  hardenNumberID: 6
+  hookNumberID: 4
+  rootsNumberID: 8

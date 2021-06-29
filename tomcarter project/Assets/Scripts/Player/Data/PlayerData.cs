@@ -128,6 +128,15 @@ public class PlayerData : ScriptableObject
     public LayerMask damage;
     public LayerMask platform;
 
-    
+    [Header("Animation ID")]
+    public int idleNumberID;
+    public int runNumberID;
+    public int airNumberID;
+    public int dashNumberID;
+    public int hardenNumberID;
+    public int hookNumberID;
+    public int rootsNumberID;
 }
+
+
 

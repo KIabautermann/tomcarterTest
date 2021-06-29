@@ -12,6 +12,7 @@ public class PlayerHardenState : PlayerUnlockableSkill
     {
         base.Init(target);
         animationTrigger = stats.hardenID;
+        stateIndex = stats.hardenNumberID;
     }
     
     public override string ToString()

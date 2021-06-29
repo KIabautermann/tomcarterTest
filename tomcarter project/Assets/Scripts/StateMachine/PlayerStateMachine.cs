@@ -16,10 +16,15 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerData stats;
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates;
+    private AnimationController _anim;
+
+    private Vector2 currentAnimationIndex;
+    private Vector2 lastAnimationIndex;
     public virtual void Start()
     {
         abilitySystem = GetComponent<PlayerAbilitySystem>();
         abilitySystem.OnAbilityUnlocked += AbilityUnlocked_Handler;
+        _anim = GetComponent<AnimationController>();
         _currentSubstate = null;
         
         allStates = abilitySystem.GetAvailableStates();
@@ -28,8 +33,8 @@ public class PlayerStateMachine : MonoBehaviour
         {
             state.Init(this);
         }
-
         StartCoroutine(LoadScriptableObjects());
+        lastAnimationIndex = (currentAnimationIndex);
     }
     
     private IEnumerator LoadScriptableObjects() 
@@ -39,6 +44,8 @@ public class PlayerStateMachine : MonoBehaviour
         }
         _currentStateDisplay = canvasReference.GetTextMeshForGameObject(CanvasElement.TopBanner);
         ChangeState<PlayerIdleState>();
+        _anim.PlayAnimation(_currentState.stateIndex, _currentState.animationIndex);
+        currentAnimationIndex.Set(_currentState.stateIndex, _currentState.animationIndex);
     }
     public void ChangeState<T>() where T : PlayerState
     {
@@ -73,14 +80,17 @@ public class PlayerStateMachine : MonoBehaviour
     private void Update() 
     {
         if(_currentState != null) _currentState.TriggerLogicUpdate();
-
-        if(_currentSubstate != null) _currentSubstate.TriggerLogicUpdate();
+        if(_currentSubstate != null) _currentSubstate.TriggerLogicUpdate();    
     }
     private void FixedUpdate() 
     {
         if(_currentState != null) _currentState.TriggerPhysicsUpdate();
 
         if(_currentSubstate != null)  _currentSubstate.TriggerPhysicsUpdate();
+    }
+
+    private void LateUpdate() {
+        if(_currentState!=null) CheckForAnimation();          
     }
 
     public void AbilityUnlocked_Handler(object sender, PlayerAbilitySystem.AbiltyUnlockedEventArgs args)
@@ -95,10 +105,24 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
+    private void CheckForAnimation(){
+        currentAnimationIndex.Set(_currentState.stateIndex, _currentState.animationIndex);
+        if(currentAnimationIndex != lastAnimationIndex){
+            _anim.PlayAnimation(_currentState.stateIndex, _currentState.animationIndex);
+            lastAnimationIndex = currentAnimationIndex;
+        }
+    }
+
+    public void SetAnimationIndex(int newIndex) => _currentState.animationIndex = newIndex;
+
     public void removeSubState(){
         if(_currentSubstate!=null){
             _currentSubstate.TriggerTransitionOut();
             _currentSubstate = null;
         }       
     }   
+
+    public void EndTransientState(){
+        _currentState.GetComponent<PlayerTransientState>().ForceEnd();
+    }
 }

@@ -28,6 +28,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         PlayerEventSystem.GetInstance().OnHazardHit += OnHazard_Handler;
         _hedgeUnlocked = abilitySystem.IsPermanentlyUnlocked(typeof(PlayerHedgeState));
         abilitySystem.OnAbilityUnlocked += HedgeUnlockHandler;
+        stateIndex = stats.dashNumberID;
     }
 
     protected override void DoChecks()

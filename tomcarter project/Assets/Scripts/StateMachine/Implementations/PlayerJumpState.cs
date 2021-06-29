@@ -10,6 +10,7 @@ public class PlayerJumpState : PlayerSkillState
     {
         base.Init(target);
         animationTrigger = stats.jumpID;
+        stateIndex = stats.airNumberID;
     }
    
    protected override void DoChecks()

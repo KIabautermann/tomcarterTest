@@ -10,6 +10,7 @@ public class PlayerOnAirState : PlayerState
     {
         base.Init(target);
         animationTrigger = stats.airID;
+        stateIndex = stats.airNumberID;
     }
 
     protected override void DoChecks()
@@ -38,6 +39,8 @@ public class PlayerOnAirState : PlayerState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        Debug.Log("s");
+        animationIndex = 2;
     }
 
     protected override void DoTransitionOut()
