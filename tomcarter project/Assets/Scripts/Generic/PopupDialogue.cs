@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class PopupDialogue : PoolableObject
 {
@@ -15,6 +16,8 @@ public class PopupDialogue : PoolableObject
     public Vector2 maxSize = new Vector2(1000, float.PositiveInfinity);
     [SerializeField]
     public Vector2 minSize;
+    [SerializeField]
+    public float talkingSpeed = 0.05f;
     public enum Mode
     {
         None        = 0,
@@ -26,6 +29,9 @@ public class PopupDialogue : PoolableObject
     private Mode controlAxes = Mode.Both;
     private string lastText = null;
     private Vector2 lastSize;
+
+    private bool _isLocked = false;
+    private Coroutine writtingCorouting;
 
      protected virtual float MinX { get {
             if ((controlAxes & Mode.Horizontal) != 0) return minSize.x / ScreenScale.x;
@@ -83,6 +89,7 @@ public class PopupDialogue : PoolableObject
     {
         _dialogueText.text = "";   
         _dialogueText = null;
+        parentRt.gameObject.SetActive(false);
     }
 
     public void LogicStart(Vector3 textPos)
@@ -99,13 +106,35 @@ public class PopupDialogue : PoolableObject
     }
     public void Display(string text, Vector3 textPos)
     {
+        if (_isLocked) return;
+
         parentRt.transform.position = textPos;
         rt.transform.position = textPos;
         _dialogueText.text = text;
         Resize();
         parentRt.gameObject.SetActive(true);
+        writtingCorouting = StartCoroutine(WriteTextToPopup(text));
+        _isLocked = true;
     }
 
+    public void EndLine()
+    {
+        StopCoroutine(writtingCorouting);
+        _dialogueText.text = lastText;
+        _isLocked = false;
+    }
+
+    public bool IsLocked() => _isLocked;
+    private IEnumerator WriteTextToPopup(string text) 
+    {
+        _dialogueText.text = "";
+        foreach (char c in text) {
+            _dialogueText.text += c;
+            yield return new WaitForSeconds(talkingSpeed);
+        }
+        
+        _isLocked = false;
+    }
     private void Resize() 
     {
         if (_dialogueText.text != lastText || lastSize != rt.rect.size )

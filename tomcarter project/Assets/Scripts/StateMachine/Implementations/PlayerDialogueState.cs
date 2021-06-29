@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerDialogueState : PlayerInteractionState
 {
     private NpcDialogue npcDialogueComponent;
-    private bool requestNextLine;
-    private bool finishedLines;
 
     public override void Init(PlayerStateMachine target)
     {
@@ -18,8 +16,6 @@ public class PlayerDialogueState : PlayerInteractionState
     {
         base.DoTransitionIn();
 
-        finishedLines = false;
-        requestNextLine = true;
         _target.removeSubState();
 
         if(Physics.Raycast(_target.transform.position, direction, out RaycastHit rayCastHit, stats.npcDetectionLenght, stats.npc))
@@ -34,6 +30,7 @@ public class PlayerDialogueState : PlayerInteractionState
             {
                 npcDialogueComponent = npcDialogue as NpcDialogue;
                 npcDialogueComponent.Initialize();
+                npcDialogueComponent.OutputNextLine();
             }
         }
         else
@@ -45,16 +42,10 @@ public class PlayerDialogueState : PlayerInteractionState
 
     protected override void DoLogicUpdate()
     {
-        if (requestNextLine)
-        {
-            finishedLines = npcDialogueComponent.OutputNextLine();
-            requestNextLine = false;
-        }
-        else if (inputs.InteractionInput)
+        if (inputs.InteractionInput)
         {
             inputs.UsedInteraction();
-            if (finishedLines) { interactionFinished = true; }
-            else { requestNextLine = true; }
+            if (npcDialogueComponent.OutputNextLine()) { interactionFinished = true; }
         }
 
         base.DoLogicUpdate();
@@ -62,8 +53,6 @@ public class PlayerDialogueState : PlayerInteractionState
 
     protected override void DoTransitionOut()
     {
-        finishedLines = false;
-        requestNextLine = false;
         npcDialogueComponent.ExitDialoge();
         npcDialogueComponent = null;
         base.DoTransitionOut();

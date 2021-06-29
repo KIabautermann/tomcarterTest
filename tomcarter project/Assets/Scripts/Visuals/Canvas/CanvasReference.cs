@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "CanvasReferencer", menuName = "Canvas Extensions")]
 public class CanvasReference : PersistedScriptableObject
 {
+    public SceneControllerObject SceneController;
     public ObjectPooler TextHoverPooler;
     public GameObject CanvasPrefab;
     private GameObject _canvas;
@@ -20,6 +22,8 @@ public class CanvasReference : PersistedScriptableObject
         _textMeshes = _canvas.GetComponentsInChildren<TextMeshProUGUI>()
             .Where(m => m.gameObject.activeSelf)
             .ToDictionary(m => GetCanvasElement(m.gameObject.name), m => m); 
+
+        DontDestroyOnLoad(_canvas);
     }
     protected override void OnEndImpl() {}
 
@@ -30,6 +34,7 @@ public class CanvasReference : PersistedScriptableObject
     {
         switch (element) {
             case CanvasElement.TextHover:
+                // Ir pensando como devolver estos con un cambio de escena
                 TextHoverPooler.GetItem(Vector3.zero, Quaternion.identity).GetInstance(typeof(TextMeshProUGUI), out MonoBehaviour tmp);
                 return tmp as TextMeshProUGUI;
         }
@@ -49,8 +54,11 @@ public class CanvasReference : PersistedScriptableObject
             case "HoverText":
                 elem = CanvasElement.TextHover;
                 break;
+            case "ToggleSceneText":
+                elem = CanvasElement.SceneButton;
+                break;
             default:
-                throw new System.Exception("Couldn't map canvas game object to an element Enum");
+                throw new System.Exception($"Couldn't map canvas game object {gameObjectName} to an element Enum");
         }
         return elem;
     }

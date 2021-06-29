@@ -39,7 +39,6 @@ public class PlayerOnAirState : PlayerState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        Debug.Log("s");
         animationIndex = 2;
     }
 

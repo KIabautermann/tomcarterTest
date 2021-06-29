@@ -6,5 +6,6 @@ public enum CanvasElement
 {
     PupupDialogueBox,
     TextHover,
-    TopBanner
+    TopBanner,
+    SceneButton
 }

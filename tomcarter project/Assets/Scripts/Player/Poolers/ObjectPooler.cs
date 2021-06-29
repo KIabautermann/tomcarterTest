@@ -16,6 +16,7 @@ public class ObjectPooler : PersistedScriptableObject
     private Dictionary<int, ISet<GameObject>> borrowedElements;
     private Dictionary<GameObject, PoolableObject> poolableObjectComponents;
     private Dictionary<GameObject, ComponentCache<MonoBehaviour>> componentCache;
+    private int currentSceneIndex;
 
     // Devuelve una Cache de Componentes para evitar tener que pedir Scripts especificos cada vez que se Borrowea un GameObject 
     // pooleable. Lo mas logico es que si alguien pide un objeto, es para referenciar a ciertos componentes suyos
@@ -57,6 +58,7 @@ public class ObjectPooler : PersistedScriptableObject
 
         parent = new GameObject();
         parent.name = poolName;
+        DontDestroyOnLoad(parent);
 
         for (int i = 0; i < instanceAmount; i++) {
             GameObject instance = Instantiate(prefabObject, Vector3.zero, Quaternion.identity, parent.transform);
@@ -83,11 +85,15 @@ public class ObjectPooler : PersistedScriptableObject
     // Handler para cuando hay un cambio de escenas y hace falta recolectar todos los objetos prestados en la escena
     private void FreePooledObjects(Scene current, Scene next)
     {   
-        if (current.buildIndex == -1) return; 
-        foreach (GameObject gameObject in borrowedElements[current.buildIndex]) {
+        int previousScene = currentSceneIndex;
+        currentSceneIndex = next.buildIndex;
+        if (previousScene == -1 || !borrowedElements.ContainsKey(previousScene)) return; 
+
+        foreach (GameObject gameObject in borrowedElements[previousScene]) {
             DisposePoolable(gameObject.GetComponent<PoolableObject>());
+            gameObject.SetActive(false);
         }
-        borrowedElements.Remove(current.buildIndex);
+        borrowedElements.Remove(previousScene);
     }
 
     // Llama al OnDispose del objeto y desactiva su gameObject
@@ -105,4 +111,5 @@ public class ObjectPooler : PersistedScriptableObject
         DestroyImmediate(parent);
         objectPool = new Queue<GameObject>();
     }
+
 }
