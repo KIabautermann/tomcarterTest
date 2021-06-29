@@ -46,4 +46,4 @@ MonoBehaviour:
   CanvasReference: {fileID: 11400000, guid: 890af8292b2dce04cb75eb8270fc1db8, type: 2}
   padding: {x: 10, y: 10}
   maxSize: {x: 500, y: 400}
-  minSize: {x: 50, y: 25}
+  minSize: {x: 0, y: 0}
