@@ -9,20 +9,67 @@ using UnityEngine.SceneManagement;
 public class NpcDialogue : MonoBehaviour
 {
     private const string NEXT_LINE_ENDING = "...";
+    [SerializeField]
+    private GameObject Player;
 
     [SerializeField]
     private DialogueRepository.NpcNames npcNames;
+
     [SerializeField]
     private ObjectPooler dialoguePopupPooler;
+
+    [SerializeField]
+    private float playerDetectionDistance = 5f;
+
+    [SerializeField]
+    private ObjectPooler hoverTextPooler;
+
+    private HoverInteractable hoverInteractable;
     private PopupDialogue popupDialogue;
     private List<string> dialogueLines;
     private int currentLineIndex = 0;
+    private Collider interactableObjectCollider;
 
     void Start()
     {
         dialogueLines = DialogueRepository.GetDialogueLines(npcNames).ToList();
+        interactableObjectCollider = GetComponent<BoxCollider>();
+        StartCoroutine(CheckForPlayerProximity());
+    }
+    
+    private IEnumerator CheckForPlayerProximity()
+    {
+        while (true) {
+            float distanceToPlayer = Vector3.Distance(Player.transform.position, this.gameObject.transform.position);
+
+            float secondsUntilNextCheck = (distanceToPlayer - playerDetectionDistance) / (playerDetectionDistance * 5);
+            secondsUntilNextCheck = Mathf.Max(0.1f, secondsUntilNextCheck);
+            secondsUntilNextCheck = Mathf.Min(30f, secondsUntilNextCheck);
+            yield return new WaitForSeconds(secondsUntilNextCheck);
+
+            if (distanceToPlayer <= playerDetectionDistance) {
+                ShowHoverText();
+            } else if (distanceToPlayer > playerDetectionDistance) {
+                HideHoverText();
+            }
+        }
     }
 
+    private void ShowHoverText()
+    {
+        if (hoverInteractable == null) {
+            hoverTextPooler.GetItem(Vector3.zero, Quaternion.identity).GetInstance(typeof(HoverInteractable), out MonoBehaviour tmp);
+            hoverInteractable = tmp as HoverInteractable;
+            hoverInteractable.PoolCollected = () => hoverInteractable = null;
+            hoverInteractable.LogicStart(interactableObjectCollider.bounds.max);
+        }
+    }
+    private void HideHoverText()
+    {
+        if (hoverInteractable != null) {
+            hoverInteractable.Dispose();
+        }
+    }
     public void Initialize()
     {
         if (popupDialogue == null) {

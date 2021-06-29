@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ba7a6c213420324091538d72c121c8c, type: 3}
-  m_Name: CanvasHoverTextPooler
+  m_Name: HoverInteractablePooler
   m_EditorClassIdentifier: 
-  poolName: Canvas Hover Text Pooler
-  prefabObject: {fileID: 3434687454117297513, guid: 7cbdc49b74acf9d419974088cb8b08bc,
+  poolName: HoverInteractablePooler
+  prefabObject: {fileID: 8904121880691392525, guid: 2e90513db36a4f44fabab8687d8e1270,
     type: 3}
   instanceAmount: 10
