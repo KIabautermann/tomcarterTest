@@ -21,13 +21,14 @@ public class HoverInteractable : PoolableObject
         base.Start();
     }
 
-    public void LogicStart(Vector3 hoverPosition)
+    public void LogicStart(string hoverText, Vector3 hoverPosition)
     {
         _hoverText = CanvasReference.GetTextMeshForGameObject(CanvasElement.TextHover);
         GameObject gameObject = _hoverText.gameObject;
         rt = gameObject.GetComponent<RectTransform>();
         gameObject.SetActive(true);
 
+        _hoverText.text = hoverText;
         this.hoverPosition = hoverPosition;
         Vector3 textPos = Camera.main.WorldToScreenPoint(hoverPosition);
         rt.transform.position = textPos;

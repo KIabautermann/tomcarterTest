@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class NpcDialogue : MonoBehaviour
 {
+    // Hardcodeadisima esta gilada, ver como integrarla al sistema de dialogo o dejarlo como serialize field y que quede 
+    // configurado en el prefab del NPCDialogue
+    private const string HOVER_TEXT = "Talk [UP]";
     private const string NEXT_LINE_ENDING = "...";
     [SerializeField]
     private GameObject Player;
@@ -61,7 +64,7 @@ public class NpcDialogue : MonoBehaviour
             hoverTextPooler.GetItem(Vector3.zero, Quaternion.identity).GetInstance(typeof(HoverInteractable), out MonoBehaviour tmp);
             hoverInteractable = tmp as HoverInteractable;
             hoverInteractable.PoolCollected = () => hoverInteractable = null;
-            hoverInteractable.LogicStart(interactableObjectCollider.bounds.max);
+            hoverInteractable.LogicStart(HOVER_TEXT, interactableObjectCollider.bounds.max);
         }
     }
     private void HideHoverText()
