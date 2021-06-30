@@ -27,14 +27,14 @@ public class SceneControllerObject : PersistedScriptableObject
     protected override void OnBeginImpl() {
     
         DontDestroyOnLoad(this);
-        List<Scene> scenes = new List<Scene>();
+        List<int> scenes = new List<int>();
         
         Scene currScene = SceneManager.GetActiveScene();
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
-            Scene s = SceneManager.GetSceneByBuildIndex(i);
+            Scene s = SceneManager.GetSceneAt(i);
             if (currScene != s && s.buildIndex != -1)
-                scenes.Add(SceneManager.GetSceneByBuildIndex(i));
+                scenes.Add(SceneManager.GetSceneAt(i).buildIndex);
         }
 
         scenes.ForEach(s => DeactivateAllObjects(s));        
@@ -42,42 +42,43 @@ public class SceneControllerObject : PersistedScriptableObject
         WaitForScriptableObjects(scenes);
     }
 
-    private async void WaitForScriptableObjects(List<Scene> scenes)
+    private async void WaitForScriptableObjects(List<int> scenes)
     {
         while (true) {
             if (ScriptableObjectsDependencies.All(so => so.IsLoaded)) break;
             await Task.Delay(100);
         }
-        
-        scenes.ForEach(s => ActivateAllObjects(s));
 
         LoadInitialScene(scenes);
     }
     
-    private void LoadInitialScene(List<Scene> availableScenes) 
+    private void LoadInitialScene(List<int> availableScenes) 
     {
         currSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if (SceneManager.GetActiveScene().buildIndex == PreloadScene && availableScenes.Count > 0) {
+        if (SceneManager.GetActiveScene().buildIndex == PreloadScene) {
             if (availableScenes.Count > 0) {
-                currSceneIndex = availableScenes[0].buildIndex;
+                currSceneIndex = availableScenes[0];
             } else {
                 currSceneIndex = DefaultScene;
             }
             SceneManager.LoadSceneAsync(currSceneIndex);
+            ActivateAllObjects(currSceneIndex);
         } 
     }
 
     // Idealmente esto nos permitiria que no corra ningun game object ANTES de que la inicializacion de los scriptable objects termine
     // peroo eso parece ser imposible asi que por el momento dejo estos aca hasta que veamos si nos sirve la logica eventualmente
-    private void DeactivateAllObjects(Scene s) 
+    private void DeactivateAllObjects(int sceneBuildIndex) 
     {
+        Scene s = SceneManager.GetSceneByBuildIndex(sceneBuildIndex);
         s.GetRootGameObjects().ToList().ForEach(go => go.SetActive(false));
         SceneManager.UnloadSceneAsync(s);
     } 
     
-    private void ActivateAllObjects(Scene s) 
+    private void ActivateAllObjects(int sceneBuildIndex) 
     {
+        Scene s = SceneManager.GetSceneByBuildIndex(sceneBuildIndex);
         s.GetRootGameObjects().ToList().ForEach(go => go.SetActive(true));
     } 
 }

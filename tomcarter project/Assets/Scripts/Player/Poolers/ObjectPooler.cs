@@ -79,7 +79,7 @@ public class ObjectPooler : PersistedScriptableObject
         PoolableObject poolable = (PoolableObject) sender;
         GameObject gameObject = poolable.gameObject;
         DisposePoolable(poolable);
-        borrowedElements[SceneManager.GetActiveScene().buildIndex].Remove(gameObject);
+        borrowedElements[currentSceneIndex].Remove(gameObject);
     }
 
     // Handler para cuando hay un cambio de escenas y hace falta recolectar todos los objetos prestados en la escena
