@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.Threading.Tasks;
 
 [CreateAssetMenu(fileName = "SceneController", menuName = "Scene Managers")]
 public class SceneControllerObject : PersistedScriptableObject
@@ -24,9 +25,10 @@ public class SceneControllerObject : PersistedScriptableObject
 
     protected override void OnEndImpl() {}
     protected override void OnBeginImpl() {
-     
+    
         DontDestroyOnLoad(this);
         List<Scene> scenes = new List<Scene>();
+        
         Scene currScene = SceneManager.GetActiveScene();
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
@@ -40,11 +42,13 @@ public class SceneControllerObject : PersistedScriptableObject
         WaitForScriptableObjects(scenes);
     }
 
-    private void WaitForScriptableObjects(List<Scene> scenes)
+    private async void WaitForScriptableObjects(List<Scene> scenes)
     {
         while (true) {
             if (ScriptableObjectsDependencies.All(so => so.IsLoaded)) break;
+            await Task.Delay(100);
         }
+        
         scenes.ForEach(s => ActivateAllObjects(s));
 
         LoadInitialScene(scenes);
