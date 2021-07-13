@@ -173,6 +173,36 @@ TextureImporter:
   - first:
       213: 4727826199982179612
     second: Prototipo Upper Front_56
+  - first:
+      213: -1204022930697855018
+    second: Prototipo Upper Front_57
+  - first:
+      213: -8891607532948954072
+    second: Prototipo Upper Front_58
+  - first:
+      213: -3579712592870235217
+    second: Prototipo Upper Front_59
+  - first:
+      213: 6960614279923714806
+    second: Prototipo Upper Front_60
+  - first:
+      213: 8460558160728337638
+    second: Prototipo Upper Front_61
+  - first:
+      213: 6773867823199653532
+    second: Prototipo Upper Front_62
+  - first:
+      213: 6125102567119264170
+    second: Prototipo Upper Front_63
+  - first:
+      213: 6633631979054275685
+    second: Prototipo Upper Front_64
+  - first:
+      213: -7960333095445508663
+    second: Prototipo Upper Front_65
+  - first:
+      213: 1266626192044498346
+    second: Prototipo Upper Front_66
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1450,6 +1480,216 @@ TextureImporter:
       bones: []
       spriteID: c1509b931ec9c9140800000000000000
       internalID: 4727826199982179612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo Upper Front_57
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df545216837a4fe0800000000000000
+      internalID: -1204022930697855018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo Upper Front_58
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 824e36cfe0aaa9480800000000000000
+      internalID: -8891607532948954072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo Upper Front_59
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa32af7ec5e425ec0800000000000000
+      internalID: -3579712592870235217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo Upper Front_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fa4d550fc1199060800000000000000
+      internalID: 6960614279923714806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo Upper Front_61
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ecaebb32d0f96570800000000000000
+      internalID: 8460558160728337638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo Upper Front_62
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e834d45ec910e50800000000000000
+      internalID: 6773867823199653532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo Upper Front_63
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa91af5255cb00550800000000000000
+      internalID: 6125102567119264170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo Upper Front_64
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56c933273256f0c50800000000000000
+      internalID: 6633631979054275685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo Upper Front_65
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cd4f20b937378190800000000000000
+      internalID: -7960333095445508663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo Upper Front_66
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aad94009fc5f39110800000000000000
+      internalID: 1266626192044498346
       vertices: []
       indices: 
       edges: []
