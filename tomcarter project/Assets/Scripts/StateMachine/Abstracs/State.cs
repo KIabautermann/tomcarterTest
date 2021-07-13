@@ -28,6 +28,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     protected float endTime;
     protected bool isLocked = false;
     public bool asynchronous;
+    protected bool endByAnimation;
 
     public virtual void Init(T target)
     {
@@ -44,6 +45,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
         DoTransitionIn();
         onTransitionIn?.Invoke();  
         isExiting = false;
+        endByAnimation = false;
     }
     protected abstract void DoTransitionIn();
 
@@ -78,6 +80,11 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     protected abstract void TransitionChecks();
 
     protected abstract void OnDestroyHandler();
+
+    public void AnimationEnded()
+    {
+        endByAnimation = true;
+    }
 
 
     public bool OnCoolDown() => Time.time < endTime + coolDown;

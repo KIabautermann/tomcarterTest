@@ -15,7 +15,7 @@ public class PlayerRootsState : PlayerSkillState
 
     protected override void DoLogicUpdate()
     {
-        if (inputs.RootsCancel) 
+        if (inputs.RootsCancel && !_channelFinished) 
         {
             stateDone = true;
         }
@@ -76,7 +76,10 @@ public class PlayerRootsState : PlayerSkillState
     {
         if (_channelFinished) 
         {
-            stateDone = true;
+            animationIndex = 2;
+            if(endByAnimation){
+                stateDone = true;
+            }
         }
 
         base.TransitionChecks();

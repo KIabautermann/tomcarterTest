@@ -70,7 +70,7 @@ MonoBehaviour:
   damageTrigger: dmg
   damagedDuration: 1
   hardenID: harden
-  hardenTime: 0.5
+  hardenTime: 1
   hardenMovementSpeed: 3
   hardenHookMultiplier: 1.2
   hardenDashVelocity: 20
@@ -124,6 +124,7 @@ MonoBehaviour:
   runNumberID: 1
   airNumberID: 2
   dashNumberID: 3
-  hardenNumberID: 6
+  hardenNumberID: 5
   hookNumberID: 4
-  rootsNumberID: 8
+  rootsNumberID: 6
+  meleeNumberID: 7

@@ -19,13 +19,7 @@ public abstract class PlayerAttackState : PlayerSkillState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        if(counter >=  startupTime && !activeHitbox){
-            activeHitbox = true;
-        }
-        if(counter >=  startupTime + hitboxTime && activeHitbox){
-            activeHitbox = false;
-        }
-        if(counter >=  startupTime + hitboxTime + recoveryTime){
+        if(endByAnimation){
             stateDone = true;
         }    
     }
