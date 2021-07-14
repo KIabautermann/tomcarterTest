@@ -137,6 +137,7 @@ public class PlayerData : ScriptableObject
     public int hookNumberID;
     public int rootsNumberID;
     public int meleeNumberID;
+    public int hedgeNumberID;
 }
 
 

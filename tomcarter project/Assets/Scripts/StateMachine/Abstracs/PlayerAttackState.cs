@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,10 +18,7 @@ public abstract class PlayerAttackState : PlayerSkillState
 
     protected override void DoLogicUpdate()
     {
-        base.DoLogicUpdate();
-        if(endByAnimation){
-            stateDone = true;
-        }    
+        base.DoLogicUpdate();       
     }
 
     protected override void DoPhysicsUpdate()
