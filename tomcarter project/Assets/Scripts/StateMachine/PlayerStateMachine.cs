@@ -142,4 +142,8 @@ public class PlayerStateMachine : MonoBehaviour
             _currentSubstate.AnimationEnded();
         }       
     }
+
+    public void PlayAnimation(int x, int y){
+        _anim.PlayAnimation(x,y);
+    }
 }

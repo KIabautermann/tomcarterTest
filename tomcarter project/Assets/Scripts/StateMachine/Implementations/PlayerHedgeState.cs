@@ -99,6 +99,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
             controller.SetTotalVelocity(_currentSpeed, new Vector2(0, _direction.y));
             controller.SetAcceleration(0);
         }
+        _target.PlayAnimation(stateIndex,2);
     }
 
     protected override void TransitionChecks()
