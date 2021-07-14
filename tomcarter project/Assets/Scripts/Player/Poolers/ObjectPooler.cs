@@ -58,6 +58,7 @@ public class ObjectPooler : PersistedScriptableObject
 
         parent = new GameObject();
         parent.name = poolName;
+        parent.transform.position = Vector3.zero;
         DontDestroyOnLoad(parent);
 
         for (int i = 0; i < instanceAmount; i++) {

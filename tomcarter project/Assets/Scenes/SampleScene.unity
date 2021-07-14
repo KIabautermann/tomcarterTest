@@ -2742,7 +2742,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.659256, y: 9.589598, z: -10}
+  m_LocalPosition: {x: -5.049988, y: 9.589998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4880,6 +4880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasReference: {fileID: 11400000, guid: 890af8292b2dce04cb75eb8270fc1db8, type: 2}
   stats: {fileID: 11400000, guid: a2bb1c849d658464a9372fb9db7693b0, type: 2}
+  afterImagePooler: {fileID: 11400000, guid: 31beeefd4c862244b80a3c32f35cda9a, type: 2}
 --- !u!136 &1677930210
 CapsuleCollider:
   m_ObjectHideFlags: 0

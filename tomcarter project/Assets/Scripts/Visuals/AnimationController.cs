@@ -31,4 +31,14 @@ public class AnimationController : MonoBehaviour
             Debug.LogWarning("there's no animation");
         }  
     }
+
+    public void PlayAnimationAtStart(int state, int index, float start)
+    {
+        if(clips.rows[state].row[index].name != null){
+            _anim.PlayInFixedTime(clips.rows[state].row[index].name, -1, start);
+        }     
+        else{
+            Debug.LogWarning("there's no animation");
+        }  
+    }
 }

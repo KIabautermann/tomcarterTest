@@ -48,7 +48,7 @@ MonoBehaviour:
   jumpHandicapTime: 0.1
   hookID: hook
   hookSpeed: 20
-  circularSpeed: 4
+  circularSpeed: 3.2
   hookDetectionRadius: 0.1
   maxAngle: 70
   hookCooldown: 0.4

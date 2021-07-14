@@ -12,7 +12,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected float coyoteStartTime;
     protected float currentSpeed;
     protected bool dashJumpCoyoteTime;
-    private bool _velocityUpdated;
+    public bool _velocityUpdated { get; private set;}
     private Collider[] _hedgeCollisionsChecks;
     private PlayerHedgeState playerHedgeState;
     protected bool _hedgeUnlocked;
@@ -39,7 +39,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-
+        
         DashJumpCoyoteTimeCheck();
 
         _hedgeCollisionsChecks = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size, Quaternion.identity,stats.hedge); 
@@ -48,16 +48,25 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
             Physics.IgnoreLayerCollision(9,10,false);
         }
 
+        // Arrancar dash si paso suficiente tiempo desde la transicion a este estado
         if(StartedDash()){
-            controller.SetTotalVelocity(currentSpeed,direction);
-            _velocityUpdated = true;
-            platformManager.LogicUpdated();
+            StartDash();
         } 
 
+        // Arrancar el dash solo UNA vez en el caso de estar pegado un hedge en frente
         if(!_velocityUpdated && _hedgeCollisionsChecks.Length != 0 && FitsInHedge(direction)) {
-            controller.SetTotalVelocity(currentSpeed,direction);
-            _velocityUpdated = true;
+            StartDash();
         }
+
+    }
+
+    private void StartDash()
+    {
+        controller.SetTotalVelocity(currentSpeed,direction);
+        _velocityUpdated = true;
+        // Cambiar el index de animacion
+        ChangeAnimationIndex();
+        platformManager.LogicUpdated();
     }
 
     protected override void DoPhysicsUpdate()
@@ -85,7 +94,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     {
         _hedgeUnlocked = args.added.Contains(typeof(PlayerHedgeState)) || !args.removed.Contains(typeof(PlayerHedgeState));
     }
-    protected bool StartedDash() => counter > + stats.dashStartUp;
+    protected bool StartedDash() => counter > stats.dashStartUp;
 
     protected override void DoTransitionOut()
     {
@@ -128,14 +137,21 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         }    
     }
 
+    protected abstract void ChangeAnimationIndex();
     public void DashJumpCoyoteTimeStart() => dashJumpCoyoteTime = true;
 
     private void DashJumpCoyoteTimeCheck()
     {
         if (dashJumpCoyoteTime && counter > stats.jumpHandicapTime)
         {
-            dashJumpCoyoteTime = false;
+            StartCoroutine(EndDashJumpCoyote());
         }
+    }
+
+    private IEnumerator EndDashJumpCoyote() 
+    {
+        yield return new WaitForEndOfFrame();
+        dashJumpCoyoteTime = false;
     }
 
     private bool FitsInHedge(Vector2 dir) 

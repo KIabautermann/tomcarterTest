@@ -46,4 +46,9 @@ public class PlayerBaseDashState : PlayerDashState
             controller.SetGravity(true);
         }
     }
+
+    protected override void ChangeAnimationIndex() 
+    {
+
+    }
 }

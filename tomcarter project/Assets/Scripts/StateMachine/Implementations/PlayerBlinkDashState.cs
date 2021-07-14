@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerBlinkDashState : PlayerDashState
 {
+    private bool _playedAfterImage;
     private bool hardenRequest;
     private bool readyToHarden;
     private float hardenCounter;
+    private ObjectPooler afterImagePooler;
 
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
         animationTrigger = stats.blinkID;
+        afterImagePooler = target.afterImagePooler;
     }
     protected override void DoChecks()
     {
@@ -26,10 +29,36 @@ public class PlayerBlinkDashState : PlayerDashState
             controller.SetAcceleration(0);
             hardenCounter = Time.time;
             inputs.UsedGuard();
+            // Animacion especifica para cargar el harden dash
         }
         if(hardenRequest){
             HardenSetout();
         }
+
+        if (_velocityUpdated && !_playedAfterImage) {
+            _playedAfterImage = true;
+            StartCoroutine(InstanceAfterImage());
+        }
+    }
+
+    private IEnumerator InstanceAfterImage()
+    { 
+        while (!stateDone) {
+            yield return new WaitForSeconds(0.05f);
+
+            GameObject afterImageParent = new GameObject();
+            ComponentCache<MonoBehaviour> afterImageComponents = afterImagePooler.GetItem(Vector3.zero, Quaternion.identity);
+            afterImageComponents.GetInstance(typeof(PlayerAfterImageSprite), out MonoBehaviour tmp);
+            PlayerAfterImageSprite pais = tmp as PlayerAfterImageSprite;
+
+            pais.gameObject.transform.SetParent(afterImageParent.transform);
+            pais.PoolCollected = () => Destroy(afterImageParent);
+
+            pais.LogicStart(this.gameObject.transform.position, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
+        }
+
+        
+
     }
 
     protected override void DoPhysicsUpdate()
@@ -42,6 +71,7 @@ public class PlayerBlinkDashState : PlayerDashState
         base.DoTransitionIn();
         hardenRequest = false;
         readyToHarden = false;
+        _playedAfterImage = false;
         currentSpeed = stats.blinkDashSpeed;
         if(inputs.FixedAxis != Vector2.zero)
         {
@@ -52,6 +82,13 @@ public class PlayerBlinkDashState : PlayerDashState
         {
             direction = new Vector2(controller.facingDirection,0);
         } 
+    }
+
+    protected override void ChangeAnimationIndex()
+    {
+        // No cambiar el indice si aun no termino el dash jump coyote time
+        if (dashJumpCoyoteTime) return; 
+
         if(direction.y == 0){
             animationIndex = 2;
         } 
@@ -70,7 +107,7 @@ public class PlayerBlinkDashState : PlayerDashState
             else{
                 animationIndex = 6;
             }         
-        }  
+        }
     }
 
     protected override void DoTransitionOut()
