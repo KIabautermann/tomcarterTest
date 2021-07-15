@@ -79,7 +79,7 @@ public class PlayerBlinkDashState : PlayerDashState
         
         controller.SetGravity(true);
         controller.SetDrag(0);
-        if (controller.CurrentVelocity.y > 0)
+        if (controller.CurrentVelocity.y != 0)
         {
             controller.SetVelocityY(controller.CurrentVelocity.y * stats.dashEndMultiplier);
         }
