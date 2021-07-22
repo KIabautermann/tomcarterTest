@@ -30,11 +30,14 @@ public class PlayerAfterImageSprite : PoolableObject
 
     public void LogicStart(Vector3 position, int state, int animationIndex, int startingTime)
     {
-        Debug.Log("logic start");
-        Debug.Log(gameObject.transform.parent.name);
-        Debug.Log(gameObject.transform.parent.position);
-        Debug.Log(gameObject.transform.position);
+        // Debug.Log(gameObject.transform.parent.name);
+        // Debug.Log(gameObject.transform.parent.position);
+        // Debug.Log(gameObject.transform.position);
+        // Debug.Log(position);
+        // Debug.Log(this.gameObject.transform.parent.transform.TransformPoint(position));
+        // Vector3 v = this.gameObject.transform.parent.transform.TransformPoint(position);
         this.gameObject.transform.position = position;
+        this.gameObject.transform.localPosition = position;
         StartCoroutine(FadeSprite(state, animationIndex, startingTime));
     }
 
@@ -47,7 +50,7 @@ public class PlayerAfterImageSprite : PoolableObject
         
         //float transparency = spriteRenderer.color.a;
         while (transparency > 0) {
-            yield return new WaitForSeconds(0.9f);
+            yield return new WaitForSeconds(0.01f);
             //Color currColor = spriteRenderer.color;
             transparency -= 20f;
             //spriteRenderer.color = new Color(currColor.r, currColor.g, currColor.b, Mathf.Max(transparency, 0));

@@ -14,6 +14,7 @@ public class PlayerMeleeState : PlayerAttackState
         hitbox = stats.meleeHitbox;
         hitboxOffset = stats.meleeHiboxOffset;
         animationTrigger = stats.meleeID;
+        stateIndex = stats.meleeNumberID;
     }
 
     
@@ -25,7 +26,8 @@ public class PlayerMeleeState : PlayerAttackState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        if(counter >= startupTime + hitboxTime + recoveryTime){
+        if(endByAnimation){
+            stateDone = true;
             _target.removeSubState();
         }
     }
@@ -33,16 +35,19 @@ public class PlayerMeleeState : PlayerAttackState
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
+        
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        controller.LockFlip(true);
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        controller.LockFlip(false);
     }
 
     protected override void TransitionChecks()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBlinkDashState : PlayerDashState
 {
@@ -44,14 +45,14 @@ public class PlayerBlinkDashState : PlayerDashState
     private IEnumerator InstanceAfterImage()
     { 
         while (!stateDone) {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.035f);
 
             GameObject afterImageParent = new GameObject();
             ComponentCache<MonoBehaviour> afterImageComponents = afterImagePooler.GetItem(Vector3.zero, Quaternion.identity);
             afterImageComponents.GetInstance(typeof(PlayerAfterImageSprite), out MonoBehaviour tmp);
             PlayerAfterImageSprite pais = tmp as PlayerAfterImageSprite;
 
-            pais.gameObject.transform.SetParent(afterImageParent.transform);
+            pais.gameObject.transform.SetParent(afterImageParent.transform, true);
             pais.PoolCollected = () => Destroy(afterImageParent);
 
             pais.LogicStart(this.gameObject.transform.position, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));

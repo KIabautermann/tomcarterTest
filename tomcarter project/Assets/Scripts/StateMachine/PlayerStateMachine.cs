@@ -21,6 +21,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     private Vector2 currentAnimationIndex;
     private Vector2 lastAnimationIndex;
+    private Vector2 currentSubAnimationIndex;
+    private Vector2 lastSubAnimationIndex;
+
     public virtual void Start()
     {
         abilitySystem = GetComponent<PlayerAbilitySystem>();
@@ -112,6 +115,13 @@ public class PlayerStateMachine : MonoBehaviour
             _anim.PlayAnimation(_currentState.stateIndex, _currentState.animationIndex);
             lastAnimationIndex = currentAnimationIndex;
         }
+        if(_currentSubstate!=null){
+            currentSubAnimationIndex.Set(_currentSubstate.stateIndex, _currentSubstate.animationIndex);
+            if(lastSubAnimationIndex != currentSubAnimationIndex){
+                _anim.PlayAnimation(_currentSubstate.stateIndex, _currentSubstate.animationIndex);   
+                lastSubAnimationIndex = currentSubAnimationIndex;   
+            }          
+        }
     }
 
     public void SetAnimationIndex(int newIndex) => _currentState.animationIndex = newIndex;
@@ -120,10 +130,17 @@ public class PlayerStateMachine : MonoBehaviour
         if(_currentSubstate!=null){
             _currentSubstate.TriggerTransitionOut();
             _currentSubstate = null;
+            lastSubAnimationIndex.Set(0,0);
         }       
     }   
 
-    public void EndTransientState(){
-        _currentState.GetComponent<PlayerTransientState>().ForceEnd();
+    public void EndStateByAnimation(){
+        _currentState.AnimationEnded();
+    }
+
+    public void EndSubStateByAnimation(){
+        if(_currentSubstate!=null){
+            _currentSubstate.AnimationEnded();
+        }       
     }
 }

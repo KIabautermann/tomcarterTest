@@ -78,6 +78,9 @@ public class PlayerLandState : PlayerTransientState
             _target.ChangeState<PlayerOnAirState>();
             airState.JumpCoyoteTimeStart();
         }
+        else if(endByAnimation){
+            stateDone = true;
+        }
 
         base.TransitionChecks();
     }
