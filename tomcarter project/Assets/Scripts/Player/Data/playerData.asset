@@ -33,10 +33,10 @@ MonoBehaviour:
   blinkID: blink
   dashCooldown: 0.3
   dashStartUp: 0.02
-  dashLenght: 0.1
+  dashLenght: 0.2
   blinkDashLenght: 0.2
   dashSpeed: 20
-  blinkDashSpeed: 30
+  blinkDashSpeed: 27
   drag: 10
   dashEndMultiplier: 0.15
   dashJumpID: dash_jump
@@ -45,7 +45,7 @@ MonoBehaviour:
   dashJumpFallMultiplier: 0.3
   minDashJumpVelocity: 1
   dashCoyoteTime: 0.1
-  jumpHandicapTime: 0.1
+  jumpHandicapTime: 0.06
   hookID: hook
   hookSpeed: 15
   circularSpeed: 4

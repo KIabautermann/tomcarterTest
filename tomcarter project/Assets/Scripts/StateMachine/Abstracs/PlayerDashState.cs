@@ -7,6 +7,8 @@ using System.Linq;
 
 public abstract class PlayerDashState : PlayerUnlockableSkill
 {
+    protected GameObject afterImageParent;
+    protected bool _playedAfterImage;
     protected Vector2 direction;
     protected bool coyoteTime;
     protected float coyoteStartTime;
@@ -29,6 +31,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         _hedgeUnlocked = abilitySystem.IsPermanentlyUnlocked(typeof(PlayerHedgeState));
         abilitySystem.OnAbilityUnlocked += HedgeUnlockHandler;
         stateIndex = stats.dashNumberID;
+        afterImageParent = new GameObject("PlayerAfterImages");
     }
 
     protected override void DoChecks()
@@ -56,10 +59,16 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         // Arrancar el dash solo UNA vez en el caso de estar pegado un hedge en frente
         if(!_velocityUpdated && _hedgeCollisionsChecks.Length != 0 && FitsInHedge(direction)) {
             StartDash();
+        }  
+
+        if (_velocityUpdated && !_playedAfterImage) {
+            _playedAfterImage = true;
+            StartCoroutine(InstanceAfterImage());
         }
 
     }
 
+    protected abstract IEnumerator InstanceAfterImage();
     private void StartDash()
     {
         controller.SetTotalVelocity(currentSpeed,direction);
@@ -86,6 +95,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         dashJumpCoyoteTime = controller.Grounded();
         Physics.IgnoreLayerCollision(9,10, _hedgeUnlocked);
         _velocityUpdated = false;
+        _playedAfterImage = false;
         _hedgeCollisionsChecks = new Collider[0];
         ToggleLock(true);
     }
@@ -101,6 +111,9 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         Physics.IgnoreLayerCollision(9,10,false);
 
         platformManager.LogicExit();
+        
+        controller.SetGravity(true);
+        controller.SetDrag(0);
 
         // No pasar la negacion de Grounded al toggle ya que podria estar en falso por impactar con un hazard
         if (controller.Grounded())
@@ -144,13 +157,16 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     {
         if (dashJumpCoyoteTime && counter > stats.jumpHandicapTime)
         {
-            StartCoroutine(EndDashJumpCoyote());
+            EndDashJumpCoyote();
+            //StartCoroutine(EndDashJumpCoyote());
         }
     }
 
-    private IEnumerator EndDashJumpCoyote() 
+    private void EndDashJumpCoyote() 
     {
-        yield return new WaitForEndOfFrame();
+        // Esperamos un frame porque si desactivamos este flag, entonces se va a cambiar el indice de animacion
+        // en este mismo frame, haciendo que el controller de animacion meta un frame del dash
+        //yield return new WaitForEndOfFrame();
         dashJumpCoyoteTime = false;
     }
 

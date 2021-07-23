@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +21,7 @@ public class AnimationController : MonoBehaviour
     private Animator _anim;
     private void Start() {
         _anim = GetComponent<Animator>();
+        _anim.cullingMode = AnimatorCullingMode.AlwaysAnimate;
     }
     public void PlayAnimation(int state, int index)
     {
@@ -35,7 +36,7 @@ public class AnimationController : MonoBehaviour
     public void PlayAnimationAtStart(int state, int index, float start)
     {
         if(clips.rows[state].row[index].name != null){
-            _anim.PlayInFixedTime(clips.rows[state].row[index].name, -1, start);
+            _anim.Play(clips.rows[state].row[index].name, -1, start);
         }     
         else{
             Debug.LogWarning("there's no animation");

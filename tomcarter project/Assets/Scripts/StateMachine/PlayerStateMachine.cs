@@ -123,7 +123,6 @@ public class PlayerStateMachine : MonoBehaviour
             }          
         }
     }
-
     public void SetAnimationIndex(int newIndex) => _currentState.animationIndex = newIndex;
 
     public void removeSubState(){

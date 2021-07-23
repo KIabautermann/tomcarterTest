@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBlinkDashState : PlayerDashState
 {
-    private bool _playedAfterImage;
     private bool hardenRequest;
     private bool readyToHarden;
     private float hardenCounter;
@@ -35,31 +34,22 @@ public class PlayerBlinkDashState : PlayerDashState
         if(hardenRequest){
             HardenSetout();
         }
-
-        if (_velocityUpdated && !_playedAfterImage) {
-            _playedAfterImage = true;
-            StartCoroutine(InstanceAfterImage());
-        }
     }
 
-    private IEnumerator InstanceAfterImage()
+    protected override IEnumerator InstanceAfterImage()
     { 
         while (!stateDone) {
             yield return new WaitForSeconds(0.035f);
 
-            GameObject afterImageParent = new GameObject();
             ComponentCache<MonoBehaviour> afterImageComponents = afterImagePooler.GetItem(Vector3.zero, Quaternion.identity);
             afterImageComponents.GetInstance(typeof(PlayerAfterImageSprite), out MonoBehaviour tmp);
             PlayerAfterImageSprite pais = tmp as PlayerAfterImageSprite;
 
             pais.gameObject.transform.SetParent(afterImageParent.transform, true);
-            pais.PoolCollected = () => Destroy(afterImageParent);
-
+            
+            if (controller.facingDirection != 1) pais.gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
             pais.LogicStart(this.gameObject.transform.position, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
         }
-
-        
-
     }
 
     protected override void DoPhysicsUpdate()
@@ -72,7 +62,6 @@ public class PlayerBlinkDashState : PlayerDashState
         base.DoTransitionIn();
         hardenRequest = false;
         readyToHarden = false;
-        _playedAfterImage = false;
         currentSpeed = stats.blinkDashSpeed;
         if(inputs.FixedAxis != Vector2.zero)
         {
@@ -109,14 +98,17 @@ public class PlayerBlinkDashState : PlayerDashState
                 animationIndex = 6;
             }         
         }
+        
+        Debug.Log($"hola perras {animationIndex}");
+        if (stateDone) {
+            animationIndex = 1;
+        }
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
         
-        controller.SetGravity(true);
-        controller.SetDrag(0);
         if (controller.CurrentVelocity.y != 0)
         {
             controller.SetVelocityY(controller.CurrentVelocity.y * stats.dashEndMultiplier);
@@ -151,5 +143,8 @@ public class PlayerBlinkDashState : PlayerDashState
         if(Time.time >= hardenCounter + stats.hardenDashChannelingTime){
             readyToHarden = true;
         }
+    }
+    private void OnDestroy() {
+        Destroy(afterImageParent);
     }
 }
