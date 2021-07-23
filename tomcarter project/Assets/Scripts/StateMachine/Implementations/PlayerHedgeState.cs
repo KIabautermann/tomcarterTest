@@ -15,6 +15,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     {
         base.Init(target);
         animationTrigger = stats.hedgeID;
+        stateIndex = stats.hedgeNumberID;
     }
 
     protected override void DoChecks()
@@ -46,7 +47,6 @@ public class PlayerHedgeState : PlayerUnlockableSkill
             {
                 _direction = new Vector3(inputs.FixedAxis.x, inputs.FixedAxis.y,0).normalized;
             }     
-            controller.FlipCheck(inputs.FixedAxis.x);
             controller.Accelerate((inputs.FixedAxis.magnitude != 0 ? 1 / stats.groundedAccelerationTime : -1 / stats.groundedAccelerationTime) * Time.deltaTime);
         }       
     }
@@ -69,6 +69,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     protected override void DoTransitionIn()
     {   
         base.DoTransitionIn();
+        controller.LockFlip(true);
         PlayerEventSystem.GetInstance().TriggerPlayerEnteredHedge();
         controller.SetAcceleration(1);
         _direction = controller.CurrentVelocity.normalized;  
@@ -84,6 +85,8 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        controller.LockFlip(false);
+        controller.FlipCheck(inputs.FixedAxis.x);
         controller.SetGravity(true);
         Physics.IgnoreLayerCollision(9,10,false);
         if(_direction.x != 0)
@@ -96,6 +99,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
             controller.SetTotalVelocity(_currentSpeed, new Vector2(0, _direction.y));
             controller.SetAcceleration(0);
         }
+        _target.PlayAnimation(stateIndex,2);
     }
 
     protected override void TransitionChecks()
