@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasReference: {fileID: 11400000, guid: 890af8292b2dce04cb75eb8270fc1db8, type: 2}
   padding: {x: 10, y: 10}
-  maxSize: {x: 1000, y: 750}
+  maxSize: {x: 750, y: 750}
   minSize: {x: 0, y: 0}
   talkingSpeed: 0.05

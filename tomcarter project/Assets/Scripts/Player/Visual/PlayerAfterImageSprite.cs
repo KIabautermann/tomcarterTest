@@ -11,8 +11,6 @@ public class PlayerAfterImageSprite : PoolableObject
         StopAllCoroutines();
         this.gameObject.transform.SetParent(poolerParent.transform);
     }
-
-    private SpriteRenderer spriteRenderer;
     private AnimationController animationController;
 
     protected override void Start()
@@ -35,16 +33,7 @@ public class PlayerAfterImageSprite : PoolableObject
 
         animationController.PlayAnimationAtStart(state, animationIndex, 0f);
         
-        float transparency = 255;
-        
-        //float transparency = spriteRenderer.color.a;
-        while (transparency > 0) {
-            yield return new WaitForSeconds(0.008f);
-            //Color currColor = spriteRenderer.color;
-            transparency -= 20f;
-            //spriteRenderer.color = new Color(currColor.r, currColor.g, currColor.b, Mathf.Max(transparency, 0));
-        }
-
+        yield return new WaitForSeconds(0.2f);
         Dispose();
     }
 }

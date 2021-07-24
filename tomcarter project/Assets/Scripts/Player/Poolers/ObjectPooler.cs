@@ -51,6 +51,8 @@ public class ObjectPooler : PersistedScriptableObject
     }
 
     protected override void OnBeginImpl() {
+        
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         objectPool = new Queue<GameObject>();
         borrowedElements = new Dictionary<int, ISet<GameObject>>();
         poolableObjectComponents = new Dictionary<GameObject, PoolableObject>();
@@ -72,6 +74,7 @@ public class ObjectPooler : PersistedScriptableObject
         
         SceneManager.activeSceneChanged += FreePooledObjects;
         DontDestroyOnLoad(this);
+        //Debug.Log($"Pooler {poolName} has current scene {currentSceneIndex}");
     }
 
     // Hanlder para el Pooler cuando un PoolableObject avisa que el borrower lo libero
@@ -80,6 +83,7 @@ public class ObjectPooler : PersistedScriptableObject
         PoolableObject poolable = (PoolableObject) sender;
         GameObject gameObject = poolable.gameObject;
         DisposePoolable(poolable);
+        //Debug.Log(SceneManager.GetSceneByBuildIndex(currentSceneIndex).name); 
         borrowedElements[currentSceneIndex].Remove(gameObject);
     }
 

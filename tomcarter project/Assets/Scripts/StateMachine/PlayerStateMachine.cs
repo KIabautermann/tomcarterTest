@@ -15,6 +15,7 @@ public class PlayerStateMachine : MonoBehaviour
     private TextMeshProUGUI _currentStateDisplay;
     public PlayerData stats;
     public ObjectPooler afterImagePooler;
+    public ObjectPooler sporeTrailPooler;
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates;
     private AnimationController _anim;

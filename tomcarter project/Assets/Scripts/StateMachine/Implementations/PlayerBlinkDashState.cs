@@ -8,13 +8,14 @@ public class PlayerBlinkDashState : PlayerDashState
     private bool hardenRequest;
     private bool readyToHarden;
     private float hardenCounter;
-    private ObjectPooler afterImagePooler;
+    private ObjectPooler sporeTrailPooler;
+    private SporeTrailEffect sporeTrailEffect;
 
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
         animationTrigger = stats.blinkID;
-        afterImagePooler = target.afterImagePooler;
+        sporeTrailPooler = target.sporeTrailPooler;
     }
     protected override void DoChecks()
     {
@@ -36,20 +37,15 @@ public class PlayerBlinkDashState : PlayerDashState
         }
     }
 
-    protected override IEnumerator InstanceAfterImage()
+    protected override void InstanceAfterImage()
     { 
-        while (!stateDone) {
-            yield return new WaitForSeconds(0.035f);
+        ComponentCache<MonoBehaviour> afterImageComponents = sporeTrailPooler.GetItem(Vector3.zero, Quaternion.identity);
+        afterImageComponents.GetInstance(typeof(SporeTrailEffect), out MonoBehaviour tmp);
+        sporeTrailEffect = tmp as SporeTrailEffect;
+        
+        sporeTrailEffect.gameObject.transform.SetParent(gameObject.transform);
 
-            ComponentCache<MonoBehaviour> afterImageComponents = afterImagePooler.GetItem(Vector3.zero, Quaternion.identity);
-            afterImageComponents.GetInstance(typeof(PlayerAfterImageSprite), out MonoBehaviour tmp);
-            PlayerAfterImageSprite pais = tmp as PlayerAfterImageSprite;
-
-            pais.gameObject.transform.SetParent(afterImageParent.transform, true);
-            
-            if (controller.facingDirection != 1) pais.gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
-            pais.LogicStart(this.gameObject.transform.position, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
-        }
+        sporeTrailEffect.LogicStart();
     }
 
     protected override void DoPhysicsUpdate()
@@ -99,7 +95,6 @@ public class PlayerBlinkDashState : PlayerDashState
             }         
         }
         
-        Debug.Log($"hola perras {animationIndex}");
         if (stateDone) {
             animationIndex = 1;
         }
@@ -121,6 +116,11 @@ public class PlayerBlinkDashState : PlayerDashState
         {
             controller.SetAcceleration(0);
         }    
+        
+        if (sporeTrailEffect != null) {
+            sporeTrailEffect.LogicEnd();
+            sporeTrailEffect = null;
+        }
     }
     protected override void TransitionChecks()
     {

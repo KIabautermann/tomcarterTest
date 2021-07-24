@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ba7a6c213420324091538d72c121c8c, type: 3}
-  m_Name: AfterImagePooler
+  m_Name: SporeTrailPooler
   m_EditorClassIdentifier: 
-  poolName: PlayerAfterImagePool
-  prefabObject: {fileID: 1736993494610339291, guid: 7c6f2355050a3e144b74cf2c4d62f151,
+  poolName: SporeTrailPooler
+  prefabObject: {fileID: 2860219499395707850, guid: 9d3ef977cca4a8846a5e4999e62b398b,
     type: 3}
-  instanceAmount: 10
+  instanceAmount: 2

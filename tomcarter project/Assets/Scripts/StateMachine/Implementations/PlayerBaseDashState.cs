@@ -31,7 +31,6 @@ public class PlayerBaseDashState : PlayerDashState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        Debug.Log(animationIndex);
         currentSpeed = stats.dashSpeed;
         direction = new Vector2(controller.facingDirection,0);
     }
@@ -50,11 +49,16 @@ public class PlayerBaseDashState : PlayerDashState
             controller.SetGravity(true);
         }
     }
-    protected override IEnumerator InstanceAfterImage()
+    protected override void InstanceAfterImage()
     { 
+        StartCoroutine(AfterImageCoroutine());
+    }
+
+    private IEnumerator AfterImageCoroutine()
+    {
         while (true) {
             
-            yield return new WaitForSeconds(0.035f);
+            yield return new WaitForSeconds(0.025f);
 
             ComponentCache<MonoBehaviour> afterImageComponents = afterImagePooler.GetItem(Vector3.zero, Quaternion.identity);
             afterImageComponents.GetInstance(typeof(PlayerAfterImageSprite), out MonoBehaviour tmp);
@@ -63,11 +67,10 @@ public class PlayerBaseDashState : PlayerDashState
             pais.gameObject.transform.SetParent(afterImageParent.transform, true);
             
             if (controller.facingDirection != 1) pais.gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
-
+            
             pais.LogicStart(this.gameObject.transform.position, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
         }
     }
-
     protected override void ChangeAnimationIndex() 
     {
     }

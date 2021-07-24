@@ -7,7 +7,7 @@ public class MovementController : MonoBehaviour
     
     #region Components
     private Rigidbody _rb;
-    public Collider myCollider;
+    public Collider myCollider {get; private set;}
     public float colliderX {get; private set;}
     public float colliderY {get; private set;}
     #endregion

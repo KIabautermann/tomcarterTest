@@ -63,12 +63,12 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
 
         if (_velocityUpdated && !_playedAfterImage) {
             _playedAfterImage = true;
-            StartCoroutine(InstanceAfterImage());
+            InstanceAfterImage();
         }
 
     }
 
-    protected abstract IEnumerator InstanceAfterImage();
+    protected abstract void InstanceAfterImage();
     private void StartDash()
     {
         controller.SetTotalVelocity(currentSpeed,direction);
