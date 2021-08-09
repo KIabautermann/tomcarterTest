@@ -42,9 +42,8 @@ public class PlayerBlinkDashState : PlayerDashState
         ComponentCache<MonoBehaviour> afterImageComponents = sporeTrailPooler.GetItem(Vector3.zero, Quaternion.identity);
         afterImageComponents.GetInstance(typeof(SporeTrailEffect), out MonoBehaviour tmp);
         sporeTrailEffect = tmp as SporeTrailEffect;
-        
+    
         sporeTrailEffect.gameObject.transform.SetParent(gameObject.transform);
-
         sporeTrailEffect.LogicStart();
     }
 
@@ -143,8 +142,5 @@ public class PlayerBlinkDashState : PlayerDashState
         if(Time.time >= hardenCounter + stats.hardenDashChannelingTime){
             readyToHarden = true;
         }
-    }
-    private void OnDestroy() {
-        Destroy(afterImageParent);
     }
 }

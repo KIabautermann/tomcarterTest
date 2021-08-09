@@ -7,7 +7,6 @@ using System.Linq;
 
 public abstract class PlayerDashState : PlayerUnlockableSkill
 {
-    protected GameObject afterImageParent;
     protected bool _playedAfterImage;
     protected Vector2 direction;
     protected bool coyoteTime;
@@ -31,7 +30,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         _hedgeUnlocked = abilitySystem.IsPermanentlyUnlocked(typeof(PlayerHedgeState));
         abilitySystem.OnAbilityUnlocked += HedgeUnlockHandler;
         stateIndex = stats.dashNumberID;
-        afterImageParent = new GameObject("PlayerAfterImages");
     }
 
     protected override void DoChecks()

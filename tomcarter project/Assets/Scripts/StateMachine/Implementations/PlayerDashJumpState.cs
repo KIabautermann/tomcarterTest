@@ -5,12 +5,16 @@ using UnityEngine;
 public class PlayerDashJumpState : PlayerSkillState
 {
     private bool _isJumping;
-    
+    private ObjectPooler afterImagePooler;
+    private GameObject afterImageParent;
     
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
         animationTrigger = stats.dashJumpID;
+        stateIndex = stats.airNumberID;
+        afterImagePooler = target.afterImagePooler;
+        afterImageParent = new GameObject("DashJumpAfterImages");
     }
     protected override void DoChecks()
     {
@@ -38,6 +42,7 @@ public class PlayerDashJumpState : PlayerSkillState
         base.DoPhysicsUpdate();
         if (controller.CurrentVelocity.y < stats.minDashJumpVelocity)
         {
+            if (animationIndex < 3) animationIndex = 2;
             controller.Force(Physics.gravity.normalized, stats.dashJumpFallMultiplier, ForceMode.Force);
         }
         controller.SetVelocityX(stats.dashJumpVelocityX * controller.lastDirection);
@@ -52,6 +57,11 @@ public class PlayerDashJumpState : PlayerSkillState
         controller.SetAcceleration(Mathf.Abs(inputs.FixedAxis.x));
         controller.SetVelocityX(stats.dashJumpVelocityX * controller.facingDirection);
         controller.SetVelocityY(stats.jumpVelocity);
+
+        animationTrigger = stats.airID;
+        stateIndex = stats.airNumberID;
+        
+        StartCoroutine(AfterImageCoroutine());
     }
 
     protected override void DoTransitionOut()
@@ -97,5 +107,27 @@ public class PlayerDashJumpState : PlayerSkillState
                 _isJumping = false;
             }
         }
+    }
+    private IEnumerator AfterImageCoroutine()
+    {
+        while (true) {
+            
+            yield return new WaitForSeconds(0.042f);
+
+            ComponentCache<MonoBehaviour> afterImageComponents = afterImagePooler.GetItem(Vector3.zero, Quaternion.identity);
+            afterImageComponents.GetInstance(typeof(PlayerAfterImageSprite), out MonoBehaviour tmp);
+            PlayerAfterImageSprite pais = tmp as PlayerAfterImageSprite;
+
+            pais.gameObject.transform.SetParent(afterImageParent.transform, true);
+            
+            if (controller.facingDirection != 1) pais.gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
+            
+            pais.LogicStart(this.gameObject.transform.position, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
+        }
+    }
+    
+    public void SetAnimationIndex(int newIndex) 
+    {
+        animationIndex = newIndex;
     }
 }

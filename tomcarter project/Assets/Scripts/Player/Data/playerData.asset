@@ -47,15 +47,15 @@ MonoBehaviour:
   dashCoyoteTime: 0.1
   jumpHandicapTime: 0.06
   hookID: hook
-  hookSpeed: 15
-  circularSpeed: 4
+  hookSpeed: 18
+  circularSpeed: 3.5
   hookDetectionRadius: 0.1
   maxAngle: 70
   hookCooldown: 0.4
   yVelocityMultiplier: 0.8
-  hookAimAssistConeAngle: 30
+  hookAimAssistConeAngle: 40
   hookTarget: {x: 0.6, y: 0.3, z: 0}
-  hookMaxDistance: 2.5
+  hookMaxDistance: 3
   hedgeID: hedge
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 12

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAfterImageSprite : PoolableObject
 {
+    private int stateID;
     private GameObject poolerParent;
     public override void ResetSceneReferences()
     {
@@ -24,6 +25,7 @@ public class PlayerAfterImageSprite : PoolableObject
     {
         this.gameObject.transform.position = position;
         this.gameObject.transform.localPosition = position;
+        this.stateID = state;
         StartCoroutine(FadeSprite(state, animationIndex, startingTime));
     }
 
@@ -31,9 +33,12 @@ public class PlayerAfterImageSprite : PoolableObject
     {
         yield return new WaitForEndOfFrame();
 
-        animationController.PlayAnimationAtStart(state, animationIndex, 0f);
+        animationController.PlayAnimation(state, animationIndex);
         
         yield return new WaitForSeconds(0.2f);
         Dispose();
+    }
+    public void SetAnimationIndex(int newIndex) {
+        animationController.PlayAnimation(stateID, newIndex);
     }
 }

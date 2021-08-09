@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBaseDashState : PlayerDashState
 {
+    private GameObject afterImageParent;
     private ObjectPooler afterImagePooler;
     
     public override void Init(PlayerStateMachine target)
@@ -11,6 +12,7 @@ public class PlayerBaseDashState : PlayerDashState
         base.Init(target);
         animationTrigger = stats.dashID;
         afterImagePooler = target.afterImagePooler;
+        afterImageParent = new GameObject("DashAfterImages");
     }
     protected override void DoChecks()
     {
@@ -58,7 +60,7 @@ public class PlayerBaseDashState : PlayerDashState
     {
         while (true) {
             
-            yield return new WaitForSeconds(0.025f);
+            yield return new WaitForSeconds(0.020f);
 
             ComponentCache<MonoBehaviour> afterImageComponents = afterImagePooler.GetItem(Vector3.zero, Quaternion.identity);
             afterImageComponents.GetInstance(typeof(PlayerAfterImageSprite), out MonoBehaviour tmp);
