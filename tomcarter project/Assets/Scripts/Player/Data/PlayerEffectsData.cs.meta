@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 514ca2e272c6c8e4c9f06407b9c4d70f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dashAfterimage: {instanceID: 0}
+  - dashjumpUpAfterimage: {instanceID: 0}
+  - dashjumpDownAfterimage: {instanceID: 0}
+  - hardenAfterimage: {instanceID: 0}
+  - dashjumpWind: {instanceID: 0}
+  - sporeDashTrail: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
