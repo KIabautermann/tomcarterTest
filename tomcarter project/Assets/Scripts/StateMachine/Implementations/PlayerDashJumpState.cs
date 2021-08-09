@@ -58,9 +58,7 @@ public class PlayerDashJumpState : PlayerSkillState
         controller.SetVelocityX(stats.dashJumpVelocityX * controller.facingDirection);
         controller.SetVelocityY(stats.jumpVelocity);
 
-        animationTrigger = stats.airID;
         stateIndex = stats.airNumberID;
-        
         StartCoroutine(AfterImageCoroutine());
     }
 
