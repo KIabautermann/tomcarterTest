@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
 {
     protected T _target;
-    public bool isExiting;
+    private bool isExiting;
     
     // Vamos a tener que refactorizar esto a un sistema publico de Eventos, ya que estamos en plan de que los States se agreguen dinamicamente
     // No tengo buenas ideas por ahora. Porque el tema de hacerlo publico-estatico es que perdemos la posibilidad de hacer algo que escuche el OnTransitionIn
@@ -20,14 +20,14 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public UnityEvent onLogicUpdate = new UnityEvent();
     public UnityEvent onPhysicsUpdate = new UnityEvent();
     public UnityEvent onTransitionOut = new UnityEvent();
-    public string animationTrigger;
-    public int stateIndex;
-    public int animationIndex;
+    public string animationTrigger  { get; protected set; }
+    public int stateIndex { get; protected set; }
+    public int animationIndex  { get; protected set; }
+    public bool asynchronous { get; protected set; }
     protected float coolDown;
-    public float counter;
+    protected float counter;
     protected float endTime;
     protected bool isLocked = false;
-    public bool asynchronous;
     protected bool endByAnimation;
 
     public virtual void Init(T target)
@@ -90,7 +90,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public bool OnCoolDown() => Time.time < endTime + coolDown;
     public bool IsLocked() => isLocked;
     public void ToggleLock(bool isLock) => isLocked = isLock;
-
+    public void ChangeAnimationState(int index) => animationIndex = index;
     private void OnDestroy() {
         OnDestroyHandler();
     }

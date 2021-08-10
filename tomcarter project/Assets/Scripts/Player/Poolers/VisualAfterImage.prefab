@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 648288050}
   - component: {fileID: 218375966809939313}
   m_Layer: 0
-  m_Name: PlayerAfterImage
+  m_Name: VisualAfterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
     - row:
       - {fileID: 7400000, guid: 1d47d2d37b5b6be4fb557c7e867dfbee, type: 2}
       - {fileID: 7400000, guid: dbbde40b858645a4fb6671451c93c139, type: 2}
-      - {fileID: 7400000, guid: 46b3584707f188e48bb53e8c8da7d81a, type: 2}
+      - {fileID: 7400000, guid: 20de89f40e6a6c447bbbf7ccaeb0e98a, type: 2}
       - {fileID: 7400000, guid: 6a7e74d814cd02046933b7cc62b0f5c4, type: 2}
       - {fileID: 7400000, guid: b10a47d022be88848b43bbb94c21e412, type: 2}
       - {fileID: 0}

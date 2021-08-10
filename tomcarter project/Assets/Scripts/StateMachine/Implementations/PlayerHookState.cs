@@ -195,8 +195,9 @@ public class PlayerHookState : PlayerUnlockableSkill
         }      
     }
 
-
     private void OnDrawGizmos() {
+        if (stats == null || controller == null) return;
+        
         Vector3 facingTarget = new Vector3(stats.hookTarget.x * controller.facingDirection, stats.hookTarget.y ,0);
         Vector3 targetA = (Quaternion.Euler(0,0,stats.hookAimAssistConeAngle) * facingTarget * stats.hookMaxDistance) + transform.position;
         Vector3 targetB = (Quaternion.Euler(0,0,-stats.hookAimAssistConeAngle) * facingTarget * stats.hookMaxDistance) + transform.position;

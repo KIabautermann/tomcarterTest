@@ -60,12 +60,12 @@ public class ComponentCache<T> where T : MonoBehaviour
     private void AddActiveInstance(T instance)
     {
         Type getType = instance.GetType();
-
         while (getType != typeof(T)) 
         {
             activeComponents[getType] = instance;
             getType = getType.BaseType;
         }
+        activeComponents[getType] = instance;
     }
     private List<T> RemoveActiveInstance(Type type)
     {

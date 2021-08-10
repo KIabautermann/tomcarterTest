@@ -10,12 +10,9 @@ public class PlayerStateMachine : MonoBehaviour
     public State<PlayerStateMachine> _currentState {get; private set;}
     public State<PlayerStateMachine> _currentSubstate {get; private set;}
     
-    [SerializeField]
     public CanvasReference canvasReference;
-    private TextMeshProUGUI _currentStateDisplay;
-    public PlayerData stats;
-    public ObjectPooler afterImagePooler;
     public ObjectPooler sporeTrailPooler;
+    public PlayerData stats;
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates;
     private AnimationController _anim;
@@ -47,7 +44,6 @@ public class PlayerStateMachine : MonoBehaviour
         while (!canvasReference.IsLoaded) {
             yield return new WaitForEndOfFrame();
         }
-        _currentStateDisplay = canvasReference.GetTextMeshForGameObject(CanvasElement.TopBanner);
         ChangeState<PlayerIdleState>();
         _anim.PlayAnimation(_currentState.stateIndex, _currentState.animationIndex);
         currentAnimationIndex.Set(_currentState.stateIndex, _currentState.animationIndex);
@@ -56,13 +52,15 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (!allStates.GetInstance(typeof(T), out PlayerState newState)) newState = null;
 
+        TextMeshProUGUI stateDisplay = canvasReference.GetTextMeshForGameObject(CanvasElement.TopBanner);
+
         if(newState != null){
             if(!newState.OnCoolDown() && !newState.IsLocked()){
                 if(newState.asynchronous){
                     if(_currentSubstate == null){
 
                         _currentSubstate = newState;
-                        _currentStateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
+                        stateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
                         _currentSubstate.TriggerTransitionIn();
                     }
                 }
@@ -72,8 +70,8 @@ public class PlayerStateMachine : MonoBehaviour
                     }    
                     _currentState = newState;
                     _currentState.TriggerTransitionIn();   
-                    if(_currentSubstate!=null) _currentStateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
-                    else _currentStateDisplay.text = _currentState.animationTrigger;
+                    if(_currentSubstate!=null) stateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
+                    else stateDisplay.text = _currentState.animationTrigger;
                 }
             }           
         }  
@@ -124,7 +122,7 @@ public class PlayerStateMachine : MonoBehaviour
             }          
         }
     }
-    public void SetAnimationIndex(int newIndex) => _currentState.animationIndex = newIndex;
+    public void SetAnimationIndex(int newIndex) => _currentState.ChangeAnimationState(newIndex);
 
     public void removeSubState(){
         if(_currentSubstate!=null){

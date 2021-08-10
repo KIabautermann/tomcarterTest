@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerBaseDashState : PlayerDashState
 {
     private GameObject afterImageParent;
+    [SerializeField]
     private ObjectPooler afterImagePooler;
     
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
         animationTrigger = stats.dashID;
-        afterImagePooler = target.afterImagePooler;
         afterImageParent = new GameObject("DashAfterImages");
     }
     protected override void DoChecks()
@@ -70,7 +70,8 @@ public class PlayerBaseDashState : PlayerDashState
             
             if (controller.facingDirection != 1) pais.gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
             
-            pais.LogicStart(this.gameObject.transform.position, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
+            Vector3 offset = new Vector3(0.12f * controller.facingDirection, 0 , 0);
+            pais.LogicStart(this.gameObject.transform.position - offset, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
         }
     }
     protected override void ChangeAnimationIndex() 

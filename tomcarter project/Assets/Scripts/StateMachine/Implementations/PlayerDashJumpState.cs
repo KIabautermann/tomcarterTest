@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerDashJumpState : PlayerSkillState
 {
+    [SerializeField]
+    public ObjectPooler afterImagePooler;
     private bool _isJumping;
-    private ObjectPooler afterImagePooler;
     private GameObject afterImageParent;
     
     public override void Init(PlayerStateMachine target)
@@ -13,7 +14,6 @@ public class PlayerDashJumpState : PlayerSkillState
         base.Init(target);
         animationTrigger = stats.dashJumpID;
         stateIndex = stats.airNumberID;
-        afterImagePooler = target.afterImagePooler;
         afterImageParent = new GameObject("DashJumpAfterImages");
     }
     protected override void DoChecks()
@@ -110,7 +110,7 @@ public class PlayerDashJumpState : PlayerSkillState
     {
         while (true) {
             
-            yield return new WaitForSeconds(0.042f);
+            yield return new WaitForSeconds(0.025f);
 
             ComponentCache<MonoBehaviour> afterImageComponents = afterImagePooler.GetItem(Vector3.zero, Quaternion.identity);
             afterImageComponents.GetInstance(typeof(PlayerAfterImageSprite), out MonoBehaviour tmp);
@@ -120,7 +120,8 @@ public class PlayerDashJumpState : PlayerSkillState
             
             if (controller.facingDirection != 1) pais.gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
             
-            pais.LogicStart(this.gameObject.transform.position, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
+            Vector3 offset = new Vector3(0.12f * controller.facingDirection, 0 , 0);
+            pais.LogicStart(this.gameObject.transform.position - offset, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
         }
     }
     

@@ -9,7 +9,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     private bool _enteringHedge;
     private float _currentSpeed;
     private bool _hedgeJumpCoyoteTime;
-    public float _hedgeJumpStart;
+    private float _hedgeJumpStart;
 
     public override void Init(PlayerStateMachine target)
     {

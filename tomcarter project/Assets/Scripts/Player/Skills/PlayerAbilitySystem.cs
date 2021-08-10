@@ -27,25 +27,25 @@ public class PlayerAbilitySystem : LoadableObject
             { false, inactiveStates}
         };
         
-        activeStates.Add(this.gameObject.AddComponent<PlayerIdleState>());
-        activeStates.Add(this.gameObject.AddComponent<PlayerMovementState>());
-        activeStates.Add(this.gameObject.AddComponent<PlayerLandState>());
-        activeStates.Add(this.gameObject.AddComponent<PlayerOnAirState>());
-        activeStates.Add(this.gameObject.AddComponent<PlayerJumpState>());
-        activeStates.Add(this.gameObject.AddComponent<PlayerRootsState>());
-        activeStates.Add(this.gameObject.AddComponent<PlayerMeleeState>());
-        activeStates.Add(this.gameObject.AddComponent<PlayerDashJumpState>());
-        activeStates.Add(this.gameObject.AddComponent<PlayerDamagedState>());
-        activeStates.Add(this.gameObject.AddComponent<PlayerDialogueState>());
+        activeStates.Add(this.gameObject.GetComponent<PlayerIdleState>());
+        activeStates.Add(this.gameObject.GetComponent<PlayerMovementState>());
+        activeStates.Add(this.gameObject.GetComponent<PlayerLandState>());
+        activeStates.Add(this.gameObject.GetComponent<PlayerOnAirState>());
+        activeStates.Add(this.gameObject.GetComponent<PlayerJumpState>());
+        activeStates.Add(this.gameObject.GetComponent<PlayerRootsState>());
+        activeStates.Add(this.gameObject.GetComponent<PlayerMeleeState>());
+        activeStates.Add(this.gameObject.GetComponent<PlayerDashJumpState>());
+        activeStates.Add(this.gameObject.GetComponent<PlayerDamagedState>());
+        activeStates.Add(this.gameObject.GetComponent<PlayerDialogueState>());
 
-        stateListMap[unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.AddComponent<PlayerBlinkDashState>());
-        stateListMap[!unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.AddComponent<PlayerBaseDashState>());
-        stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.AddComponent<PlayerRangeState>());
-        stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.AddComponent<PlayerChargedRangeState>());
-        stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.AddComponent<PlayerRangeChargeState>());
-        stateListMap[unlockedSkills[PlayerSkill.VINE_HOOK]].Add(this.gameObject.AddComponent<PlayerHookState>());
-        stateListMap[unlockedSkills[PlayerSkill.BARK_GUARD]].Add(this.gameObject.AddComponent<PlayerHardenState>());
-        stateListMap[unlockedSkills[PlayerSkill.HEDGE_CLIMB]].Add(this.gameObject.AddComponent<PlayerHedgeState>());
+        stateListMap[unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.GetComponent<PlayerBlinkDashState>());
+        stateListMap[!unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.GetComponent<PlayerBaseDashState>());
+        stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.GetComponent<PlayerRangeState>());
+        stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.GetComponent<PlayerChargedRangeState>());
+        stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.GetComponent<PlayerRangeChargeState>());
+        stateListMap[unlockedSkills[PlayerSkill.VINE_HOOK]].Add(this.gameObject.GetComponent<PlayerHookState>());
+        stateListMap[unlockedSkills[PlayerSkill.BARK_GUARD]].Add(this.gameObject.GetComponent<PlayerHardenState>());
+        stateListMap[unlockedSkills[PlayerSkill.HEDGE_CLIMB]].Add(this.gameObject.GetComponent<PlayerHedgeState>());
        
         return new ComponentCache<PlayerState>(stateListMap[true], stateListMap[false]);
     }
@@ -88,7 +88,7 @@ public class PlayerAbilitySystem : LoadableObject
                 typesToSwap_2 = new List<Type>() { typeof(PlayerBaseDashState) };
                 break;
             case PlayerSkill.ROOT_ATTACK:
-                typesToSwap_1 = new List<Type>() { typeof(PlayerRangeState) };
+                typesToSwap_1 = new List<Type>() { typeof(PlayerRangeState), typeof(PlayerRangeChargeState), typeof(PlayerChargedRangeState) };
                 break;
             case PlayerSkill.VINE_HOOK:
                 typesToSwap_1 = new List<Type>() { typeof(PlayerHookState) };

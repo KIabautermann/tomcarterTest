@@ -35,7 +35,7 @@ public class PlayerAfterImageSprite : PoolableObject
 
         animationController.PlayAnimation(state, animationIndex);
         
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.15f);
         Dispose();
     }
     public void SetAnimationIndex(int newIndex) {
