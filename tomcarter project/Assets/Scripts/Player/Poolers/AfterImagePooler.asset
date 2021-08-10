@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AfterImagePooler
   m_EditorClassIdentifier: 
   poolName: PlayerAfterImagePool
-  prefabObject: {fileID: 1736993494610339291, guid: 7c6f2355050a3e144b74cf2c4d62f151,
+  prefabObject: {fileID: 1736993494610339291, guid: ce5c8f5cf9d0c4046959fb117afaf570,
     type: 3}
   instanceAmount: 10
