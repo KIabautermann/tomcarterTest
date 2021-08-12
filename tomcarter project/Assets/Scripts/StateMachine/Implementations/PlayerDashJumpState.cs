@@ -116,7 +116,8 @@ public class PlayerDashJumpState : PlayerSkillState
     {
         RaycastHit groundHit;
         if(!Physics.Raycast(gameObject.transform.position, Vector2.down, out groundHit, 1.5f, stats.walkable)){
-            Debug.LogError("No hay lugar donde apoyar el blast zone del dash jump");
+            Debug.LogWarning("No hay lugar donde apoyar el blast zone del dash jump");
+            return;
         }
      
         Vector3 pos = new Vector3(this.gameObject.transform.position.x - 0.5f * controller.facingDirection, groundHit.collider.bounds.max.y + 0.48f, 0f);
