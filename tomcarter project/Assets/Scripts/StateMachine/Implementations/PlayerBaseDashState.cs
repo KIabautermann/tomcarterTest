@@ -6,7 +6,7 @@ public class PlayerBaseDashState : PlayerDashState
 {
     private GameObject afterImageParent;
     [SerializeField]
-    private ObjectPooler afterImagePooler;
+    private VisualEffectSpawner visualEffectSpawner;
     
     public override void Init(PlayerStateMachine target)
     {
@@ -62,16 +62,9 @@ public class PlayerBaseDashState : PlayerDashState
             
             yield return new WaitForSeconds(0.020f);
 
-            ComponentCache<MonoBehaviour> afterImageComponents = afterImagePooler.GetItem(Vector3.zero, Quaternion.identity);
-            afterImageComponents.GetInstance(typeof(PlayerAfterImageSprite), out MonoBehaviour tmp);
-            PlayerAfterImageSprite pais = tmp as PlayerAfterImageSprite;
-
-            pais.gameObject.transform.SetParent(afterImageParent.transform, true);
-            
-            if (controller.facingDirection != 1) pais.gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
-            
-            Vector3 offset = new Vector3(0.12f * controller.facingDirection, 0 , 0);
-            pais.LogicStart(this.gameObject.transform.position - offset, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
+            Quaternion quaternion = direction.x != 1 ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.identity;
+            Vector3 pos =  this.gameObject.transform.position - new Vector3(0.15f * controller.facingDirection, 0 , 0);
+            visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, stateIndex, animationIndex);
         }
     }
     protected override void ChangeAnimationIndex() 

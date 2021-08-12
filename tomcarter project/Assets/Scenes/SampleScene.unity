@@ -5532,7 +5532,8 @@ MonoBehaviour:
   onTransitionOut:
     m_PersistentCalls:
       m_Calls: []
-  afterImagePooler: {fileID: 11400000, guid: 31beeefd4c862244b80a3c32f35cda9a, type: 2}
+  visualEffectSpawner: {fileID: 11400000, guid: 711fc092abb23504688c2e3db410aa26,
+    type: 2}
 --- !u!114 &1677930224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5725,7 +5726,8 @@ MonoBehaviour:
   onTransitionOut:
     m_PersistentCalls:
       m_Calls: []
-  afterImagePooler: {fileID: 11400000, guid: 31beeefd4c862244b80a3c32f35cda9a, type: 2}
+  visualEffectSpawner: {fileID: 11400000, guid: 711fc092abb23504688c2e3db410aa26,
+    type: 2}
 --- !u!1 &1686374765
 GameObject:
   m_ObjectHideFlags: 0
@@ -7052,6 +7054,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Effects Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 1628708727131170521, guid: c6abadbc3447ff14685b82cc9bd6baca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1628708727131170524, guid: c6abadbc3447ff14685b82cc9bd6baca,
         type: 3}
       propertyPath: m_RootOrder
@@ -7110,7 +7117,7 @@ PrefabInstance:
     - target: {fileID: 1628708727131170526, guid: c6abadbc3447ff14685b82cc9bd6baca,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6abadbc3447ff14685b82cc9bd6baca, type: 3}

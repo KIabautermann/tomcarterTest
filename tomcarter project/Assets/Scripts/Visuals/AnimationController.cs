@@ -33,6 +33,12 @@ public class AnimationController : MonoBehaviour
         }  
     }
 
+
+    public void PlayAnimation(AnimationClip animationClip)
+    {
+        _anim.Play(animationClip.name);
+    }
+
     public void PlayAnimationAtStart(int state, int index, float start)
     {
         if(clips.rows[state].row[index].name != null){

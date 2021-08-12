@@ -10,7 +10,6 @@ public class PlayerEventSystem
     } 
     public event EventHandler<EventArgs> OnDamageTaken;
     public event EventHandler<OnLandEventArgs> OnGroundLand;
-    public event EventHandler<EventArgs> OnHedgeEnter;
     public event EventHandler<EventArgs> OnHazardHit;
     private static PlayerEventSystem _instance;
 
@@ -32,10 +31,6 @@ public class PlayerEventSystem
     public void TriggerPlayerHasLanded(Vector3 landingSpot) 
     {
         OnGroundLand?.Invoke(null, new OnLandEventArgs() { landingSpot = landingSpot });
-    }
-    public void TriggerPlayerEnteredHedge() 
-    {
-        OnHedgeEnter?.Invoke(null, new EventArgs());
     }
     public void TriggerPlayerCollidedHazard() 
     {

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerDashJumpState : PlayerSkillState
 {
-    [SerializeField]
-    public ObjectPooler afterImagePooler;
     private bool _isJumping;
     private GameObject afterImageParent;
+    
+    [SerializeField]
+    private VisualEffectSpawner visualEffectSpawner;
     
     public override void Init(PlayerStateMachine target)
     {
@@ -50,8 +51,12 @@ public class PlayerDashJumpState : PlayerSkillState
 
     protected override void DoTransitionIn()
     {
+        
         base.DoTransitionIn();
         _isJumping = true;
+
+        StartBlastEffect();
+
         controller.SetDrag(0);
         controller.SetGravity(true);
         controller.SetAcceleration(Mathf.Abs(inputs.FixedAxis.x));
@@ -106,22 +111,27 @@ public class PlayerDashJumpState : PlayerSkillState
             }
         }
     }
-    private IEnumerator AfterImageCoroutine()
+
+    private void StartBlastEffect()
     {
+        RaycastHit groundHit;
+        if(!Physics.Raycast(gameObject.transform.position, Vector2.down, out groundHit, 1.5f, stats.walkable)){
+            Debug.LogError("No hay lugar donde apoyar el blast zone del dash jump");
+        }
+     
+        Vector3 pos = new Vector3(this.gameObject.transform.position.x - 0.5f * controller.facingDirection, groundHit.collider.bounds.max.y + 0.48f, 0f);
+        Quaternion quaternion = controller.facingDirection != 1 ? Quaternion.Euler(0.0f, 180.0f, 0.0f) : Quaternion.identity;
+        visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, visualEffectSpawner.EffectRepository.DashJumpBlast);
+    }
+    private IEnumerator AfterImageCoroutine()
+    {       
         while (true) {
             
             yield return new WaitForSeconds(0.025f);
 
-            ComponentCache<MonoBehaviour> afterImageComponents = afterImagePooler.GetItem(Vector3.zero, Quaternion.identity);
-            afterImageComponents.GetInstance(typeof(PlayerAfterImageSprite), out MonoBehaviour tmp);
-            PlayerAfterImageSprite pais = tmp as PlayerAfterImageSprite;
-
-            pais.gameObject.transform.SetParent(afterImageParent.transform, true);
-            
-            if (controller.facingDirection != 1) pais.gameObject.transform.Rotate(0.0f, 180.0f, 0.0f);
-            
-            Vector3 offset = new Vector3(0.12f * controller.facingDirection, 0 , 0);
-            pais.LogicStart(this.gameObject.transform.position - offset, stateIndex, animationIndex, Mathf.RoundToInt(counter - stats.dashStartUp));
+            Vector3 pos =  this.gameObject.transform.position - new Vector3(0.15f * controller.facingDirection, 0 , 0);
+            Quaternion quaternion = controller.facingDirection != 1 ? Quaternion.Euler(0.0f, 180.0f, 0.0f) : Quaternion.identity;
+            visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, stateIndex, animationIndex);
         }
     }
     

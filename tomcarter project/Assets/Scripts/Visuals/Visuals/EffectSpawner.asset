@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac1ca79b52825a4c9ddbb0f62f8db1f, type: 3}
+  m_Name: EffectSpawner
+  m_EditorClassIdentifier: 
+  poolName: VisualEffectSpawner
+  prefabObject: {fileID: 1736993494610339291, guid: ce5c8f5cf9d0c4046959fb117afaf570,
+    type: 3}
+  instanceAmount: 25
+  EffectRepository: {fileID: 11400000, guid: d65fdd3d9eb0bfc4e8afdfd838d55966, type: 2}

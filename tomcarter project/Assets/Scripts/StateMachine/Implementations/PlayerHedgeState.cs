@@ -70,7 +70,6 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     {   
         base.DoTransitionIn();
         controller.LockFlip(true);
-        PlayerEventSystem.GetInstance().TriggerPlayerEnteredHedge();
         controller.SetAcceleration(1);
         _direction = controller.CurrentVelocity.normalized;  
         _exitingHedge = false;
