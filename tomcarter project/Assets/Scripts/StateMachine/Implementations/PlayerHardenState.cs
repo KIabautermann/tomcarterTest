@@ -60,8 +60,8 @@ public class PlayerHardenState : PlayerUnlockableSkill
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        _target.QueueAnimation(_target.animations.hardenInit.name, false, true);
         _hasCollided = false;
-        _target.removeSubState();
         _wasGrounded=controller.Grounded();
         if(inputs.DashInput || !inputs.DashCancel){
             _target.ChangeState<PlayerDashState>();
@@ -71,6 +71,8 @@ public class PlayerHardenState : PlayerUnlockableSkill
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        controller.SetCollider(stats.colliderDefaultSize, stats.colliderDefaultPosition);
+        _target.QueueAnimation(_target.animations.hardenEnd.name, true, true);
     }
 
     protected override void TransitionChecks()
@@ -94,5 +96,10 @@ public class PlayerHardenState : PlayerUnlockableSkill
         else{
             return controller.CurrentVelocity.y * stats.ceilingExceptionMultiplier;
         }
+    }
+
+    public void HardenColliderSet()
+    {
+        controller.SetCollider(stats.colliderHardenSize, stats.colliderHardenPosition);
     }
 }

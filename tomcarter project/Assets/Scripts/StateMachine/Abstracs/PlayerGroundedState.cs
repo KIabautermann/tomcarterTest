@@ -73,7 +73,7 @@ public abstract class PlayerGroundedState : PlayerState
         else if(!controller.Grounded())
         {
             _target.ChangeState<PlayerOnAirState>();
-            airState.JumpCoyoteTimeStart();
+            GetComponent<PlayerOnAirState>().JumpCoyoteTimeStart();
         }
 
         base.TransitionChecks();

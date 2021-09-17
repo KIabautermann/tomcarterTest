@@ -32,8 +32,8 @@ public class PlayerLandState : PlayerTransientState
     protected override void DoTransitionIn()
     {
         PlayerEventSystem.GetInstance().TriggerPlayerHasLanded(transform.position);
-        stateDone = false;
-        animationIndex = 4;
+        _target.QueueAnimation(_target.animations.airLand.name, true, true);
+        stateDone = true;
     }
 
     protected override void DoTransitionOut()
@@ -41,47 +41,5 @@ public class PlayerLandState : PlayerTransientState
         base.DoTransitionOut();
     }
 
-    protected override void TransitionChecks()
-    {
-        base.TransitionChecks();
-        if(controller.OnRootable() && inputs.RootsInput){
-            _target.ChangeState<PlayerRootsState>();
-            inputs.UsedRoots();
-        }
-        else if(inputs.JumpInput){
-            _target.ChangeState<PlayerJumpState>();
-            inputs.UsedJump();     
-        }
-        else if(inputs.DashInput){
-            _target.ChangeState<PlayerDashState>();
-            inputs.UsedDash();     
-        }
-        else if(inputs.MeleeInput){
-            _target.ChangeState<PlayerMeleeState>();
-            inputs.UsedMelee();
-        }
-        else if(inputs.RangeInput){
-            _target.ChangeState<PlayerRangeChargeState>();
-            inputs.UsedRange();
-        }
-        else if(inputs.HookInput){
-            _target.ChangeState<PlayerHookState>();
-            inputs.UsedHook();
-        }
-        else if(inputs.GuardInput)
-        {
-            _target.ChangeState<PlayerHardenState>();
-            inputs.UsedGuard();
-        }
-        else if(!controller.Grounded())
-        {
-            _target.ChangeState<PlayerOnAirState>();
-            airState.JumpCoyoteTimeStart();
-        }
-        else if(endByAnimation){
-            stateDone = true;
-        }
-
-        base.TransitionChecks();
-    }
+    
 }

@@ -69,6 +69,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
     protected override void DoTransitionIn()
     {   
         base.DoTransitionIn();
+        _target.QueueAnimation(_target.animations.hedgeInit.name, false, true);
         controller.LockFlip(true);
         controller.SetAcceleration(1);
         _direction = controller.CurrentVelocity.normalized;  
@@ -77,7 +78,6 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         _hedgeJumpCoyoteTime = false; 
         Physics.IgnoreLayerCollision(9,10,true);
         controller.SetGravity(false);   
-        _target.removeSubState();
         controller.SetDrag(0);    
     }
 
@@ -98,7 +98,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
             controller.SetTotalVelocity(_currentSpeed, new Vector2(0, _direction.y));
             controller.SetAcceleration(0);
         }
-        _target.PlayAnimation(stateIndex,2);
+        _target.QueueAnimation(_target.animations.hardenEnd.name, true, true);
     }
 
     protected override void TransitionChecks()

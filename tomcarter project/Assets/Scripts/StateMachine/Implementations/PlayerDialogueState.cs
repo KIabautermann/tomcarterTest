@@ -16,7 +16,6 @@ public class PlayerDialogueState : PlayerInteractionState
     {
         base.DoTransitionIn();
 
-        _target.removeSubState();
 
         if(Physics.Raycast(_target.transform.position, direction, out RaycastHit rayCastHit, stats.npcDetectionLenght, stats.npc))
         {

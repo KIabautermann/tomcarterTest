@@ -7,6 +7,8 @@ public class PlayerData : ScriptableObject
 {
     [Header("General")]
     public float collisionDetection = .1f;
+    public Vector2 colliderDefaultSize;
+    public Vector3 colliderDefaultPosition;
     [Header("Move State")]
     public string idleID = "idle";
     public string movementID = "run";
@@ -33,7 +35,8 @@ public class PlayerData : ScriptableObject
     public float dashCooldown = .3f;
     public float dashStartUp = .05f;
     public float dashLenght = .4f;
-    public float blinkDashLenght = .2f;  
+    public float blinkDashInitTime = .2f;
+    public float blinkDashTime = .2f;
     public float dashSpeed = 15f;
     public float blinkDashSpeed = 30f;
     public float drag = 10f;
@@ -91,13 +94,13 @@ public class PlayerData : ScriptableObject
     public float hardenDashChannelingTime = 1f;
     public float minBreakVelocity = 10;
     public float ceilingExceptionMultiplier = 1.7f;
+    public Vector2 colliderHardenSize;
+    public Vector3 colliderHardenPosition;
 
     [Header("Melee State")]
 
     public string meleeID = "melee";
-    public float meleeStartupTime = .5f;
-    public float meleeHitboxTime = .5f;
-    public float meleerecoveryTime = .5f;
+    public float meleeTime = 1.5f;
     public Vector2 meleeHitbox = Vector2.one;
     public Vector2 meleeHiboxOffset;
 

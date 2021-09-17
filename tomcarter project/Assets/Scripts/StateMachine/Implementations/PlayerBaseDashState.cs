@@ -35,11 +35,13 @@ public class PlayerBaseDashState : PlayerDashState
         base.DoTransitionIn();
         currentSpeed = stats.dashSpeed;
         direction = new Vector2(controller.facingDirection,0);
+        _target.QueueAnimation(_target.animations.dash.name, false, true);
     }
     protected override void DoTransitionOut()
-    {
-        StopAllCoroutines();
+    {     
+        StopAllCoroutines();     
         base.DoTransitionOut();
+        _target.QueueAnimation(_target.animations.dashEnd.name, true, false);
     }
     protected override void TransitionChecks()
     {
@@ -53,7 +55,7 @@ public class PlayerBaseDashState : PlayerDashState
     }
     protected override void InstanceAfterImage()
     { 
-        StartCoroutine(AfterImageCoroutine());
+        //StartCoroutine(AfterImageCoroutine());
     }
 
     private IEnumerator AfterImageCoroutine()
@@ -66,9 +68,6 @@ public class PlayerBaseDashState : PlayerDashState
             Vector3 pos =  this.gameObject.transform.position - new Vector3(0.15f * controller.facingDirection, 0 , 0);
             visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, stateIndex, animationIndex);
         }
-    }
-    protected override void ChangeAnimationIndex() 
-    {
     }
 
     private void OnDestroy() {

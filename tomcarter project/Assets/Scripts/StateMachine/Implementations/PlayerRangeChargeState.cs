@@ -44,11 +44,9 @@ public class PlayerRangeChargeState : PlayerState
         if(inputs.RangeCancel){
             if(counter > stats.rangeStartupTime && !charged){
                 _target.ChangeState<PlayerRangeState>();
-                _target.removeSubState();
             }
             else if(charged){
                 _target.ChangeState<PlayerChargedRangeState>();
-                _target.removeSubState();
             }
         }
           

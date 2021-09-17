@@ -53,6 +53,7 @@ public class PlayerDashJumpState : PlayerSkillState
     {
         
         base.DoTransitionIn();
+        _target.QueueAnimation(_target.animations.airUpwards.name, false, true);
         _isJumping = true;
 
         StartBlastEffect();
@@ -132,7 +133,7 @@ public class PlayerDashJumpState : PlayerSkillState
 
             Vector3 pos =  this.gameObject.transform.position - new Vector3(0.15f * controller.facingDirection, 0 , 0);
             Quaternion quaternion = controller.facingDirection != 1 ? Quaternion.Euler(0.0f, 180.0f, 0.0f) : Quaternion.identity;
-            visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, stateIndex, animationIndex);
+            //visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, stateIndex, animationIndex);
         }
     }
     

@@ -10,9 +10,8 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected bool _playedAfterImage;
     protected Vector2 direction;
     protected bool coyoteTime;
-    protected float coyoteStartTime;
     protected float currentSpeed;
-    protected bool dashJumpCoyoteTime;
+    protected float timeInAir;
     public bool _velocityUpdated { get; private set;}
     private Collider[] _hedgeCollisionsChecks;
     private PlayerHedgeState playerHedgeState;
@@ -40,8 +39,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        
-        DashJumpCoyoteTimeCheck();
 
         _hedgeCollisionsChecks = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size, Quaternion.identity,stats.hedge); 
 
@@ -63,6 +60,14 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
             _playedAfterImage = true;
             InstanceAfterImage();
         }
+        if(!controller.Grounded())
+        {
+            timeInAir += Time.deltaTime;
+        }
+        else if(timeInAir != 0)
+        {
+            timeInAir = 0;
+        }
 
     }
 
@@ -71,8 +76,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     {
         controller.SetTotalVelocity(currentSpeed,direction);
         _velocityUpdated = true;
-        // Cambiar el index de animacion
-        ChangeAnimationIndex();
         platformManager.LogicUpdated();
     }
 
@@ -90,7 +93,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         controller.SetGravity(false);
         controller.SetDrag(stats.drag);
         coyoteTime = false;
-        dashJumpCoyoteTime = controller.Grounded();
         Physics.IgnoreLayerCollision(9,10, _hedgeUnlocked);
         _velocityUpdated = false;
         _playedAfterImage = false;
@@ -135,38 +137,21 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
 
     protected override void TransitionChecks()
     {
-        base.TransitionChecks();   
+        base.TransitionChecks();
         if (_hedgeCollisionsChecks.Length != 0 && FitsInHedge(direction))
-        {                  
+        {
             controller.SetDrag(0);
-            _target.ChangeState<PlayerHedgeState>();  
+            _target.ChangeState<PlayerHedgeState>();
         }
-        else if(inputs.JumpInput && dashJumpCoyoteTime)
+        else if (inputs.JumpInput && timeInAir <= stats.dashCoyoteTime)
         {
             inputs.UsedJump();       
             _target.ChangeState<PlayerDashJumpState>();     
         }    
     }
 
-    protected abstract void ChangeAnimationIndex();
-    public void DashJumpCoyoteTimeStart() => dashJumpCoyoteTime = true;
 
-    private void DashJumpCoyoteTimeCheck()
-    {
-        if (dashJumpCoyoteTime && counter > stats.jumpHandicapTime)
-        {
-            EndDashJumpCoyote();
-            //StartCoroutine(EndDashJumpCoyote());
-        }
-    }
 
-    private void EndDashJumpCoyote() 
-    {
-        // Esperamos un frame porque si desactivamos este flag, entonces se va a cambiar el indice de animacion
-        // en este mismo frame, haciendo que el controller de animacion meta un frame del dash
-        //yield return new WaitForEndOfFrame();
-        dashJumpCoyoteTime = false;
-    }
 
     private bool FitsInHedge(Vector2 dir) 
     {   

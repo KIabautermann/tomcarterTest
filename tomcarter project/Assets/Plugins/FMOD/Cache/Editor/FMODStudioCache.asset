@@ -23,6 +23,27 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 83187
+--- !u!114 &-8881119929956369676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/tomcarter/tomcarter/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637653204781580427
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 800
+  Exists: 1
 --- !u!114 &-4701799494017520181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,11 +59,30 @@ MonoBehaviour:
   Path: Assets/FMOD/tomcarter/tomcarter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637520549532797216
+  lastModified: 637653204781580427
   LoadResult: 0
   FileSizes:
   - Name: 
     Value: 800
+  Exists: 1
+--- !u!114 &-4620019557563121159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/tomcarter/tomcarter/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637653204781500437
+  LoadResult: 0
+  FileSizes: []
   Exists: 1
 --- !u!114 &-4522526085860040044
 MonoBehaviour:
@@ -107,7 +147,7 @@ MonoBehaviour:
   - {fileID: 4173534505789040765}
   StringsBanks:
   - {fileID: -4701799494017520181}
-  stringsBankWriteTime: 637520549532797216
+  stringsBankWriteTime: 637653204781580427
   cacheVersion: 6
 --- !u!114 &444362339354401416
 MonoBehaviour:
@@ -148,6 +188,29 @@ MonoBehaviour:
   guid: 96fa6743e6848f40961ac9fa6a8dcc03
   Banks:
   - {fileID: -4522526085860040044}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &2098895168646607283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/event:/Test/Test
+  m_EditorClassIdentifier: 
+  Path: event:/event:/Test/Test
+  guid: 96fa6743e6848f40961ac9fa6a8dcc03
+  Banks:
+  - {fileID: -4620019557563121159}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -212,7 +275,7 @@ MonoBehaviour:
   Path: Assets/FMOD/tomcarter/tomcarter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637520549532656471
+  lastModified: 637653204781500437
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -237,3 +300,26 @@ MonoBehaviour:
   - Name: 
     Value: 800
   Exists: 1
+--- !u!114 &7863030583043113449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test
+  m_EditorClassIdentifier: 
+  Path: event:/Test
+  guid: 64a23aa582090d4cb151333b8cfd3245
+  Banks:
+  - {fileID: -4620019557563121159}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 83187

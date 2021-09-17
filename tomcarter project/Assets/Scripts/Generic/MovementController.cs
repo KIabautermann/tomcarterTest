@@ -7,9 +7,13 @@ public class MovementController : MonoBehaviour
     
     #region Components
     private Rigidbody _rb;
-    public Collider myCollider {get; private set;}
     public float colliderX {get; private set;}
     public float colliderY {get; private set;}
+
+    public CapsuleCollider myCollider;
+
+    RaycastHit m_Hit;
+
     #endregion
 
     #region Checks
@@ -55,8 +59,7 @@ public class MovementController : MonoBehaviour
     private void Start() 
     {
         _rb = GetComponent<Rigidbody>();
-        myCollider = GetComponent<Collider>();
-        SetChecks();      
+        myCollider = GetComponent<CapsuleCollider>();   
     }
     #region Check Functions
 
@@ -69,16 +72,9 @@ public class MovementController : MonoBehaviour
     }
     public bool Grounded()
     {
-       int n = 0;
-       RaycastHit tmpHit = new RaycastHit();
-       for(int i = 0; i < groundCheck.Length; i++){
-           if(Physics.Raycast(groundCheck[i].position, -Vector2.up, out tmpHit, _detectionLenght, _walkwable )){
-               n++;
-               groundHit = tmpHit;
-           }
-       }
-       if (n == 0) { groundHit = tmpHit; }
-       return n!=0 && CurrentVelocity.y < .01f;
+        Vector3 checkPosition = myCollider.bounds.center + Vector3.down * myCollider.bounds.extents.y;
+        Vector3 checkSize = new Vector3(myCollider.bounds.size.x - .2f, _detectionLenght)/2;
+        return Physics.OverlapBox(checkPosition, checkSize, Quaternion.identity, _walkwable).Length!=0 && _rb.velocity.y <= 0;
     }
 
     public bool OnPlatform()
@@ -199,19 +195,11 @@ public class MovementController : MonoBehaviour
         AcelerationIndex = Mathf.Clamp(AcelerationIndex, 0, 1);
     }
 
-    private void SetChecks(){
-        float Xmax = myCollider.bounds.max.x - .01f;
-        float Ymax = myCollider.bounds.max.y - .01f;
-        float Xmin = myCollider.bounds.min.x + .01f;
-        float Ymin = myCollider.bounds.min.y + .01f;
-        groundCheck[0].position = new Vector2(Xmin,Ymin);
-        groundCheck[1].position = new Vector2(Xmax,Ymin);
-        wallCheck[0].position = new Vector2(Xmax,Ymax);
-        wallCheck[1].position = new Vector2(Xmax,Ymin);
-        ceilingCheck[0].position = new Vector2(Xmin,Ymax);
-        ceilingCheck[1].position = new Vector2(Xmax,Ymax);
-        colliderX = myCollider.bounds.size.x;
-        colliderY = myCollider.bounds.size.y;
+    public void SetCollider(Vector2 size, Vector2 position)
+    {
+        myCollider.radius = size.x;
+        myCollider.height = size.y;
+        myCollider.center = position;
     }
     #endregion
     
@@ -241,19 +229,14 @@ public class MovementController : MonoBehaviour
 
     #endregion
 
-    private void OnDrawGizmos() 
+    void OnDrawGizmos()
     {
-       for(int i = 0; i<groundCheck.Length; i++){
-           Gizmos.DrawLine(groundCheck[i].position, groundCheck[i].position + (-Vector3.up * _detectionLenght));
-       }
-       for(int i = 0; i<wallCheck.Length; i++){
-           Gizmos.DrawLine(wallCheck[i].position, wallCheck[i].position + (Vector3.right * facingDirection * _detectionLenght));
-       }
-       for(int i = 0; i<ceilingCheck.Length; i++){
-           Gizmos.DrawLine(ceilingCheck[i].position, ceilingCheck[i].position + (Vector3.up * _detectionLenght));
-       }
+        Gizmos.color = Color.red;
+        Vector3 checkPosition = myCollider.bounds.center + Vector3.down * myCollider.bounds.extents.y;
+        Vector3 checkSize = new Vector3(myCollider.bounds.size.x - .2f, _detectionLenght, 0);
+        Gizmos.DrawWireCube(checkPosition, checkSize);     
     }
-    
+
     #region RaycastHit Getters
     public RaycastHit GetRootableHit()
     {

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   collisionDetection: 0.6
+  colliderDefaultSize: {x: 0.2, y: 1.09375}
+  colliderDefaultPosition: {x: 0, y: 0.08, z: 0}
   idleID: idle
   movementID: run
   movementVelocity: 7
@@ -25,7 +27,7 @@ MonoBehaviour:
   jumpLenght: 0.15
   fallMultiplier: 5
   minJumpVelocity: 10
-  coyoteTime: 0.1
+  coyoteTime: 0.2
   shortHopMultiplier: 0.4
   maxFallVelocity: -20
   amountOfJumps: 1
@@ -34,7 +36,8 @@ MonoBehaviour:
   dashCooldown: 0.3
   dashStartUp: 0.02
   dashLenght: 0.2
-  blinkDashLenght: 0.2
+  blinkDashInitTime: 0.125
+  blinkDashTime: 0.2
   dashSpeed: 20
   blinkDashSpeed: 27
   drag: 10
@@ -77,10 +80,10 @@ MonoBehaviour:
   hardenDashChannelingTime: 0.5
   minBreakVelocity: 10
   ceilingExceptionMultiplier: 1.7
+  colliderHardenSize: {x: 0.32, y: 0.64}
+  colliderHardenPosition: {x: 0, y: 0.04, z: 0}
   meleeID: melee
-  meleeStartupTime: 0.0625
-  meleeHitboxTime: 0.125
-  meleerecoveryTime: 0.125
+  meleeTime: 0.32
   meleeHitbox: {x: 1.5, y: 0.7}
   meleeHiboxOffset: {x: 0.7, y: 0}
   rangeID: range

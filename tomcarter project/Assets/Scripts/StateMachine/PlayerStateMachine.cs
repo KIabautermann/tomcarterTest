@@ -8,27 +8,21 @@ using System;
 public class PlayerStateMachine : MonoBehaviour
 {
     public State<PlayerStateMachine> _currentState {get; private set;}
-    public State<PlayerStateMachine> _currentSubstate {get; private set;}
     
     public CanvasReference canvasReference;
     public ObjectPooler sporeTrailPooler;
     public PlayerData stats;
+    public PlayerAnimationData animations;
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates;
-    private AnimationController _anim;
+    private AnimatorController _anim;
 
-    private Vector2 currentAnimationIndex;
-    private Vector2 lastAnimationIndex;
-    private Vector2 currentSubAnimationIndex;
-    private Vector2 lastSubAnimationIndex;
 
     public virtual void Start()
     {
         abilitySystem = GetComponent<PlayerAbilitySystem>();
         abilitySystem.OnAbilityUnlocked += AbilityUnlocked_Handler;
-        _anim = GetComponent<AnimationController>();
-        _currentSubstate = null;
-        
+        _anim = GetComponent<AnimatorController>();
         allStates = abilitySystem.GetAvailableStates();
         
         foreach(var state in allStates.GetAllInstances())
@@ -36,7 +30,6 @@ public class PlayerStateMachine : MonoBehaviour
             state.Init(this);
         }
         StartCoroutine(LoadScriptableObjects());
-        lastAnimationIndex = (currentAnimationIndex);
     }
     
     private IEnumerator LoadScriptableObjects() 
@@ -45,8 +38,6 @@ public class PlayerStateMachine : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         ChangeState<PlayerIdleState>();
-        _anim.PlayAnimation(_currentState.stateIndex, _currentState.animationIndex);
-        currentAnimationIndex.Set(_currentState.stateIndex, _currentState.animationIndex);
     }
     public void ChangeState<T>() where T : PlayerState
     {
@@ -55,24 +46,14 @@ public class PlayerStateMachine : MonoBehaviour
         TextMeshProUGUI stateDisplay = canvasReference.GetTextMeshForGameObject(CanvasElement.TopBanner);
 
         if(newState != null){
-            if(!newState.OnCoolDown() && !newState.IsLocked()){
-                if(newState.asynchronous){
-                    if(_currentSubstate == null){
-
-                        _currentSubstate = newState;
-                        stateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
-                        _currentSubstate.TriggerTransitionIn();
-                    }
-                }
-                else{
-                    if(_currentState!= null){
-                        _currentState.TriggerTransitionOut();
-                    }    
-                    _currentState = newState;
-                    _currentState.TriggerTransitionIn();   
-                    if(_currentSubstate!=null) stateDisplay.text = _currentState.animationTrigger + (" / ") + _currentSubstate.animationTrigger;
-                    else stateDisplay.text = _currentState.animationTrigger;
-                }
+            if(!newState.OnCoolDown() && !newState.IsLocked()){               
+                
+                if(_currentState!= null){
+                    _currentState.TriggerTransitionOut();
+                }    
+                _currentState = newState;
+                _currentState.TriggerTransitionIn();   
+                stateDisplay.text = _currentState.animationTrigger;
             }           
         }  
         else{
@@ -82,18 +63,12 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Update() 
     {
-        if(_currentState != null) _currentState.TriggerLogicUpdate();
-        if(_currentSubstate != null) _currentSubstate.TriggerLogicUpdate();    
+        if(_currentState != null) _currentState.TriggerLogicUpdate(); 
     }
     private void FixedUpdate() 
     {
         if(_currentState != null) _currentState.TriggerPhysicsUpdate();
 
-        if(_currentSubstate != null)  _currentSubstate.TriggerPhysicsUpdate();
-    }
-
-    private void LateUpdate() {
-        if(_currentState!=null) CheckForAnimation();          
     }
 
     public void AbilityUnlocked_Handler(object sender, PlayerAbilitySystem.AbiltyUnlockedEventArgs args)
@@ -108,41 +83,8 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
-    private void CheckForAnimation(){
-        currentAnimationIndex.Set(_currentState.stateIndex, _currentState.animationIndex);
-        if(currentAnimationIndex != lastAnimationIndex){
-            _anim.PlayAnimation(_currentState.stateIndex, _currentState.animationIndex);
-            lastAnimationIndex = currentAnimationIndex;
-        }
-        if(_currentSubstate!=null){
-            currentSubAnimationIndex.Set(_currentSubstate.stateIndex, _currentSubstate.animationIndex);
-            if(lastSubAnimationIndex != currentSubAnimationIndex){
-                _anim.PlayAnimation(_currentSubstate.stateIndex, _currentSubstate.animationIndex);   
-                lastSubAnimationIndex = currentSubAnimationIndex;   
-            }          
-        }
-    }
-    public void SetAnimationIndex(int newIndex) => _currentState.ChangeAnimationState(newIndex);
 
-    public void removeSubState(){
-        if(_currentSubstate!=null){
-            _currentSubstate.TriggerTransitionOut();
-            _currentSubstate = null;
-            lastSubAnimationIndex.Set(0,0);
-        }       
-    }   
-
-    public void EndStateByAnimation(){
-        _currentState.AnimationEnded();
-    }
-
-    public void EndSubStateByAnimation(){
-        if(_currentSubstate!=null){
-            _currentSubstate.AnimationEnded();
-        }       
-    }
-
-    public void PlayAnimation(int x, int y){
-        _anim.PlayAnimation(x,y);
+    public void QueueAnimation(string clip, bool locked, bool priority){
+        _anim.Queue(clip, locked, priority);
     }
 }

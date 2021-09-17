@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewPlayerData", menuName = "Data/AnimationData")]
+[CreateAssetMenu(fileName = "NewPlayerData", menuName = "Data/PlayerData/PlayerVFXData")]
 public class PlayerEffectsData : ScriptableObject
 {
    public AnimationClip dashAfterimage;

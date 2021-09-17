@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerJumpState : PlayerSkillState
 { 
     private bool _jumped;
-    private bool _dashJumpCoyoteTime;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
@@ -25,12 +24,10 @@ public class PlayerJumpState : PlayerSkillState
         bool jumpDown = inputs.FixedAxis.y < 0 && controller.OnPlatform();
 
         if (!_jumped) {
-            _dashJumpCoyoteTime = !jumpDown;
             controller.SetVelocityY((jumpDown ? -2 : 1) * stats.jumpVelocity);
             _jumped = true;
         } 
 
-        DashJumpCoyoteTimeCheck();
         controller.FlipCheck(inputs.FixedAxis.x);
         controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime); 
         platformManager.LogicUpdated();
@@ -46,6 +43,7 @@ public class PlayerJumpState : PlayerSkillState
     {
         base.DoTransitionIn();
         inputs.UsedJump();
+        _target.QueueAnimation(_target.animations.airJump.name, false, true);
         _jumped = false;
     }
 
@@ -57,13 +55,17 @@ public class PlayerJumpState : PlayerSkillState
 
     protected override void TransitionChecks()
     {
-        if (inputs.DashInput && _dashJumpCoyoteTime)
+        if (inputs.DashInput) 
         {       
-            if (_dashJumpCoyoteTime) {
-                _target.ChangeState<PlayerDashJumpState>();   
-            } else {
+            if(counter<= stats.dashCoyoteTime)
+            {
+                _target.ChangeState<PlayerDashJumpState>();
+            }
+            else
+            {
                 _target.ChangeState<PlayerDashState>();
-            }    
+                Debug.Log("a");
+            }
             inputs.UsedDash();          
         }
         else if(inputs.JumpCancel){
@@ -72,6 +74,7 @@ public class PlayerJumpState : PlayerSkillState
         }   
         else if(controller.CurrentVelocity.y <=0){
             stateDone = true;
+            Debug.Log("a");
         } 
         else if (controller.Grounded())
         {
@@ -96,13 +99,5 @@ public class PlayerJumpState : PlayerSkillState
             inputs.UsedRange();
         }
         base.TransitionChecks();
-    }
-
-    private void DashJumpCoyoteTimeCheck()
-    {
-        if (_dashJumpCoyoteTime && counter > stats.jumpHandicapTime)
-        {
-            _dashJumpCoyoteTime = false;
-        }
     }
 }

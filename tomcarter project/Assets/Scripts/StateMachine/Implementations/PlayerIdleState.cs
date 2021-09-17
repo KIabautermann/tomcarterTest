@@ -31,6 +31,8 @@ public class PlayerIdleState : PlayerGroundedState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        controller.SetCollider(stats.colliderDefaultSize, stats.colliderDefaultPosition);
+        _target.QueueAnimation(_target.animations.idle.name, false, false);
     }
 
     protected override void DoTransitionOut()

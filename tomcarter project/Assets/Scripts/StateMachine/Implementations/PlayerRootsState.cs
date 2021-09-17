@@ -21,9 +21,10 @@ public class PlayerRootsState : PlayerSkillState
         }
         else if (counter > stats.rootChannelingDuration)
         {
+            _target.QueueAnimation(_target.animations.rootsEnd.name, true, false);
             _channelFinished = true;
+            stateDone = true;
         }
-
         base.DoLogicUpdate();
     }
 
@@ -35,7 +36,7 @@ public class PlayerRootsState : PlayerSkillState
     protected override void DoTransitionIn()
     {
         _channelFinished = false;
-        _target.removeSubState();
+        _target.QueueAnimation(_target.animations.rootsInit.name, false, true);
         controller.SetAcceleration(0f);
         controller.SetVelocityX(0f);
     
@@ -69,6 +70,7 @@ public class PlayerRootsState : PlayerSkillState
                 abilitySystem.ToggleLockAbility(rootAreaComponent.GetSkill(), true);
             }
         }
+        _target.QueueAnimation(_target.animations.rootsEnd.name, true, true);
         base.DoTransitionOut();
     }
 

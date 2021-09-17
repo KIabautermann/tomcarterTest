@@ -33,6 +33,7 @@ public class PlayerMovementState : PlayerGroundedState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        _target.QueueAnimation(_target.animations.runInit.name, false,false);
     }
 
     protected override void DoTransitionOut()

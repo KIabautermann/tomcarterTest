@@ -39,6 +39,7 @@ public class PlayerOnAirState : PlayerState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        _target.QueueAnimation(_target.animations.airPeak.name, false, false);
         animationIndex = 2;
     }
 
@@ -56,6 +57,7 @@ public class PlayerOnAirState : PlayerState
         else if (inputs.JumpInput && _jumpCoyoteTime)
         {
             _target.ChangeState<PlayerJumpState>();
+            _jumpCoyoteTime = false;
             inputs.UsedJump();
         }
         else if (inputs.DashInput)

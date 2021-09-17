@@ -57,7 +57,7 @@ public class Respawner : MonoBehaviour
             }
 
             RaycastHit groundHit = movement.GetGroundHit();
-            var ground = groundHit.collider.gameObject;
+            /*var ground = groundHit.collider.gameObject;
 
             // No esta sobre tierra firme (no hedge)
             if (Mathf.Pow(2, ground.layer) != data.solidGround.value) {
@@ -74,7 +74,7 @@ public class Respawner : MonoBehaviour
             // que el de las paredes al costado
             if (min.x < currPos.x - solidGroundMinimum && max.x > currPos.x + solidGroundMinimum) {
                 lastSafeZone = this.gameObject.transform.position;
-            } 
+            }*/ 
         }
         
     }

@@ -26,7 +26,6 @@ public class PlayerDamagedState : PlayerTransientState
 
     protected override void DoTransitionIn()
     {
-        _target.removeSubState();  
         controller.SetTotalVelocity(0f, Vector2.right);
         controller.SetAcceleration(0f);
         base.DoTransitionIn();
