@@ -12,11 +12,11 @@ public class PlayerAbilitySystem : LoadableObject
     }
     private Dictionary<PlayerSkill, bool> unlockedSkills = new Dictionary<PlayerSkill, bool>() 
     {
-        { PlayerSkill.SPORE_DASH, false },
-        { PlayerSkill.ROOT_ATTACK, false },
-        { PlayerSkill.VINE_HOOK, false },
-        { PlayerSkill.BARK_GUARD, false },
-        { PlayerSkill.HEDGE_CLIMB, false },
+        { PlayerSkill.SPORE_DASH, true },
+        { PlayerSkill.ROOT_ATTACK, true },
+        { PlayerSkill.VINE_HOOK, true },
+        { PlayerSkill.BARK_GUARD, true },
+        { PlayerSkill.HEDGE_CLIMB, true },
     };
     public ComponentCache<PlayerState> GetAvailableStates()
     {
@@ -41,8 +41,6 @@ public class PlayerAbilitySystem : LoadableObject
         stateListMap[unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.GetComponent<PlayerBlinkDashState>());
         stateListMap[!unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.GetComponent<PlayerBaseDashState>());
         stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.GetComponent<PlayerRangeState>());
-        stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.GetComponent<PlayerChargedRangeState>());
-        stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.GetComponent<PlayerRangeChargeState>());
         stateListMap[unlockedSkills[PlayerSkill.VINE_HOOK]].Add(this.gameObject.GetComponent<PlayerHookState>());
         stateListMap[unlockedSkills[PlayerSkill.BARK_GUARD]].Add(this.gameObject.GetComponent<PlayerHardenState>());
         stateListMap[unlockedSkills[PlayerSkill.HEDGE_CLIMB]].Add(this.gameObject.GetComponent<PlayerHedgeState>());
@@ -88,7 +86,7 @@ public class PlayerAbilitySystem : LoadableObject
                 typesToSwap_2 = new List<Type>() { typeof(PlayerBaseDashState) };
                 break;
             case PlayerSkill.ROOT_ATTACK:
-                typesToSwap_1 = new List<Type>() { typeof(PlayerRangeState), typeof(PlayerRangeChargeState), typeof(PlayerChargedRangeState) };
+                typesToSwap_1 = new List<Type>() { typeof(PlayerRangeState) };
                 break;
             case PlayerSkill.VINE_HOOK:
                 typesToSwap_1 = new List<Type>() { typeof(PlayerHookState) };
@@ -111,11 +109,11 @@ public class PlayerAbilitySystem : LoadableObject
     protected override void LoadFromSavedGameState(GameState gameState)
     {
         var unlockedAbilities = gameState.unlockedAbilities;
-        unlockedSkills[PlayerSkill.SPORE_DASH] = unlockedAbilities._hasSporeDashUnlocked;
-        unlockedSkills[PlayerSkill.ROOT_ATTACK] = unlockedAbilities._hasRootAttackUnlocked;
-        unlockedSkills[PlayerSkill.VINE_HOOK] = unlockedAbilities._hasVineHookUnlocked;
-        unlockedSkills[PlayerSkill.BARK_GUARD] = unlockedAbilities._hasBarkGuardUnlocked;
-        unlockedSkills[PlayerSkill.HEDGE_CLIMB] = unlockedAbilities._hasHedgeClimbUnlocked;
+        unlockedSkills[PlayerSkill.SPORE_DASH] = true;
+        unlockedSkills[PlayerSkill.ROOT_ATTACK] = true;
+        unlockedSkills[PlayerSkill.VINE_HOOK] = true;
+        unlockedSkills[PlayerSkill.BARK_GUARD] = true;
+        unlockedSkills[PlayerSkill.HEDGE_CLIMB] = true;
     }
     protected override void SaveToGameState(object sender, SaveLoadController.OnSaveCalledEventArgs onSaveArguments) 
     {

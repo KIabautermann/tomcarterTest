@@ -83,22 +83,14 @@ MonoBehaviour:
   colliderHardenSize: {x: 0.32, y: 0.64}
   colliderHardenPosition: {x: 0, y: 0.04, z: 0}
   meleeID: melee
-  meleeTime: 0.32
+  meleeTime: 0.33
   meleeHitbox: {x: 1.5, y: 0.7}
   meleeHiboxOffset: {x: 0.7, y: 0}
   rangeID: range
-  longRangeID: long_range
-  chargeID: charge
-  rangeStartupTime: 0.5625
-  rangeHitboxTime: 0.1875
-  rangerecoveryTime: 0
   rangeCooldown: 1
-  rangeChargeTime: 0.75
+  rangeTime: 0.59
   rangeHitbox: {x: 3.5, y: 0.5}
   rangeHiboxOffset: {x: 2, y: 0}
-  chargedRangeHitbox: {x: 5.5, y: 0.5}
-  chargedRangeHiboxOffset: {x: 2.7, y: 0}
-  rangeInitialImpulse: 10
   walkable:
     serializedVersion: 2
     m_Bits: 34048

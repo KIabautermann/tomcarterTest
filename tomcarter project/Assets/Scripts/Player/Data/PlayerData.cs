@@ -108,18 +108,10 @@ public class PlayerData : ScriptableObject
     [Header("Range State")]
 
     public string rangeID = "range";
-    public string longRangeID = "long_range";
-    public string chargeID = "charge";
-    public float rangeStartupTime = .5f;
-    public float rangeHitboxTime = .5f;
-    public float rangerecoveryTime = .5f;
     public float rangeCooldown;
-    public float rangeChargeTime;
+    public float rangeTime = 1.5f;
     public Vector2 rangeHitbox = Vector2.one;
     public Vector2 rangeHiboxOffset;
-    public Vector2 chargedRangeHitbox = Vector2.one;
-    public Vector2 chargedRangeHiboxOffset;
-    public float rangeInitialImpulse;
 
     [Header("LayerMasks")]
     public LayerMask walkable;

@@ -28,11 +28,6 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private LayerMask _hedge;
     [SerializeField]
-    private Transform[] groundCheck;
-    [SerializeField]
-    private Transform[] wallCheck;
-    [SerializeField]
-    private Transform[] ceilingCheck;
     private bool canFlip;
     private bool flipRequest;
 
@@ -72,66 +67,73 @@ public class MovementController : MonoBehaviour
     }
     public bool Grounded()
     {
-        Vector3 checkPosition = myCollider.bounds.center + Vector3.down * myCollider.bounds.extents.y;
-        Vector3 checkSize = new Vector3(myCollider.bounds.size.x - .2f, _detectionLenght)/2;
-        return Physics.OverlapBox(checkPosition, checkSize, Quaternion.identity, _walkwable).Length!=0 && _rb.velocity.y <= 0;
+        int n = 0;
+        RaycastHit tmpHit = new RaycastHit();
+        Vector3 detection = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght) / 2;
+        if(Physics.BoxCast(myCollider.bounds.center, detection, -Vector3.up, out tmpHit, Quaternion.identity, myCollider.bounds.size.y / 2, _walkwable)){
+            n++;
+            groundHit = tmpHit;
+        }
+        return n != 0 && _rb.velocity.y <= 0;
     }
 
     public bool OnPlatform()
     {
-       int n = 0;
-       RaycastHit tmpHit = new RaycastHit();
-       for(int i = 0; i < groundCheck.Length; i++){
-           if(Physics.Raycast(groundCheck[i].position, -Vector2.up, out tmpHit, _detectionLenght, _platform)){
-               n++;
-           }
-       }
-       return n!=0;
+        int n = 0;
+        RaycastHit tmpHit = new RaycastHit();
+        Vector3 detection = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght) / 2;
+        if (Physics.BoxCast(myCollider.bounds.center, detection, -Vector3.up, out tmpHit, Quaternion.identity, myCollider.bounds.size.y / 2, _platform))
+        {
+            n++;
+        }
+        return n != 0 && _rb.velocity.y <= 0;
     }
     
     public bool OnRootable()
     {
-       int n = 0;
-       RaycastHit tmpHit = new RaycastHit();
-       for(int i = 0; i < groundCheck.Length; i++){
-           if(Physics.Raycast(groundCheck[i].position, -Vector2.up,out tmpHit, _detectionLenght, _rootable )){
-               n++;
-               rootableHit = tmpHit;
-           }
-       }
-       if (n == 0) { rootableHit = tmpHit; }
-       return n!=0 && CurrentVelocity.y < .01f;
+        int n = 0;
+        RaycastHit tmpHit = new RaycastHit();
+        Vector3 detection = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght) / 2;
+        if (Physics.BoxCast(myCollider.bounds.center, detection, -Vector3.up, out tmpHit, Quaternion.identity, myCollider.bounds.size.y / 2, _rootable))
+        {
+            n++;
+            rootableHit = tmpHit;
+        }
+        return n != 0 && _rb.velocity.y <= 0;
     }
     public bool OnHedge()
     {
-       int n = 0;
-       for(int i = 0; i < groundCheck.Length; i++){
-           if(Physics.Raycast(groundCheck[i].position, -Vector2.up, _detectionLenght, _hedge )){
-               n++;
-           }
-       }
-       return n!=0 && CurrentVelocity.y < .01f;
+        int n = 0;
+        RaycastHit tmpHit = new RaycastHit();
+        Vector3 detection = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght) / 2;
+        if (Physics.BoxCast(myCollider.bounds.center, detection, -Vector3.up, out tmpHit, Quaternion.identity, myCollider.bounds.size.y / 2, _hedge))
+        {
+            n++;
+        }
+        return n != 0 && _rb.velocity.y <= 0;
     }
     public bool OnWall()
     {
-       int n = 0;
-       for(int i = 0; i < wallCheck.Length; i++){
-           if(Physics.Raycast(wallCheck[i].position, Vector2.right * facingDirection,_detectionLenght, _walkwable )){
-               n++;
-           }
-       }
-       return n!=0;
+        int n = 0;
+        RaycastHit tmpHit = new RaycastHit();
+        Vector3 detection = new Vector3(_detectionLenght - .1f, myCollider.bounds.size.y - .1f) / 2;
+        if (Physics.BoxCast(myCollider.bounds.center, detection, transform.right, out tmpHit, Quaternion.identity, myCollider.bounds.size.x / 2, _hedge))
+        {
+            n++;
+        }
+        return n != 0;
     }
 
     public bool OnCeiling()
     {
-       int n = 0;
-       for(int i = 0; i < ceilingCheck.Length; i++){
-           if(Physics.Raycast(ceilingCheck[i].position, Vector2.up,_detectionLenght, _walkwable)){
-               n++;
-           }
-       }
-       return n!=0;
+        int n = 0;
+        RaycastHit tmpHit = new RaycastHit();
+        Vector3 detection = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght) / 2;
+        if (Physics.BoxCast(myCollider.bounds.center, detection, Vector3.up, out tmpHit, Quaternion.identity, myCollider.bounds.size.y / 2, _walkwable))
+        {
+            n++;
+        }
+        return n != 0;
     }
     public void FlipCheck(int xInput)
     {
@@ -233,7 +235,7 @@ public class MovementController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Vector3 checkPosition = myCollider.bounds.center + Vector3.down * myCollider.bounds.extents.y;
-        Vector3 checkSize = new Vector3(myCollider.bounds.size.x - .2f, _detectionLenght, 0);
+        Vector3 checkSize = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght, 0);
         Gizmos.DrawWireCube(checkPosition, checkSize);     
     }
 

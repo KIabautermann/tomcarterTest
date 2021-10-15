@@ -64,7 +64,6 @@ public class PlayerJumpState : PlayerSkillState
             else
             {
                 _target.ChangeState<PlayerDashState>();
-                Debug.Log("a");
             }
             inputs.UsedDash();          
         }
@@ -74,7 +73,6 @@ public class PlayerJumpState : PlayerSkillState
         }   
         else if(controller.CurrentVelocity.y <=0){
             stateDone = true;
-            Debug.Log("a");
         } 
         else if (controller.Grounded())
         {
@@ -95,7 +93,7 @@ public class PlayerJumpState : PlayerSkillState
             inputs.UsedGuard();
         }
         else if(inputs.RangeInput){
-            _target.ChangeState<PlayerRangeChargeState>();
+            _target.ChangeState<PlayerRangeState>();
             inputs.UsedRange();
         }
         base.TransitionChecks();

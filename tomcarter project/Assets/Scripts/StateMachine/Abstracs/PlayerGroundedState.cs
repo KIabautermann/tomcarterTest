@@ -58,7 +58,7 @@ public abstract class PlayerGroundedState : PlayerState
             inputs.UsedMelee();
         }
         else if(inputs.RangeInput){
-            _target.ChangeState<PlayerRangeChargeState>();
+            _target.ChangeState<PlayerRangeState>();
             inputs.UsedRange();
         }
         else if(inputs.HookInput){

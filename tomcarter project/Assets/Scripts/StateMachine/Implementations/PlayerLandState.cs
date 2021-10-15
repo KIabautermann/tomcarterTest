@@ -39,6 +39,7 @@ public class PlayerLandState : PlayerTransientState
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        controller.SetVelocityY(0);
     }
 
     

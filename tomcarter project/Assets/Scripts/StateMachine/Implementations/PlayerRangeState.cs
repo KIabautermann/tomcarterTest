@@ -6,14 +6,11 @@ public class PlayerRangeState : PlayerAttackState
 {
     public override void Init(PlayerStateMachine target)
     {
-        base.Init(target);       
-        startupTime = 0;
-        hitboxTime = stats.rangeHitboxTime;
-        recoveryTime = stats.rangerecoveryTime;
-        hitbox = stats.rangeHitbox;
-        hitboxOffset = stats.rangeHiboxOffset;
+        base.Init(target);
+        attackDuration = stats.rangeTime;
         animationTrigger = stats.rangeID;
     }
+
     protected override void DoChecks()
     {
         base.DoChecks();
@@ -21,29 +18,78 @@ public class PlayerRangeState : PlayerAttackState
 
     protected override void DoLogicUpdate()
     {
-        base.DoLogicUpdate();   
-        controller.Accelerate(-1/stats.groundedAccelerationTime * Time.deltaTime); 
+        base.DoLogicUpdate();
+        if (onAir)
+        {
+            if (!activeHitbox)
+            {
+                controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
+                if (inputs.JumpCancel && controller.CurrentVelocity.y >= 0 && !forceAplied)
+                {
+                    controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
+                    forceAplied = true;
+                }
+            }
+            else
+            {
+                controller.SetTotalVelocity(0, Vector2.zero);
+                controller.SetGravity(false);
+                controller.Accelerate(0);
+            }
+            
+        }
+        else
+        {
+            controller.Accelerate(-1 / stats.groundedAccelerationTime);
+        }
+        controller.FlipCheck(inputs.FixedAxis.x);
     }
 
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-    }
+        if (controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded())
+        {
+            controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
+        }
+        if (!activeHitbox)
+        {
+            controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
+        }
+    }      
 
     protected override void DoTransitionIn()
     {
-        base.DoTransitionIn();       
-        controller.SetTotalVelocity(.5f, controller.CurrentVelocity.normalized);
-        if(inputs.FixedAxis.x !=0){
-            controller.SetVelocityX(stats.rangeInitialImpulse * controller.facingDirection);
+        base.DoTransitionIn();
+        if (!onAir)
+        {
+            _target.QueueAnimation(_target.animations.attackRange.name, false, true);
+        }
+        else
+        {
+            if(inputs.FixedAxis.y == 0)
+            {
+                _target.QueueAnimation(_target.animations.attackRange.name, false, true);
+            }
+            else
+            {
+                if(inputs.FixedAxis.y > 0)
+                {
+                    _target.QueueAnimation(_target.animations.attackRangeUp.name, false, true);
+                }
+                else
+                {
+                    _target.QueueAnimation(_target.animations.attackRangeDown.name, false, true);
+                }
+            }
+            
         }
     }
-
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        controller.LockFlip(false);
         controller.SetGravity(true);
-        controller.SetAcceleration(inputs.FixedAxis.x != 0 ? 1 : 0f);
     }
 
     protected override void TransitionChecks()
@@ -51,10 +97,8 @@ public class PlayerRangeState : PlayerAttackState
         base.TransitionChecks();
     }
 
-    private void OnDrawGizmos() {
-        if(activeHitbox){
-            Vector3 offset = new Vector3(hitboxOffset.x * controller.facingDirection, hitboxOffset.y,0);
-            Gizmos.DrawWireCube(transform.position + offset, hitbox);
-        }       
+    private void OnDrawGizmos()
+    {
+        
     }
 }

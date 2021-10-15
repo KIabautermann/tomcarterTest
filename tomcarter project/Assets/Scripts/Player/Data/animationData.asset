@@ -20,6 +20,8 @@ MonoBehaviour:
   attackAir: {fileID: 7400000, guid: 893652827a2f5eb41a41e5e942d85b30, type: 2}
   attackGround: {fileID: 7400000, guid: b723edd4ea5a7e34ab23dec487336102, type: 2}
   attackRange: {fileID: 7400000, guid: db122cd252f5a8f41817dbc0599e025c, type: 2}
+  attackRangeUp: {fileID: 7400000, guid: 437555d754840c04aa16cc5fd34dadaa, type: 2}
+  attackRangeDown: {fileID: 7400000, guid: 5b66e4beccbe8db4fbd9fdedd1ac069a, type: 2}
   blinkEnd: {fileID: 7400000, guid: 6d1ba83154c567f4ca59e64743f7f59d, type: 2}
   blinkInit: {fileID: 7400000, guid: 0fbae7f4491073b46831bff3451f62aa, type: 2}
   crouch: {fileID: 7400000, guid: e2393b98b1622dd4c9d040884da985af, type: 2}

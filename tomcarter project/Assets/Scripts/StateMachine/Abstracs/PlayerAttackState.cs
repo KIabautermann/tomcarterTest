@@ -4,13 +4,11 @@ using UnityEngine;
 
 public abstract class PlayerAttackState : PlayerSkillState
 {
-    protected float startupTime;
-    protected float hitboxTime;
-    protected float recoveryTime;
     protected bool activeHitbox;
-    protected Vector2 hitbox; 
-    protected Vector3 hitboxOffset;
-    
+    protected float attackDuration;
+    protected bool onAir;
+    protected bool forceAplied;
+
     protected override void DoChecks()
     {
         base.DoChecks();
@@ -30,24 +28,32 @@ public abstract class PlayerAttackState : PlayerSkillState
     {
         base.DoTransitionIn();
         controller.LockFlip(true);
+        activeHitbox = false;
+        forceAplied = false;
+        onAir = !controller.Grounded();
+        
     }
-
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
         controller.LockFlip(false);
-        controller.FlipCheck(inputs.FixedAxis.x);
     }
-
     protected override void OnDestroyHandler()
     {
         base.OnDestroyHandler();
     }
-
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-    }
+        if (counter >= attackDuration)
+        {
+            stateDone = true;
+        }
+    } 
 
+    public void SetHitboxOn()
+    {
+        activeHitbox = true;
+    }
     
 }

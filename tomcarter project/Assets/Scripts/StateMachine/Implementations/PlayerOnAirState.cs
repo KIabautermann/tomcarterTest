@@ -80,7 +80,7 @@ public class PlayerOnAirState : PlayerState
             inputs.UsedGuard();
         }
         else if(inputs.RangeInput){
-           _target.ChangeState<PlayerRangeChargeState>();
+           _target.ChangeState<PlayerRangeState>();
             inputs.UsedRange();
         }
 
