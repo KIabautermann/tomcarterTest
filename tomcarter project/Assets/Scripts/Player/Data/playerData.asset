@@ -88,8 +88,8 @@ MonoBehaviour:
   meleeHiboxOffset: {x: 0.7, y: 0}
   rangeID: range
   rangeCooldown: 1
-  rangeTime: 0.59
-  rangeHitbox: {x: 3.5, y: 0.5}
+  rangeTime: 0.67
+  rangeHitbox: {x: 4.5, y: 0.5}
   rangeHiboxOffset: {x: 2, y: 0}
   walkable:
     serializedVersion: 2

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerRangeState : PlayerAttackState
 {
+    public float _maxDistance;
+    private RaycastHit _raycast;
+    private Vector3 _rangeAttackDirection;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
@@ -33,6 +36,7 @@ public class PlayerRangeState : PlayerAttackState
             else
             {
                 controller.SetTotalVelocity(0, Vector2.zero);
+                controller.SetAcceleration(0);
                 controller.SetGravity(false);
                 controller.Accelerate(0);
             }
@@ -56,6 +60,21 @@ public class PlayerRangeState : PlayerAttackState
         {
             controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
         }
+        Vector3 center = transform.position + _rangeAttackDirection * _maxDistance / 2;
+        Vector3 size = Hitbox(_rangeAttackDirection)/2;
+        Collider[] hitbox = Physics.OverlapBox(center, size, Quaternion.identity, stats.walkable);
+        hitDetection = hitbox.Length != 0;
+        if (Physics.Raycast(transform.position, _rangeAttackDirection, out _raycast, stats.rangeHitbox.x, stats.walkable))
+        {
+            _maxDistance = Vector3.Distance(transform.position, _raycast.point);
+            _target.SetMaskSize(Vector3.one * 5);
+            _target.SetMaskPosition(_raycast.point, _rangeAttackDirection);
+            _target.SetMaskActive(true);
+        }
+        else
+        {
+            _maxDistance = stats.rangeHitbox.x;
+        }
     }      
 
     protected override void DoTransitionIn()
@@ -63,23 +82,35 @@ public class PlayerRangeState : PlayerAttackState
         base.DoTransitionIn();
         if (!onAir)
         {
-            _target.QueueAnimation(_target.animations.attackRange.name, false, true);
+            if (inputs.FixedAxis.y == 0)
+            {
+                _target.QueueAnimation(_target.animations.attackRange.name, false, true);
+                _rangeAttackDirection = Vector3.right * controller.facingDirection;
+            }
+            else if(inputs.FixedAxis.y > 0)
+            {
+                _target.QueueAnimation(_target.animations.attackRangeUp.name, false, true);
+                _rangeAttackDirection = Vector3.up;
+            }
         }
         else
         {
             if(inputs.FixedAxis.y == 0)
             {
                 _target.QueueAnimation(_target.animations.attackRange.name, false, true);
+                _rangeAttackDirection = Vector3.right * controller.facingDirection;
             }
             else
             {
                 if(inputs.FixedAxis.y > 0)
                 {
                     _target.QueueAnimation(_target.animations.attackRangeUp.name, false, true);
+                    _rangeAttackDirection = Vector3.up;
                 }
                 else
                 {
                     _target.QueueAnimation(_target.animations.attackRangeDown.name, false, true);
+                    _rangeAttackDirection = -Vector3.up;
                 }
             }
             
@@ -90,6 +121,7 @@ public class PlayerRangeState : PlayerAttackState
         base.DoTransitionOut();
         controller.LockFlip(false);
         controller.SetGravity(true);
+        _target.SetMaskActive(false);
     }
 
     protected override void TransitionChecks()
@@ -99,6 +131,25 @@ public class PlayerRangeState : PlayerAttackState
 
     private void OnDrawGizmos()
     {
-        
+        Gizmos.color = hitDetection ? Color.green : Color.red;
+        if (activeHitbox)
+        {
+            Vector3 size = Hitbox(_rangeAttackDirection);
+            Vector3 center = transform.position + _rangeAttackDirection * _maxDistance / 2;
+            Gizmos.DrawWireCube(center, size);
+            if (hitDetection)
+            {
+                Gizmos.DrawWireSphere(_raycast.point, .5f);
+            }        
+        }       
     }
+
+    Vector3 Hitbox(Vector3 direction)
+    {
+        if(direction == Vector3.right || direction == -Vector3.right)
+        {
+            return new Vector3(_maxDistance, stats.rangeHitbox.y);
+        }
+        return new Vector3(stats.rangeHitbox.y, _maxDistance);
+    } 
 }

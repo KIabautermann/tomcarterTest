@@ -7,7 +7,9 @@ public abstract class PlayerAttackState : PlayerSkillState
     protected bool activeHitbox;
     protected float attackDuration;
     protected bool onAir;
+    protected bool hitDetection;
     protected bool forceAplied;
+    public float time;
 
     protected override void DoChecks()
     {
@@ -16,7 +18,8 @@ public abstract class PlayerAttackState : PlayerSkillState
 
     protected override void DoLogicUpdate()
     {
-        base.DoLogicUpdate();       
+        base.DoLogicUpdate();
+        time = counter;
     }
 
     protected override void DoPhysicsUpdate()
@@ -31,6 +34,7 @@ public abstract class PlayerAttackState : PlayerSkillState
         activeHitbox = false;
         forceAplied = false;
         onAir = !controller.Grounded();
+        hitDetection = false;
         
     }
     protected override void DoTransitionOut()
@@ -47,7 +51,7 @@ public abstract class PlayerAttackState : PlayerSkillState
         base.TransitionChecks();
         if (counter >= attackDuration)
         {
-            stateDone = true;
+           stateDone = true;
         }
     } 
 

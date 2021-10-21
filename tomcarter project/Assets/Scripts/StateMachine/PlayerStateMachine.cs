@@ -16,6 +16,8 @@ public class PlayerStateMachine : MonoBehaviour
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates;
     private AnimatorController _anim;
+    [SerializeField]
+    private SpriteMask _mask;
 
 
     public virtual void Start()
@@ -80,6 +82,20 @@ public class PlayerStateMachine : MonoBehaviour
         foreach (Type t in args.removed)
         {
             allStates.SetInactive(t);
+        }
+    }
+
+    public void SetMaskPosition(Vector3 position, Vector3 offsetDirection)
+    {
+        _mask.transform.position = position + offsetDirection * _mask.transform.localScale.x/2 ;
+    }
+    public void SetMaskSize(Vector3 size) => _mask.transform.localScale = size;
+    public void SetMaskActive(bool active)
+    {
+        _mask.gameObject.SetActive(active);
+        if (!active)
+        {
+            _mask.transform.position = transform.position;
         }
     }
 
