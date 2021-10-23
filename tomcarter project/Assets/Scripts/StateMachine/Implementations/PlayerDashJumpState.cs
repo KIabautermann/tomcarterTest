@@ -52,7 +52,7 @@ public class PlayerDashJumpState : PlayerSkillState
     {
         
         base.DoTransitionIn();
-        _target.QueueAnimation(_target.animations.airUpwards.name, false, false);
+        _target.QueueAnimation(_target.animations.airUpwards.name, false, true);
         _isJumping = true;
 
         StartBlastEffect();

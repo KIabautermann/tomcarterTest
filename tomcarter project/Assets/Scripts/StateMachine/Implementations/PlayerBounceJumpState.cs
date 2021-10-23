@@ -26,7 +26,7 @@ public class PlayerBounceJumpState : PlayerBasicMovementState
         base.DoTransitionIn();
         canShortHop = false;
         controller.SetVelocityY(stats.jumpVelocity);
-        _target.QueueAnimation(_target.animations.airUpwards.name, false, false);
+        _target.QueueAnimation(_target.animations.airUpwards.name, false, true);
         currentAcceleration = _fromDashJump ? stats.airAccelerationTime : stats.dashJumpAccelerationTime;
         currentSpeed = _fromDashJump ? stats.dashJumpVelocityX : stats.movementVelocity;
     }

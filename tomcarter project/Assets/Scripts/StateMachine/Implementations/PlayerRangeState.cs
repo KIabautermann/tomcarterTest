@@ -117,7 +117,7 @@ public class PlayerRangeState : PlayerAttackState
                 }
                 else
                 {
-                    _target.QueueAnimation(_target.animations.attackRangeDown.name, true, true);
+                    _target.QueueAnimation(_target.animations.attackRangeDown.name, false, true);
                     _rangeAttackDirection = -Vector3.up;
                 }
             }
