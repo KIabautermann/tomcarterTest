@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLandState : PlayerTransientState
+public class PlayerLandState : PlayerGroundedState
 {
     
     public override void Init(PlayerStateMachine target)
@@ -20,17 +20,16 @@ public class PlayerLandState : PlayerTransientState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.groundedAccelerationTime : -1 / stats.groundedAccelerationTime) * Time.deltaTime);
     }
 
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
     }
 
     protected override void DoTransitionIn()
     {
+        base.DoTransitionIn();
         PlayerEventSystem.GetInstance().TriggerPlayerHasLanded(transform.position);
         _target.QueueAnimation(_target.animations.airLand.name, true, true);
         stateDone = true;

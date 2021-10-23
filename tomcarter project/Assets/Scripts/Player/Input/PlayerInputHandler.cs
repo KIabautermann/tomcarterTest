@@ -12,7 +12,7 @@ public class PlayerInputHandler : MonoBehaviour
     #endregion
     #region Jump
         public bool JumpInput {get ; private set;}
-        public bool JumpCancel {get ; private set;}
+        public bool JumpCancel;
         private float _jumpStartTime;
     #endregion
     #region Roots

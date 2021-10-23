@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    
+
     #region Components
     private Rigidbody _rb;
     public float colliderX {get; private set;}
@@ -33,10 +33,12 @@ public class MovementController : MonoBehaviour
 
     #endregion
     
-    public Vector2 CurrentVelocity;
-    public float AcelerationIndex { get; private set; }
+    public Vector2 CurrentVelocity { get; private set; }
+    [Range(0.0f, 1.0f)]
+    public float AcelerationIndex;
     public int facingDirection { get; private set; } 
     public int lastDirection { get; private set; } 
+    public bool usingGravity { get; private set; }
     private Vector2 workspace;
 
     #region RayCast Hits
@@ -54,13 +56,15 @@ public class MovementController : MonoBehaviour
     private void Start() 
     {
         _rb = GetComponent<Rigidbody>();
-        myCollider = GetComponent<CapsuleCollider>();   
+        myCollider = GetComponent<CapsuleCollider>();
+        usingGravity = _rb.useGravity;
     }
     #region Check Functions
 
     private void Update() 
     {
         CurrentVelocity = _rb.velocity;
+        usingGravity = _rb.useGravity;
         if(flipRequest && canFlip){
             Flip();
         }

@@ -115,6 +115,7 @@ public class PlayerData : ScriptableObject
 
     [Header("LayerMasks")]
     public LayerMask walkable;
+    public LayerMask hitable;
     public LayerMask hedge;
     public LayerMask npc;
     public LayerMask rootable;

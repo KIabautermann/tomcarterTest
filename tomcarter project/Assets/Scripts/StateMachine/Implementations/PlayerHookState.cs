@@ -11,7 +11,6 @@ public class PlayerHookState : PlayerUnlockableSkill
     private Vector3 _hookVector;
     private float dist;    
     private Vector3 _direction;
-    private bool _pressedHarden;
 
     #region Init Variables
     private LineRenderer _line;
@@ -186,12 +185,6 @@ public class PlayerHookState : PlayerUnlockableSkill
     protected override void TransitionChecks()
     {
         base.TransitionChecks();   
-        if(!inputs.GuardCancel && stateDone){
-            _target.ChangeState<PlayerHardenState>();
-            controller.SetVelocityX(0);
-            controller.SetAcceleration(0);
-            controller.SetVelocityY(controller.CurrentVelocity.y * stats.hardenHookMultiplier);
-        }      
     }
 
     private void OnDrawGizmos() {

@@ -5,7 +5,6 @@ using System;
 
 public class PlayerTransientState : PlayerState
 {
-    protected bool stateDone;
 
     protected override void DoChecks()
     {
@@ -36,21 +35,7 @@ public class PlayerTransientState : PlayerState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-
-        if(stateDone)
-        {
-            if (controller.Grounded())
-            {
-                _target.ChangeState<PlayerIdleState>();
-            }
-            else
-            {
-                _target.ChangeState<PlayerOnAirState>();
-            }           
-        }
     }
 
-    public void ForceEnd(){
-        stateDone = true;
-    }
+
 }

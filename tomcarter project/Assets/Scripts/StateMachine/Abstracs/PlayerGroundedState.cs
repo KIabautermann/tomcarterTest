@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerGroundedState : PlayerState
+public abstract class PlayerGroundedState : PlayerBasicMovementState
 {
     private Vector2 direction;
     protected override void DoChecks()
@@ -13,17 +13,18 @@ public abstract class PlayerGroundedState : PlayerState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
     }
 
     protected override void DoPhysicsUpdate()
     {
-        
+        base.DoPhysicsUpdate();
     }
 
     protected override void DoTransitionIn()
     {
         direction = new Vector2(controller.facingDirection,0);
+        currentAcceleration = stats.groundedAccelerationTime;
+        currentSpeed = stats.movementVelocity;
         base.DoTransitionIn();        
     }
 

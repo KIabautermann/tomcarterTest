@@ -20,7 +20,6 @@ public class PlayerMovementState : PlayerGroundedState
 
     protected override void DoLogicUpdate()
     {
-        controller.Accelerate(1 / stats.groundedAccelerationTime * Time.deltaTime);
         controller.FlipCheck(inputs.FixedAxis.x);
         base.DoLogicUpdate();
     }

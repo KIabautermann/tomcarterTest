@@ -41,6 +41,7 @@ public class PlayerAbilitySystem : LoadableObject
         stateListMap[unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.GetComponent<PlayerBlinkDashState>());
         stateListMap[!unlockedSkills[PlayerSkill.SPORE_DASH]].Add(this.gameObject.GetComponent<PlayerBaseDashState>());
         stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.GetComponent<PlayerRangeState>());
+        stateListMap[unlockedSkills[PlayerSkill.ROOT_ATTACK]].Add(this.gameObject.GetComponent<PlayerBounceJumpState>());
         stateListMap[unlockedSkills[PlayerSkill.VINE_HOOK]].Add(this.gameObject.GetComponent<PlayerHookState>());
         stateListMap[unlockedSkills[PlayerSkill.BARK_GUARD]].Add(this.gameObject.GetComponent<PlayerHardenState>());
         stateListMap[unlockedSkills[PlayerSkill.HEDGE_CLIMB]].Add(this.gameObject.GetComponent<PlayerHedgeState>());

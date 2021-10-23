@@ -5,6 +5,7 @@ using UnityEngine;
 public class BounceBallTest : MonoBehaviour, IBounceable
 {
 
+    public float bounciness;
     public void Bounce()
     {
         throw new System.NotImplementedException();

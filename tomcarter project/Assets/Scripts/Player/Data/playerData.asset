@@ -26,9 +26,9 @@ MonoBehaviour:
   jumpVelocity: 10
   jumpLenght: 0.15
   fallMultiplier: 5
-  minJumpVelocity: 10
+  minJumpVelocity: 5
   coyoteTime: 0.2
-  shortHopMultiplier: 0.4
+  shortHopMultiplier: 0.5
   maxFallVelocity: -20
   amountOfJumps: 1
   dashID: dash
@@ -55,7 +55,7 @@ MonoBehaviour:
   hookDetectionRadius: 0.1
   maxAngle: 70
   hookCooldown: 0.4
-  yVelocityMultiplier: 0.8
+  yVelocityMultiplier: 1
   hookAimAssistConeAngle: 40
   hookTarget: {x: 0.6, y: 0.3, z: 0}
   hookMaxDistance: 3
@@ -94,6 +94,9 @@ MonoBehaviour:
   walkable:
     serializedVersion: 2
     m_Bits: 34048
+  hitable:
+    serializedVersion: 2
+    m_Bits: 17664
   hedge:
     serializedVersion: 2
     m_Bits: 1024

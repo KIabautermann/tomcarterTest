@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumpState : PlayerSkillState
+public class PlayerJumpState : PlayerBasicMovementState
 { 
     private bool _jumped;
     public override void Init(PlayerStateMachine target)
@@ -13,38 +13,30 @@ public class PlayerJumpState : PlayerSkillState
     }
    
    protected override void DoChecks()
-    {
+   {
         base.DoChecks();
-    }
+   }
 
     protected override void DoLogicUpdate()
     {
-        base.DoLogicUpdate();     
-        
-        bool jumpDown = inputs.FixedAxis.y < 0 && controller.OnPlatform();
-
-        if (!_jumped) {
-            controller.SetVelocityY((jumpDown ? -2 : 1) * stats.jumpVelocity);
-            _jumped = true;
-        } 
-
+        base.DoLogicUpdate();  
         controller.FlipCheck(inputs.FixedAxis.x);
-        controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime); 
         platformManager.LogicUpdated();
     }
 
     protected override void DoPhysicsUpdate()
     {
-        base.DoPhysicsUpdate();
-        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);      
+        base.DoPhysicsUpdate();     
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
         inputs.UsedJump();
-        _target.QueueAnimation(_target.animations.airJump.name, false, true);
-        _jumped = false;
+        _target.QueueAnimation(_target.animations.airJump.name, false, false);
+        controller.SetVelocityY(stats.jumpVelocity);
+        currentAcceleration = stats.airAccelerationTime;
+        currentSpeed = stats.movementVelocity;
     }
 
     protected override void DoTransitionOut()

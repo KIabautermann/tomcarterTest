@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerOnAirState : PlayerState
+public class PlayerOnAirState : PlayerBasicMovementState
 {
     private bool _jumpCoyoteTime;
 
@@ -20,27 +20,23 @@ public class PlayerOnAirState : PlayerState
 
     protected override void DoLogicUpdate()
     {
-        controller.FlipCheck(inputs.FixedAxis.x);
-        controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
-        
+        base.DoLogicUpdate();
+        controller.FlipCheck(inputs.FixedAxis.x);       
         JumpCoyoteTimeCheck();
     }
     
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        if(controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded())
-        {
-            controller.Force(Physics.gravity.normalized,stats.fallMultiplier, ForceMode.Force);
-        }
-        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
         _target.QueueAnimation(_target.animations.airPeak.name, false, false);
-        animationIndex = 2;
+        currentAcceleration = stats.airAccelerationTime;
+        currentSpeed = stats.movementVelocity;
+        canShortHop = false;
     }
 
     protected override void DoTransitionOut()

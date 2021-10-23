@@ -19,7 +19,6 @@ public class PlayerIdleState : PlayerGroundedState
 
     protected override void DoLogicUpdate()
     {
-        controller.Accelerate(-1 / stats.groundedAccelerationTime * Time.deltaTime);  
         base.DoLogicUpdate();
     }
 

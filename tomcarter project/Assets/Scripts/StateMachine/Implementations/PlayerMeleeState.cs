@@ -21,16 +21,13 @@ public class PlayerMeleeState : PlayerAttackState
         base.DoLogicUpdate();
         if (onAir)
         {
-            controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
-            if (inputs.JumpCancel && controller.CurrentVelocity.y >= 0 && !forceAplied)
-            {
-                controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
-                forceAplied = true;
-            }
+            canMove = true;
+            currentAcceleration = stats.airAccelerationTime;
         }
         else
         {
-            controller.Accelerate(-1 / stats.groundedAccelerationTime);
+            canMove = false;
+            currentAcceleration = stats.groundedAccelerationTime;
         }
         controller.FlipCheck(inputs.FixedAxis.x);
     }
@@ -38,11 +35,6 @@ public class PlayerMeleeState : PlayerAttackState
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        if (controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded())
-        {
-            controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
-        }
-        controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
     }
 
     protected override void DoTransitionIn()

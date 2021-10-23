@@ -14,7 +14,6 @@ public class PlayerDashJumpState : PlayerSkillState
     {
         base.Init(target);
         animationTrigger = stats.dashJumpID;
-        stateIndex = stats.airNumberID;
         afterImageParent = new GameObject("DashJumpAfterImages");
     }
     protected override void DoChecks()
@@ -53,7 +52,7 @@ public class PlayerDashJumpState : PlayerSkillState
     {
         
         base.DoTransitionIn();
-        _target.QueueAnimation(_target.animations.airUpwards.name, false, true);
+        _target.QueueAnimation(_target.animations.airUpwards.name, false, false);
         _isJumping = true;
 
         StartBlastEffect();
@@ -88,13 +87,14 @@ public class PlayerDashJumpState : PlayerSkillState
             inputs.UsedHook();
         }
         else if(inputs.RangeInput){
-            _target.ChangeState<PlayerRangeState>();
+            GetComponent<PlayerRangeState>().ComingFromDashJump();
+            _target.ChangeState<PlayerRangeState>();          
             inputs.UsedRange();
         }
         else if (controller.Grounded() && !stateDone)
         {
             _target.ChangeState<PlayerLandState>();        
-        }      
+        }
     }
 
     private void setJumpVelocity()
@@ -123,7 +123,7 @@ public class PlayerDashJumpState : PlayerSkillState
      
         Vector3 pos = new Vector3(this.gameObject.transform.position.x - 0.5f * controller.facingDirection, groundHit.collider.bounds.max.y + 0.48f, 0f);
         Quaternion quaternion = controller.facingDirection != 1 ? Quaternion.Euler(0.0f, 180.0f, 0.0f) : Quaternion.identity;
-        visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, visualEffectSpawner.EffectRepository.DashJumpBlast);
+        //visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, visualEffectSpawner.EffectRepository.DashJumpBlast);
     }
     private IEnumerator AfterImageCoroutine()
     {       

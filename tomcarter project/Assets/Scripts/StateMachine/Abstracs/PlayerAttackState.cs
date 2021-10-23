@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerAttackState : PlayerSkillState
+public abstract class PlayerAttackState : PlayerBasicMovementState
 {
     protected bool activeHitbox;
     protected float attackDuration;
     protected bool onAir;
     protected bool hitDetection;
-    protected bool forceAplied;
     public float time;
 
     protected override void DoChecks()
@@ -32,10 +31,11 @@ public abstract class PlayerAttackState : PlayerSkillState
         base.DoTransitionIn();
         controller.LockFlip(true);
         activeHitbox = false;
-        forceAplied = false;
         onAir = !controller.Grounded();
         hitDetection = false;
-        
+        currentAcceleration = stats.airAccelerationTime;
+        currentSpeed = stats.movementVelocity;
+
     }
     protected override void DoTransitionOut()
     {

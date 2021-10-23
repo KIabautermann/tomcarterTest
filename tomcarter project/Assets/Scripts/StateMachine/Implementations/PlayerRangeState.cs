@@ -7,6 +7,8 @@ public class PlayerRangeState : PlayerAttackState
     public float _maxDistance;
     private RaycastHit _raycast;
     private Vector3 _rangeAttackDirection;
+    private bool _fromDashJump;
+    private bool _hited;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
@@ -26,25 +28,14 @@ public class PlayerRangeState : PlayerAttackState
         {
             if (!activeHitbox)
             {
-                controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
-                if (inputs.JumpCancel && controller.CurrentVelocity.y >= 0 && !forceAplied)
-                {
-                    controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
-                    forceAplied = true;
-                }
-            }
-            else
-            {
-                controller.SetTotalVelocity(0, Vector2.zero);
-                controller.SetAcceleration(0);
-                controller.SetGravity(false);
-                controller.Accelerate(0);
-            }
-            
+                currentAcceleration = _fromDashJump ? stats.airAccelerationTime : stats.dashJumpAccelerationTime;
+                currentSpeed = _fromDashJump ? stats.dashJumpVelocityX : stats.movementVelocity;
+            }         
         }
-        else
+        else if(canMove)
         {
-            controller.Accelerate(-1 / stats.groundedAccelerationTime);
+            currentAcceleration = stats.groundedAccelerationTime;
+            canMove = false;
         }
         controller.FlipCheck(inputs.FixedAxis.x);
     }
@@ -52,19 +43,7 @@ public class PlayerRangeState : PlayerAttackState
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        if (controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded())
-        {
-            controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
-        }
-        if (!activeHitbox)
-        {
-            controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
-        }
-        Vector3 center = transform.position + _rangeAttackDirection * _maxDistance / 2;
-        Vector3 size = Hitbox(_rangeAttackDirection)/2;
-        Collider[] hitbox = Physics.OverlapBox(center, size, Quaternion.identity, stats.walkable);
-        hitDetection = hitbox.Length != 0;
-        if (Physics.Raycast(transform.position, _rangeAttackDirection, out _raycast, stats.rangeHitbox.x, stats.walkable))
+        if (Physics.Raycast(transform.position, _rangeAttackDirection, out _raycast, stats.rangeHitbox.x, stats.hitable))
         {
             _maxDistance = Vector3.Distance(transform.position, _raycast.point);
             _target.SetMaskSize(Vector3.one * 5);
@@ -75,11 +54,40 @@ public class PlayerRangeState : PlayerAttackState
         {
             _maxDistance = stats.rangeHitbox.x;
         }
+
+        if (!activeHitbox) return;
+
+        Vector3 center = transform.position + _rangeAttackDirection * _maxDistance / 2;
+        Vector3 size = Hitbox(_rangeAttackDirection)/2;
+        Collider[] hitbox = Physics.OverlapBox(center, size, Quaternion.identity, stats.hitable);
+        hitDetection = hitbox.Length != 0;
+        if (!_hited)
+        {
+            _hited = true;
+            if (hitbox.Length != 0)
+            {
+                for (int i = 0; i < hitbox.Length; i++)
+                {
+                    if (hitbox[i].GetComponent<IBounceable>() != null && _rangeAttackDirection == Vector3.down)
+                    {
+                        GetComponent<PlayerBounceJumpState>().CommingFromDashJump(_fromDashJump);
+                        _target.ChangeState<PlayerBounceJumpState>();
+                        return;
+                    }
+                }
+            }
+            canMove = false;
+            controller.SetTotalVelocity(0, controller.CurrentVelocity);
+            controller.SetGravity(false);
+        }
     }      
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        canMove = true;
+        _hited = false;
+        currentSpeed = _fromDashJump ? stats.dashJumpVelocityX : stats.movementVelocity;
         if (!onAir)
         {
             if (inputs.FixedAxis.y == 0)
@@ -109,19 +117,21 @@ public class PlayerRangeState : PlayerAttackState
                 }
                 else
                 {
-                    _target.QueueAnimation(_target.animations.attackRangeDown.name, false, true);
+                    _target.QueueAnimation(_target.animations.attackRangeDown.name, true, true);
                     _rangeAttackDirection = -Vector3.up;
                 }
             }
             
         }
     }
+
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
         controller.LockFlip(false);
         controller.SetGravity(true);
         _target.SetMaskActive(false);
+        _fromDashJump = false;
     }
 
     protected override void TransitionChecks()
@@ -142,6 +152,11 @@ public class PlayerRangeState : PlayerAttackState
                 Gizmos.DrawWireSphere(_raycast.point, .5f);
             }        
         }       
+    }
+
+    public void ComingFromDashJump()
+    {
+        _fromDashJump = true;
     }
 
     Vector3 Hitbox(Vector3 direction)

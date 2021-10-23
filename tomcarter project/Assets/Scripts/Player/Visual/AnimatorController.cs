@@ -42,4 +42,6 @@ public class AnimatorController : MonoBehaviour
     {
         locked = false;
     }
+
+    
 }

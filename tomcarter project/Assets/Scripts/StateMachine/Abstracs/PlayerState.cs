@@ -11,6 +11,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected Platform platformManager;
     protected PlayerHealth playerHealth;
     protected static bool tookDamage;
+    protected bool stateDone;
 
     protected PlayerOnAirState airState;
     
@@ -40,6 +41,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
     {
         counter = 0;
         PlayerEventSystem.GetInstance().OnDamageTaken += OnPlayerTakenDamageHandler;
+        stateDone = false;
     }
 
     protected override void DoPhysicsUpdate()
@@ -66,6 +68,17 @@ public abstract class PlayerState : State<PlayerStateMachine>
         {
             tookDamage = false;
             _target.ChangeState<PlayerDamagedState>();
+        }
+        if (stateDone)
+        {
+            if (controller.Grounded())
+            {
+                _target.ChangeState<PlayerIdleState>();
+            }
+            else
+            {
+                _target.ChangeState<PlayerOnAirState>();
+            }
         }
     }
 
