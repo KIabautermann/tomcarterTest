@@ -14,6 +14,7 @@ public class PlayerBounceJumpState : PlayerBasicMovementState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
+        controller.FlipCheck(inputs.FixedAxis.x);
     }
 
     protected override void DoPhysicsUpdate()
@@ -26,7 +27,7 @@ public class PlayerBounceJumpState : PlayerBasicMovementState
         base.DoTransitionIn();
         canShortHop = false;
         controller.SetVelocityY(stats.jumpVelocity);
-        _target.QueueAnimation(_target.animations.airUpwards.name, false, true);
+        _target.QueueAnimation(_target.animations.airUpwards.name, false, false);
         currentAcceleration = _fromDashJump ? stats.airAccelerationTime : stats.dashJumpAccelerationTime;
         currentSpeed = _fromDashJump ? stats.dashJumpVelocityX : stats.movementVelocity;
     }
@@ -51,9 +52,14 @@ public class PlayerBounceJumpState : PlayerBasicMovementState
             _target.ChangeState<PlayerHookState>();
             inputs.UsedHook();
         }
+        else if (inputs.DashInput)
+        {
+            _target.ChangeState<PlayerDashState>();
+            inputs.UsedHook();
+        }
         else if (inputs.RangeInput)
         {
-            GetComponent<PlayerRangeState>().ComingFromDashJump();
+            if(_fromDashJump)GetComponent<PlayerRangeState>().ComingFromDashJump();
             _target.ChangeState<PlayerRangeState>();
             inputs.UsedRange();
         }
@@ -61,6 +67,7 @@ public class PlayerBounceJumpState : PlayerBasicMovementState
         {
             _target.ChangeState<PlayerLandState>();
         }
+
     }
 
     public void CommingFromDashJump(bool dashjump)

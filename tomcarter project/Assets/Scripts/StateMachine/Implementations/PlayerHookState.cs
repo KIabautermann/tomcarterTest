@@ -13,7 +13,6 @@ public class PlayerHookState : PlayerUnlockableSkill
     private Vector3 _direction;
 
     #region Init Variables
-    private LineRenderer _line;
     private SpriteRenderer _hookSprite;
     private Transform _hookPoint;
     #endregion
@@ -22,9 +21,7 @@ public class PlayerHookState : PlayerUnlockableSkill
     {
         base.Init(target);
         _hookPoint = GetComponentInChildren<HookPoint>().transform;
-        _line = _hookPoint.GetComponent<LineRenderer>();
         _hookSprite = _hookPoint.GetComponent<SpriteRenderer>();
-        _line.enabled = false;
         _hookSprite.enabled = false;
         animationTrigger = stats.hookID;
         stateIndex = stats.hookNumberID;
@@ -98,11 +95,6 @@ public class PlayerHookState : PlayerUnlockableSkill
                 controller.SetAcceleration(0);
             }
         } 
-        if(_line.enabled)
-        {
-            _line.SetPosition(0,transform.position);   
-            _line.SetPosition(1,_hookPoint.position); 
-        }  
     }
 
     protected override void DoPhysicsUpdate()
@@ -133,9 +125,6 @@ public class PlayerHookState : PlayerUnlockableSkill
         {
             controller.SetAcceleration(0);
         }
-        _line.SetPosition(0,transform.position);   
-        _line.SetPosition(1,_hookPoint.position); 
-        _line.enabled = true;
         _hookSprite.enabled = true;      
 
         _hookVector = GetAimAssistedHookVector();  
@@ -178,7 +167,6 @@ public class PlayerHookState : PlayerUnlockableSkill
         base.DoTransitionOut();
         controller.SetGravity(true);
         _hookPoint.parent = _target.transform;
-        _line.enabled = false;
         _hookSprite.enabled = false;
     }
 
