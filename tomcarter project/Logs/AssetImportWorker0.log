@@ -15,11 +15,11 @@ C:/Users/alves/Documents/GitHub/tomcarterTest/tomcarter project
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-52914
+57285
 Successfully changed project path to: C:/Users/alves/Documents/GitHub/tomcarterTest/tomcarter project
 C:/Users/alves/Documents/GitHub/tomcarterTest/tomcarter project
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 182.86 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 156.82 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.17f1 (a4537701e4ab)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.17f1/Editor/Data/Resources/UnitySubsystems
@@ -35,91 +35,91 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.17f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.17f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.17f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56680
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56404
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.17f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.005292 seconds.
+Registered in 0.005458 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 181.90 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 120.53 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.937 seconds
+- Completed reload, in  2.516 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2938ms)
-		BeginReloadAssembly (107ms)
+	ReloadAssembly (2516ms)
+		BeginReloadAssembly (104ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (1221ms)
-			LoadAssemblies (101ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (959ms)
+			LoadAssemblies (98ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (427ms)
+			SetupTypeCache (431ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (111ms)
-			SetupLoadedEditorAssemblies (475ms)
+			RebuildScriptCaches (60ms)
+			SetupLoadedEditorAssemblies (334ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (16ms)
-				SetLoadedEditorAssemblies (2ms)
-				RefreshPlugins (182ms)
-				BeforeProcessingInitializeOnLoad (36ms)
-				ProcessInitializeOnLoadAttributes (163ms)
-				ProcessInitializeOnLoadMethodAttributes (76ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (121ms)
+				BeforeProcessingInitializeOnLoad (26ms)
+				ProcessInitializeOnLoadAttributes (132ms)
+				ProcessInitializeOnLoadMethodAttributes (48ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.033865 seconds.
+Registered in 0.018151 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 127.40 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 122.36 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
 RefreshProfiler: Total: 0.000ms
 Mono: successfully reloaded assembly
-- Completed reload, in  3.691 seconds
+- Completed reload, in  2.998 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3693ms)
-		BeginReloadAssembly (470ms)
+	ReloadAssembly (2999ms)
+		BeginReloadAssembly (285ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (11ms)
+			DisableScriptedObjects (8ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (48ms)
-		EndReloadAssembly (3019ms)
-			LoadAssemblies (254ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (2571ms)
+			LoadAssemblies (181ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (941ms)
+			SetupTypeCache (739ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (132ms)
-			SetupLoadedEditorAssemblies (1448ms)
+			RebuildScriptCaches (140ms)
+			SetupLoadedEditorAssemblies (1263ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (128ms)
-				BeforeProcessingInitializeOnLoad (197ms)
-				ProcessInitializeOnLoadAttributes (1009ms)
-				ProcessInitializeOnLoadMethodAttributes (86ms)
-				AfterProcessingInitializeOnLoad (22ms)
-				EditorAssembliesLoaded (1ms)
+				RefreshPlugins (122ms)
+				BeforeProcessingInitializeOnLoad (181ms)
+				ProcessInitializeOnLoadAttributes (877ms)
+				ProcessInitializeOnLoadMethodAttributes (57ms)
+				AfterProcessingInitializeOnLoad (19ms)
+				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (15ms)
+			AwakeInstancesAfterBackupRestoration (12ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.21 seconds
-Refreshing native plugins compatible for Editor in 1.75 ms, found 4 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.16 seconds
+Refreshing native plugins compatible for Editor in 1.73 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 65.2 MB.
 System memory in use after: 65.4 MB.
 
-Unloading 193 unused Assets to reduce memory usage. Loaded Objects now: 3741.
-Total: 7.488200 ms (FindLiveObjects: 0.857400 ms CreateObjectMapping: 0.461000 ms MarkObjects: 5.847500 ms  DeleteObjects: 0.320600 ms)
+Unloading 193 unused Assets to reduce memory usage. Loaded Objects now: 3743.
+Total: 7.292800 ms (FindLiveObjects: 0.710700 ms CreateObjectMapping: 0.226600 ms MarkObjects: 6.040100 ms  DeleteObjects: 0.314000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -133,95 +133,66 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts/StateMachine/Implementations/PlayerBounceJumpState.cs
-  artifactKey: Guid(d7f890fa1248b694894e0af49857eef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/StateMachine/Implementations/PlayerBounceJumpState.cs using Guid(d7f890fa1248b694894e0af49857eef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f2e62a37b0ab0c7ed196e5aab101e75') in 0.102858 seconds 
-  Import took 0.126566 seconds .
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 44.89 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 70 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 66.3 MB.
-System memory in use after: 66.5 MB.
-
-Unloading 69 unused Assets to reduce memory usage. Loaded Objects now: 3741.
-Total: 7.074500 ms (FindLiveObjects: 0.998100 ms CreateObjectMapping: 0.348900 ms MarkObjects: 5.674000 ms  DeleteObjects: 0.051400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 41.750014 seconds.
-  path: Assets/Scripts/StateMachine/Implementations/PlayerBounceJumpState.cs
-  artifactKey: Guid(d7f890fa1248b694894e0af49857eef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/StateMachine/Implementations/PlayerBounceJumpState.cs using Guid(d7f890fa1248b694894e0af49857eef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38213805365b04edea3f17794d64869c') in 0.006330 seconds 
-  Import took 0.015233 seconds .
+  path: Assets/Scripts/StateMachine/PlayerStateMachine.cs
+  artifactKey: Guid(43a04a5d1d615514db1641765d989b0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/PlayerStateMachine.cs using Guid(43a04a5d1d615514db1641765d989b0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df6f01cefe15a69618c009450314945f') in 0.068562 seconds 
+  Import took 0.076607 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 16.898560 seconds.
-  path: Assets/Scripts/StateMachine/Implementations/PlayerBounceJumpState.cs
-  artifactKey: Guid(d7f890fa1248b694894e0af49857eef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/StateMachine/Implementations/PlayerBounceJumpState.cs using Guid(d7f890fa1248b694894e0af49857eef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68b7db2056f4ca6dbdc2ccb5b2042af7') in 0.013134 seconds 
-  Import took 0.023070 seconds .
+  Time since last request: 66.651516 seconds.
+  path: Assets/Scripts/StateMachine/PlayerStateMachine.cs
+  artifactKey: Guid(43a04a5d1d615514db1641765d989b0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/PlayerStateMachine.cs using Guid(43a04a5d1d615514db1641765d989b0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5b6cba05aab6310cabdd2f15eaa5c49') in 0.012767 seconds 
+  Import took 0.023517 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.018888 seconds.
+Registered in 0.020993 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 2.02 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.90 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
 RefreshProfiler: Total: 0.000ms
 Mono: successfully reloaded assembly
-- Completed reload, in  2.915 seconds
+- Completed reload, in  2.720 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2915ms)
-		BeginReloadAssembly (291ms)
+	ReloadAssembly (2721ms)
+		BeginReloadAssembly (228ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (29ms)
+			DisableScriptedObjects (9ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (69ms)
-		EndReloadAssembly (2470ms)
-			LoadAssemblies (193ms)
+			CreateAndSetChildDomain (63ms)
+		EndReloadAssembly (2353ms)
+			LoadAssemblies (179ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (756ms)
-			ReleaseScriptCaches (5ms)
-			RebuildScriptCaches (138ms)
-			SetupLoadedEditorAssemblies (1142ms)
+			SetupTypeCache (727ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (123ms)
+			SetupLoadedEditorAssemblies (1096ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
+				InitializePlatformSupportModulesInManaged (8ms)
 				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (203ms)
-				ProcessInitializeOnLoadAttributes (857ms)
-				ProcessInitializeOnLoadMethodAttributes (52ms)
-				AfterProcessingInitializeOnLoad (19ms)
+				BeforeProcessingInitializeOnLoad (204ms)
+				ProcessInitializeOnLoadAttributes (814ms)
+				ProcessInitializeOnLoadMethodAttributes (49ms)
+				AfterProcessingInitializeOnLoad (17ms)
 				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (14ms)
+			AwakeInstancesAfterBackupRestoration (15ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 3.59 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.01 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 65.4 MB.
 System memory in use after: 65.6 MB.
 
-Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3743.
-Total: 7.801900 ms (FindLiveObjects: 0.913600 ms CreateObjectMapping: 0.220400 ms MarkObjects: 6.370900 ms  DeleteObjects: 0.295400 ms)
+Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3745.
+Total: 6.688900 ms (FindLiveObjects: 0.675400 ms CreateObjectMapping: 0.207300 ms MarkObjects: 5.552900 ms  DeleteObjects: 0.251100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -236,7 +207,279 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.018171 seconds.
+Registered in 0.018067 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.04 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
+RefreshProfiler: Total: 0.000ms
+Mono: successfully reloaded assembly
+- Completed reload, in  2.809 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2810ms)
+		BeginReloadAssembly (218ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (13ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (66ms)
+		EndReloadAssembly (2447ms)
+			LoadAssemblies (173ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (780ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (126ms)
+			SetupLoadedEditorAssemblies (1137ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (213ms)
+				ProcessInitializeOnLoadAttributes (841ms)
+				ProcessInitializeOnLoadMethodAttributes (54ms)
+				AfterProcessingInitializeOnLoad (17ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (12ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.16 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 65.4 MB.
+System memory in use after: 65.7 MB.
+
+Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3747.
+Total: 8.725100 ms (FindLiveObjects: 0.685000 ms CreateObjectMapping: 0.208600 ms MarkObjects: 7.447600 ms  DeleteObjects: 0.381500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.019117 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.39 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
+RefreshProfiler: Total: 0.000ms
+Mono: successfully reloaded assembly
+- Completed reload, in  2.765 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2766ms)
+		BeginReloadAssembly (213ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (10ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (67ms)
+		EndReloadAssembly (2413ms)
+			LoadAssemblies (176ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (767ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (125ms)
+			SetupLoadedEditorAssemblies (1107ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (201ms)
+				ProcessInitializeOnLoadAttributes (824ms)
+				ProcessInitializeOnLoadMethodAttributes (51ms)
+				AfterProcessingInitializeOnLoad (19ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (13ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.90 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 65.5 MB.
+System memory in use after: 65.7 MB.
+
+Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3749.
+Total: 7.096200 ms (FindLiveObjects: 0.693300 ms CreateObjectMapping: 0.563300 ms MarkObjects: 5.572100 ms  DeleteObjects: 0.266000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 58.215397 seconds.
+  path: Assets/Scripts/StateMachine/PlayerStateMachine.cs
+  artifactKey: Guid(43a04a5d1d615514db1641765d989b0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/PlayerStateMachine.cs using Guid(43a04a5d1d615514db1641765d989b0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cecfe2d9695cf2aa09376a47a7c95c52') in 0.007626 seconds 
+  Import took 0.016745 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.019135 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.46 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
+RefreshProfiler: Total: 0.000ms
+Mono: successfully reloaded assembly
+- Completed reload, in  2.888 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2888ms)
+		BeginReloadAssembly (239ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (12ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (74ms)
+		EndReloadAssembly (2498ms)
+			LoadAssemblies (183ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (772ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (134ms)
+			SetupLoadedEditorAssemblies (1173ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (219ms)
+				ProcessInitializeOnLoadAttributes (868ms)
+				ProcessInitializeOnLoadMethodAttributes (57ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (14ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.60 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 65.5 MB.
+System memory in use after: 65.7 MB.
+
+Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3751.
+Total: 7.946700 ms (FindLiveObjects: 0.719300 ms CreateObjectMapping: 0.217000 ms MarkObjects: 6.689000 ms  DeleteObjects: 0.319500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 37.627356 seconds.
+  path: Assets/Scripts/StateMachine/PlayerStateMachine.cs
+  artifactKey: Guid(43a04a5d1d615514db1641765d989b0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/PlayerStateMachine.cs using Guid(43a04a5d1d615514db1641765d989b0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb8fabf5a3c90ae382dbe3a34587c1f8') in 0.010361 seconds 
+  Import took 0.020233 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.017931 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.90 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
+RefreshProfiler: Total: 0.000ms
+Mono: successfully reloaded assembly
+- Completed reload, in  2.734 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2734ms)
+		BeginReloadAssembly (205ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (10ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (63ms)
+		EndReloadAssembly (2390ms)
+			LoadAssemblies (177ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (723ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (134ms)
+			SetupLoadedEditorAssemblies (1141ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (213ms)
+				ProcessInitializeOnLoadAttributes (849ms)
+				ProcessInitializeOnLoadMethodAttributes (51ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (12ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.96 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 65.5 MB.
+System memory in use after: 65.8 MB.
+
+Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3753.
+Total: 6.811600 ms (FindLiveObjects: 0.726500 ms CreateObjectMapping: 0.206200 ms MarkObjects: 5.616500 ms  DeleteObjects: 0.260700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 87.116121 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4f5920b78b8d34be871d6ccb42da5fd') in 0.020490 seconds 
+  Import took 0.030543 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 227.218536 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a10cb3eeb3aa0ab63bcea4f29d29d6af') in 0.013791 seconds 
+  Import took 0.030275 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.362597 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a10cb3eeb3aa0ab63bcea4f29d29d6af') in 0.011598 seconds 
+  Import took 0.022465 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.021014 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 2.01 ms, found 4 plugins.
@@ -244,100 +487,116 @@ Preloading 0 native plugins for Editor in 0.00 ms.
 RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
 RefreshProfiler: Total: 0.000ms
 Mono: successfully reloaded assembly
-- Completed reload, in  3.310 seconds
+- Completed reload, in  3.164 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3311ms)
-		BeginReloadAssembly (272ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (13ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (81ms)
-		EndReloadAssembly (2864ms)
-			LoadAssemblies (213ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (898ms)
-			ReleaseScriptCaches (4ms)
-			RebuildScriptCaches (148ms)
-			SetupLoadedEditorAssemblies (1321ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (228ms)
-				ProcessInitializeOnLoadAttributes (975ms)
-				ProcessInitializeOnLoadMethodAttributes (73ms)
-				AfterProcessingInitializeOnLoad (34ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (25ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.92 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 65.4 MB.
-System memory in use after: 65.7 MB.
-
-Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3745.
-Total: 7.921200 ms (FindLiveObjects: 0.681600 ms CreateObjectMapping: 0.214300 ms MarkObjects: 6.747600 ms  DeleteObjects: 0.276200 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.018920 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 2.29 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
-RefreshProfiler: Total: 0.000ms
-Mono: successfully reloaded assembly
-- Completed reload, in  3.069 seconds
-Domain Reload Profiling:
-	ReloadAssembly (3070ms)
-		BeginReloadAssembly (268ms)
+	ReloadAssembly (3165ms)
+		BeginReloadAssembly (247ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (12ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (93ms)
-		EndReloadAssembly (2655ms)
-			LoadAssemblies (222ms)
+			CreateAndSetChildDomain (73ms)
+		EndReloadAssembly (2750ms)
+			LoadAssemblies (212ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (822ms)
-			ReleaseScriptCaches (3ms)
-			RebuildScriptCaches (139ms)
-			SetupLoadedEditorAssemblies (1226ms)
+			SetupTypeCache (828ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (142ms)
+			SetupLoadedEditorAssemblies (1331ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
+				InitializePlatformSupportModulesInManaged (9ms)
 				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (216ms)
-				ProcessInitializeOnLoadAttributes (926ms)
-				ProcessInitializeOnLoadMethodAttributes (54ms)
-				AfterProcessingInitializeOnLoad (18ms)
-				EditorAssembliesLoaded (0ms)
+				BeforeProcessingInitializeOnLoad (213ms)
+				ProcessInitializeOnLoadAttributes (995ms)
+				ProcessInitializeOnLoadMethodAttributes (86ms)
+				AfterProcessingInitializeOnLoad (23ms)
+				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (13ms)
+			AwakeInstancesAfterBackupRestoration (19ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.99 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.08 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 65.5 MB.
-System memory in use after: 65.7 MB.
+System memory in use after: 65.8 MB.
 
-Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3747.
-Total: 9.730400 ms (FindLiveObjects: 0.698600 ms CreateObjectMapping: 0.211500 ms MarkObjects: 8.538500 ms  DeleteObjects: 0.279500 ms)
+Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3755.
+Total: 7.820700 ms (FindLiveObjects: 1.030300 ms CreateObjectMapping: 0.482100 ms MarkObjects: 6.038000 ms  DeleteObjects: 0.269000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 26.246390 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a440411709ba8419cb1cf5629da8987') in 0.012975 seconds 
+  Import took 0.024445 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.177170 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a440411709ba8419cb1cf5629da8987') in 0.008781 seconds 
+  Import took 0.019927 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.018740 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.05 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
+RefreshProfiler: Total: 0.000ms
+Mono: successfully reloaded assembly
+- Completed reload, in  3.039 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3039ms)
+		BeginReloadAssembly (247ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (16ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (73ms)
+		EndReloadAssembly (2615ms)
+			LoadAssemblies (195ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (812ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (134ms)
+			SetupLoadedEditorAssemblies (1210ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (217ms)
+				ProcessInitializeOnLoadAttributes (908ms)
+				ProcessInitializeOnLoadMethodAttributes (54ms)
+				AfterProcessingInitializeOnLoad (17ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (15ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.94 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 65.5 MB.
+System memory in use after: 65.8 MB.
+
+Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3757.
+Total: 7.294300 ms (FindLiveObjects: 0.688400 ms CreateObjectMapping: 0.210700 ms MarkObjects: 6.127000 ms  DeleteObjects: 0.266800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -352,50 +611,50 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.025156 seconds.
+Registered in 0.018983 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 2.12 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.10 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
 RefreshProfiler: Total: 0.000ms
 Mono: successfully reloaded assembly
-- Completed reload, in  2.754 seconds
+- Completed reload, in  3.073 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2754ms)
-		BeginReloadAssembly (227ms)
+	ReloadAssembly (3073ms)
+		BeginReloadAssembly (240ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (11ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (73ms)
-		EndReloadAssembly (2385ms)
-			LoadAssemblies (178ms)
+			CreateAndSetChildDomain (72ms)
+		EndReloadAssembly (2680ms)
+			LoadAssemblies (193ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (754ms)
-			ReleaseScriptCaches (4ms)
-			RebuildScriptCaches (139ms)
-			SetupLoadedEditorAssemblies (1093ms)
+			SetupTypeCache (827ms)
+			ReleaseScriptCaches (5ms)
+			RebuildScriptCaches (141ms)
+			SetupLoadedEditorAssemblies (1235ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
+				InitializePlatformSupportModulesInManaged (9ms)
 				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (201ms)
-				ProcessInitializeOnLoadAttributes (812ms)
-				ProcessInitializeOnLoadMethodAttributes (51ms)
-				AfterProcessingInitializeOnLoad (17ms)
-				EditorAssembliesLoaded (0ms)
+				BeforeProcessingInitializeOnLoad (217ms)
+				ProcessInitializeOnLoadAttributes (916ms)
+				ProcessInitializeOnLoadMethodAttributes (71ms)
+				AfterProcessingInitializeOnLoad (18ms)
+				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (13ms)
+			AwakeInstancesAfterBackupRestoration (14ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.04 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.12 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 65.5 MB.
-System memory in use after: 65.7 MB.
+System memory in use after: 65.8 MB.
 
-Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3749.
-Total: 7.564200 ms (FindLiveObjects: 1.006200 ms CreateObjectMapping: 0.363100 ms MarkObjects: 5.826700 ms  DeleteObjects: 0.366400 ms)
+Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3759.
+Total: 11.218100 ms (FindLiveObjects: 2.490900 ms CreateObjectMapping: 0.598800 ms MarkObjects: 7.657300 ms  DeleteObjects: 0.468800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -408,52 +667,541 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
+Received Import Request.
+  Time since last request: 59.248098 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.002445 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.010040 seconds .
+
+========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.026621 seconds.
+Registered in 0.026778 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.92 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.00 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
 RefreshProfiler: Total: 0.000ms
 Mono: successfully reloaded assembly
-- Completed reload, in  2.936 seconds
+- Completed reload, in  2.940 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2938ms)
-		BeginReloadAssembly (236ms)
+	ReloadAssembly (2941ms)
+		BeginReloadAssembly (226ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (19ms)
+			DisableScriptedObjects (10ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (66ms)
-		EndReloadAssembly (2550ms)
-			LoadAssemblies (184ms)
+			CreateAndSetChildDomain (68ms)
+		EndReloadAssembly (2559ms)
+			LoadAssemblies (186ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (773ms)
+			SetupTypeCache (779ms)
 			ReleaseScriptCaches (3ms)
-			RebuildScriptCaches (130ms)
-			SetupLoadedEditorAssemblies (1224ms)
+			RebuildScriptCaches (135ms)
+			SetupLoadedEditorAssemblies (1210ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
+				InitializePlatformSupportModulesInManaged (9ms)
 				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (257ms)
-				ProcessInitializeOnLoadAttributes (878ms)
-				ProcessInitializeOnLoadMethodAttributes (57ms)
-				AfterProcessingInitializeOnLoad (20ms)
+				BeforeProcessingInitializeOnLoad (206ms)
+				ProcessInitializeOnLoadAttributes (914ms)
+				ProcessInitializeOnLoadMethodAttributes (59ms)
+				AfterProcessingInitializeOnLoad (18ms)
 				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (22ms)
+			AwakeInstancesAfterBackupRestoration (13ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.95 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.02 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 65.5 MB.
-System memory in use after: 65.7 MB.
+System memory in use before: 65.6 MB.
+System memory in use after: 65.8 MB.
 
-Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3751.
-Total: 7.753200 ms (FindLiveObjects: 0.716900 ms CreateObjectMapping: 0.203500 ms MarkObjects: 6.567900 ms  DeleteObjects: 0.263400 ms)
+Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3761.
+Total: 8.306700 ms (FindLiveObjects: 0.708400 ms CreateObjectMapping: 0.208300 ms MarkObjects: 7.054500 ms  DeleteObjects: 0.333700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 6.008671 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.002926 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.011491 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.045365 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.001322 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.011527 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040757 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000765 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.010785 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031790 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000537 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.007852 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031633 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000758 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.013674 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029036 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000716 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008549 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031080 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000568 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008784 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031567 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000597 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.007989 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030352 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000542 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.007703 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031480 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000646 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009225 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035070 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000565 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009101 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029055 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000827 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.013261 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042275 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000652 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008880 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029389 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000583 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008800 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030125 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000557 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008586 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030737 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000608 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008047 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030715 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000540 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008583 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.028767 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000996 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009989 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030406 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000766 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.011436 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030173 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.001475 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.013514 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030441 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000639 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.011272 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033704 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000863 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.011598 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031737 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000830 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.011191 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029035 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000592 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.007790 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029267 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000523 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008110 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029639 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000682 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.011032 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.027502 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000778 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009148 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032381 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000784 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.012098 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029761 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000557 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008637 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.028873 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000584 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.007777 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029966 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000823 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009471 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.045526 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000557 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008736 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.028916 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000532 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.007525 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.028908 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000573 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008955 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029199 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000690 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009864 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.028576 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000954 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009392 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030774 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000528 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008752 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029652 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000596 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009781 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031088 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000524 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.007516 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031626 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000768 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009166 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029306 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000667 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.010146 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029981 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000616 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.008463 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031289 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.001084 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.011157 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035471 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000628 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.011626 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029591 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000649 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009500 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031222 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000879 seconds  code(4) message(Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z')
+  ERROR: Build asset version error: assets/scripts/statemachine/implementations/playeronairstate.cs in SourceAssetDB has modification time of '2021-10-25T01:48:43.8085598Z' while content on disk has modification time of '2021-10-25T01:48:49.8175619Z'
+  Import took 0.009135 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.178791 seconds.
+  path: Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs
+  artifactKey: Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/StateMachine/Implementations/PlayerOnAirState.cs using Guid(b703346c36afed14cb4cc3c8c46dd992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92748b9ab35821033d1b1c552d77990b') in 0.007570 seconds 
+  Import took 0.020275 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.022406 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.72 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+RefreshInfo: StopAssetImportingV2(NoUpdateAssetOptions) scanfilter: 
+RefreshProfiler: Total: 0.000ms
+Mono: successfully reloaded assembly
+- Completed reload, in  3.743 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3744ms)
+		BeginReloadAssembly (264ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (14ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (79ms)
+		EndReloadAssembly (3253ms)
+			LoadAssemblies (242ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (994ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (155ms)
+			SetupLoadedEditorAssemblies (1555ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (271ms)
+				ProcessInitializeOnLoadAttributes (1150ms)
+				ProcessInitializeOnLoadMethodAttributes (93ms)
+				AfterProcessingInitializeOnLoad (24ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (26ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.96 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 65.6 MB.
+System memory in use after: 65.8 MB.
+
+Unloading 184 unused Assets to reduce memory usage. Loaded Objects now: 3763.
+Total: 9.466500 ms (FindLiveObjects: 0.823300 ms CreateObjectMapping: 0.404800 ms MarkObjects: 7.889000 ms  DeleteObjects: 0.347700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 

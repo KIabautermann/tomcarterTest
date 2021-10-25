@@ -52,7 +52,8 @@ public class PlayerStateMachine : MonoBehaviour
                 
                 if(_currentState!= null){
                     _currentState.TriggerTransitionOut();
-                }    
+                    //Debug.Log(_currentState.animationTrigger + " -> " + newState.animationTrigger);
+                }            
                 _currentState = newState;
                 _currentState.TriggerTransitionIn();   
                 stateDisplay.text = _currentState.animationTrigger;

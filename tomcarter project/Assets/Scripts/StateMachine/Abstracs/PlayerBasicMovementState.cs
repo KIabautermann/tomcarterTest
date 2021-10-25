@@ -37,7 +37,6 @@ public class PlayerBasicMovementState : PlayerState
         if (controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded() && controller.usingGravity)
         {
             controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
-            Debug.Log("a");
         }
         controller.SetVelocityX(currentSpeed * controller.lastDirection);
     }

@@ -42,6 +42,7 @@ public class PlayerOnAirState : PlayerBasicMovementState
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        _jumpCoyoteTime = false;
     }
 
     protected override void TransitionChecks()
@@ -92,6 +93,9 @@ public class PlayerOnAirState : PlayerBasicMovementState
     }
     
     
-    public void JumpCoyoteTimeStart() => _jumpCoyoteTime = true;
+    public void JumpCoyoteTimeStart()
+    {
+        _jumpCoyoteTime = true;
+    }
 
 }
