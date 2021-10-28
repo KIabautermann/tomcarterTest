@@ -63,9 +63,7 @@ public class PlayerHardenState : PlayerUnlockableSkill
         _target.QueueAnimation(_target.animations.hardenInit.name, false, true);
         _hasCollided = false;
         _wasGrounded=controller.Grounded();
-        if(inputs.DashInput || !inputs.DashCancel){
-            _target.ChangeState<PlayerDashState>();
-        }
+        controller.SetCollider(stats.colliderHardenSize, stats.colliderHardenPosition);
     }
 
     protected override void DoTransitionOut()

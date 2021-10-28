@@ -66,7 +66,7 @@ public class PlayerJumpState : PlayerBasicMovementState
         else if(controller.CurrentVelocity.y <=0){
             stateDone = true;
         } 
-        else if (controller.Grounded())
+        else if (controller.Grounded()&&controller.CurrentVelocity.y<.1f)
         {
             _target.ChangeState<PlayerLandState>();
         }

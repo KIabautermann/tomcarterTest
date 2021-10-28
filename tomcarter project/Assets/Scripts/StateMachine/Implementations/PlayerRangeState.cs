@@ -14,6 +14,7 @@ public class PlayerRangeState : PlayerAttackState
         base.Init(target);
         attackDuration = stats.rangeTime;
         animationTrigger = stats.rangeID;
+        coolDown = stats.rangeCooldown;
     }
 
     protected override void DoChecks()

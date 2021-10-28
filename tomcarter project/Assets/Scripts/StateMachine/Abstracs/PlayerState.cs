@@ -12,6 +12,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
     protected PlayerHealth playerHealth;
     protected static bool tookDamage;
     protected bool stateDone;
+    protected bool grounded;
 
     protected PlayerOnAirState airState;
     
@@ -29,7 +30,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoChecks()
     {
-        
+        grounded = controller.Grounded();
     }
 
     protected override void DoLogicUpdate()
@@ -46,7 +47,7 @@ public abstract class PlayerState : State<PlayerStateMachine>
 
     protected override void DoPhysicsUpdate()
     {
-      
+        DoChecks();
     }
 
     protected override void DoTransitionOut()

@@ -25,7 +25,7 @@ public class PlayerBasicMovementState : PlayerState
             controller.Accelerate(-1 / currentAcceleration);
         }
         
-        if (inputs.JumpCancel && controller.CurrentVelocity.y > stats.minJumpVelocity && canShortHop)
+        if (inputs.JumpCancel && controller.CurrentVelocity.y > stats.minJumpVelocity && canShortHop && !controller.Grounded())
         {
             controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
         }
@@ -34,7 +34,7 @@ public class PlayerBasicMovementState : PlayerState
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        if (controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded() && controller.usingGravity)
+        if (controller.CurrentVelocity.y <= 0 && !controller.Grounded() && controller.usingGravity)
         {
             controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
         }

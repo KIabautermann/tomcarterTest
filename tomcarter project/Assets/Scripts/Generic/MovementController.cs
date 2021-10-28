@@ -7,10 +7,9 @@ public class MovementController : MonoBehaviour
 
     #region Components
     private Rigidbody _rb;
-    public float colliderX {get; private set;}
-    public float colliderY {get; private set;}
+    public CapsuleCollider myCollider { get; private set; }
 
-    public CapsuleCollider myCollider;
+
 
     RaycastHit m_Hit;
 
@@ -32,8 +31,8 @@ public class MovementController : MonoBehaviour
     private bool flipRequest;
 
     #endregion
-    
-    public Vector2 CurrentVelocity { get; private set; }
+
+    public Vector2 CurrentVelocity;
     [Range(0.0f, 1.0f)]
     public float AcelerationIndex;
     public int facingDirection { get; private set; } 
@@ -71,14 +70,18 @@ public class MovementController : MonoBehaviour
     }
     public bool Grounded()
     {
-        int n = 0;
-        RaycastHit tmpHit = new RaycastHit();
         Vector3 detection = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght) / 2;
-        if(Physics.BoxCast(myCollider.bounds.center, detection, -Vector3.up, out tmpHit, Quaternion.identity, myCollider.bounds.size.y / 2, _walkwable)){
-            n++;
-            groundHit = tmpHit;
+        Vector3 center = new Vector3(myCollider.bounds.center.x, myCollider.bounds.min.y, myCollider.bounds.center.z);
+        Collider[] temp = Physics.OverlapBox(center, detection, Quaternion.identity, _walkwable);
+        if (temp.Length != 0){
+            Physics.Raycast(center + Vector3.up * _detectionLenght / 2, -Vector3.up, out groundHit, _detectionLenght, _walkwable);
+            return true;
+
         }
-        return n != 0 && _rb.velocity.y <= 0;
+        else
+        {
+            return false;
+        }  
     }
 
     public bool OnPlatform()
@@ -149,7 +152,7 @@ public class MovementController : MonoBehaviour
 
     public Vector3 DirectionalDetection(){
         Vector3 direction = CurrentVelocity.normalized;
-        return new Vector3(direction.x * colliderX, direction.y * colliderY,0);
+        return new Vector3(direction.x * myCollider.bounds.size.x, direction.y * myCollider.bounds.size.y);
     }
     #endregion
    
@@ -237,10 +240,14 @@ public class MovementController : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Vector3 checkPosition = myCollider.bounds.center + Vector3.down * myCollider.bounds.extents.y;
-        Vector3 checkSize = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght, 0);
-        Gizmos.DrawWireCube(checkPosition, checkSize);     
+        if (Application.isPlaying)
+        {
+            Gizmos.color = Color.red;
+            Vector3 checkPosition = new Vector3(myCollider.bounds.center.x, myCollider.bounds.min.y, myCollider.bounds.center.z);
+            Vector3 checkSize = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght, 0);
+            Gizmos.DrawWireCube(checkPosition, checkSize);
+            Gizmos.DrawLine(checkPosition + Vector3.up * _detectionLenght / 2, checkPosition - Vector3.up * _detectionLenght / 2);
+        }    
     }
 
     #region RaycastHit Getters

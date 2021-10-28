@@ -30,9 +30,10 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         if(_enteringHedge)
         {
             _currentSpeed = stats.hedgeTransitionInPush;
-            if(counter >= stats.hedgeTransitionInTime)
+            if(counter >= stats.hedgeTransitionInTime && _enteringHedge)
             {
                 _enteringHedge = false;
+                controller.SetCollider(stats.colliderHardenSize, stats.colliderHardenPosition);
             }
         }
         else if(_exitingHedge)
@@ -48,22 +49,25 @@ public class PlayerHedgeState : PlayerUnlockableSkill
                 _direction = new Vector3(inputs.FixedAxis.x, inputs.FixedAxis.y,0).normalized;
             }     
             controller.Accelerate((inputs.FixedAxis.magnitude != 0 ? 1 / stats.groundedAccelerationTime : -1 / stats.groundedAccelerationTime) * Time.deltaTime);
-        }       
+        }
     }
 
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
         Vector3 checkPosition = controller.myCollider.bounds.center + controller.DirectionalDetection() * stats.hedgeDetectionOffset;
-        Collider[] check = Physics.OverlapBox(checkPosition, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);  
+        Collider[] check = Physics.OverlapBox(checkPosition, controller.myCollider.bounds.size/2, Quaternion.identity,stats.hedge);
+        Debug.Log(check.Length);
         if(!_enteringHedge && check.Length == 0)
         {
+            
             _exitingHedge = true;
             controller.SetTotalVelocity(0, Vector3.zero);
             controller.Force(_direction,stats.hedgeTransitionOutPush,ForceMode.Force);
         }
         
-        controller.SetTotalVelocity(_currentSpeed, _direction);    
+        if(_direction==Vector3.zero)controller.SetTotalVelocity(_currentSpeed, Vector3.down);    
+        else controller.SetTotalVelocity(_currentSpeed, _direction);
     }
 
     protected override void DoTransitionIn()
@@ -78,7 +82,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         _hedgeJumpCoyoteTime = false; 
         Physics.IgnoreLayerCollision(9,10,true);
         controller.SetGravity(false);   
-        controller.SetDrag(0);    
+        controller.SetDrag(0);
     }
 
     protected override void DoTransitionOut()
@@ -99,6 +103,7 @@ public class PlayerHedgeState : PlayerUnlockableSkill
             controller.SetAcceleration(0);
         }
         _target.QueueAnimation(_target.animations.hardenEnd.name, true, true);
+        controller.SetCollider(stats.colliderDefaultSize, stats.colliderDefaultPosition);
     }
 
     protected override void TransitionChecks()
@@ -132,5 +137,15 @@ public class PlayerHedgeState : PlayerUnlockableSkill
         {
             _hedgeJumpCoyoteTime = false;
         }
-    } 
+    }
+
+    private void OnDrawGizmos()
+    {
+
+        if (Application.isPlaying)
+        {
+            Vector3 checkPosition = controller.myCollider.bounds.center + controller.DirectionalDetection() * stats.hedgeDetectionOffset;
+            Gizmos.DrawWireCube(checkPosition, controller.myCollider.bounds.size);
+        }      
+    }
 }

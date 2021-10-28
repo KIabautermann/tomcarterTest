@@ -43,7 +43,7 @@ MonoBehaviour:
   drag: 10
   dashEndMultiplier: 0.15
   dashJumpID: dash_jump
-  dashJumpVelocityX: 10
+  dashJumpVelocityX: 12
   dashJumpAccelerationTime: 0.1
   dashJumpFallMultiplier: 0.3
   minDashJumpVelocity: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
   meleeHitbox: {x: 1.5, y: 0.7}
   meleeHiboxOffset: {x: 0.7, y: 0}
   rangeID: range
-  rangeCooldown: 1
+  rangeCooldown: 0.6
   rangeTime: 0.67
   rangeHitbox: {x: 4.5, y: 0.5}
   rangeHiboxOffset: {x: 2, y: 0}

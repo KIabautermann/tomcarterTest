@@ -52,10 +52,10 @@ public class PlayerBounceJumpState : PlayerBasicMovementState
             _target.ChangeState<PlayerHookState>();
             inputs.UsedHook();
         }
-        else if (inputs.DashInput)
+        else if (inputs.DashInput && !_fromDashJump)
         {
             _target.ChangeState<PlayerDashState>();
-            inputs.UsedHook();
+            inputs.UsedDash();
         }
         else if (inputs.RangeInput)
         {
