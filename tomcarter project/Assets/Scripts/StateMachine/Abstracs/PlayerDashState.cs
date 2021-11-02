@@ -8,7 +8,7 @@ using System.Linq;
 public abstract class PlayerDashState : PlayerUnlockableSkill
 {
     protected bool _playedAfterImage;
-    protected Vector2 direction;
+    protected Vector3 direction;
     protected bool coyoteTime;
     protected float currentSpeed;
     protected float timeInAir;
@@ -16,6 +16,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     private Collider[] _hedgeCollisionsChecks;
     private PlayerHedgeState playerHedgeState;
     protected bool _hedgeUnlocked;
+    private float _speedLerpCounter;
 
     // TODO: empezar a ver como la subscripcion de eventos deberia ser solo para el dash activo y no ambos. Podria traer muchos bardos
     public override void Init(PlayerStateMachine target)
@@ -39,8 +40,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-
-        _hedgeCollisionsChecks = Physics.OverlapBox(transform.position, controller.myCollider.bounds.size, Quaternion.identity,stats.hedge); 
+      
 
         if (_hedgeCollisionsChecks.Length != 0 && !FitsInHedge(direction)) {
             Physics.IgnoreLayerCollision(9,10,false);
@@ -69,6 +69,18 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
             timeInAir = 0;
         }
 
+        if(counter > stats.dashLenght)
+        {
+            _speedLerpCounter += 1/stats.dashendLenght * Time.deltaTime;
+            currentSpeed = Mathf.Lerp(stats.dashSpeed, stats.movementVelocity, _speedLerpCounter);
+            if(counter > stats.dashLenght + stats.dashendLenght)
+            {
+                stateDone = true;
+                controller.SetDrag(0);
+                controller.SetGravity(true);
+            }
+        }
+
     }
 
     protected abstract void InstanceAfterImage();
@@ -82,21 +94,24 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
+        _hedgeCollisionsChecks = Physics.OverlapBox(transform.position + direction*.5f, controller.myCollider.bounds.size, Quaternion.identity, stats.hedge);
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        currentSpeed = stats.dashSpeed;
         inputs.UsedDash();
         controller.SetTotalVelocity(0,Vector2.zero);
         controller.SetAcceleration(1);
         controller.SetGravity(false);
-        controller.SetDrag(stats.drag);
+        controller.SetDrag(stats.dashDrag);
         coyoteTime = false;
         Physics.IgnoreLayerCollision(9,10, _hedgeUnlocked);
         _velocityUpdated = false;
         _playedAfterImage = false;
         _hedgeCollisionsChecks = new Collider[0];
+        _speedLerpCounter = 0;
         ToggleLock(true);
     }
 
@@ -132,6 +147,10 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
             {
                 controller.SetAcceleration(.5f);
             }
+        }
+        else
+        {
+            controller.SetAcceleration(0);
         }
     }
 

@@ -35,12 +35,9 @@ public class PlayerData : ScriptableObject
     public float dashCooldown = .3f;
     public float dashStartUp = .05f;
     public float dashLenght = .4f;
-    public float blinkDashInitTime = .2f;
-    public float blinkDashTime = .2f;
+    public float dashendLenght = .1f;
     public float dashSpeed = 15f;
-    public float blinkDashSpeed = 30f;
-    public float drag = 10f;
-    public float dashEndMultiplier= .7f;
+    public float dashDrag = 10f;
 
     [Header("DashJump State")]
     public string dashJumpID = "dash_jump";

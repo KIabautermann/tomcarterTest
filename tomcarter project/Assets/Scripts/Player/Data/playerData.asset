@@ -25,7 +25,7 @@ MonoBehaviour:
   landID: land
   jumpVelocity: 10
   jumpLenght: 0.15
-  fallMultiplier: 5
+  fallMultiplier: 10
   minJumpVelocity: 5
   coyoteTime: 0.2
   shortHopMultiplier: 0.5
@@ -35,13 +35,10 @@ MonoBehaviour:
   blinkID: blink
   dashCooldown: 0.3
   dashStartUp: 0.02
-  dashLenght: 0.2
-  blinkDashInitTime: 0.125
-  blinkDashTime: 0.2
-  dashSpeed: 20
-  blinkDashSpeed: 27
-  drag: 10
-  dashEndMultiplier: 0.15
+  dashLenght: 0.15
+  dashendLenght: 0.1
+  dashSpeed: 30
+  dashDrag: 10
   dashJumpID: dash_jump
   dashJumpVelocityX: 12
   dashJumpAccelerationTime: 0.1

@@ -23,27 +23,16 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        if(counter >= stats.blinkDashInitTime && !blinkStarted)
-        {
-            currentSpeed = stats.blinkDashSpeed;
-        }
-        if (counter >= stats.blinkDashInitTime + stats.blinkDashTime)
-        {
-            stateDone = true;
-        }
     }
 
     protected override void InstanceAfterImage()
-    { 
-        if(counter >= stats.blinkDashInitTime)
-        {
-            ComponentCache<MonoBehaviour> afterImageComponents = sporeTrailPooler.GetItem(Vector3.zero, Quaternion.identity);
-            afterImageComponents.GetInstance(typeof(SporeTrailEffect), out MonoBehaviour tmp);
-            sporeTrailEffect = tmp as SporeTrailEffect;
+    {
+        ComponentCache<MonoBehaviour> afterImageComponents = sporeTrailPooler.GetItem(Vector3.zero, Quaternion.identity);
+        afterImageComponents.GetInstance(typeof(SporeTrailEffect), out MonoBehaviour tmp);
+        sporeTrailEffect = tmp as SporeTrailEffect;
 
-            sporeTrailEffect.gameObject.transform.SetParent(gameObject.transform);
-            sporeTrailEffect.LogicStart();
-        }      
+        sporeTrailEffect.gameObject.transform.SetParent(gameObject.transform);
+        sporeTrailEffect.LogicStart();
     }
 
     protected override void DoPhysicsUpdate()
@@ -54,11 +43,10 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        currentSpeed = 0;
-        _target.QueueAnimation(_target.animations.blinkInit.name, false, true);
+        _target.QueueAnimation(_target.animations.dash.name, false, true);
         if(inputs.FixedAxis != Vector2.zero)
         {
-            direction = inputs.FixedAxis;
+            direction = new Vector3(inputs.FixedAxis.x, inputs.FixedAxis.y,0);
             direction = direction.normalized;
         }
         else
@@ -69,26 +57,11 @@ public class PlayerBlinkDashState : PlayerDashState
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
-        
-        if (controller.CurrentVelocity.y != 0)
-        {
-            controller.SetVelocityY(controller.CurrentVelocity.y * stats.dashEndMultiplier);
-        }
-        if(inputs.FixedAxis.x != 0)
-        {
-            controller.SetAcceleration(1);
-        }
-        else
-        {
-            controller.SetAcceleration(0);
-        }
-        
+                    
         if (sporeTrailEffect != null) {
             sporeTrailEffect.LogicEnd();
             sporeTrailEffect = null;
         }
-
-        _target.QueueAnimation(_target.animations.blinkEnd.name, true, true);
     }
     protected override void TransitionChecks()
     {

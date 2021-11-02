@@ -110,10 +110,10 @@ public class PlayerAbilitySystem : LoadableObject
     protected override void LoadFromSavedGameState(GameState gameState)
     {
         var unlockedAbilities = gameState.unlockedAbilities;
-        unlockedSkills[PlayerSkill.SPORE_DASH] = true;
-        unlockedSkills[PlayerSkill.ROOT_ATTACK] = true;
-        unlockedSkills[PlayerSkill.VINE_HOOK] = true;
-        unlockedSkills[PlayerSkill.BARK_GUARD] = true;
+        unlockedSkills[PlayerSkill.SPORE_DASH] = false;
+        unlockedSkills[PlayerSkill.ROOT_ATTACK] = false;
+        unlockedSkills[PlayerSkill.VINE_HOOK] = false;
+        unlockedSkills[PlayerSkill.BARK_GUARD] = false;
         unlockedSkills[PlayerSkill.HEDGE_CLIMB] = true;
     }
     protected override void SaveToGameState(object sender, SaveLoadController.OnSaveCalledEventArgs onSaveArguments) 

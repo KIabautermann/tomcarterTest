@@ -33,8 +33,7 @@ public class PlayerBaseDashState : PlayerDashState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        currentSpeed = stats.dashSpeed;
-        direction = new Vector2(controller.facingDirection,0);
+        direction = inputs.FixedAxis.x == 0 ? new Vector2(controller.facingDirection,0) : inputs.FixedAxis.x * Vector2.right;
         _target.QueueAnimation(_target.animations.dash.name, false, true);
     }
     protected override void DoTransitionOut()
@@ -46,12 +45,6 @@ public class PlayerBaseDashState : PlayerDashState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if(counter > + stats.dashLenght && !stateDone)
-        {
-            stateDone = true;
-            controller.SetDrag(0);
-            controller.SetGravity(true);
-        }
     }
     protected override void InstanceAfterImage()
     { 
