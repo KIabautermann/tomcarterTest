@@ -33,10 +33,10 @@ MonoBehaviour:
   amountOfJumps: 1
   dashID: dash
   blinkID: blink
-  dashCooldown: 0.3
+  dashCooldown: 0.2
   dashStartUp: 0.02
   dashLenght: 0.15
-  dashendLenght: 0.1
+  dashendLenght: 0.15
   dashSpeed: 30
   dashDrag: 10
   dashJumpID: dash_jump
