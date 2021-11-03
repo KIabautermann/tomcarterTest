@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHardenState : PlayerUnlockableSkill
+public class PlayerHardenState : PlayerBasicMovementState
 {
     
-    private bool _wasGrounded;
-    private bool _hasCollided;
+    private bool _groundPound;
+    private bool _startedGroundPound;
 
     public override void Init(PlayerStateMachine target)
     {
@@ -14,7 +14,7 @@ public class PlayerHardenState : PlayerUnlockableSkill
         animationTrigger = stats.hardenID;
         stateIndex = stats.hardenNumberID;
     }
-    
+
     public override string ToString()
     {
         return base.ToString();
@@ -27,43 +27,46 @@ public class PlayerHardenState : PlayerUnlockableSkill
 
     protected override void DoLogicUpdate()
     {
-        base.DoLogicUpdate();
-        if(controller.Grounded())
+        if (!_startedGroundPound)
         {
-            controller.FlipCheck(inputs.FixedAxis.x);
-            controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 / stats.airAccelerationTime : -1 / stats.airAccelerationTime) * Time.deltaTime);
-            controller.SetVelocityX(stats.hardenMovementSpeed * controller.facingDirection);                    
-        }   
-        RaycastHit hit;
-        if(Physics.Raycast(controller.myCollider.bounds.center, controller.DirectionalDetection(),out hit, stats.collisionDetection, stats.walkable) && CanBreak())
-        {
-            if (hit.collider.gameObject.GetComponent<IBreakable>() != null)
-            {
-                hit.collider.gameObject.GetComponent<IBreakable>().onBreak(FastestAxis());             
-            }  
-            _hasCollided = true;              
-        }  
-        if(_wasGrounded!=controller.Grounded() && controller.Grounded()){
-            PlayerEventSystem.GetInstance().TriggerPlayerHasLanded(transform.position);
-        }                 
+            base.DoLogicUpdate();
+        }
+        else Debug.Log(controller.CurrentVelocity.y);
     }
 
     protected override void DoPhysicsUpdate()
     {
-        base.DoPhysicsUpdate();
-        if(controller.CurrentVelocity.y < stats.minJumpVelocity)
+        if (!_startedGroundPound)
         {
-            controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
+            base.DoPhysicsUpdate();
         }
+        else
+        {
+            Vector3 checkPosition = controller.myCollider.bounds.center + controller.DirectionalDetection() * stats.hedgeDetectionOffset;
+            Collider[] check = Physics.OverlapBox(checkPosition, controller.myCollider.bounds.size/2, Quaternion.identity,stats.walkable);
+            if(check.Length != 0)
+            {        
+                stateDone = true;
+            }
+        }
+        
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
         _target.QueueAnimation(_target.animations.hardenInit.name, false, true);
-        _hasCollided = false;
-        _wasGrounded=controller.Grounded();
         controller.SetCollider(stats.colliderHardenSize, stats.colliderHardenPosition);
+        _groundPound = !controller.Grounded() && inputs.FixedAxis.y < 0;
+        _startedGroundPound = false;
+        currentSpeed = stats.movementVelocity;
+        currentAcceleration = stats.airAccelerationTime;
+        if (_groundPound)
+        {
+            controller.SetVelocityY(controller.CurrentVelocity.y / 2);
+            controller.SetGravity(false);
+        }
+        canMove = false;
     }
 
     protected override void DoTransitionOut()
@@ -71,33 +74,41 @@ public class PlayerHardenState : PlayerUnlockableSkill
         base.DoTransitionOut();
         controller.SetCollider(stats.colliderDefaultSize, stats.colliderDefaultPosition);
         _target.QueueAnimation(_target.animations.hardenEnd.name, true, true);
+        controller.SetGravity(true);
+        if (_groundPound)
+        {
+            controller.SetTotalVelocity(0, Vector2.zero);
+            controller.FlipCheck(inputs.FixedAxis.x);
+            controller.SetAcceleration(inputs.FixedAxis.x != 0 ? .5f : 0);        
+            controller.Force(Vector2.up, 10, ForceMode.Impulse);
+        }
+        else
+        {
+            controller.SetAcceleration(0);
+        }
     }
 
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if(counter >= stats.hardenTime)
+        if(counter >= stats.hardenTime && !_groundPound)
         {
             stateDone = true;
         }      
-    }
-
-    bool CanBreak() => controller.CurrentVelocity.magnitude >= stats.minBreakVelocity && !_hasCollided;
-
-    float FastestAxis(){
-        if(Mathf.Abs(controller.CurrentVelocity.x) > Mathf.Abs(controller.CurrentVelocity.y)){
-            return Mathf.Abs(controller.CurrentVelocity.x);
-        }
-        else if(controller.CurrentVelocity.y < 0){
-            return Mathf.Abs(controller.CurrentVelocity.y);
-        }
-        else{
-            return controller.CurrentVelocity.y * stats.ceilingExceptionMultiplier;
-        }
-    }
+    } 
 
     public void HardenColliderSet()
     {
         controller.SetCollider(stats.colliderHardenSize, stats.colliderHardenPosition);
+    }
+
+    public void StartGroundPound()
+    {
+        if (_groundPound)
+        {
+            _startedGroundPound = true;
+            controller.SetAcceleration(1);
+            controller.SetTotalVelocity(25, -Vector2.up);
+        }       
     }
 }

@@ -86,11 +86,9 @@ public class PlayerData : ScriptableObject
     public string hardenID = "harden";
     public float hardenTime = 2f;
     public float hardenMovementSpeed = 5f;
-    public float hardenHookMultiplier = 1.2f;
-    public float hardenDashVelocity = 20f;
     public float hardenDashChannelingTime = 1f;
-    public float minBreakVelocity = 10;
-    public float ceilingExceptionMultiplier = 1.7f;
+    public float hardenParryTime = .2f;
+    public float hardenFallMuyltiplier = 50;
     public Vector2 colliderHardenSize;
     public Vector3 colliderHardenPosition;
 
