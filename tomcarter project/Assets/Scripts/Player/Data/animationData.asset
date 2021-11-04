@@ -31,6 +31,8 @@ MonoBehaviour:
   harden: {fileID: 7400000, guid: ca5c29448148a34479abca0e2cf24d5f, type: 2}
   hardenEnd: {fileID: 7400000, guid: 91448f2903698774085182668267dec6, type: 2}
   hardenInit: {fileID: 7400000, guid: be2e6bfda0badfc42b959baf86a07ff2, type: 2}
+  hardenPound: {fileID: 7400000, guid: ed597eab400df7949b28c86e435d9e4f, type: 2}
+  hardenBounce: {fileID: 7400000, guid: cc1634a18b25923418de428bcf89f210, type: 2}
   hedgeInit: {fileID: 7400000, guid: 7938b0581c6437942a04b37883ec9e1b, type: 2}
   hedge: {fileID: 7400000, guid: 14bb67493147b27418555272b84936bb, type: 2}
   hookBlur: {fileID: 7400000, guid: 76519c4acb9f0dd4e99fff4d4a7e1798, type: 2}

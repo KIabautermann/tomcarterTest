@@ -25,6 +25,7 @@ public abstract class PlayerGroundedState : PlayerBasicMovementState
         direction = new Vector2(controller.facingDirection,0);
         currentAcceleration = stats.groundedAccelerationTime;
         currentSpeed = stats.movementVelocity;
+        canShortHop = false;
         base.DoTransitionIn();        
     }
 

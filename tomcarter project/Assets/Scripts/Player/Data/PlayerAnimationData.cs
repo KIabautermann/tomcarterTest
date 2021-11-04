@@ -24,6 +24,8 @@ public class PlayerAnimationData : ScriptableObject
     public AnimationClip harden;
     public AnimationClip hardenEnd;
     public AnimationClip hardenInit;
+    public AnimationClip hardenPound;
+    public AnimationClip hardenBounce;
     public AnimationClip hedgeInit;
     public AnimationClip hedge;
     public AnimationClip hookBlur;

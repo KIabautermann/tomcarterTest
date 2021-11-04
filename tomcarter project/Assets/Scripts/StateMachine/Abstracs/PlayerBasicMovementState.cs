@@ -29,6 +29,7 @@ public class PlayerBasicMovementState : PlayerState
         if (inputs.JumpCancel && controller.CurrentVelocity.y > stats.minJumpVelocity && canShortHop && !controller.Grounded())
         {
             controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
+            Debug.Log("short hop");
         }
     }
 
@@ -38,6 +39,7 @@ public class PlayerBasicMovementState : PlayerState
         if (controller.CurrentVelocity.y <= 0 && !controller.Grounded() && controller.usingGravity)
         {
             controller.Force(Physics.gravity.normalized, fallMultiplier, ForceMode.Force);
+            Debug.Log("multiplier");
         }
         controller.SetVelocityX(currentSpeed * controller.lastDirection);
     }
