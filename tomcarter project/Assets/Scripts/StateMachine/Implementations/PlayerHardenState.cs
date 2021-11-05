@@ -32,6 +32,11 @@ public class PlayerHardenState : PlayerBasicMovementState
         {
             base.DoLogicUpdate();
         }
+        if (_impacted)
+        {
+            controller.LockFlip(true);
+            controller.FlipCheck(inputs.FixedAxis.x);
+        }
         else Debug.Log(controller.CurrentVelocity.y);
     }
 
@@ -52,6 +57,7 @@ public class PlayerHardenState : PlayerBasicMovementState
                 _impacted = true;
                 canMove = true;
                 controller.FlipCheck(inputs.FixedAxis.x);
+                controller.SetAcceleration(inputs.FixedAxis.x != 0 ? .5f : 0);
                 _target.QueueAnimation(_target.animations.hardenBounce.name, true, true);
                 controller.SetGravity(true);
             }
@@ -62,9 +68,9 @@ public class PlayerHardenState : PlayerBasicMovementState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        _groundPound = !controller.Grounded();
         _target.QueueAnimation(_target.animations.hardenInit.name, false, true);
-        controller.SetCollider(stats.colliderHardenSize, stats.colliderHardenPosition);
-        _groundPound = !controller.Grounded() && inputs.FixedAxis.y < 0;
+        controller.SetCollider(stats.colliderHardenSize, stats.colliderHardenPosition); 
         _startedGroundPound = false;
         currentSpeed = stats.movementVelocity;
         currentAcceleration = stats.airAccelerationTime;
@@ -85,6 +91,7 @@ public class PlayerHardenState : PlayerBasicMovementState
         if(!_groundPound)_target.QueueAnimation(_target.animations.hardenEnd.name, true, true);
         controller.SetGravity(true);
         controller.SetAcceleration(inputs.FixedAxis.x != 0 ? .5f : 0);
+        controller.LockFlip(false);
     }
 
     protected override void TransitionChecks()
