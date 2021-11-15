@@ -31,13 +31,13 @@ public class PlayerHardenState : PlayerBasicMovementState
         if (!_startedGroundPound ||_impacted)
         {
             base.DoLogicUpdate();
+            controller.FlipCheck(inputs.FixedAxis.x);
         }
         if (_impacted)
         {
             controller.LockFlip(true);
             controller.FlipCheck(inputs.FixedAxis.x);
         }
-        else Debug.Log(controller.CurrentVelocity.y);
     }
 
     protected override void DoPhysicsUpdate()
@@ -60,6 +60,8 @@ public class PlayerHardenState : PlayerBasicMovementState
                 controller.SetAcceleration(inputs.FixedAxis.x != 0 ? .5f : 0);
                 _target.QueueAnimation(_target.animations.hardenBounce.name, true, true);
                 controller.SetGravity(true);
+                currentSpeed = stats.movementVelocity;
+                currentAcceleration = stats.groundedAccelerationTime;
             }
         }
         
@@ -68,18 +70,17 @@ public class PlayerHardenState : PlayerBasicMovementState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        _groundPound = !controller.Grounded();
+        _groundPound = !controller.Grounded() && inputs.FixedAxis.y < 0;
         _target.QueueAnimation(_target.animations.hardenInit.name, false, true);
-        controller.SetCollider(stats.colliderHardenSize, stats.colliderHardenPosition); 
         _startedGroundPound = false;
-        currentSpeed = stats.movementVelocity;
-        currentAcceleration = stats.airAccelerationTime;
+        currentSpeed = stats.movementVelocity/2;
+        currentAcceleration = stats.groundedAccelerationTime;
         if (_groundPound)
         {
             controller.SetVelocityY(controller.CurrentVelocity.y / 2);
             controller.SetGravity(false);
         }
-        canMove = false;
+        canMove = true;
         canShortHop = false;
         _impacted = false;
     }
@@ -97,9 +98,9 @@ public class PlayerHardenState : PlayerBasicMovementState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if(counter >= stats.hardenTime && !_groundPound)
+        if(!_groundPound)
         {
-            stateDone = true;
+            if(counter >= stats.hardenTime || (counter>=stats.hardenParryTime && inputs.GuardCancel)) stateDone = true;
         } 
         else if(_impacted && controller.CurrentVelocity.y <= 0)
         {

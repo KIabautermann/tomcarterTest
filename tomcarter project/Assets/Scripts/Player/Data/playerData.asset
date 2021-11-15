@@ -70,13 +70,11 @@ MonoBehaviour:
   damageTrigger: dmg
   damagedDuration: 1
   hardenID: harden
-  hardenTime: 1
+  hardenTime: 2
   hardenMovementSpeed: 3
-  hardenHookMultiplier: 1.2
-  hardenDashVelocity: 20
   hardenDashChannelingTime: 0.5
-  minBreakVelocity: 10
-  ceilingExceptionMultiplier: 1.7
+  hardenParryTime: 0.4
+  hardenFallMuyltiplier: 50
   colliderHardenSize: {x: 0.32, y: 0.64}
   colliderHardenPosition: {x: 0, y: 0.04, z: 0}
   meleeID: melee
