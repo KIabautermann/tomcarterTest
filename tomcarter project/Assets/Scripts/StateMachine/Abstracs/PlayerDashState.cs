@@ -64,7 +64,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         {
             timeInAir += Time.deltaTime;
         }
-        else if(timeInAir != 0)
+        else
         {
             timeInAir = 0;
         }
@@ -107,6 +107,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         controller.SetGravity(false);
         controller.SetDrag(stats.dashDrag);
         coyoteTime = false;
+        timeInAir = controller.Grounded() ? 0 : stats.dashCoyoteTime + 1;
         Physics.IgnoreLayerCollision(9,10, _hedgeUnlocked);
         _velocityUpdated = false;
         _playedAfterImage = false;
@@ -155,11 +156,19 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
             controller.SetDrag(0);
             _target.ChangeState<PlayerHedgeState>();
         }
-        else if (inputs.JumpInput && timeInAir <= stats.dashCoyoteTime)
+        else if (inputs.JumpInput && CanDashJump())
         {
             inputs.UsedJump();       
-            _target.ChangeState<PlayerDashJumpState>();     
+            _target.ChangeState<PlayerDashJumpState>();
+            Debug.Log("asd");
         }    
+    }
+
+    private bool CanDashJump()
+    {
+        if (controller.Grounded()) return true;
+        if (timeInAir <= stats.dashCoyoteTime) return true;
+        return false;
     }
 
 
