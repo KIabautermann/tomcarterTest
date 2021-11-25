@@ -9,6 +9,7 @@ public class PlayerBasicMovementState : PlayerState
     protected bool canShortHop;
     protected bool canMove;
     protected float fallMultiplier;
+    protected bool shortHoped;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
@@ -26,9 +27,10 @@ public class PlayerBasicMovementState : PlayerState
             controller.Accelerate((-1 / currentAcceleration) * Time.deltaTime);
         }
         
-        if (inputs.JumpCancel && controller.CurrentVelocity.y > stats.minJumpVelocity && canShortHop && !controller.Grounded())
+        if (inputs.JumpCancel && controller.CurrentVelocity.y > stats.minJumpVelocity && canShortHop && !controller.Grounded() && !shortHoped)
         {
             controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
+            shortHoped = true;
         }
     }
 
@@ -46,6 +48,7 @@ public class PlayerBasicMovementState : PlayerState
     {
         base.DoTransitionIn();
         canShortHop = true;
+        shortHoped = false;
         canMove = true;
         fallMultiplier = stats.fallMultiplier;
     }

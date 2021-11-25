@@ -139,14 +139,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         base.DoTransitionOut();
         if(direction.x !=0)
         {
-            if(inputs.FixedAxis.x == direction.x)
-            {
-                controller.SetAcceleration(1);
-            }
-            else
-            {
-                controller.SetAcceleration(.5f);
-            }
+            controller.SetAcceleration(1);
         }
         else
         {

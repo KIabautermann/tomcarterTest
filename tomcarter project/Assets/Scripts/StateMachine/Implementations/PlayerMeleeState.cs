@@ -46,7 +46,7 @@ public class PlayerMeleeState : PlayerAttackState
         }
         else
         {
-            _target.QueueAnimation(_target.animations.attackAir.name, false, true);
+            _target.QueueAnimation(_target.animations.attackGround.name, false, true);
         }
     }
 

@@ -26,7 +26,7 @@ MonoBehaviour:
   jumpVelocity: 10
   jumpLenght: 0.15
   fallMultiplier: 10
-  minJumpVelocity: 5
+  minJumpVelocity: 0
   coyoteTime: 0.2
   shortHopMultiplier: 0.5
   maxFallVelocity: -20
@@ -35,9 +35,9 @@ MonoBehaviour:
   blinkID: blink
   dashCooldown: 0.2
   dashStartUp: 0.02
-  dashLenght: 0.15
-  dashendLenght: 0.15
-  dashSpeed: 30
+  dashLenght: 0.05
+  dashendLenght: 0.1
+  dashSpeed: 40
   dashDrag: 10
   dashJumpID: dash_jump
   dashJumpVelocityX: 12

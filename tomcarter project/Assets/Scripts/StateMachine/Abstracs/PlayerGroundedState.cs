@@ -59,7 +59,7 @@ public abstract class PlayerGroundedState : PlayerBasicMovementState
             _target.ChangeState<PlayerMeleeState>();
             inputs.UsedMelee();
         }
-        else if(inputs.RangeInput){
+        else if(inputs.RangeInput && inputs.FixedAxis.y >=0){
             _target.ChangeState<PlayerRangeState>();
             inputs.UsedRange();
         }
