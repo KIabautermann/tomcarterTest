@@ -36,6 +36,7 @@ public class PlayerBounceJumpState : PlayerBasicMovementState
     {
         base.DoTransitionOut();
         _fromDashJump = false;
+        _target.SetMaskActive(false);
     }
 
     protected override void TransitionChecks()

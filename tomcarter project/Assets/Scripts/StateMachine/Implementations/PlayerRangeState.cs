@@ -88,6 +88,7 @@ public class PlayerRangeState : PlayerAttackState
         base.DoTransitionIn();
         canMove = true;
         _hited = false;
+        _target.SetMaskActive(false);
         currentSpeed = _fromDashJump ? stats.dashJumpVelocityX : stats.movementVelocity;
         if (!onAir)
         {
@@ -131,7 +132,6 @@ public class PlayerRangeState : PlayerAttackState
         base.DoTransitionOut();
         controller.LockFlip(false);
         controller.SetGravity(true);
-        _target.SetMaskActive(false);
         _fromDashJump = false;
     }
 
