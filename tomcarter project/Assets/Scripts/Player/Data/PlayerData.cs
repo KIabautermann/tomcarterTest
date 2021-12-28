@@ -38,6 +38,7 @@ public class PlayerData : ScriptableObject
     public float dashendLenght = .1f;
     public float dashSpeed = 15f;
     public float dashDrag = 10f;
+    public float postDashTimer = .2f;
 
     [Header("DashJump State")]
     public string dashJumpID = "dash_jump";
@@ -96,6 +97,7 @@ public class PlayerData : ScriptableObject
 
     public string meleeID = "melee";
     public float meleeTime = 1.5f;
+    public float comboWindow;
     public Vector2 meleeHitbox = Vector2.one;
     public Vector2 meleeHiboxOffset;
 

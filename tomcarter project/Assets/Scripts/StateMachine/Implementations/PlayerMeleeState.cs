@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMeleeState : PlayerAttackState
 {
+    private bool _combo;
+    private int comboCounter;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
@@ -30,6 +32,10 @@ public class PlayerMeleeState : PlayerAttackState
             currentAcceleration = stats.groundedAccelerationTime;
         }
         controller.FlipCheck(inputs.FixedAxis.x);
+        if(!_combo && !onAir && counter >= (stats.meleeTime - stats.comboWindow) && inputs.MeleeInput && comboCounter <=2)
+        {
+            _combo = true;
+        }
     }
 
     protected override void DoPhysicsUpdate()
@@ -42,26 +48,45 @@ public class PlayerMeleeState : PlayerAttackState
         base.DoTransitionIn();
         if (!onAir)
         {
-            _target.QueueAnimation(_target.animations.attackGround.name, false, true);
+            switch (comboCounter)
+            {
+                case 0:
+                    _target.QueueAnimation(_target.animations.attackGround.name, false, true);
+                    break;
+                case 1:
+                    _target.QueueAnimation(_target.animations.attackAir.name, false, true);
+                    break;
+                case 2:
+                    _target.QueueAnimation(_target.animations.attackGround.name, false, true);
+                    break;
+            }
         }
         else
         {
-            _target.QueueAnimation(_target.animations.attackGround.name, false, true);
+            _target.QueueAnimation(_target.animations.attackAir.name, false, true);
         }
+        _combo = false;
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
         controller.LockFlip(false);
+        if (!_combo) comboCounter = 0;
+        else comboCounter++;
     }
 
     protected override void TransitionChecks()
-    {
+    {      
         base.TransitionChecks();
         if(onAir && controller.Grounded())
         {
             _target.ChangeState<PlayerLandState>();
         }
+        if (stateDone && _combo && comboCounter <= 2)
+        {
+            _target.ChangeState<PlayerMeleeState>();
+        }
+
     }
 }

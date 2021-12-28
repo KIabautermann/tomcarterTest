@@ -16,6 +16,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     private Collider[] _hedgeCollisionsChecks;
     private PlayerHedgeState playerHedgeState;
     protected bool _hedgeUnlocked;
+    public bool fallException { get; private set; }
     private float _speedLerpCounter;
 
     // TODO: empezar a ver como la subscripcion de eventos deberia ser solo para el dash activo y no ambos. Podria traer muchos bardos
@@ -146,6 +147,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         {
             controller.SetAcceleration(0);
         }
+        StartCoroutine(FallExceptionTimer());
     }
 
     protected override void TransitionChecks()
@@ -160,7 +162,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         {
             inputs.UsedJump();       
             _target.ChangeState<PlayerDashJumpState>();
-            Debug.Log("asd");
         }    
     }
 
@@ -217,6 +218,14 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
             stats.hedge);   
         
         return topHit && bottomHit && topHitInfo.collider.gameObject == bottomHitInfo.collider.gameObject;
+    }
+
+    IEnumerator FallExceptionTimer()
+    {
+        fallException = true;
+        yield return new WaitForSeconds(stats.postDashTimer);
+        fallException = false;
+        StopCoroutine(FallExceptionTimer());
     }
    
 

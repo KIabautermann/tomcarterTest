@@ -25,7 +25,7 @@ MonoBehaviour:
   landID: land
   jumpVelocity: 10
   jumpLenght: 0.15
-  fallMultiplier: 5
+  fallMultiplier: 15
   minJumpVelocity: 0
   coyoteTime: 0.2
   shortHopMultiplier: 0.5
@@ -35,10 +35,11 @@ MonoBehaviour:
   blinkID: blink
   dashCooldown: 0.2
   dashStartUp: 0.02
-  dashLenght: 0.05
-  dashendLenght: 0.1
-  dashSpeed: 40
+  dashLenght: 0.02
+  dashendLenght: 0.15
+  dashSpeed: 50
   dashDrag: 10
+  postDashTimer: 0.2
   dashJumpID: dash_jump
   dashJumpVelocityX: 12
   dashJumpAccelerationTime: 0.1
@@ -79,6 +80,7 @@ MonoBehaviour:
   colliderHardenPosition: {x: 0, y: 0.04, z: 0}
   meleeID: melee
   meleeTime: 0.33
+  comboWindow: 0.1
   meleeHitbox: {x: 1.5, y: 0.7}
   meleeHiboxOffset: {x: 0.7, y: 0}
   rangeID: range
