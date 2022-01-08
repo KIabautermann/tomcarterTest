@@ -6,6 +6,10 @@ public class PlayerMeleeState : PlayerAttackState
 {
     private bool _combo;
     private int comboCounter;
+    private GameObject afterImageParent;
+
+    [SerializeField]
+    private VisualEffectSpawner visualEffectSpawner;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
@@ -46,6 +50,7 @@ public class PlayerMeleeState : PlayerAttackState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
+        //_target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.DashJumpBlast);
         if (!onAir)
         {
             switch (comboCounter)

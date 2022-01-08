@@ -16,7 +16,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     private Collider[] _hedgeCollisionsChecks;
     private PlayerHedgeState playerHedgeState;
     protected bool _hedgeUnlocked;
-    public bool fallException { get; private set; }
     private float _speedLerpCounter;
 
     // TODO: empezar a ver como la subscripcion de eventos deberia ser solo para el dash activo y no ambos. Podria traer muchos bardos
@@ -43,7 +42,8 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         base.DoLogicUpdate();
       
 
-        if (_hedgeCollisionsChecks.Length != 0 && !FitsInHedge(direction)) {
+        if (_hedgeCollisionsChecks.Length != 0 /*&& FitsInHedge(direction)*/)
+        {
             Physics.IgnoreLayerCollision(9,10,false);
         }
 
@@ -53,7 +53,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         } 
 
         // Arrancar el dash solo UNA vez en el caso de estar pegado un hedge en frente
-        if(!_velocityUpdated && _hedgeCollisionsChecks.Length != 0 && FitsInHedge(direction)) {
+        if(!_velocityUpdated && _hedgeCollisionsChecks.Length != 0 /*&& FitsInHedge(direction)*/) {
             StartDash();
         }  
 
@@ -95,7 +95,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        _hedgeCollisionsChecks = Physics.OverlapBox(transform.position + direction*.5f, controller.myCollider.bounds.size, Quaternion.identity, stats.hedge);
+        _hedgeCollisionsChecks = Physics.OverlapBox(transform.position + direction * .5f, controller.myCollider.bounds.size, Quaternion.identity, stats.hedge);
     }
 
     protected override void DoTransitionIn()
@@ -147,13 +147,14 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         {
             controller.SetAcceleration(0);
         }
-        StartCoroutine(FallExceptionTimer());
+        if (direction.y > 0) controller.SetVelocityY(controller.CurrentVelocity.y / 2);
+        StartCoroutine(_target.GravityExceptionTime());
     }
 
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if (_hedgeCollisionsChecks.Length != 0 && FitsInHedge(direction))
+        if (_hedgeCollisionsChecks.Length != 0 /*&& FitsInHedge(direction)*/)
         {
             controller.SetDrag(0);
             _target.ChangeState<PlayerHedgeState>();
@@ -220,14 +221,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         return topHit && bottomHit && topHitInfo.collider.gameObject == bottomHitInfo.collider.gameObject;
     }
 
-    IEnumerator FallExceptionTimer()
-    {
-        fallException = true;
-        yield return new WaitForSeconds(stats.postDashTimer);
-        fallException = false;
-        StopCoroutine(FallExceptionTimer());
-    }
-   
 
     #region Event Handlers
     private void OnGround_Handler(object sender, PlayerEventSystem.OnLandEventArgs args) {

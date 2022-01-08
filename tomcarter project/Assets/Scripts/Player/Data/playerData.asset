@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   collisionDetection: 0.6
-  colliderDefaultSize: {x: 0.2, y: 1.09375}
-  colliderDefaultPosition: {x: 0, y: 0.08, z: 0}
+  colliderDefaultSize: {x: 1, y: 1}
+  colliderDefaultPosition: {x: 0, y: 0, z: 0}
   idleID: idle
   movementID: run
-  movementVelocity: 7
-  groundedAccelerationTime: 0.2
-  airAccelerationTime: 0.4
+  movementVelocity: 15
+  groundedAccelerationTime: 0.15
+  airAccelerationTime: 0.5
   airID: air
   jumpID: jump
   landID: land
-  jumpVelocity: 10
+  jumpVelocity: 12
   jumpLenght: 0.15
-  fallMultiplier: 15
-  minJumpVelocity: 0
+  fallMultiplier: 50
+  minJumpVelocity: 7.5
   coyoteTime: 0.2
   shortHopMultiplier: 0.5
   maxFallVelocity: -20
@@ -36,12 +36,12 @@ MonoBehaviour:
   dashCooldown: 0.2
   dashStartUp: 0.02
   dashLenght: 0.02
-  dashendLenght: 0.15
-  dashSpeed: 50
+  dashendLenght: 0.1
+  dashSpeed: 80
   dashDrag: 10
-  postDashTimer: 0.2
+  postDashTimer: 0.1
   dashJumpID: dash_jump
-  dashJumpVelocityX: 12
+  dashJumpVelocityX: 22
   dashJumpAccelerationTime: 0.1
   dashJumpFallMultiplier: 0.3
   minDashJumpVelocity: 1
@@ -49,14 +49,14 @@ MonoBehaviour:
   jumpHandicapTime: 0.06
   hookID: hook
   hookSpeed: 18
-  circularSpeed: 3.5
+  circularSpeed: 4.3
   hookDetectionRadius: 0.1
   maxAngle: 70
   hookCooldown: 0.4
-  yVelocityMultiplier: 1
-  hookAimAssistConeAngle: 40
+  yVelocityMultiplier: 0.65
+  hookAimAssistConeAngle: 50
   hookTarget: {x: 0.6, y: 0.3, z: 0}
-  hookMaxDistance: 3
+  hookMaxDistance: 6
   hedgeID: hedge
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 12

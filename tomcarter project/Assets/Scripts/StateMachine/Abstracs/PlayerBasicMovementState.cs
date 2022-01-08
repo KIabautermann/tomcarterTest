@@ -19,10 +19,7 @@ public class PlayerBasicMovementState : PlayerState
         if (GetComponent<PlayerBlinkDashState>() != null) blinkReference = GetComponent<PlayerBlinkDashState>();
     }
 
-    protected bool FallException()
-    {
-        return dashReference.fallException || blinkReference.fallException;
-    }
+ 
 
     protected override void DoLogicUpdate()
     {
@@ -46,11 +43,11 @@ public class PlayerBasicMovementState : PlayerState
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        if (controller.CurrentVelocity.y <= 0 && !controller.Grounded() && controller.usingGravity && !FallException())
+        if (controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded() && controller.usingGravity && !_target.gravityException)
         {
             controller.Force(Physics.gravity.normalized, fallMultiplier, ForceMode.Force);
         }
-        else if (FallException())
+        else if (_target.gravityException)
         {
             controller.Force(-Physics.gravity.normalized, Physics.gravity.magnitude/2, ForceMode.Force);
         }

@@ -71,6 +71,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -80,11 +82,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -102,9 +104,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -480,6 +485,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Arbol Idle_3: -7923885280581541946
+      Arbol Idle_13: -6370313664587742882
+      Arbol Idle_6: 5727842843534781660
+      Arbol Idle_1: 8445318190138692767
+      Arbol Idle_0: 47829346850650647
+      Arbol Idle_5: -3285499185696886331
+      Arbol Idle_11: 5100073362472594716
+      Arbol Idle_12: -6210468129276895317
+      Arbol Idle_2: 828322548372278799
+      Arbol Idle_10: 3787990304187901893
+      Arbol Idle_15: -2938933741467021702
+      Arbol Idle_9: -5791369638987118950
+      Arbol Idle_8: 6161369118325648765
+      Arbol Idle_14: 6545267280361459937
+      Arbol Idle_4: -1332641687362028835
+      Arbol Idle_7: -1236954057571225807
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

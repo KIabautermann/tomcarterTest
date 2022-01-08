@@ -408,6 +408,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -3172,6 +3173,135 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Prototipo Whole_105: -8956799649591558011
+      Prototipo Whole_78: 1127801783373707938
+      Prototipo Whole_93: -5192942355327355712
+      Prototipo Whole_57: 3314304486961807355
+      Prototipo Whole_84: -463926949144789321
+      Prototipo Whole_116: -4532294559220677326
+      Prototipo Whole_21: -2322115514951673300
+      Prototipo Whole_61: 4137737785514623926
+      Prototipo Whole_113: 1224533011945634157
+      Prototipo Whole_125: -7481159065848449605
+      Prototipo Whole_53: 8783966896466827902
+      Prototipo Whole_19: 9170221942898489691
+      Prototipo Whole_60: -1459872451372500184
+      Prototipo Whole_49: -6016940256098187155
+      Prototipo Whole_76: 8225593924392398618
+      Prototipo Whole_34: 2192591435140985670
+      Prototipo Whole_109: 219763818476989512
+      Prototipo Whole_42: -6930085404158189977
+      Prototipo Whole_25: -3823373152476182568
+      Prototipo Whole_3: 6939787820369766122
+      Prototipo Whole_91: 4629337253410855423
+      Prototipo Whole_67: 5695186344120535109
+      Prototipo Whole_59: 8904749564310337585
+      Prototipo Whole_92: -7336848421146287715
+      Prototipo Whole_45: -5148942875737550200
+      Prototipo Whole_117: 4102121387303075414
+      Prototipo Whole_15: 9174057231333167133
+      Prototipo Whole_22: 5260537411924658156
+      Prototipo Whole_94: -8938574811830507004
+      Prototipo Whole_114: 5474265277582698959
+      Prototipo Whole_46: 1660619055490519337
+      Prototipo Whole_9: 4266339139610189700
+      Prototipo Whole_120: -5953319149144780050
+      Prototipo Whole_62: 3461569865282061497
+      Prototipo Whole_16: 3165103023882809986
+      Prototipo Whole_41: 5043727394435482286
+      Prototipo Whole_73: -5460905882895536599
+      Prototipo Whole_66: -4792898137026455612
+      Prototipo Whole_65: -4171349562623814719
+      Prototipo Whole_70: 4760124882966269655
+      Prototipo Whole_47: -8333679781138911155
+      Prototipo Whole_32: -2870911450295918230
+      Prototipo Whole_115: 1092754068649366296
+      Prototipo Whole_108: -5458360027451417474
+      Prototipo Whole_111: -3915958806176881016
+      Prototipo Whole_100: -7475845896904705640
+      Prototipo Whole_110: -392680095983841129
+      Prototipo Whole_35: -4007128656566221937
+      Prototipo Whole_106: -6575005605669579668
+      Prototipo Whole_127: -8760522820623727985
+      Prototipo Whole_103: 4927951264937995498
+      Prototipo Whole_33: -2620633712324271163
+      Prototipo Whole_74: -5363150994106328726
+      Prototipo Whole_56: -5738005660644831142
+      Prototipo Whole_58: -7549285595509627137
+      Prototipo Whole_77: -4486409736353598021
+      Prototipo Whole_28: 7508232888583122936
+      Prototipo Whole_81: 5372692669417191818
+      Prototipo Whole_72: 8397987852460779127
+      Prototipo Whole_80: -3580317805857791046
+      Prototipo Whole_63: 823055240193959535
+      Prototipo Whole_1: -41954210667393118
+      Prototipo Whole_13: -7259172854989123226
+      Prototipo Whole_96: 8661376396050844370
+      Prototipo Whole_112: -7657934256266993052
+      Prototipo Whole_118: -8191975869349169536
+      Prototipo Whole_99: 3195732749298253268
+      Prototipo Whole_97: -142294058135888455
+      Prototipo Whole_5: 2880637232545939527
+      Prototipo Whole_107: -7420880526838672857
+      Prototipo Whole_4: 3471581925207900064
+      Prototipo Whole_10: 8114234926425635075
+      Prototipo Whole_87: 522697821304176079
+      Prototipo Whole_14: 5576312952225209931
+      Prototipo Whole_51: -4615652316043672652
+      Prototipo Whole_88: -402520528014840816
+      Prototipo Whole_64: 8607236412442250331
+      Prototipo Whole_82: 2120561794634922317
+      Prototipo Whole_20: 741623495010794914
+      Prototipo Whole_6: 8502891913738877987
+      Prototipo Whole_26: -4191419899402935846
+      Prototipo Whole_40: -1644905531177415217
+      Prototipo Whole_68: 5890037085812881746
+      Prototipo Whole_95: -94233196910208673
+      Prototipo Whole_86: -4228318327074885570
+      Prototipo Whole_17: -9217564339114359929
+      Prototipo Whole_12: -427292143016240218
+      Prototipo Whole_23: -6940341006213617490
+      Prototipo Whole_122: -8233912686923127477
+      Prototipo Whole_123: -389017991805436025
+      Prototipo Whole_83: 7385441286949611117
+      Prototipo Whole_36: 2985035967427437302
+      Prototipo Whole_79: 5598363273902004762
+      Prototipo Whole_126: 696172964269927368
+      Prototipo Whole_38: 5832868621539380641
+      Prototipo Whole_119: 2843554945600797187
+      Prototipo Whole_98: 3563970121613022335
+      Prototipo Whole_7: 5906316215216848016
+      Prototipo Whole_54: -8239697325238484660
+      Prototipo Whole_44: 5409301610614345123
+      Prototipo Whole_52: 685359960378434701
+      Prototipo Whole_50: 4045574549472769267
+      Prototipo Whole_0: 8083297065782226381
+      Prototipo Whole_24: 5554335065642678228
+      Prototipo Whole_89: -1002250660123947401
+      Prototipo Whole_90: -7509589610756998541
+      Prototipo Whole_31: 144624852108786766
+      Prototipo Whole_104: 4802501451337380798
+      Prototipo Whole_37: -3168240505494773356
+      Prototipo Whole_2: 5225223133433904653
+      Prototipo Whole_27: 2572048054460864850
+      Prototipo Whole_71: 3468725560235761649
+      Prototipo Whole_11: -1773522233089541558
+      Prototipo Whole_29: 1710013354942285611
+      Prototipo Whole_8: -224830072683591504
+      Prototipo Whole_55: -8454471896124532314
+      Prototipo Whole_102: 5387601540615713980
+      Prototipo Whole_48: -1319005670288165001
+      Prototipo Whole_43: -6027797345676045373
+      Prototipo Whole_30: 237816863189833180
+      Prototipo Whole_18: -2559461459730825066
+      Prototipo Whole_121: 3553674425275348346
+      Prototipo Whole_39: -7414503321153727688
+      Prototipo Whole_101: 7471571449414060123
+      Prototipo Whole_85: 4518652131784763379
+      Prototipo Whole_124: -4255218008422756000
+      Prototipo Whole_69: -7850113730734006050
+      Prototipo Whole_75: 5276210729450380657
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

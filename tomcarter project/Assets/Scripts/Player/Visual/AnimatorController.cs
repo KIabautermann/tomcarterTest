@@ -18,7 +18,7 @@ public class AnimatorController : MonoBehaviour
         }       
     }
     private void PlayAnimation(){
-        anim.Play(queuedAnimations[0]);
+        //anim.Play(queuedAnimations[0]);
         queuedAnimations.RemoveAt(0);
         locked = lockRequest;
         lockRequest = false;

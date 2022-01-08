@@ -126,6 +126,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -664,6 +665,29 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      "Tile Oto\xF1o_10": 5646847482461008729
+      "Tile Oto\xF1o_17": 5630891470082250152
+      "Tile Oto\xF1o_7": 4432383855054337837
+      "Tile Oto\xF1o_21": 2377755061317239444
+      "Tile Oto\xF1o_3": 1845033518180474703
+      "Tile Oto\xF1o_1": 2065579509779780767
+      "Tile Oto\xF1o_19": -2369119332143950256
+      "Tile Oto\xF1o_13": 5827522093561342485
+      "Tile Oto\xF1o_18": -7180432856002356922
+      "Tile Oto\xF1o_11": -9092398048437675834
+      "Tile Oto\xF1o_20": -7268939937960445047
+      "Tile Oto\xF1o_16": 185510432823967888
+      "Tile Oto\xF1o_0": 9096306770175798459
+      "Tile Oto\xF1o_6": 3355981982128813955
+      "Tile Oto\xF1o_15": -6526891062883823483
+      "Tile Oto\xF1o_14": 8908069265338632584
+      "Tile Oto\xF1o_12": -8782093798998856608
+      "Tile Oto\xF1o_2": -4200210580256109623
+      "Tile Oto\xF1o_5": 7965489689750754927
+      "Tile Oto\xF1o_4": -3324699162479569881
+      "Tile Oto\xF1o_9": 4923389008150143163
+      "Tile Oto\xF1o_8": -5983713294139232856
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -12,5 +12,7 @@ public class EffectAnimationRepository : ScriptableObject
     [SerializeField]
     public AnimationClip DashJumpBlast;
     [SerializeField]
-    public AnimationClip LandingBlast; 
+    public AnimationClip LandingBlast;
+    [SerializeField]
+    public AnimationClip MeleeAirAttack;
 }

@@ -156,6 +156,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1156,6 +1157,51 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Test Tilemap_11: 5857574991869838425
+      Test Tilemap_43: -8046479068240266238
+      Test Tilemap_21: -8366319716463409458
+      Test Tilemap_5: 8534210560071327708
+      Test Tilemap_27: -7165453718963142636
+      Test Tilemap_12: 5756251234402832584
+      Test Tilemap_36: 2245030508237638840
+      Test Tilemap_4: -6444499721840453994
+      Test Tilemap_15: -4504837136679962716
+      Test Tilemap_2: 3067848876697448209
+      Test Tilemap_42: -6835467912695357591
+      Test Tilemap_41: -4287343359528103278
+      Test Tilemap_17: 8608302227389658380
+      Test Tilemap_33: -4576711871519578473
+      Test Tilemap_1: -4395460133925992772
+      Test Tilemap_14: -9103946666019550803
+      Test Tilemap_35: -8308143972554341962
+      Test Tilemap_8: 2449806862314806330
+      Test Tilemap_25: 578670817268496534
+      Test Tilemap_16: 2481196672281239732
+      Test Tilemap_28: -8383321610164496117
+      Test Tilemap_20: -3872321780284171712
+      Test Tilemap_37: -7933359811899559415
+      Test Tilemap_39: -724321670763038564
+      Test Tilemap_3: -3802123489825668017
+      Test Tilemap_29: -6616285153161523560
+      Test Tilemap_23: -4373457715407298866
+      Test Tilemap_18: -8461226053990183900
+      Test Tilemap_24: -2928676986917276151
+      Test Tilemap_31: -5168204378280765297
+      Test Tilemap_0: -7382025388012040934
+      Test Tilemap_22: -2300179217707895427
+      Test Tilemap_19: -8854707670466247312
+      Test Tilemap_9: -7149622852691348328
+      Test Tilemap_38: -3749517129462490275
+      Test Tilemap_10: 8419294352161210999
+      Test Tilemap_40: 6869452383858053779
+      Test Tilemap_30: 711493089010852726
+      Test Tilemap_6: -421484964309458050
+      Test Tilemap_26: -4374325628116230427
+      Test Tilemap_32: 8337236106972727735
+      Test Tilemap_34: -6529464554167611924
+      Test Tilemap_7: 3020598590532283638
+      Test Tilemap_13: 2807184224312470853
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

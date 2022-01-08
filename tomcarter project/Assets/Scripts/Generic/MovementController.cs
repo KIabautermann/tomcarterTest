@@ -131,7 +131,7 @@ public class MovementController : MonoBehaviour
         return n != 0;
     }
 
-    public bool OnCeiling()
+    public bool OnCeiling() 
     {
         int n = 0;
         RaycastHit tmpHit = new RaycastHit();
@@ -206,9 +206,9 @@ public class MovementController : MonoBehaviour
 
     public void SetCollider(Vector2 size, Vector2 position)
     {
-        myCollider.radius = size.x;
-        myCollider.height = size.y;
-        myCollider.center = position;
+        //myCollider.radius = size.x;
+        //myCollider.height = size.y;
+        //myCollider.center = position;
     }
     #endregion
     

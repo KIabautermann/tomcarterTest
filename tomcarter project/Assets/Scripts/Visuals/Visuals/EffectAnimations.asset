@@ -16,3 +16,4 @@ MonoBehaviour:
   DashJumpAfterImage: {fileID: 0}
   DashJumpBlast: {fileID: 7400000, guid: 387df1d5c5c68cc4aa8d7d5dfb059f2c, type: 2}
   LandingBlast: {fileID: 0}
+  MeleeAirAttack: {fileID: 7400000, guid: 9bb07927c779ad845947e3f9773b94a9, type: 2}

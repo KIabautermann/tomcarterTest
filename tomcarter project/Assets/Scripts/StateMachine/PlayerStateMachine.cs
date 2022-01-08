@@ -8,11 +8,13 @@ using System;
 public class PlayerStateMachine : MonoBehaviour
 {
     public State<PlayerStateMachine> _currentState {get; private set;}
-    
+    public bool gravityException { get; private set; }
+
     public CanvasReference canvasReference;
     public ObjectPooler sporeTrailPooler;
     public PlayerData stats;
     public PlayerAnimationData animations;
+    public VisualEffectSpawner vfxSpawn;
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates;
     private AnimatorController _anim;
@@ -103,5 +105,13 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void QueueAnimation(string clip, bool locked, bool priority){
         _anim.Queue(clip, locked, priority);
+    }
+
+    public IEnumerator GravityExceptionTime()
+    {
+        gravityException = true;
+        yield return new WaitForSeconds(stats.postDashTimer);
+        gravityException = false;       
+        StopCoroutine(GravityExceptionTime());
     }
 }

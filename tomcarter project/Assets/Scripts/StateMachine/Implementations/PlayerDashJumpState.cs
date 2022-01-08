@@ -40,10 +40,9 @@ public class PlayerDashJumpState : PlayerSkillState
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        if (controller.CurrentVelocity.y < stats.minDashJumpVelocity)
+        if (controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded() && controller.usingGravity)
         {
-            if (animationIndex < 3) animationIndex = 2;
-            controller.Force(Physics.gravity.normalized, stats.dashJumpFallMultiplier, ForceMode.Force);
+            controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
         }
         controller.SetVelocityX(stats.dashJumpVelocityX * controller.lastDirection);
     }

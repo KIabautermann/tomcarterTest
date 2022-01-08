@@ -17,7 +17,6 @@ public class VisualEffectSpawner : ObjectPooler
         VisualEffectPoolable pais = tmp as VisualEffectPoolable;
         pais.gameObject.transform.SetParent(parent.transform, true);
         pais.LogicStart(animationClip);
-        
         return pais;
     }
 

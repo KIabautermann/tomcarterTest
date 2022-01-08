@@ -6,6 +6,7 @@ public class PlayerHookState : PlayerUnlockableSkill
 {
     
     private bool _hooked;
+    private bool _postHookBoost;
     private float _distance;
     private Vector3 _startPoint;
     private Vector3 _hookVector;
@@ -77,16 +78,14 @@ public class PlayerHookState : PlayerUnlockableSkill
             _direction = (target - _target.transform.position).normalized;
             float angle = Vector3.SignedAngle(Vector3.up, (_hookPoint.position - _target.transform.position).normalized, Vector3.forward);
             if (angle >= stats.maxAngle * controller.facingDirection && controller.facingDirection > 0)
-            {               
-                controller.SetVelocityY(controller.CurrentVelocity.y * stats.yVelocityMultiplier);
-                stateDone=true;
-                controller.SetAcceleration(.5f);
+            {                          
+                stateDone =true;
+                _postHookBoost = true;
             }
             else if(angle <= stats.maxAngle * controller.facingDirection && controller.facingDirection < 0)
             {                
-                controller.SetVelocityY(controller.CurrentVelocity.y * stats.yVelocityMultiplier);
-                stateDone=true;
-                controller.SetAcceleration(.5f);
+                stateDone =true;
+                _postHookBoost = true;
             }
             else if(controller.Grounded() || controller.OnWall() || controller.OnCeiling())
             {
@@ -114,9 +113,14 @@ public class PlayerHookState : PlayerUnlockableSkill
         base.DoTransitionIn();    
 
         _hooked = false;
+        _postHookBoost = false;
         _hookPoint.position = _target.transform.position;       
         _hookPoint.parent = null;
         _startPoint = _target.transform.position;
+        if(controller.CurrentVelocity.y > 0)
+        {
+            controller.SetVelocityY(controller.CurrentVelocity.y / 2);
+        }
         if (inputs.FixedAxis.x != 0)
         {
             controller.SetAcceleration(.5f);
@@ -168,6 +172,12 @@ public class PlayerHookState : PlayerUnlockableSkill
         controller.SetGravity(true);
         _hookPoint.parent = _target.transform;
         _hookSprite.enabled = false;
+        if (_postHookBoost)
+        {
+            controller.SetVelocityY(controller.CurrentVelocity.y * stats.yVelocityMultiplier);
+            controller.SetAcceleration(0f);
+            if (controller.CurrentVelocity.y < stats.minJumpVelocity-1) _target.StartCoroutine(_target.GravityExceptionTime());
+        }
     }
 
     protected override void TransitionChecks()

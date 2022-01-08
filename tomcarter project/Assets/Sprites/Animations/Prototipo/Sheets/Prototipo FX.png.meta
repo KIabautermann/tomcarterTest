@@ -113,6 +113,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -122,11 +124,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -144,9 +146,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -816,6 +821,37 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Prototipo FX_23: -732901593521729849
+      Prototipo FX_24: -5331865461806156983
+      Prototipo FX_26: 5971334096412961345
+      Prototipo FX_13: 2126595222201948859
+      Prototipo FX_4: 541849232055699391
+      Prototipo FX_3: -1928830485292944339
+      Prototipo FX_10: 5535395171489252400
+      Prototipo FX_11: -2110019456192673452
+      Prototipo FX_21: -6561367608458106253
+      Prototipo FX_29: 1117687368649051945
+      Prototipo FX_27: 118808847831487721
+      Prototipo FX_19: -5576362055805341054
+      Prototipo FX_0: -6801686378700493275
+      Prototipo FX_7: 4940128291251014844
+      Prototipo FX_2: -3235662971573951349
+      Prototipo FX_15: -1751183972934057520
+      Prototipo FX_9: -3421266487652868369
+      Prototipo FX_17: 8061424356413580139
+      Prototipo FX_22: -7276145868010423188
+      Prototipo FX_14: -5068825792163312212
+      Prototipo FX_1: 6564491335464760541
+      Prototipo FX_12: 5956792643926116709
+      Prototipo FX_28: 6165345974821455606
+      Prototipo FX_6: -7083501932794216783
+      Prototipo FX_8: 3023227983715000973
+      Prototipo FX_5: -4976404140461272069
+      Prototipo FX_20: 2288376670365790772
+      Prototipo FX_25: 6825997050419508819
+      Prototipo FX_18: -8371279797308293132
+      Prototipo FX_16: -3120649711348093409
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

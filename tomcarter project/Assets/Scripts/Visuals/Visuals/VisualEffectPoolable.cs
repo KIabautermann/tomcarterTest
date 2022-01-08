@@ -13,11 +13,11 @@ public class VisualEffectPoolable : PoolableObject
         StopAllCoroutines();
         this.gameObject.transform.SetParent(poolerParent.transform);
     }
-    //private AnimationController animationController;
+    private AnimationController animationController;
 
     protected override void Start()
     {
-        //animationController = GetComponent<AnimationController>();
+        animationController = GetComponent<AnimationController>();
         poolerParent = this.gameObject.transform.parent.gameObject;
         base.Start();
     }
@@ -37,12 +37,12 @@ public class VisualEffectPoolable : PoolableObject
 
     private void PlayAndReturn(int state, int animationIndex) 
     {        
-        //StartCoroutine(PlayAndReturn(() => animationController.PlayAnimation(state, animationIndex)));
+        StartCoroutine(PlayAndReturn(() => animationController.PlayAnimation(state, animationIndex)));
     }
 
     private void PlayAndReturn(AnimationClip animationClip) 
     {
-        //StartCoroutine(PlayAndReturn(() => animationController.PlayAnimation(animationClip)));
+        StartCoroutine(PlayAndReturn(() => animationController.PlayAnimation(animationClip)));
     }
 
     private IEnumerator PlayAndReturn(Action play) 
@@ -60,6 +60,6 @@ public class VisualEffectPoolable : PoolableObject
     }
     
     public void SetAnimationIndex(int newIndex) {
-        //animationController.PlayAnimation(stateID, newIndex);
+        animationController.PlayAnimation(stateID, newIndex);
     }
 }
