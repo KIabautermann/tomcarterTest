@@ -7,7 +7,6 @@ using System.Linq;
 
 public abstract class PlayerDashState : PlayerUnlockableSkill
 {
-    protected bool _playedAfterImage;
     protected Vector3 direction;
     protected bool coyoteTime;
     protected float currentSpeed;
@@ -17,6 +16,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     private PlayerHedgeState playerHedgeState;
     protected bool _hedgeUnlocked;
     private float _speedLerpCounter;
+    public float _relativeSpawnTime;
 
     // TODO: empezar a ver como la subscripcion de eventos deberia ser solo para el dash activo y no ambos. Podria traer muchos bardos
     public override void Init(PlayerStateMachine target)
@@ -56,11 +56,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         if(!_velocityUpdated && _hedgeCollisionsChecks.Length != 0 /*&& FitsInHedge(direction)*/) {
             StartDash();
         }  
-
-        if (_velocityUpdated && !_playedAfterImage) {
-            _playedAfterImage = true;
-            InstanceAfterImage();
-        }
+      
         if(!controller.Grounded())
         {
             timeInAir += Time.deltaTime;
@@ -84,7 +80,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
 
     }
 
-    protected abstract void InstanceAfterImage();
+
     private void StartDash()
     {
         controller.SetTotalVelocity(currentSpeed,direction);
@@ -96,6 +92,13 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     {
         base.DoPhysicsUpdate();
         _hedgeCollisionsChecks = Physics.OverlapBox(transform.position + direction * .5f, controller.myCollider.bounds.size, Quaternion.identity, stats.hedge);
+        _relativeSpawnTime = stats.dashAfterimageCounter / (controller.CurrentVelocity.magnitude / stats.dashSpeed);
+        _relativeSpawnTime = Mathf.Clamp(_relativeSpawnTime, stats.dashAfterimageCounter, stats.dashAfterimageCounter * 2f);
+        if (extraCounter >= _relativeSpawnTime)
+        {
+            _target.vfxSpawn.InstanceEffect(null, transform.position, Quaternion.identity, _target.vfxSpawn.EffectRepository.afterimage);
+            extraCounter = 0;
+        }
     }
 
     protected override void DoTransitionIn()
@@ -111,7 +114,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         timeInAir = controller.Grounded() ? 0 : stats.dashCoyoteTime + 1;
         Physics.IgnoreLayerCollision(9,10, _hedgeUnlocked);
         _velocityUpdated = false;
-        _playedAfterImage = false;
         _hedgeCollisionsChecks = new Collider[0];
         _speedLerpCounter = 0;
         ToggleLock(true);

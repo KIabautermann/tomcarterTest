@@ -39,6 +39,7 @@ public class PlayerData : ScriptableObject
     public float dashSpeed = 15f;
     public float dashDrag = 10f;
     public float postDashTimer = .2f;
+    public float dashAfterimageCounter = .05f;
 
     [Header("DashJump State")]
     public string dashJumpID = "dash_jump";
@@ -48,6 +49,7 @@ public class PlayerData : ScriptableObject
     public float minDashJumpVelocity = 1;
     public float dashCoyoteTime=.3f;
     public float jumpHandicapTime = .2f;
+    public float dashJumpAfterimageCounter = .05f;
 
     [Header("Hook State")]
     public string hookID = "hook";

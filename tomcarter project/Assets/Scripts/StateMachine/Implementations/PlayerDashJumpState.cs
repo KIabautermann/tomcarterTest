@@ -5,16 +5,11 @@ using UnityEngine;
 public class PlayerDashJumpState : PlayerSkillState
 {
     private bool _isJumping;
-    private GameObject afterImageParent;
-    
-    [SerializeField]
-    private VisualEffectSpawner visualEffectSpawner;
     
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
         animationTrigger = stats.dashJumpID;
-        afterImageParent = new GameObject("DashJumpAfterImages");
     }
     protected override void DoChecks()
     {
@@ -35,6 +30,8 @@ public class PlayerDashJumpState : PlayerSkillState
         {
             controller.Accelerate(1f / stats.dashJumpAccelerationTime * Time.deltaTime);
         }
+        
+
     }
 
     protected override void DoPhysicsUpdate()
@@ -45,6 +42,11 @@ public class PlayerDashJumpState : PlayerSkillState
             controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
         }
         controller.SetVelocityX(stats.dashJumpVelocityX * controller.lastDirection);
+        if (extraCounter >= stats.dashJumpAfterimageCounter)
+        {
+            _target.vfxSpawn.InstanceEffect(null, transform.position, Quaternion.identity, _target.vfxSpawn.EffectRepository.afterimage);
+            extraCounter = 0;
+        }
     }
 
     protected override void DoTransitionIn()
@@ -63,7 +65,6 @@ public class PlayerDashJumpState : PlayerSkillState
         controller.SetVelocityY(stats.jumpVelocity);
 
         stateIndex = stats.airNumberID;
-        StartCoroutine(AfterImageCoroutine());
     }
 
     protected override void DoTransitionOut()
@@ -122,18 +123,7 @@ public class PlayerDashJumpState : PlayerSkillState
      
         Vector3 pos = new Vector3(this.gameObject.transform.position.x - 0.5f * controller.facingDirection, groundHit.collider.bounds.max.y + 0.48f, 0f);
         Quaternion quaternion = controller.facingDirection != 1 ? Quaternion.Euler(0.0f, 180.0f, 0.0f) : Quaternion.identity;
-        //visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, visualEffectSpawner.EffectRepository.DashJumpBlast);
-    }
-    private IEnumerator AfterImageCoroutine()
-    {       
-        while (true) {
-            
-            yield return new WaitForSeconds(0.025f);
-
-            Vector3 pos =  this.gameObject.transform.position - new Vector3(0.15f * controller.facingDirection, 0 , 0);
-            Quaternion quaternion = controller.facingDirection != 1 ? Quaternion.Euler(0.0f, 180.0f, 0.0f) : Quaternion.identity;
-            //visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, stateIndex, animationIndex);
-        }
+        _target.vfxSpawn.InstanceEffect(null, pos, quaternion, _target.vfxSpawn.EffectRepository.airBlast);
     }
     
     public void SetAnimationIndex(int newIndex) 

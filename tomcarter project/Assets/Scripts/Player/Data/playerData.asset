@@ -40,6 +40,7 @@ MonoBehaviour:
   dashSpeed: 80
   dashDrag: 10
   postDashTimer: 0.1
+  dashAfterimageCounter: 0.01
   dashJumpID: dash_jump
   dashJumpVelocityX: 22
   dashJumpAccelerationTime: 0.1
@@ -47,6 +48,7 @@ MonoBehaviour:
   minDashJumpVelocity: 1
   dashCoyoteTime: 0.1
   jumpHandicapTime: 0.06
+  dashJumpAfterimageCounter: 0.05
   hookID: hook
   hookSpeed: 18
   circularSpeed: 4.3

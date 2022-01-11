@@ -46,12 +46,9 @@ public class PlayerBaseDashState : PlayerDashState
     {
         base.TransitionChecks();
     }
-    protected override void InstanceAfterImage()
-    { 
-        //StartCoroutine(AfterImageCoroutine());
-    }
 
-    private IEnumerator AfterImageCoroutine()
+    private IEnumerator AfterImageCoroutine(AnimationClip clip
+        )
     {
         while (true) {
             
@@ -59,7 +56,7 @@ public class PlayerBaseDashState : PlayerDashState
 
             Quaternion quaternion = direction.x != 1 ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.identity;
             Vector3 pos =  this.gameObject.transform.position - new Vector3(0.15f * controller.facingDirection, 0 , 0);
-            visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion, stateIndex, animationIndex);
+            visualEffectSpawner.InstanceEffect(afterImageParent, pos, quaternion,clip);
         }
     }
 

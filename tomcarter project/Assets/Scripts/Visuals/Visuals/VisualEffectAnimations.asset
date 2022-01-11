@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094f2fc497b35f9429d5ff7e74868c1e, type: 3}
+  m_Name: VisualEffectAnimations
+  m_EditorClassIdentifier: Assembly-CSharp::PVisualEffectsRepository
+  afterimage: {fileID: 7400000, guid: 754750152acf83847a77eb04082a7115, type: 2}
+  airBlast: {fileID: 7400000, guid: 3042a48f9f1533e4aaf4cfe14e0426f1, type: 2}
+  sporeBlast: {fileID: 7400000, guid: 5eff28412b3ce884d907f76e4107b07a, type: 2}
+  playerGroundAttack: {fileID: 7400000, guid: 4e7f1f4c54ec7984d9d1422105b3ec5c, type: 2}
+  playerAirAttack: {fileID: 7400000, guid: 36a466e458fe4b94da248a30d7d2b6ce, type: 2}

@@ -26,6 +26,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     public bool asynchronous { get; protected set; }
     protected float coolDown;
     protected float counter;
+    protected float extraCounter;
     protected float endTime;
     protected bool isLocked = false;
     protected bool endByAnimation;
@@ -63,6 +64,7 @@ public abstract class State <T> : MonoBehaviour where T : MonoBehaviour
     {      
         DoPhysicsUpdate();
         onPhysicsUpdate?.Invoke();
+        extraCounter += Time.fixedDeltaTime;
     }
     protected abstract void DoPhysicsUpdate();
 

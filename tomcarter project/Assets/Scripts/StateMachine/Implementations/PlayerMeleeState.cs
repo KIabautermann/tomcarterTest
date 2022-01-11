@@ -50,25 +50,16 @@ public class PlayerMeleeState : PlayerAttackState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        //_target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.DashJumpBlast);
+        
         if (!onAir)
         {
-            switch (comboCounter)
-            {
-                case 0:
-                    _target.QueueAnimation(_target.animations.attackGround.name, false, true);
-                    break;
-                case 1:
-                    _target.QueueAnimation(_target.animations.attackAir.name, false, true);
-                    break;
-                case 2:
-                    _target.QueueAnimation(_target.animations.attackGround.name, false, true);
-                    break;
-            }
+            _target.QueueAnimation(_target.animations.attackGround.name, false, true);
+            _target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.playerGroundAttack);
         }
         else
         {
             _target.QueueAnimation(_target.animations.attackAir.name, false, true);
+            _target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.playerAirAttack);
         }
         _combo = false;
     }

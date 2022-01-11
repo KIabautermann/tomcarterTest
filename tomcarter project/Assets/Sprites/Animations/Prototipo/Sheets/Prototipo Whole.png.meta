@@ -431,7 +431,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -472,6 +472,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -480,9 +492,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 448
-        width: 64
-        height: 64
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -500,10 +512,10 @@ TextureImporter:
       name: Prototipo Whole_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 448
-        width: 64
-        height: 64
+        x: 16
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -521,10 +533,10 @@ TextureImporter:
       name: Prototipo Whole_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 448
-        width: 64
-        height: 64
+        x: 32
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -542,10 +554,10 @@ TextureImporter:
       name: Prototipo Whole_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 448
-        width: 64
-        height: 64
+        x: 48
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -563,10 +575,10 @@ TextureImporter:
       name: Prototipo Whole_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 448
-        width: 64
-        height: 64
+        x: 64
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -584,10 +596,10 @@ TextureImporter:
       name: Prototipo Whole_5
       rect:
         serializedVersion: 2
-        x: 320
-        y: 448
-        width: 64
-        height: 64
+        x: 80
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -605,10 +617,10 @@ TextureImporter:
       name: Prototipo Whole_6
       rect:
         serializedVersion: 2
-        x: 384
-        y: 448
-        width: 64
-        height: 64
+        x: 96
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -626,10 +638,10 @@ TextureImporter:
       name: Prototipo Whole_7
       rect:
         serializedVersion: 2
-        x: 448
-        y: 448
-        width: 64
-        height: 64
+        x: 112
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -647,10 +659,10 @@ TextureImporter:
       name: Prototipo Whole_8
       rect:
         serializedVersion: 2
-        x: 512
-        y: 448
-        width: 64
-        height: 64
+        x: 128
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -668,10 +680,10 @@ TextureImporter:
       name: Prototipo Whole_9
       rect:
         serializedVersion: 2
-        x: 576
-        y: 448
-        width: 64
-        height: 64
+        x: 144
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -689,10 +701,10 @@ TextureImporter:
       name: Prototipo Whole_10
       rect:
         serializedVersion: 2
-        x: 640
-        y: 448
-        width: 64
-        height: 64
+        x: 160
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -710,10 +722,10 @@ TextureImporter:
       name: Prototipo Whole_11
       rect:
         serializedVersion: 2
-        x: 704
-        y: 448
-        width: 64
-        height: 64
+        x: 176
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -731,10 +743,10 @@ TextureImporter:
       name: Prototipo Whole_12
       rect:
         serializedVersion: 2
-        x: 768
-        y: 448
-        width: 64
-        height: 64
+        x: 192
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -752,10 +764,10 @@ TextureImporter:
       name: Prototipo Whole_13
       rect:
         serializedVersion: 2
-        x: 832
-        y: 448
-        width: 64
-        height: 64
+        x: 208
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -773,10 +785,10 @@ TextureImporter:
       name: Prototipo Whole_14
       rect:
         serializedVersion: 2
-        x: 896
-        y: 448
-        width: 64
-        height: 64
+        x: 224
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -794,10 +806,10 @@ TextureImporter:
       name: Prototipo Whole_15
       rect:
         serializedVersion: 2
-        x: 960
-        y: 448
-        width: 64
-        height: 64
+        x: 240
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -816,9 +828,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
-        width: 64
-        height: 64
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -836,10 +848,10 @@ TextureImporter:
       name: Prototipo Whole_17
       rect:
         serializedVersion: 2
-        x: 64
-        y: 384
-        width: 64
-        height: 64
+        x: 16
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -857,10 +869,10 @@ TextureImporter:
       name: Prototipo Whole_18
       rect:
         serializedVersion: 2
-        x: 128
-        y: 384
-        width: 64
-        height: 64
+        x: 32
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -878,10 +890,10 @@ TextureImporter:
       name: Prototipo Whole_19
       rect:
         serializedVersion: 2
-        x: 192
-        y: 384
-        width: 64
-        height: 64
+        x: 48
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -899,10 +911,10 @@ TextureImporter:
       name: Prototipo Whole_20
       rect:
         serializedVersion: 2
-        x: 256
-        y: 384
-        width: 64
-        height: 64
+        x: 64
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -920,10 +932,10 @@ TextureImporter:
       name: Prototipo Whole_21
       rect:
         serializedVersion: 2
-        x: 320
-        y: 384
-        width: 64
-        height: 64
+        x: 80
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -941,10 +953,10 @@ TextureImporter:
       name: Prototipo Whole_22
       rect:
         serializedVersion: 2
-        x: 384
-        y: 384
-        width: 64
-        height: 64
+        x: 96
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -962,10 +974,10 @@ TextureImporter:
       name: Prototipo Whole_23
       rect:
         serializedVersion: 2
-        x: 448
-        y: 384
-        width: 64
-        height: 64
+        x: 112
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -983,10 +995,10 @@ TextureImporter:
       name: Prototipo Whole_24
       rect:
         serializedVersion: 2
-        x: 512
-        y: 384
-        width: 64
-        height: 64
+        x: 128
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1004,10 +1016,10 @@ TextureImporter:
       name: Prototipo Whole_25
       rect:
         serializedVersion: 2
-        x: 576
-        y: 384
-        width: 64
-        height: 64
+        x: 144
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1025,10 +1037,10 @@ TextureImporter:
       name: Prototipo Whole_26
       rect:
         serializedVersion: 2
-        x: 640
-        y: 384
-        width: 64
-        height: 64
+        x: 160
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1046,10 +1058,10 @@ TextureImporter:
       name: Prototipo Whole_27
       rect:
         serializedVersion: 2
-        x: 704
-        y: 384
-        width: 64
-        height: 64
+        x: 176
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1067,10 +1079,10 @@ TextureImporter:
       name: Prototipo Whole_28
       rect:
         serializedVersion: 2
-        x: 768
-        y: 384
-        width: 64
-        height: 64
+        x: 192
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1088,10 +1100,10 @@ TextureImporter:
       name: Prototipo Whole_29
       rect:
         serializedVersion: 2
-        x: 832
-        y: 384
-        width: 64
-        height: 64
+        x: 208
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1109,10 +1121,10 @@ TextureImporter:
       name: Prototipo Whole_30
       rect:
         serializedVersion: 2
-        x: 896
-        y: 384
-        width: 64
-        height: 64
+        x: 224
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1130,10 +1142,10 @@ TextureImporter:
       name: Prototipo Whole_31
       rect:
         serializedVersion: 2
-        x: 960
-        y: 384
-        width: 64
-        height: 64
+        x: 240
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1152,9 +1164,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
-        width: 64
-        height: 64
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1172,10 +1184,10 @@ TextureImporter:
       name: Prototipo Whole_33
       rect:
         serializedVersion: 2
-        x: 64
-        y: 320
-        width: 64
-        height: 64
+        x: 16
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1193,10 +1205,10 @@ TextureImporter:
       name: Prototipo Whole_34
       rect:
         serializedVersion: 2
-        x: 128
-        y: 320
-        width: 64
-        height: 64
+        x: 32
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1214,10 +1226,10 @@ TextureImporter:
       name: Prototipo Whole_35
       rect:
         serializedVersion: 2
-        x: 192
-        y: 320
-        width: 64
-        height: 64
+        x: 48
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1235,10 +1247,10 @@ TextureImporter:
       name: Prototipo Whole_36
       rect:
         serializedVersion: 2
-        x: 256
-        y: 320
-        width: 64
-        height: 64
+        x: 64
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1256,10 +1268,10 @@ TextureImporter:
       name: Prototipo Whole_37
       rect:
         serializedVersion: 2
-        x: 320
-        y: 320
-        width: 64
-        height: 64
+        x: 80
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1277,10 +1289,10 @@ TextureImporter:
       name: Prototipo Whole_38
       rect:
         serializedVersion: 2
-        x: 384
-        y: 320
-        width: 64
-        height: 64
+        x: 96
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1298,10 +1310,10 @@ TextureImporter:
       name: Prototipo Whole_39
       rect:
         serializedVersion: 2
-        x: 448
-        y: 320
-        width: 64
-        height: 64
+        x: 112
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1319,10 +1331,10 @@ TextureImporter:
       name: Prototipo Whole_40
       rect:
         serializedVersion: 2
-        x: 512
-        y: 320
-        width: 64
-        height: 64
+        x: 128
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1340,10 +1352,10 @@ TextureImporter:
       name: Prototipo Whole_41
       rect:
         serializedVersion: 2
-        x: 576
-        y: 320
-        width: 64
-        height: 64
+        x: 144
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1361,10 +1373,10 @@ TextureImporter:
       name: Prototipo Whole_42
       rect:
         serializedVersion: 2
-        x: 640
-        y: 320
-        width: 64
-        height: 64
+        x: 160
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1382,10 +1394,10 @@ TextureImporter:
       name: Prototipo Whole_43
       rect:
         serializedVersion: 2
-        x: 704
-        y: 320
-        width: 64
-        height: 64
+        x: 176
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1403,10 +1415,10 @@ TextureImporter:
       name: Prototipo Whole_44
       rect:
         serializedVersion: 2
-        x: 768
-        y: 320
-        width: 64
-        height: 64
+        x: 192
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1424,10 +1436,10 @@ TextureImporter:
       name: Prototipo Whole_45
       rect:
         serializedVersion: 2
-        x: 832
-        y: 320
-        width: 64
-        height: 64
+        x: 208
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1445,10 +1457,10 @@ TextureImporter:
       name: Prototipo Whole_46
       rect:
         serializedVersion: 2
-        x: 896
-        y: 320
-        width: 64
-        height: 64
+        x: 224
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1466,10 +1478,10 @@ TextureImporter:
       name: Prototipo Whole_47
       rect:
         serializedVersion: 2
-        x: 960
-        y: 320
-        width: 64
-        height: 64
+        x: 240
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1488,9 +1500,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
-        width: 64
-        height: 64
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1508,10 +1520,10 @@ TextureImporter:
       name: Prototipo Whole_49
       rect:
         serializedVersion: 2
-        x: 64
-        y: 256
-        width: 64
-        height: 64
+        x: 16
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1529,10 +1541,10 @@ TextureImporter:
       name: Prototipo Whole_50
       rect:
         serializedVersion: 2
-        x: 128
-        y: 256
-        width: 64
-        height: 64
+        x: 32
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1550,10 +1562,10 @@ TextureImporter:
       name: Prototipo Whole_51
       rect:
         serializedVersion: 2
-        x: 192
-        y: 256
-        width: 64
-        height: 64
+        x: 48
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1571,10 +1583,10 @@ TextureImporter:
       name: Prototipo Whole_52
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
-        width: 64
-        height: 64
+        x: 64
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1592,10 +1604,10 @@ TextureImporter:
       name: Prototipo Whole_53
       rect:
         serializedVersion: 2
-        x: 320
-        y: 256
-        width: 64
-        height: 64
+        x: 80
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1613,10 +1625,10 @@ TextureImporter:
       name: Prototipo Whole_54
       rect:
         serializedVersion: 2
-        x: 384
-        y: 256
-        width: 64
-        height: 64
+        x: 96
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1634,10 +1646,10 @@ TextureImporter:
       name: Prototipo Whole_55
       rect:
         serializedVersion: 2
-        x: 448
-        y: 256
-        width: 64
-        height: 64
+        x: 112
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1655,10 +1667,10 @@ TextureImporter:
       name: Prototipo Whole_56
       rect:
         serializedVersion: 2
-        x: 512
-        y: 256
-        width: 64
-        height: 64
+        x: 128
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1676,10 +1688,10 @@ TextureImporter:
       name: Prototipo Whole_57
       rect:
         serializedVersion: 2
-        x: 576
-        y: 256
-        width: 64
-        height: 64
+        x: 144
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1697,10 +1709,10 @@ TextureImporter:
       name: Prototipo Whole_58
       rect:
         serializedVersion: 2
-        x: 640
-        y: 256
-        width: 64
-        height: 64
+        x: 160
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1718,10 +1730,10 @@ TextureImporter:
       name: Prototipo Whole_59
       rect:
         serializedVersion: 2
-        x: 704
-        y: 256
-        width: 64
-        height: 64
+        x: 176
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1739,10 +1751,10 @@ TextureImporter:
       name: Prototipo Whole_60
       rect:
         serializedVersion: 2
-        x: 768
-        y: 256
-        width: 64
-        height: 64
+        x: 192
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1760,10 +1772,10 @@ TextureImporter:
       name: Prototipo Whole_61
       rect:
         serializedVersion: 2
-        x: 832
-        y: 256
-        width: 64
-        height: 64
+        x: 208
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1781,10 +1793,10 @@ TextureImporter:
       name: Prototipo Whole_62
       rect:
         serializedVersion: 2
-        x: 896
-        y: 256
-        width: 64
-        height: 64
+        x: 224
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1802,10 +1814,10 @@ TextureImporter:
       name: Prototipo Whole_63
       rect:
         serializedVersion: 2
-        x: 960
-        y: 256
-        width: 64
-        height: 64
+        x: 240
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1824,9 +1836,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 64
-        height: 64
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1844,10 +1856,10 @@ TextureImporter:
       name: Prototipo Whole_65
       rect:
         serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
+        x: 16
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1865,10 +1877,10 @@ TextureImporter:
       name: Prototipo Whole_66
       rect:
         serializedVersion: 2
-        x: 128
-        y: 192
-        width: 64
-        height: 64
+        x: 32
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1886,10 +1898,10 @@ TextureImporter:
       name: Prototipo Whole_67
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 64
-        height: 64
+        x: 48
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1907,10 +1919,10 @@ TextureImporter:
       name: Prototipo Whole_68
       rect:
         serializedVersion: 2
-        x: 256
-        y: 192
-        width: 64
-        height: 64
+        x: 64
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1928,10 +1940,10 @@ TextureImporter:
       name: Prototipo Whole_69
       rect:
         serializedVersion: 2
-        x: 320
-        y: 192
-        width: 64
-        height: 64
+        x: 80
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1949,10 +1961,10 @@ TextureImporter:
       name: Prototipo Whole_70
       rect:
         serializedVersion: 2
-        x: 384
-        y: 192
-        width: 64
-        height: 64
+        x: 96
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1970,10 +1982,10 @@ TextureImporter:
       name: Prototipo Whole_71
       rect:
         serializedVersion: 2
-        x: 448
-        y: 192
-        width: 64
-        height: 64
+        x: 112
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1991,10 +2003,10 @@ TextureImporter:
       name: Prototipo Whole_72
       rect:
         serializedVersion: 2
-        x: 512
-        y: 192
-        width: 64
-        height: 64
+        x: 128
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2012,10 +2024,10 @@ TextureImporter:
       name: Prototipo Whole_73
       rect:
         serializedVersion: 2
-        x: 576
-        y: 192
-        width: 64
-        height: 64
+        x: 144
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2033,10 +2045,10 @@ TextureImporter:
       name: Prototipo Whole_74
       rect:
         serializedVersion: 2
-        x: 640
-        y: 192
-        width: 64
-        height: 64
+        x: 160
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2054,10 +2066,10 @@ TextureImporter:
       name: Prototipo Whole_75
       rect:
         serializedVersion: 2
-        x: 704
-        y: 192
-        width: 64
-        height: 64
+        x: 176
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2075,10 +2087,10 @@ TextureImporter:
       name: Prototipo Whole_76
       rect:
         serializedVersion: 2
-        x: 768
-        y: 192
-        width: 64
-        height: 64
+        x: 192
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2096,10 +2108,10 @@ TextureImporter:
       name: Prototipo Whole_77
       rect:
         serializedVersion: 2
-        x: 832
-        y: 192
-        width: 64
-        height: 64
+        x: 208
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2117,10 +2129,10 @@ TextureImporter:
       name: Prototipo Whole_78
       rect:
         serializedVersion: 2
-        x: 896
-        y: 192
-        width: 64
-        height: 64
+        x: 224
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2138,10 +2150,10 @@ TextureImporter:
       name: Prototipo Whole_79
       rect:
         serializedVersion: 2
-        x: 960
-        y: 192
-        width: 64
-        height: 64
+        x: 240
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2160,9 +2172,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 64
-        height: 64
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2180,10 +2192,10 @@ TextureImporter:
       name: Prototipo Whole_81
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
+        x: 16
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2201,10 +2213,10 @@ TextureImporter:
       name: Prototipo Whole_82
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
+        x: 32
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2222,10 +2234,10 @@ TextureImporter:
       name: Prototipo Whole_83
       rect:
         serializedVersion: 2
-        x: 192
-        y: 128
-        width: 64
-        height: 64
+        x: 48
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2243,10 +2255,10 @@ TextureImporter:
       name: Prototipo Whole_84
       rect:
         serializedVersion: 2
-        x: 256
-        y: 128
-        width: 64
-        height: 64
+        x: 64
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2264,10 +2276,10 @@ TextureImporter:
       name: Prototipo Whole_85
       rect:
         serializedVersion: 2
-        x: 320
-        y: 128
-        width: 64
-        height: 64
+        x: 80
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2285,10 +2297,10 @@ TextureImporter:
       name: Prototipo Whole_86
       rect:
         serializedVersion: 2
-        x: 384
-        y: 128
-        width: 64
-        height: 64
+        x: 96
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2306,10 +2318,10 @@ TextureImporter:
       name: Prototipo Whole_87
       rect:
         serializedVersion: 2
-        x: 448
-        y: 128
-        width: 64
-        height: 64
+        x: 112
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2327,10 +2339,10 @@ TextureImporter:
       name: Prototipo Whole_88
       rect:
         serializedVersion: 2
-        x: 512
-        y: 128
-        width: 64
-        height: 64
+        x: 128
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2348,10 +2360,10 @@ TextureImporter:
       name: Prototipo Whole_89
       rect:
         serializedVersion: 2
-        x: 576
-        y: 128
-        width: 64
-        height: 64
+        x: 144
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2369,10 +2381,10 @@ TextureImporter:
       name: Prototipo Whole_90
       rect:
         serializedVersion: 2
-        x: 640
-        y: 128
-        width: 64
-        height: 64
+        x: 160
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2390,10 +2402,10 @@ TextureImporter:
       name: Prototipo Whole_91
       rect:
         serializedVersion: 2
-        x: 704
-        y: 128
-        width: 64
-        height: 64
+        x: 176
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2411,10 +2423,10 @@ TextureImporter:
       name: Prototipo Whole_92
       rect:
         serializedVersion: 2
-        x: 768
-        y: 128
-        width: 64
-        height: 64
+        x: 192
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2432,10 +2444,10 @@ TextureImporter:
       name: Prototipo Whole_93
       rect:
         serializedVersion: 2
-        x: 832
-        y: 128
-        width: 64
-        height: 64
+        x: 208
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2453,10 +2465,10 @@ TextureImporter:
       name: Prototipo Whole_94
       rect:
         serializedVersion: 2
-        x: 896
-        y: 128
-        width: 64
-        height: 64
+        x: 224
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2474,10 +2486,10 @@ TextureImporter:
       name: Prototipo Whole_95
       rect:
         serializedVersion: 2
-        x: 960
-        y: 128
-        width: 64
-        height: 64
+        x: 240
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2496,9 +2508,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 64
-        height: 64
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2516,10 +2528,10 @@ TextureImporter:
       name: Prototipo Whole_97
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
+        x: 16
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2537,10 +2549,10 @@ TextureImporter:
       name: Prototipo Whole_98
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
+        x: 32
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2558,10 +2570,10 @@ TextureImporter:
       name: Prototipo Whole_99
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
+        x: 48
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2579,10 +2591,10 @@ TextureImporter:
       name: Prototipo Whole_100
       rect:
         serializedVersion: 2
-        x: 256
-        y: 64
-        width: 64
-        height: 64
+        x: 64
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2600,10 +2612,10 @@ TextureImporter:
       name: Prototipo Whole_101
       rect:
         serializedVersion: 2
-        x: 320
-        y: 64
-        width: 64
-        height: 64
+        x: 80
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2621,10 +2633,10 @@ TextureImporter:
       name: Prototipo Whole_102
       rect:
         serializedVersion: 2
-        x: 384
-        y: 64
-        width: 64
-        height: 64
+        x: 96
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2642,10 +2654,10 @@ TextureImporter:
       name: Prototipo Whole_103
       rect:
         serializedVersion: 2
-        x: 448
-        y: 64
-        width: 64
-        height: 64
+        x: 112
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2663,10 +2675,10 @@ TextureImporter:
       name: Prototipo Whole_104
       rect:
         serializedVersion: 2
-        x: 512
-        y: 64
-        width: 64
-        height: 64
+        x: 128
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2684,10 +2696,10 @@ TextureImporter:
       name: Prototipo Whole_105
       rect:
         serializedVersion: 2
-        x: 576
-        y: 64
-        width: 64
-        height: 64
+        x: 144
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2705,10 +2717,10 @@ TextureImporter:
       name: Prototipo Whole_106
       rect:
         serializedVersion: 2
-        x: 640
-        y: 64
-        width: 64
-        height: 64
+        x: 160
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2726,10 +2738,10 @@ TextureImporter:
       name: Prototipo Whole_107
       rect:
         serializedVersion: 2
-        x: 704
-        y: 64
-        width: 64
-        height: 64
+        x: 176
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2747,10 +2759,10 @@ TextureImporter:
       name: Prototipo Whole_108
       rect:
         serializedVersion: 2
-        x: 768
-        y: 64
-        width: 64
-        height: 64
+        x: 192
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2768,10 +2780,10 @@ TextureImporter:
       name: Prototipo Whole_109
       rect:
         serializedVersion: 2
-        x: 832
-        y: 64
-        width: 64
-        height: 64
+        x: 208
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2789,10 +2801,10 @@ TextureImporter:
       name: Prototipo Whole_110
       rect:
         serializedVersion: 2
-        x: 896
-        y: 64
-        width: 64
-        height: 64
+        x: 224
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2810,10 +2822,10 @@ TextureImporter:
       name: Prototipo Whole_111
       rect:
         serializedVersion: 2
-        x: 960
-        y: 64
-        width: 64
-        height: 64
+        x: 240
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2833,8 +2845,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2852,10 +2864,10 @@ TextureImporter:
       name: Prototipo Whole_113
       rect:
         serializedVersion: 2
-        x: 64
+        x: 16
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2873,10 +2885,10 @@ TextureImporter:
       name: Prototipo Whole_114
       rect:
         serializedVersion: 2
-        x: 128
+        x: 32
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2894,10 +2906,10 @@ TextureImporter:
       name: Prototipo Whole_115
       rect:
         serializedVersion: 2
-        x: 192
+        x: 48
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2915,10 +2927,10 @@ TextureImporter:
       name: Prototipo Whole_116
       rect:
         serializedVersion: 2
-        x: 256
+        x: 64
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2936,10 +2948,10 @@ TextureImporter:
       name: Prototipo Whole_117
       rect:
         serializedVersion: 2
-        x: 320
+        x: 80
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2957,10 +2969,10 @@ TextureImporter:
       name: Prototipo Whole_118
       rect:
         serializedVersion: 2
-        x: 384
+        x: 96
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2978,10 +2990,10 @@ TextureImporter:
       name: Prototipo Whole_119
       rect:
         serializedVersion: 2
-        x: 448
+        x: 112
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2999,10 +3011,10 @@ TextureImporter:
       name: Prototipo Whole_120
       rect:
         serializedVersion: 2
-        x: 512
+        x: 128
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3020,10 +3032,10 @@ TextureImporter:
       name: Prototipo Whole_121
       rect:
         serializedVersion: 2
-        x: 576
+        x: 144
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3041,10 +3053,10 @@ TextureImporter:
       name: Prototipo Whole_122
       rect:
         serializedVersion: 2
-        x: 640
+        x: 160
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3062,10 +3074,10 @@ TextureImporter:
       name: Prototipo Whole_123
       rect:
         serializedVersion: 2
-        x: 704
+        x: 176
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3083,10 +3095,10 @@ TextureImporter:
       name: Prototipo Whole_124
       rect:
         serializedVersion: 2
-        x: 768
+        x: 192
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3104,10 +3116,10 @@ TextureImporter:
       name: Prototipo Whole_125
       rect:
         serializedVersion: 2
-        x: 832
+        x: 208
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3125,10 +3137,10 @@ TextureImporter:
       name: Prototipo Whole_126
       rect:
         serializedVersion: 2
-        x: 896
+        x: 224
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3146,10 +3158,10 @@ TextureImporter:
       name: Prototipo Whole_127
       rect:
         serializedVersion: 2
-        x: 960
+        x: 240
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

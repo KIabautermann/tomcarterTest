@@ -16,4 +16,4 @@ MonoBehaviour:
   prefabObject: {fileID: 1736993494610339291, guid: ce5c8f5cf9d0c4046959fb117afaf570,
     type: 3}
   instanceAmount: 25
-  EffectRepository: {fileID: 11400000, guid: d65fdd3d9eb0bfc4e8afdfd838d55966, type: 2}
+  EffectRepository: {fileID: 11400000, guid: 261746f3e7a5b7146a01055ede26b895, type: 2}

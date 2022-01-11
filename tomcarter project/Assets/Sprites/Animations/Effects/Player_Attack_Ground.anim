@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: dashjump_up_afterimage
+  m_Name: Player_Attack_Ground
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,17 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -7276145868010423188, guid: dcc85b50786a6034db021695ff53eeba,
-        type: 3}
+      value: {fileID: -945043978, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
     - time: 0.0625
-      value: {fileID: -732901593521729849, guid: dcc85b50786a6034db021695ff53eeba,
-        type: 3}
+      value: {fileID: -1212565399, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
     - time: 0.125
-      value: {fileID: -5331865461806156983, guid: dcc85b50786a6034db021695ff53eeba,
-        type: 3}
+      value: {fileID: 454274657, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
     - time: 0.1875
-      value: {fileID: 6825997050419508819, guid: dcc85b50786a6034db021695ff53eeba,
-        type: 3}
+      value: {fileID: -36315917, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
+    - time: 0.25
+      value: {fileID: 236149254, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,16 +48,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -7276145868010423188, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
-    - {fileID: -732901593521729849, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
-    - {fileID: -5331865461806156983, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
-    - {fileID: 6825997050419508819, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
+    - {fileID: -945043978, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
+    - {fileID: -1212565399, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
+    - {fileID: 454274657, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
+    - {fileID: -36315917, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
+    - {fileID: 236149254, guid: dcc85b50786a6034db021695ff53eeba, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.25
+    m_StopTime: 0.3125
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -78,4 +77,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.3125
+    functionName: Dispose
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

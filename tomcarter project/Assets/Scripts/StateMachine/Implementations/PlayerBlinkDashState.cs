@@ -25,16 +25,6 @@ public class PlayerBlinkDashState : PlayerDashState
         base.DoLogicUpdate();
     }
 
-    protected override void InstanceAfterImage()
-    {
-        ComponentCache<MonoBehaviour> afterImageComponents = sporeTrailPooler.GetItem(Vector3.zero, Quaternion.identity);
-        afterImageComponents.GetInstance(typeof(SporeTrailEffect), out MonoBehaviour tmp);
-        sporeTrailEffect = tmp as SporeTrailEffect;
-
-        sporeTrailEffect.gameObject.transform.SetParent(gameObject.transform);
-        sporeTrailEffect.LogicStart();
-    }
-
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
