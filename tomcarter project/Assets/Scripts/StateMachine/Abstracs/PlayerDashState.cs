@@ -91,9 +91,9 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        _hedgeCollisionsChecks = Physics.OverlapBox(transform.position + direction * .5f, controller.myCollider.bounds.size, Quaternion.identity, stats.hedge);
+        _hedgeCollisionsChecks = Physics.OverlapBox(transform.position + direction * .5f, (controller.myCollider.bounds.size/2) * .9f, Quaternion.identity, stats.hedge);
         _relativeSpawnTime = stats.dashAfterimageCounter / (controller.CurrentVelocity.magnitude / stats.dashSpeed);
-        _relativeSpawnTime = Mathf.Clamp(_relativeSpawnTime, stats.dashAfterimageCounter, stats.dashAfterimageCounter * 2f);
+        _relativeSpawnTime = Mathf.Clamp(_relativeSpawnTime, stats.dashAfterimageCounter, stats.dashAfterimageCounter * 3f);
         if (extraCounter >= _relativeSpawnTime)
         {
             _target.vfxSpawn.InstanceEffect(null, transform.position, Quaternion.identity, _target.vfxSpawn.EffectRepository.afterimage);
@@ -112,7 +112,6 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         controller.SetDrag(stats.dashDrag);
         coyoteTime = false;
         timeInAir = controller.Grounded() ? 0 : stats.dashCoyoteTime + 1;
-        Physics.IgnoreLayerCollision(9,10, _hedgeUnlocked);
         _velocityUpdated = false;
         _hedgeCollisionsChecks = new Collider[0];
         _speedLerpCounter = 0;
@@ -159,6 +158,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         if (_hedgeCollisionsChecks.Length != 0 /*&& FitsInHedge(direction)*/)
         {
             controller.SetDrag(0);
+            Physics.IgnoreLayerCollision(9, 10, true);
             _target.ChangeState<PlayerHedgeState>();
         }
         else if (inputs.JumpInput && CanDashJump())
@@ -241,6 +241,10 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         abilitySystem.OnAbilityUnlocked -= HedgeUnlockHandler;
         base.OnDestroyHandler();
     }
+
+
+    
+
 
     #endregion
 }

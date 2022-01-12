@@ -7,7 +7,7 @@ public class MovementController : MonoBehaviour
 
     #region Components
     private Rigidbody _rb;
-    public CapsuleCollider myCollider { get; private set; }
+    public BoxCollider myCollider { get; private set; }
 
 
 
@@ -55,7 +55,7 @@ public class MovementController : MonoBehaviour
     private void Start() 
     {
         _rb = GetComponent<Rigidbody>();
-        myCollider = GetComponent<CapsuleCollider>();
+        myCollider = GetComponent<BoxCollider>();
         usingGravity = _rb.useGravity;
     }
     #region Check Functions

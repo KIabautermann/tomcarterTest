@@ -11,7 +11,7 @@ public static class DialogueRepository
     }
 
     // Esta gilada deberia estar guardada serializada probablemente. Como goma escala un Dialogue System? Great question...
-    private const string MrMushroomLine1 = "Hello my dear friend, are you lost around here?";
+    private const string MrMushroomLine1 = "QUE HACES VOS ACÁ?";
     private const string MrMushroomLine2 = "Ah, the silent type. I see. Well no worries, I've mastered the art of handling one sided conversations";
     private const string MrMushroomLine3 = "Well, see you around. It's been delightful...ehm, conversing with you.";
 

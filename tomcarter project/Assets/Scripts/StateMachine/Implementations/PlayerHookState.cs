@@ -176,7 +176,6 @@ public class PlayerHookState : PlayerUnlockableSkill
         {
             controller.SetVelocityY(controller.CurrentVelocity.y * stats.yVelocityMultiplier);
             controller.SetAcceleration(0f);
-            if (controller.CurrentVelocity.y < stats.minJumpVelocity-1) _target.StartCoroutine(_target.GravityExceptionTime());
         }
     }
 

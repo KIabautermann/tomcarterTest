@@ -29,7 +29,7 @@ MonoBehaviour:
   minJumpVelocity: 7.5
   coyoteTime: 0.2
   shortHopMultiplier: 0.5
-  maxFallVelocity: -20
+  maxFallVelocity: -30
   amountOfJumps: 1
   dashID: dash
   blinkID: blink
@@ -40,7 +40,7 @@ MonoBehaviour:
   dashSpeed: 80
   dashDrag: 10
   postDashTimer: 0.1
-  dashAfterimageCounter: 0.01
+  dashAfterimageCounter: 0.005
   dashJumpID: dash_jump
   dashJumpVelocityX: 22
   dashJumpAccelerationTime: 0.1
@@ -51,11 +51,11 @@ MonoBehaviour:
   dashJumpAfterimageCounter: 0.05
   hookID: hook
   hookSpeed: 18
-  circularSpeed: 4.3
+  circularSpeed: 5
   hookDetectionRadius: 0.1
   maxAngle: 70
   hookCooldown: 0.4
-  yVelocityMultiplier: 0.65
+  yVelocityMultiplier: 0.55
   hookAimAssistConeAngle: 50
   hookTarget: {x: 0.6, y: 0.3, z: 0}
   hookMaxDistance: 6
