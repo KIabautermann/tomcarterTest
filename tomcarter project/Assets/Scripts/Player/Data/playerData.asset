@@ -29,7 +29,7 @@ MonoBehaviour:
   minJumpVelocity: 7.5
   coyoteTime: 0.2
   shortHopMultiplier: 0.5
-  maxFallVelocity: -30
+  maxFallVelocity: -25
   amountOfJumps: 1
   dashID: dash
   blinkID: blink
@@ -59,6 +59,7 @@ MonoBehaviour:
   hookAimAssistConeAngle: 50
   hookTarget: {x: 0.6, y: 0.3, z: 0}
   hookMaxDistance: 6
+  chainSteps: 6
   hedgeID: hedge
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 12

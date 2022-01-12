@@ -58,9 +58,5 @@ public class PlayerBlinkDashState : PlayerDashState
         base.TransitionChecks();
     }
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + direction * .5f, controller.myCollider.bounds.size*.9f);
-    }
+   
 }

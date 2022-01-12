@@ -15,8 +15,8 @@ public class VisualEffectSpawner : ObjectPooler
         ComponentCache<MonoBehaviour> afterImageComponents = GetItem(position, quaternion);
         afterImageComponents.GetInstance(typeof(VisualEffectPoolable), out MonoBehaviour tmp);
         VisualEffectPoolable pais = tmp as VisualEffectPoolable;
-        if(parent != null) pais.gameObject.transform.SetParent(parent.transform, true);
         pais.LogicStart(animationClip);
+        if (parent != null) pais.gameObject.transform.SetParent(parent.transform, true);     
         return pais;
     }
 

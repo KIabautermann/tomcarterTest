@@ -12,9 +12,9 @@ public class PlayerHookState : PlayerUnlockableSkill
     private Vector3 _hookVector;
     private float dist;    
     private Vector3 _direction;
+    private ChainVisualEffect chain;
 
     #region Init Variables
-    private SpriteRenderer _hookSprite;
     private Transform _hookPoint;
     #endregion
 
@@ -22,8 +22,7 @@ public class PlayerHookState : PlayerUnlockableSkill
     {
         base.Init(target);
         _hookPoint = GetComponentInChildren<HookPoint>().transform;
-        _hookSprite = _hookPoint.GetComponent<SpriteRenderer>();
-        _hookSprite.enabled = false;
+        chain = GetComponent<ChainVisualEffect>();
         animationTrigger = stats.hookID;
         stateIndex = stats.hookNumberID;
         coolDown = stats.hookCooldown;
@@ -119,6 +118,8 @@ public class PlayerHookState : PlayerUnlockableSkill
         _hookPoint.position = _target.transform.position;       
         _hookPoint.parent = null;
         _startPoint = _target.transform.position;
+        chain.AssignPoints(transform, _hookPoint);
+        chain.ListUpdate(stats.chainSteps);
         if(controller.CurrentVelocity.y > 0)
         {
             controller.SetVelocityY(controller.CurrentVelocity.y / 2);
@@ -131,7 +132,6 @@ public class PlayerHookState : PlayerUnlockableSkill
         {
             controller.SetAcceleration(0);
         }
-        _hookSprite.enabled = true;      
 
         _hookVector = GetAimAssistedHookVector();  
     }
@@ -173,7 +173,7 @@ public class PlayerHookState : PlayerUnlockableSkill
         base.DoTransitionOut();
         controller.SetGravity(true);
         _hookPoint.parent = _target.transform;
-        _hookSprite.enabled = false;
+        chain.EndChain();
         if (_postHookBoost)
         {
             controller.SetVelocityY(controller.CurrentVelocity.y * stats.yVelocityMultiplier);

@@ -18,7 +18,7 @@ public class VisualEffectPoolable : PoolableObject
     protected override void Start()
     {
         animationController = GetComponent<AnimatorController>();
-        poolerParent = this.gameObject.transform.parent.gameObject;
+        if (transform.parent!= null)poolerParent = transform.parent.gameObject;
         base.Start();
     }
 
@@ -37,7 +37,7 @@ public class VisualEffectPoolable : PoolableObject
     private IEnumerator PlayAndReturn(Action play) 
     {
          // Espera un frame para que se termine de traer este game object a la escena
-        yield return new WaitForEndOfFrame();
+        yield return null;
         
         play();
        

@@ -62,6 +62,7 @@ public class PlayerData : ScriptableObject
     public float hookAimAssistConeAngle = 20f;
     public Vector3 hookTarget;
     public float hookMaxDistance;
+    public int chainSteps;
 
     [Header("Hedge State")]
 
