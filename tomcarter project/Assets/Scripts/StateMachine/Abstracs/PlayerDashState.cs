@@ -93,7 +93,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         base.DoPhysicsUpdate();
         _hedgeCollisionsChecks = Physics.OverlapBox(transform.position + direction * .5f, (controller.myCollider.bounds.size/2) * .9f, Quaternion.identity, stats.hedge);
         _relativeSpawnTime = stats.dashAfterimageCounter / (controller.CurrentVelocity.magnitude / stats.dashSpeed);
-        _relativeSpawnTime = Mathf.Clamp(_relativeSpawnTime, stats.dashAfterimageCounter, stats.dashAfterimageCounter * 3f);
+        _relativeSpawnTime = Mathf.Clamp(_relativeSpawnTime, stats.dashAfterimageCounter, 1f);
         if (extraCounter >= _relativeSpawnTime)
         {
             _target.vfxSpawn.InstanceEffect(null, transform.position, Quaternion.identity, _target.vfxSpawn.EffectRepository.afterimage);

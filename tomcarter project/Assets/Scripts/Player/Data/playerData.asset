@@ -40,7 +40,7 @@ MonoBehaviour:
   dashSpeed: 80
   dashDrag: 10
   postDashTimer: 0.1
-  dashAfterimageCounter: 0.005
+  dashAfterimageCounter: 0.004
   dashJumpID: dash_jump
   dashJumpVelocityX: 22
   dashJumpAccelerationTime: 0.1

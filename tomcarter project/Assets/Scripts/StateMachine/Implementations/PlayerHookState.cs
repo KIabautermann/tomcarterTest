@@ -102,6 +102,8 @@ public class PlayerHookState : PlayerUnlockableSkill
         if (_hooked)
         {
             controller.SetTotalVelocity(stats.circularSpeed * dist, _direction);
+            Collider[] detection = Physics.OverlapBox(transform.position, controller.myCollider.size / 2 * 1.1f, Quaternion.identity, stats.walkable);
+            stateDone = detection.Length != 0;
         }
         else{
             controller.SetVelocityX(stats.movementVelocity * controller.lastDirection);
