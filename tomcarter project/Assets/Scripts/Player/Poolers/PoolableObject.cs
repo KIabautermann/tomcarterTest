@@ -27,6 +27,11 @@ public abstract class PoolableObject : MonoBehaviour
         ResetSceneReferences();
         PoolCollected = null;
     }
+
+    public virtual void DisposeAnimation()
+    {
+
+    }
     
     // Event Handler al que el Pooler se subscribe para manejar los pedidos de un Borrower para liberar un recurso
     public event EventHandler DisposalRequested;

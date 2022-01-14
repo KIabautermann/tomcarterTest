@@ -7,6 +7,7 @@ public class VisualEffectPoolable : PoolableObject
 {
     private int stateID;
     private GameObject poolerParent;
+    private Animator _anim;
     public override void ResetSceneReferences()
     {
         this.gameObject.transform.position = Vector3.zero;
@@ -19,6 +20,7 @@ public class VisualEffectPoolable : PoolableObject
     {
         animationController = GetComponent<AnimatorController>();
         if (transform.parent!= null)poolerParent = transform.parent.gameObject;
+        _anim = GetComponent<Animator>();
         base.Start();
     }
 
@@ -42,5 +44,11 @@ public class VisualEffectPoolable : PoolableObject
         play();
        
     }
-    
+
+    public override void DisposeAnimation()
+    {
+        base.DisposeAnimation();
+        _anim.SetTrigger("end");
+    }
+
 }
