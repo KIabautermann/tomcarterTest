@@ -99,8 +99,14 @@ public class PlayerData : ScriptableObject
     [Header("Melee State")]
 
     public string meleeID = "melee";
-    public float meleeTime = 1.5f;
+    public float groundAnticipationTime = 1.5f;
+    public float groundRecoverytime;
+    public float airAnticipationTime;
+    public float airRecoveryTime;
     public float comboWindow;
+    public float airAttackBoost=20;
+    public float airCooldown;
+    public float groundCooldown;
     public Vector2 meleeHitbox = Vector2.one;
     public Vector2 meleeHiboxOffset;
 

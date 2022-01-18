@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMeleeState : PlayerAttackState
+public class PlayerMeleeState : PlayerTransientState
 {
     private bool _combo;
     private int comboCounter;
+    private bool casted;
+    [Range (0,1)]
+    public float index;
+    private bool onAir;
+    private bool backslash;
+    private float attackDuration;
+    private bool combo;
 
     [SerializeField]
     private VisualEffectSpawner visualEffectSpawner;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
-        attackDuration = stats.meleeTime;
         animationTrigger = stats.meleeID;
     }
 
@@ -24,64 +30,92 @@ public class PlayerMeleeState : PlayerAttackState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
+        if (counter > attackDuration)
+        {
+            if(!onAir && combo)
+            {
+                _target.ChangeState<PlayerMeleeState>();
+            }
+            else stateDone = true;
+        }
         if (onAir)
         {
-            canMove = true;
-            currentAcceleration = stats.airAccelerationTime;
+            if (counter > stats.airAnticipationTime && !casted) CastAirAttack();
+            else if(casted) index += 2 / stats.airRecoveryTime * Time.deltaTime;
         }
-        else
+        if (inputs.MeleeInput && counter > stats.groundAnticipationTime + stats.groundRecoverytime - stats.comboWindow)
         {
-            canMove = false;
-            currentAcceleration = stats.groundedAccelerationTime;
-        }
-        controller.FlipCheck(inputs.FixedAxis.x);
-        if(!_combo && !onAir && counter >= (stats.meleeTime - stats.comboWindow) && inputs.MeleeInput && comboCounter <=2)
-        {
-            _combo = true;
+            combo = true;
         }
     }
 
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
+        if (casted && onAir)
+        {
+            controller.SetAcceleration(1);
+            controller.SetVelocityX(Mathf.Lerp(stats.airAttackBoost, 0, index) * controller.facingDirection);
+        }
     }
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        
-        if (!onAir)
+        combo = false;
+        casted = false;
+        index = 0;
+        onAir = !controller.Grounded();
+        attackDuration = onAir ? stats.airAnticipationTime + stats.airRecoveryTime : stats.groundAnticipationTime + stats.groundRecoverytime;
+        if (onAir)
         {
-            _target.QueueAnimation(_target.animations.attackGround.name, false, true);
-            _target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.playerGroundAttack);
-        }
-        else
-        {
+            controller.SetGravity(false);
+            controller.SetTotalVelocity(controller.CurrentVelocity.magnitude * .2f, controller.CurrentVelocity.normalized);
             _target.QueueAnimation(_target.animations.attackAir.name, false, true);
             _target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.playerAirAttack);
         }
-        _combo = false;
+        else
+        {         
+            controller.SetVelocityX(0);
+            _target.QueueAnimation(_target.animations.attackGround.name, false, true);
+            if (backslash) _target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.playerGroundAttackB);
+            else _target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.playerGroundAttack);
+            backslash = !backslash;
+        }
     }
 
     protected override void DoTransitionOut()
     {
-        base.DoTransitionOut();
-        controller.LockFlip(false);
-        if (!_combo) comboCounter = 0;
-        else comboCounter++;
+        controller.SetGravity(true);
+        controller.SetAcceleration(0);
+        if (onAir)
+        {
+            if (onAir) _target.GravityExceptionTime();
+            coolDown = stats.airCooldown;
+        }
+        else coolDown = 0;    
     }
 
     protected override void TransitionChecks()
-    {      
-        base.TransitionChecks();
-        if(onAir && controller.Grounded())
-        {
-            _target.ChangeState<PlayerLandState>();
-        }
-        if (stateDone && _combo && comboCounter <= 2)
-        {
-            _target.ChangeState<PlayerMeleeState>();
-        }
+    {
 
+        base.TransitionChecks();
+    }
+
+
+    private void CastGroundAttack()
+    {
+        casted = true;
+    }
+
+    private void CastAirAttack()
+    {     
+        casted = true;
+        controller.SetVelocityY(0);
+    }
+
+    public void ResetCooldown()
+    {
+        coolDown = 0;
     }
 }

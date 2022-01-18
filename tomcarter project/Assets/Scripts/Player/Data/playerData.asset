@@ -82,8 +82,14 @@ MonoBehaviour:
   colliderHardenSize: {x: 0.32, y: 0.64}
   colliderHardenPosition: {x: 0, y: 0.04, z: 0}
   meleeID: melee
-  meleeTime: 0.33
-  comboWindow: 0.1
+  groundAnticipationTime: 0
+  groundRecoverytime: 0.3125
+  airAnticipationTime: 0.125
+  airRecoveryTime: 0.3125
+  comboWindow: 0.07
+  airAttackBoost: 15
+  airCooldown: 0.5
+  groundCooldown: 0
   meleeHitbox: {x: 1.5, y: 0.7}
   meleeHiboxOffset: {x: 0.7, y: 0}
   rangeID: range

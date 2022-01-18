@@ -9,6 +9,7 @@ public class VisualEffectsRepository : ScriptableObject
     public AnimationClip airBlast;
     public AnimationClip sporeBlast;
     public AnimationClip playerGroundAttack;
+    public AnimationClip playerGroundAttackB;
     public AnimationClip playerAirAttack;
     public AnimationClip playerVineIdle;
     public AnimationClip playerVineEnd;

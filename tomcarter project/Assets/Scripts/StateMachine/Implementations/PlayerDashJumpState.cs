@@ -93,6 +93,11 @@ public class PlayerDashJumpState : PlayerSkillState
             _target.ChangeState<PlayerRangeState>();
             inputs.UsedRange();
         }
+        else if (inputs.MeleeInput)
+        {
+            _target.ChangeState<PlayerMeleeState>();
+            inputs.UsedMelee();
+        }
         else if (controller.Grounded() && !stateDone && controller.CurrentVelocity.y < 0.1f)
         {
             _target.ChangeState<PlayerLandState>();        

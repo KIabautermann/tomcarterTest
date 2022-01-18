@@ -85,6 +85,14 @@ public class PlayerRangeState : PlayerTransientState
         {
             controller.Force(-Physics.gravity.normalized, Physics.gravity.magnitude / 2, ForceMode.Force);
         }
+        if (dashJump)
+        {
+            if (extraCounter >= stats.dashJumpAfterimageCounter)
+            {
+                _target.vfxSpawn.InstanceEffect(null, transform.position, Quaternion.identity, _target.vfxSpawn.EffectRepository.afterimage);
+                extraCounter = 0;
+            }
+        }
     }      
 
     protected override void DoTransitionIn()

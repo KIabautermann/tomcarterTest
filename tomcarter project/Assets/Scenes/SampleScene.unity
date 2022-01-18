@@ -4078,7 +4078,7 @@ MonoBehaviour:
   onTransitionOut:
     m_PersistentCalls:
       m_Calls: []
-  time: 0
+  index: 0
   visualEffectSpawner: {fileID: 0}
 --- !u!114 &1677930225
 MonoBehaviour:
@@ -4169,7 +4169,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1677930224}
         m_TargetAssemblyTypeName: PlayerMeleeState, Assembly-CSharp
-        m_MethodName: Unlock
+        m_MethodName: ResetCooldown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

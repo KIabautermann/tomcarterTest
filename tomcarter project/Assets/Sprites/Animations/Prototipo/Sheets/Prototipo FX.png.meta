@@ -198,7 +198,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -219,7 +219,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 256
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -240,7 +240,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 256
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -261,7 +261,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 256
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -282,7 +282,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 256
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -303,7 +303,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 256
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -324,7 +324,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -345,7 +345,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 192
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -366,7 +366,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 192
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -387,7 +387,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 192
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -408,7 +408,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 192
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -429,7 +429,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 192
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -450,7 +450,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -471,7 +471,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -492,7 +492,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -513,7 +513,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -534,7 +534,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -555,7 +555,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -576,7 +576,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -597,7 +597,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -618,7 +618,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -639,7 +639,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -660,7 +660,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -681,7 +681,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -702,7 +702,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -723,7 +723,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -744,7 +744,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -765,7 +765,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -777,6 +777,132 @@ TextureImporter:
       bones: []
       spriteID: f46fe9be7d8b5804da39dd3735c58e26
       internalID: 236149254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo FX_28
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74098c9e056b0be41a7ccc1d2b16bdcf
+      internalID: 47264164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo FX_29
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9a200f53e0bc448892f5c249e45112
+      internalID: -1275660295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo FX_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f184835b34379bd4cbd0cefce419c21a
+      internalID: -662312462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo FX_31
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d466a39224583d4fac03ed3c6ae7c5b
+      internalID: 617229281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo FX_32
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35a8bfd9e10ea304cb5752f26695d369
+      internalID: -679072141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototipo FX_33
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4313daa0ca5b20f49b4be88143983660
+      internalID: -552035031
       vertices: []
       indices: 
       edges: []
@@ -801,7 +927,11 @@ TextureImporter:
       Prototipo FX_10: 5535395171489252400
       Prototipo FX_11: -2110019456192673452
       Prototipo FX_21: -104517691
+      Prototipo FX_31: 617229281
+      Prototipo FX_29: -1275660295
       Prototipo FX_27: 236149254
+      Prototipo FX_30: -662312462
+      Prototipo FX_33: -552035031
       Prototipo FX_19: 239508219
       Prototipo FX_0: -6801686378700493275
       Prototipo FX_7: 4940128291251014844
@@ -813,11 +943,13 @@ TextureImporter:
       Prototipo FX_14: -5068825792163312212
       Prototipo FX_1: 6564491335464760541
       Prototipo FX_12: 5956792643926116709
+      Prototipo FX_28: 47264164
       Prototipo FX_6: -7083501932794216783
       Prototipo FX_8: 3023227983715000973
       Prototipo FX_5: -4976404140461272069
       Prototipo FX_20: -973113336
       Prototipo FX_25: 454274657
+      Prototipo FX_32: -679072141
       Prototipo FX_18: -683670896
       Prototipo FX_16: -3120649711348093409
   spritePackingTag: 
