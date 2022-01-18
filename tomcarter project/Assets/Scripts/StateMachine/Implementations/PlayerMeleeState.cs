@@ -6,7 +6,6 @@ public class PlayerMeleeState : PlayerAttackState
 {
     private bool _combo;
     private int comboCounter;
-    private GameObject afterImageParent;
 
     [SerializeField]
     private VisualEffectSpawner visualEffectSpawner;

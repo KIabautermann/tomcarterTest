@@ -29,7 +29,7 @@ MonoBehaviour:
   minJumpVelocity: 7.5
   coyoteTime: 0.2
   shortHopMultiplier: 0.5
-  maxFallVelocity: -25
+  maxFallVelocity: -35
   amountOfJumps: 1
   dashID: dash
   blinkID: blink
@@ -51,7 +51,7 @@ MonoBehaviour:
   dashJumpAfterimageCounter: 0.05
   hookID: hook
   hookSpeed: 18
-  circularSpeed: 5
+  circularSpeed: 4
   hookDetectionRadius: 0.1
   maxAngle: 70
   hookCooldown: 0.4
@@ -59,7 +59,7 @@ MonoBehaviour:
   hookAimAssistConeAngle: 50
   hookTarget: {x: 0.6, y: 0.3, z: 0}
   hookMaxDistance: 6
-  chainSteps: 6
+  chainSteps: 10
   hedgeID: hedge
   hedgeDetectionOffset: 0.5
   hedgeTransitionInPush: 12
@@ -88,7 +88,9 @@ MonoBehaviour:
   meleeHiboxOffset: {x: 0.7, y: 0}
   rangeID: range
   rangeCooldown: 0.6
-  rangeTime: 0.67
+  rangeCastTime: 0.2
+  rangeRecoveryTime: 0.4
+  rangeRecoil: 10
   rangeHitbox: {x: 4.5, y: 0.5}
   rangeHiboxOffset: {x: 2, y: 0}
   walkable:

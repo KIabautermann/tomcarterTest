@@ -11,7 +11,8 @@
                     "id": "7235655d-3bbd-4bfb-9dd6-cc81f2033a7c",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "03823669-b019-429d-8acc-5bef7f1e6f29",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Dash",
@@ -27,7 +29,8 @@
                     "id": "941b35c1-f55c-4c00-9b9a-038cf6949eab",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Hook",
@@ -35,7 +38,8 @@
                     "id": "fa855413-d9b2-45e6-a363-ad19f108b198",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Melee",
@@ -43,7 +47,8 @@
                     "id": "d6483877-2276-4de9-b218-2c8025f0a545",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Range",
@@ -51,7 +56,8 @@
                     "id": "5a935a3e-0538-4beb-814b-a9550dc7647c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Guard",
@@ -59,7 +65,8 @@
                     "id": "dc081cea-24ab-4ef2-a7d0-69ac1060cb5e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Roots",
@@ -67,7 +74,8 @@
                     "id": "37c4d37d-b5fb-4201-829e-ed0c98a62c63",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Interaction",
@@ -75,7 +83,17 @@
                     "id": "25a0ad4b-04e8-4405-aa36-84f958429139",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Map",
+                    "type": "Button",
+                    "id": "4230722f-990f-4ab2-b640-d7d3ac7cb06d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -419,6 +437,39 @@
                     "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9f541ce-f650-4747-ac5b-2b659f4993a7",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Map",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "365ab6b2-72d6-4c68-8772-89804ca11247",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Map",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b52f848-0b38-47a0-96be-2a3faf3d27f3",
+                    "path": "<SwitchProControllerHID>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Map",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -432,7 +483,8 @@
                     "id": "95a5ecd2-2473-4b49-b72c-bac27908a74c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [

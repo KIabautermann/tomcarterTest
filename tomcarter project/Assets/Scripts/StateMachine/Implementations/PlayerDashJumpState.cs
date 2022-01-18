@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerDashJumpState : PlayerSkillState
 {
     private bool _isJumping;
+    private PlayerRangeState range;
     
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
         animationTrigger = stats.dashJumpID;
+        range = GetComponent<PlayerRangeState>();
     }
     protected override void DoChecks()
     {
@@ -87,8 +89,8 @@ public class PlayerDashJumpState : PlayerSkillState
             inputs.UsedHook();
         }
         else if(inputs.RangeInput){
-            GetComponent<PlayerRangeState>().ComingFromDashJump();
-            _target.ChangeState<PlayerRangeState>();          
+            range.dashJumpException();
+            _target.ChangeState<PlayerRangeState>();
             inputs.UsedRange();
         }
         else if (controller.Grounded() && !stateDone && controller.CurrentVelocity.y < 0.1f)

@@ -15,6 +15,7 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerData stats;
     public PlayerAnimationData animations;
     public VisualEffectSpawner vfxSpawn;
+    public ProjectileSpawner projectileSpawn;
     private PlayerAbilitySystem abilitySystem;    
     private ComponentCache<PlayerState> allStates;
     private AnimatorController _anim;

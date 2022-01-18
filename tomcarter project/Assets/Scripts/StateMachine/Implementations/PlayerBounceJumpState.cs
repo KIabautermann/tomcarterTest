@@ -60,9 +60,7 @@ public class PlayerBounceJumpState : PlayerBasicMovementState
         }
         else if (inputs.RangeInput)
         {
-            if(_fromDashJump)GetComponent<PlayerRangeState>().ComingFromDashJump();
-            _target.ChangeState<PlayerRangeState>();
-            inputs.UsedRange();
+           
         }
         else if (controller.Grounded() && !stateDone)
         {

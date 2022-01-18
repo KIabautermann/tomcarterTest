@@ -109,7 +109,9 @@ public class PlayerData : ScriptableObject
 
     public string rangeID = "range";
     public float rangeCooldown;
-    public float rangeTime = 1.5f;
+    public float rangeCastTime = 1.5f;
+    public float rangeRecoveryTime;
+    public float rangeRecoil;
     public Vector2 rangeHitbox = Vector2.one;
     public Vector2 rangeHiboxOffset;
 

@@ -12,6 +12,7 @@ public class PlayerBasicMovementState : PlayerState
     protected bool shortHoped;
     protected PlayerBaseDashState dashReference;
     protected PlayerBlinkDashState blinkReference;
+    protected bool customMovement;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);

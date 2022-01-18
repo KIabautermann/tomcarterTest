@@ -50,6 +50,11 @@ public class PlayerInputHandler : MonoBehaviour
         public bool InteractionCancel {get ; private set;}
         private float _interactionStartTime;
     #endregion
+    #region Map
+    public bool MapInput { get; private set; }
+    public bool MapCancel { get; private set; }
+    private float _mapStartTime;
+    #endregion
     [SerializeField]
     private float _inputHoldTime;
     [SerializeField]
@@ -64,6 +69,7 @@ public class PlayerInputHandler : MonoBehaviour
         MeleeCancel = true;
         RangeCancel = true;
         InteractionCancel = true;
+        MapCancel = true;
     }
     private void Update() => holdTime();
     public void OnMovementInput(InputAction.CallbackContext ctx)
@@ -175,6 +181,21 @@ public class PlayerInputHandler : MonoBehaviour
             InteractionCancel = true;
         }     
     }
+
+    public void OnMapInput(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            MapInput = true;
+            MapCancel = false;
+            _mapStartTime = Time.time;
+        }
+        if (ctx.canceled)
+        {
+            MapCancel = true;
+        }
+    }
+
     private void holdTime()
     {
         if(Time.time > _jumpStartTime + _inputHoldTime)
@@ -208,7 +229,11 @@ public class PlayerInputHandler : MonoBehaviour
         if(Time.time > _interactionStartTime + _inputHoldTime)
         {
             InteractionInput = false;
-        }        
+        }
+        if (Time.time > _mapStartTime + _inputHoldTime)
+        {
+            MapInput = false;
+        }
     }
     public void UsedJump() => JumpInput = false;
     public void UsedRoots() => RootsInput = false;
@@ -218,5 +243,6 @@ public class PlayerInputHandler : MonoBehaviour
     public void UsedHook() => HookInput = false;
     public void UsedGuard() => GuardInput = false;
     public void UsedInteraction() => InteractionInput = false;
+    public void UsedMap() => MapInput = false;
 
 }

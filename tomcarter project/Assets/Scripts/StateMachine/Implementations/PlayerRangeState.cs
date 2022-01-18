@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRangeState : PlayerAttackState
+public class PlayerRangeState : PlayerTransientState
 {
-    public float _maxDistance;
-    private RaycastHit _raycast;
-    private Vector3 _rangeAttackDirection;
-    private bool _fromDashJump;
-    private bool _hited;
+    public Vector2 direction;
+    private float lerpIndex;
+    private bool casted;
+    private float movementValue;
+    private float currentSpeed;
+    private bool dashJump;
     public override void Init(PlayerStateMachine target)
     {
         base.Init(target);
-        attackDuration = stats.rangeTime;
         animationTrigger = stats.rangeID;
         coolDown = stats.rangeCooldown;
     }
@@ -25,147 +25,128 @@ public class PlayerRangeState : PlayerAttackState
     protected override void DoLogicUpdate()
     {
         base.DoLogicUpdate();
-        if (onAir)
-        {
-            if (!activeHitbox)
-            {
-                currentAcceleration = _fromDashJump ? stats.airAccelerationTime : stats.dashJumpAccelerationTime;
-                currentSpeed = _fromDashJump ? stats.dashJumpVelocityX : stats.movementVelocity;
-            }         
-        }
-        else if(canMove)
-        {
-            currentAcceleration = stats.groundedAccelerationTime;
-            canMove = false;
-        }
         controller.FlipCheck(inputs.FixedAxis.x);
+        SetMovement();
+        if (counter > stats.rangeCastTime & !casted)
+        {
+            Cast();
+        }
+        if (casted)
+        {
+            if(direction.x != 0)
+            {
+                lerpIndex += Time.deltaTime;
+                movementValue = Mathf.Lerp(-direction.x * stats.rangeRecoil, currentSpeed * controller.lastDirection, lerpIndex);
+            }
+            else
+            {
+                if (controller.Grounded())
+                {
+                    controller.Accelerate((-1 / stats.groundedAccelerationTime) * Time.deltaTime);
+                }
+                else
+                {
+                    if(!dashJump)controller.Accelerate((inputs.FixedAxis.x!=0 ? 1 : -1 / stats.groundedAccelerationTime) * Time.deltaTime);
+                }
+                if (dashJump)
+                {
+                    movementValue = currentSpeed;
+                    controller.SetAcceleration(1);
+                    controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 : -1 / stats.dashJumpAccelerationTime) * Time.deltaTime);
+                }
+            }
+        }
+        else
+        {
+            movementValue = currentSpeed;
+        }
+        if (counter > stats.rangeCastTime + stats.rangeRecoveryTime)
+        {
+            if (!dashJump)
+            {
+                stateDone = true;
+            }
+            else if (controller.Grounded())
+            {
+                stateDone = true;
+            }
+        }
     }
 
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        if (Physics.Raycast(transform.position, _rangeAttackDirection, out _raycast, stats.rangeHitbox.x, stats.hitable))
+        controller.SetVelocityX(movementValue * inputs.FixedAxis.x);
+        if (controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded() && controller.usingGravity && !_target.gravityException)
         {
-            _maxDistance = Vector3.Distance(transform.position, _raycast.point);
-            _target.SetMaskSize(Vector3.one * 5);
-            _target.SetMaskPosition(_raycast.point, _rangeAttackDirection);
-            _target.SetMaskActive(true);
+            controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
         }
-        else
+        else if (_target.gravityException)
         {
-            _maxDistance = stats.rangeHitbox.x;
-        }
-
-        if (!activeHitbox) return;
-
-        Vector3 center = transform.position + _rangeAttackDirection * _maxDistance / 2;
-        Vector3 size = Hitbox(_rangeAttackDirection)/2;
-        Collider[] hitbox = Physics.OverlapBox(center, size, Quaternion.identity, stats.hitable);
-        hitDetection = hitbox.Length != 0;
-        if (!_hited)
-        {
-            _hited = true;
-            if (hitbox.Length != 0)
-            {
-                for (int i = 0; i < hitbox.Length; i++)
-                {
-                    if (hitbox[i].GetComponent<IBounceable>() != null && _rangeAttackDirection == Vector3.down)
-                    {
-                        GetComponent<PlayerBounceJumpState>().CommingFromDashJump(_fromDashJump);
-                        _target.ChangeState<PlayerBounceJumpState>();
-                        return;
-                    }
-                }
-            }
-            canMove = false;
-            controller.SetTotalVelocity(0, controller.CurrentVelocity);
-            controller.SetGravity(false);
+            controller.Force(-Physics.gravity.normalized, Physics.gravity.magnitude / 2, ForceMode.Force);
         }
     }      
 
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        canMove = true;
-        _hited = false;
-        _target.SetMaskActive(false);
-        currentSpeed = _fromDashJump ? stats.dashJumpVelocityX : stats.movementVelocity;
-        if (!onAir)
+        currentSpeed = dashJump ? stats.dashJumpVelocityX : stats.movementVelocity;
+        controller.LockFlip(true);
+        lerpIndex = 0;
+        casted = false;
+        direction = transform.right;
+        if (inputs.FixedAxis.y != 0)
         {
-            if (inputs.FixedAxis.y == 0)
-            {
-                _target.QueueAnimation(_target.animations.attackRange.name, false, true);
-                _rangeAttackDirection = Vector3.right * controller.facingDirection;
-            }
-            else if(inputs.FixedAxis.y > 0)
-            {
-                _target.QueueAnimation(_target.animations.attackRangeUp.name, false, true);
-                _rangeAttackDirection = Vector3.up;
-            }
-        }
-        else
-        {
-            if(inputs.FixedAxis.y == 0)
-            {
-                _target.QueueAnimation(_target.animations.attackRange.name, false, true);
-                _rangeAttackDirection = Vector3.right * controller.facingDirection;
-            }
-            else
-            {
-                if(inputs.FixedAxis.y > 0)
-                {
-                    _target.QueueAnimation(_target.animations.attackRangeUp.name, false, true);
-                    _rangeAttackDirection = Vector3.up;
-                }
-                else
-                {
-                    _target.QueueAnimation(_target.animations.attackRangeDown.name, true, true);
-                    _rangeAttackDirection = -Vector3.up;
-                }
-            }
-            
+            direction = transform.up * inputs.FixedAxis.y;
         }
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        dashJump = false;
         controller.LockFlip(false);
-        controller.SetGravity(true);
-        _fromDashJump = false;
+        controller.SetAcceleration(inputs.FixedAxis.x != 0 ? 1 : 0);
     }
 
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = hitDetection ? Color.green : Color.red;
-        if (activeHitbox)
+    private void Cast()
+    {      
+        _target.projectileSpawn.Shoot(transform.position, direction, 3, 10, 30, null);
+        if (!controller.Grounded())
         {
-            Vector3 size = Hitbox(_rangeAttackDirection);
-            Vector3 center = transform.position + _rangeAttackDirection * _maxDistance / 2;
-            Gizmos.DrawWireCube(center, size);
-            if (hitDetection)
+            controller.SetAcceleration(1);
+            if(!dashJump) controller.SetTotalVelocity(0, Vector2.zero);
+            else
             {
-                Gizmos.DrawWireSphere(_raycast.point, .5f);
-            }        
-        }       
-    }
-
-    public void ComingFromDashJump()
-    {
-        _fromDashJump = true;
-    }
-
-    Vector3 Hitbox(Vector3 direction)
-    {
-        if(direction == Vector3.right || direction == -Vector3.right)
-        {
-            return new Vector3(_maxDistance, stats.rangeHitbox.y);
+                controller.LockFlip(false);
+            }
+            if(direction.x != 0)
+            {
+                if(!dashJump)controller.SetVelocityX(stats.rangeRecoil * -direction.x);
+            }
+            else
+            {
+                controller.SetVelocityY(stats.rangeRecoil * -direction.y);
+            }
         }
-        return new Vector3(stats.rangeHitbox.y, _maxDistance);
-    } 
+        
+        if (direction.x != 0) _target.GravityExceptionTime();
+        else controller.SetAcceleration(0);
+        casted = true;
+    }
+
+    private void SetMovement()
+    {
+        if(!casted)controller.Accelerate(((inputs.FixedAxis.x != 0 ? 1 : -1) / stats.airAccelerationTime) * Time.deltaTime);
+    }
+
+    public void dashJumpException()
+    {
+        dashJump = true;
+    }
+  
 }
