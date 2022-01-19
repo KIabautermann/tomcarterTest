@@ -59,11 +59,11 @@ MonoBehaviour:
   Path: Assets/FMOD/tomcarter/tomcarter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637653204781580427
+  lastModified: 637781593862421517
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 800
+    Value: 896
   Exists: 1
 --- !u!114 &-4620019557563121159
 MonoBehaviour:
@@ -142,12 +142,13 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: 444362339354401416}
   - {fileID: 2324842011125709786}
+  - {fileID: 3908089156163944493}
   EditorParameters: []
   MasterBanks:
   - {fileID: 4173534505789040765}
   StringsBanks:
   - {fileID: -4701799494017520181}
-  stringsBankWriteTime: 637653204781580427
+  stringsBankWriteTime: 637781593862421517
   cacheVersion: 6
 --- !u!114 &444362339354401416
 MonoBehaviour:
@@ -260,6 +261,30 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &3908089156163944493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Tutorial
+  m_EditorClassIdentifier: 
+  Path: event:/Tutorial
+  guid: a75970e7744c6d4c9366d104c97921e2
+  Banks:
+  - {fileID: 4173534505789040765}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 6118234591029317726}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 128181
 --- !u!114 &4173534505789040765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +300,7 @@ MonoBehaviour:
   Path: Assets/FMOD/tomcarter/tomcarter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637653204781500437
+  lastModified: 637781593862341517
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -299,6 +324,26 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 800
+  Exists: 1
+--- !u!114 &6118234591029317726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Tutorial/Boss
+  m_EditorClassIdentifier: 
+  Name: Boss
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
   Exists: 1
 --- !u!114 &7863030583043113449
 MonoBehaviour:
