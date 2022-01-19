@@ -46,11 +46,11 @@ public class PlayerRangeState : PlayerTransientState
                 }
                 else
                 {
-                    if(!dashJump)controller.Accelerate((-controller.facingDirection / stats.groundedAccelerationTime) * Time.deltaTime);
+                    if(!dashJump)controller.Accelerate((inputs.FixedAxis.x!=0 ? 1 : -1) / stats.groundedAccelerationTime * Time.deltaTime);
                 }
                 if (dashJump)
                 {
-                    movementValue = currentSpeed;
+                    movementValue = currentSpeed * controller.facingDirection;
                     controller.SetAcceleration(1);
                     controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 : -1 / stats.dashJumpAccelerationTime) * Time.deltaTime);
                 }
@@ -141,7 +141,6 @@ public class PlayerRangeState : PlayerTransientState
         }
         
         if (direction.x != 0) _target.GravityExceptionTime();
-        else controller.SetAcceleration(0);
         casted = true;
     }
 
