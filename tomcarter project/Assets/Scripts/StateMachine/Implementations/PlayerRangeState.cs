@@ -33,7 +33,7 @@ public class PlayerRangeState : PlayerTransientState
         }
         if (casted)
         {
-            if(direction.x != 0)
+            if (direction.x != 0)
             {
                 lerpIndex += Time.deltaTime;
                 movementValue = Mathf.Lerp(-direction.x * stats.rangeRecoil, currentSpeed * controller.lastDirection, lerpIndex);
@@ -46,7 +46,7 @@ public class PlayerRangeState : PlayerTransientState
                 }
                 else
                 {
-                    if(!dashJump)controller.Accelerate((inputs.FixedAxis.x!=0 ? 1 : -1 / stats.groundedAccelerationTime) * Time.deltaTime);
+                    if(!dashJump)controller.Accelerate((-controller.facingDirection / stats.groundedAccelerationTime) * Time.deltaTime);
                 }
                 if (dashJump)
                 {
@@ -58,7 +58,7 @@ public class PlayerRangeState : PlayerTransientState
         }
         else
         {
-            movementValue = currentSpeed;
+            movementValue = currentSpeed * controller.lastDirection;
         }
         if (counter > stats.rangeCastTime + stats.rangeRecoveryTime)
         {
@@ -76,7 +76,7 @@ public class PlayerRangeState : PlayerTransientState
     protected override void DoPhysicsUpdate()
     {
         base.DoPhysicsUpdate();
-        controller.SetVelocityX(movementValue * inputs.FixedAxis.x);
+        controller.SetVelocityX(movementValue);
         if (controller.CurrentVelocity.y <= stats.minJumpVelocity && !controller.Grounded() && controller.usingGravity && !_target.gravityException)
         {
             controller.Force(Physics.gravity.normalized, stats.fallMultiplier, ForceMode.Force);
@@ -127,14 +127,12 @@ public class PlayerRangeState : PlayerTransientState
         if (!controller.Grounded())
         {
             controller.SetAcceleration(1);
-            if(!dashJump) controller.SetTotalVelocity(0, Vector2.zero);
-            else
-            {
-                controller.LockFlip(false);
-            }
+            if(dashJump) controller.LockFlip(false);
             if(direction.x != 0)
             {
-                if(!dashJump)controller.SetVelocityX(stats.rangeRecoil * -direction.x);
+                if(!dashJump)controller.SetVelocityX(-controller.facingDirection * stats.rangeRecoil);
+                controller.SetVelocityY(0);
+                Debug.Log(-controller.facingDirection * stats.rangeRecoil);
             }
             else
             {
