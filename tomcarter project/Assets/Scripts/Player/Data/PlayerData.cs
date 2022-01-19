@@ -105,6 +105,7 @@ public class PlayerData : ScriptableObject
     public float airRecoveryTime;
     public float comboWindow;
     public float airAttackBoost=20;
+    public float airBoostDecay = 1.5f;
     public float airCooldown;
     public float groundCooldown;
     public Vector2 meleeHitbox = Vector2.one;

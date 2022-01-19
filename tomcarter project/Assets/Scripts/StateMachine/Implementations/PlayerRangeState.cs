@@ -120,6 +120,10 @@ public class PlayerRangeState : PlayerTransientState
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
+        if(dashJump && controller.Grounded())
+        {
+            stateDone = true;
+        }
     }
     private void Cast()
     {      

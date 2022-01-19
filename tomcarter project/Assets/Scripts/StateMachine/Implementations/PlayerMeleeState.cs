@@ -41,7 +41,7 @@ public class PlayerMeleeState : PlayerTransientState
         if (onAir)
         {
             if (counter > stats.airAnticipationTime && !casted) CastAirAttack();
-            else if(casted) index += 2 / stats.airRecoveryTime * Time.deltaTime;
+            else if(casted) index += stats.airBoostDecay / stats.airRecoveryTime * Time.deltaTime;
         }
         if (inputs.MeleeInput && counter > stats.groundAnticipationTime + stats.groundRecoverytime - stats.comboWindow)
         {

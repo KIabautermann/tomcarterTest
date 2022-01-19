@@ -87,7 +87,8 @@ MonoBehaviour:
   airAnticipationTime: 0.125
   airRecoveryTime: 0.3125
   comboWindow: 0.07
-  airAttackBoost: 15
+  airAttackBoost: 20
+  airBoostDecay: 1.5
   airCooldown: 0.5
   groundCooldown: 0
   meleeHitbox: {x: 1.5, y: 0.7}
