@@ -33,7 +33,7 @@ public class PlayerJumpState : PlayerBasicMovementState
     {
         base.DoTransitionIn();
         inputs.UsedJump();
-        _target.QueueAnimation(_target.animations.airJump.name, false, true);
+        _target.QueueAnimation(_target.animations.airUpwards.name, false, true);
         controller.SetVelocityY(stats.jumpVelocity);
         currentAcceleration = stats.airAccelerationTime;
         currentSpeed = stats.movementVelocity;

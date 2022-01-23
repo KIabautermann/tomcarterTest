@@ -96,7 +96,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         _relativeSpawnTime = Mathf.Clamp(_relativeSpawnTime, stats.dashAfterimageCounter, 1f);
         if (extraCounter >= _relativeSpawnTime)
         {
-            _target.vfxSpawn.InstanceEffect(null, transform.position, Quaternion.identity, _target.vfxSpawn.EffectRepository.afterimage);
+            _target.vfxSpawn.InstanceEffect(null, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.afterimage);
             extraCounter = 0;
         }
     }

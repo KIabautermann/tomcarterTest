@@ -77,9 +77,19 @@ public class PlayerMeleeState : PlayerTransientState
         else
         {         
             controller.SetVelocityX(0);
-            _target.QueueAnimation(_target.animations.attackGround.name, false, true);
-            if (backslash) _target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.playerGroundAttackB);
-            else _target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.playerGroundAttack);
+            
+            if (backslash)
+            {
+                _target.QueueAnimation(_target.animations.attackGround.name, false, true);
+                _target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.playerGroundAttackB);
+            }
+
+            else
+            {
+                _target.QueueAnimation(_target.animations.attackGroundB.name, false, true);
+                _target.vfxSpawn.InstanceEffect(gameObject, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.playerGroundAttack);
+            }
+                
             backslash = !backslash;
         }
     }

@@ -17,7 +17,7 @@ MonoBehaviour:
   colliderDefaultPosition: {x: 0, y: 0, z: 0}
   idleID: idle
   movementID: run
-  movementVelocity: 15
+  movementVelocity: 13
   groundedAccelerationTime: 0.15
   airAccelerationTime: 0.5
   airID: air
@@ -83,9 +83,9 @@ MonoBehaviour:
   colliderHardenPosition: {x: 0, y: 0.04, z: 0}
   meleeID: melee
   groundAnticipationTime: 0
-  groundRecoverytime: 0.3125
+  groundRecoverytime: 0.25
   airAnticipationTime: 0.125
-  airRecoveryTime: 0.3125
+  airRecoveryTime: 0.25
   comboWindow: 0.07
   airAttackBoost: 10
   airBoostDecay: 1.5

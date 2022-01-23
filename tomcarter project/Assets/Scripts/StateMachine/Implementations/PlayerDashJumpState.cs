@@ -46,7 +46,7 @@ public class PlayerDashJumpState : PlayerSkillState
         controller.SetVelocityX(stats.dashJumpVelocityX * controller.lastDirection);
         if (extraCounter >= stats.dashJumpAfterimageCounter)
         {
-            _target.vfxSpawn.InstanceEffect(null, transform.position, Quaternion.identity, _target.vfxSpawn.EffectRepository.afterimage);
+            _target.vfxSpawn.InstanceEffect(null, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.afterimage);
             extraCounter = 0;
         }
     }
@@ -55,7 +55,7 @@ public class PlayerDashJumpState : PlayerSkillState
     {
         
         base.DoTransitionIn();
-        _target.QueueAnimation(_target.animations.airUpwards.name, false, true);
+        _target.QueueAnimation(_target.animations.dash.name, false, true);
         _isJumping = true;
 
         StartBlastEffect();

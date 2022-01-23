@@ -7,7 +7,9 @@ using FMODUnity;
 public class SoundManager : MonoBehaviour
 {
     [Range(0, 1)]
-    public float value;
+    public int bossValue;
+    [Range(0, 1)]
+    public float actionValue;
     FMOD.Studio.EventInstance Instance;
 
     private void Start()
@@ -18,6 +20,7 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        Instance.setParameterByName("Boss", value);
+        Instance.setParameterByName("Boss", bossValue);
+        Instance.setParameterByName("Action", actionValue);
     }
 }

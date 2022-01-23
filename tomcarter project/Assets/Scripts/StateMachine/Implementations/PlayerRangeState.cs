@@ -40,13 +40,9 @@ public class PlayerRangeState : PlayerTransientState
             }
             else
             {
-                if (controller.Grounded())
+                if (!controller.Grounded())
                 {
-                    controller.Accelerate((-1 / stats.groundedAccelerationTime) * Time.deltaTime);
-                }
-                else
-                {
-                    if(!dashJump)controller.Accelerate((inputs.FixedAxis.x!=0 ? 1 : -1) / stats.groundedAccelerationTime * Time.deltaTime);
+                    if (!dashJump) controller.Accelerate((inputs.FixedAxis.x != 0 ? 1 : -1) / stats.groundedAccelerationTime * Time.deltaTime);
                 }
                 if (dashJump)
                 {
@@ -71,6 +67,10 @@ public class PlayerRangeState : PlayerTransientState
                 stateDone = true;
             }
         }
+        if (controller.Grounded())
+        {
+            controller.Accelerate((-1 / stats.groundedAccelerationTime) * Time.deltaTime);
+        }
     }
 
     protected override void DoPhysicsUpdate()
@@ -89,7 +89,7 @@ public class PlayerRangeState : PlayerTransientState
         {
             if (extraCounter >= stats.dashJumpAfterimageCounter)
             {
-                _target.vfxSpawn.InstanceEffect(null, transform.position, Quaternion.identity, _target.vfxSpawn.EffectRepository.afterimage);
+                _target.vfxSpawn.InstanceEffect(null, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.afterimage);
                 extraCounter = 0;
             }
         }
@@ -107,6 +107,12 @@ public class PlayerRangeState : PlayerTransientState
         {
             direction = transform.up * inputs.FixedAxis.y;
         }
+        if (!dashJump)
+        {
+            if (direction.y > 0) _target.QueueAnimation(_target.animations.attackRangeUp.name, false, true);
+            else if (direction.y < 0) _target.QueueAnimation(_target.animations.attackRangeDown.name, false, true);
+            else _target.QueueAnimation(_target.animations.attackRange.name, false, true);
+        }   
     }
 
     protected override void DoTransitionOut()
@@ -131,19 +137,24 @@ public class PlayerRangeState : PlayerTransientState
         if (!controller.Grounded())
         {
             controller.SetAcceleration(1);
-            if(dashJump) controller.LockFlip(false);
-            if(direction.x != 0)
+            if (dashJump)
+            {
+                controller.LockFlip(false);
+                _target.QueueAnimation(_target.animations.dash.name, false, true);
+            }
+            else _target.QueueAnimation(_target.animations.airPeak.name, false, true);
+            if (direction.x != 0)
             {
                 if(!dashJump)controller.SetVelocityX(-controller.facingDirection * stats.rangeRecoil);
                 controller.SetVelocityY(0);
-                Debug.Log(-controller.facingDirection * stats.rangeRecoil);
             }
             else
             {
                 controller.SetVelocityY(stats.rangeRecoil * -direction.y);
             }
         }
-        
+        else _target.QueueAnimation(_target.animations.idle.name, false, true);
+
         if (direction.x != 0) _target.GravityExceptionTime();
         casted = true;
     }

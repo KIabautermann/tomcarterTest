@@ -25,7 +25,7 @@ public class SceneControllerObject : PersistedScriptableObject
 
     protected override void OnEndImpl() {}
     protected override void OnBeginImpl() {
-    
+
         DontDestroyOnLoad(this);
         List<int> scenes = new List<int>();
         

@@ -12,6 +12,7 @@ public class PlayerAnimationData : ScriptableObject
     public AnimationClip airUpwards;
     public AnimationClip attackAir;
     public AnimationClip attackGround;
+    public AnimationClip attackGroundB;
     public AnimationClip attackRange;
     public AnimationClip attackRangeUp;
     public AnimationClip attackRangeDown;

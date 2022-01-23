@@ -101,7 +101,6 @@ public class PlayerHedgeState : PlayerUnlockableSkill
             controller.SetTotalVelocity(_currentSpeed, new Vector2(0, _direction.y));
             controller.SetAcceleration(0);
         }
-        _target.QueueAnimation(_target.animations.hardenEnd.name, true, true);
         controller.SetCollider(stats.colliderDefaultSize, stats.colliderDefaultPosition);
     }
 
