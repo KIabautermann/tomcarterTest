@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerAnimationData : ScriptableObject 
 {
     public AnimationClip airDownwards;
-    public AnimationClip airJump;
     public AnimationClip airLand;
     public AnimationClip airPeak;
     public AnimationClip airUpwards;
@@ -16,26 +15,17 @@ public class PlayerAnimationData : ScriptableObject
     public AnimationClip attackRange;
     public AnimationClip attackRangeUp;
     public AnimationClip attackRangeDown;
-    public AnimationClip blinkEnd;
-    public AnimationClip blinkInit;
-    public AnimationClip crouch;
-    public AnimationClip crouchInit;
+    public AnimationClip attackRangeDash;
     public AnimationClip dash;
-    public AnimationClip dashEnd;
     public AnimationClip harden;
     public AnimationClip hardenEnd;
     public AnimationClip hardenInit;
-    public AnimationClip hardenPound;
-    public AnimationClip hardenBounce;
     public AnimationClip hedgeInit;
     public AnimationClip hedge;
-    public AnimationClip hookBlur;
-    public AnimationClip hookMotion;
-    public AnimationClip hookThrow;
     public AnimationClip idle;
     public AnimationClip rootsAbsorb;
     public AnimationClip rootsEnd;
     public AnimationClip rootsInit;
     public AnimationClip run;
-    public AnimationClip runInit;   
+ 
 }

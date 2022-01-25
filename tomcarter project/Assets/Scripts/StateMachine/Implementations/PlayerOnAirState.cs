@@ -33,7 +33,7 @@ public class PlayerOnAirState : PlayerBasicMovementState
     protected override void DoTransitionIn()
     {
         base.DoTransitionIn();
-        _target.QueueAnimation(_target.animations.airPeak.name, false, false);
+        _target.QueueAnimation(_target.animations.airDownwards.name, false, false);
         currentAcceleration = stats.airAccelerationTime;
         currentSpeed = stats.movementVelocity;
         canShortHop = false;

@@ -40,7 +40,6 @@ public class PlayerBaseDashState : PlayerDashState
     {     
         StopAllCoroutines();     
         base.DoTransitionOut();
-        _target.QueueAnimation(_target.animations.dashEnd.name, true, false);
     }
     protected override void TransitionChecks()
     {

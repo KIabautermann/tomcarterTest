@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: animationData
   m_EditorClassIdentifier: 
   airDownwards: {fileID: 7400000, guid: a89b3156a0a92bc46a28d205f3f38a52, type: 2}
-  airJump: {fileID: 7400000, guid: fc8afb74bc2f8b2498b0efb3e2c143fe, type: 2}
   airLand: {fileID: 7400000, guid: b24d03456d191f947a05d0392e835d13, type: 2}
   airPeak: {fileID: 7400000, guid: 2a55830b748c44146845a90fab645318, type: 2}
   airUpwards: {fileID: 7400000, guid: 0ecb129ec28b69c46a9dfab71741d438, type: 2}
@@ -23,25 +22,15 @@ MonoBehaviour:
   attackRange: {fileID: 7400000, guid: db122cd252f5a8f41817dbc0599e025c, type: 2}
   attackRangeUp: {fileID: 7400000, guid: 437555d754840c04aa16cc5fd34dadaa, type: 2}
   attackRangeDown: {fileID: 7400000, guid: 5b66e4beccbe8db4fbd9fdedd1ac069a, type: 2}
-  blinkEnd: {fileID: 7400000, guid: 6d1ba83154c567f4ca59e64743f7f59d, type: 2}
-  blinkInit: {fileID: 7400000, guid: 0fbae7f4491073b46831bff3451f62aa, type: 2}
-  crouch: {fileID: 7400000, guid: e2393b98b1622dd4c9d040884da985af, type: 2}
-  crouchInit: {fileID: 7400000, guid: 9843edaa32de96c4ca96a88c91ba8c31, type: 2}
+  attackRangeDash: {fileID: 7400000, guid: a8bd94d1e2032ad49976a010ec0c7285, type: 2}
   dash: {fileID: 7400000, guid: 4a72c89ae0e7eda4aad3fb9d94343173, type: 2}
-  dashEnd: {fileID: 7400000, guid: 854b65faae8078d4fbfedcc04a4b493b, type: 2}
   harden: {fileID: 7400000, guid: ca5c29448148a34479abca0e2cf24d5f, type: 2}
   hardenEnd: {fileID: 7400000, guid: 91448f2903698774085182668267dec6, type: 2}
   hardenInit: {fileID: 7400000, guid: be2e6bfda0badfc42b959baf86a07ff2, type: 2}
-  hardenPound: {fileID: 7400000, guid: ed597eab400df7949b28c86e435d9e4f, type: 2}
-  hardenBounce: {fileID: 7400000, guid: cc1634a18b25923418de428bcf89f210, type: 2}
   hedgeInit: {fileID: 7400000, guid: 7938b0581c6437942a04b37883ec9e1b, type: 2}
   hedge: {fileID: 7400000, guid: 14bb67493147b27418555272b84936bb, type: 2}
-  hookBlur: {fileID: 7400000, guid: 76519c4acb9f0dd4e99fff4d4a7e1798, type: 2}
-  hookMotion: {fileID: 7400000, guid: ba1e51634986b8a4bbca56f1b3e52b30, type: 2}
-  hookThrow: {fileID: 7400000, guid: 8fd9f99fe1dbff24fae9886ad43df698, type: 2}
   idle: {fileID: 7400000, guid: 6d23ba2b42090df4c9e5193d035f2b19, type: 2}
   rootsAbsorb: {fileID: 7400000, guid: 85a5121870c90354e890e413154c9c7a, type: 2}
   rootsEnd: {fileID: 7400000, guid: a8b1c74efaef1544584005869d019e95, type: 2}
   rootsInit: {fileID: 7400000, guid: 42ee30ebf36959840bb66de2672d0777, type: 2}
   run: {fileID: 7400000, guid: e7873fd4670d5354cbb81dd67c5974b5, type: 2}
-  runInit: {fileID: 7400000, guid: 006f7e47f7f015a4da2a590952033ff0, type: 2}

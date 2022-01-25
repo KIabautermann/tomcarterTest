@@ -58,10 +58,15 @@ public class PlayerHardenState : PlayerBasicMovementState
                 canMove = true;
                 controller.FlipCheck(inputs.FixedAxis.x);
                 controller.SetAcceleration(inputs.FixedAxis.x != 0 ? .5f : 0);
-                _target.QueueAnimation(_target.animations.hardenBounce.name, true, true);
                 controller.SetGravity(true);
                 currentSpeed = stats.movementVelocity;
                 currentAcceleration = stats.groundedAccelerationTime;
+                _target.QueueAnimation(_target.animations.airUpwards.name, false, true);
+            }
+            if (extraCounter >= stats.hardenAfterimageCounter)
+            {
+                _target.vfxSpawn.InstanceEffect(null, transform.position, transform.rotation, _target.vfxSpawn.EffectRepository.hardenAfterimage);
+                extraCounter = 0;
             }
         }
         
@@ -89,7 +94,7 @@ public class PlayerHardenState : PlayerBasicMovementState
     {
         base.DoTransitionOut();
         controller.SetCollider(stats.colliderDefaultSize, stats.colliderDefaultPosition);
-        if(!_groundPound)_target.QueueAnimation(_target.animations.hardenEnd.name, true, true);
+        if (!_groundPound) _target.QueueAnimation(_target.animations.hardenEnd.name, true, true);
         controller.SetGravity(true);
         controller.SetAcceleration(inputs.FixedAxis.x != 0 ? .5f : 0);
         controller.LockFlip(false);
@@ -105,6 +110,7 @@ public class PlayerHardenState : PlayerBasicMovementState
         else if(_impacted && controller.CurrentVelocity.y <= 0)
         {
             stateDone = true;
+
         }
     } 
 
@@ -120,7 +126,7 @@ public class PlayerHardenState : PlayerBasicMovementState
             _startedGroundPound = true;
             controller.SetAcceleration(1);
             controller.SetTotalVelocity(25, -Vector2.up);
-            _target.QueueAnimation(_target.animations.hardenPound.name, false, true);
-        }       
+            _target.projectileSpawn.Shoot(transform.position, Vector3.up, 1, 10, 20, null);
+        }          
     }
 }

@@ -61,9 +61,11 @@ public class PlayerJumpState : PlayerBasicMovementState
         }
         else if(inputs.JumpCancel){
             controller.SetVelocityY(controller.CurrentVelocity.y * stats.shortHopMultiplier);
+            _target.QueueAnimation(_target.animations.airPeak.name, true, true);
             stateDone = true;
         }   
         else if(controller.CurrentVelocity.y <=0){
+            _target.QueueAnimation(_target.animations.airPeak.name, true, true);
             stateDone = true;
         } 
         else if (controller.Grounded()&&controller.CurrentVelocity.y<.1f)

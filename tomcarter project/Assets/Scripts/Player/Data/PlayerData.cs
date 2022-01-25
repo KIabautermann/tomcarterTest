@@ -95,6 +95,7 @@ public class PlayerData : ScriptableObject
     public float hardenFallMuyltiplier = 50;
     public Vector2 colliderHardenSize;
     public Vector3 colliderHardenPosition;
+    public float hardenAfterimageCounter = .05f;
 
     [Header("Melee State")]
 

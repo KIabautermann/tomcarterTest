@@ -6,6 +6,7 @@ using UnityEngine;
 public class VisualEffectsRepository : ScriptableObject
 {
     public AnimationClip afterimage;
+    public AnimationClip hardenAfterimage;
     public AnimationClip airBlast;
     public AnimationClip sporeBlast;
     public AnimationClip playerGroundAttack;

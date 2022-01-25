@@ -112,7 +112,8 @@ public class PlayerRangeState : PlayerTransientState
             if (direction.y > 0) _target.QueueAnimation(_target.animations.attackRangeUp.name, false, true);
             else if (direction.y < 0) _target.QueueAnimation(_target.animations.attackRangeDown.name, false, true);
             else _target.QueueAnimation(_target.animations.attackRange.name, false, true);
-        }   
+        }
+        else _target.QueueAnimation(_target.animations.attackRangeDash.name, false, true);
     }
 
     protected override void DoTransitionOut()

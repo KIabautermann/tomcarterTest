@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: VisualEffectAnimations
   m_EditorClassIdentifier: Assembly-CSharp::PVisualEffectsRepository
   afterimage: {fileID: 7400000, guid: 754750152acf83847a77eb04082a7115, type: 2}
+  hardenAfterimage: {fileID: 7400000, guid: 632c0d42b4190ac46a4da850e2f5c5fd, type: 2}
   airBlast: {fileID: 7400000, guid: 3042a48f9f1533e4aaf4cfe14e0426f1, type: 2}
   sporeBlast: {fileID: 7400000, guid: 5eff28412b3ce884d907f76e4107b07a, type: 2}
   playerGroundAttack: {fileID: 7400000, guid: 4e7f1f4c54ec7984d9d1422105b3ec5c, type: 2}

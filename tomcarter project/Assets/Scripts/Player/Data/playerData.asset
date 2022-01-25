@@ -78,9 +78,10 @@ MonoBehaviour:
   hardenMovementSpeed: 3
   hardenDashChannelingTime: 0.5
   hardenParryTime: 0.4
-  hardenFallMuyltiplier: 50
+  hardenFallMuyltiplier: 80
   colliderHardenSize: {x: 0.32, y: 0.64}
   colliderHardenPosition: {x: 0, y: 0.04, z: 0}
+  hardenAfterimageCounter: 0.04
   meleeID: melee
   groundAnticipationTime: 0
   groundRecoverytime: 0.25
