@@ -1,0 +1,955 @@
+Using pre-set license
+Built from '2021.2/staging' branch; Version is '2021.2.7f1 (6bd9e232123f) revision 7068130'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19041) 64bit Enterprise' Language: 'es' Physical Memory: 16367 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/alves/Documents/GitHub/tomcarterTest/tomcarter project
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+63978
+Successfully changed project path to: C:/Users/alves/Documents/GitHub/tomcarterTest/tomcarter project
+C:/Users/alves/Documents/GitHub/tomcarterTest/tomcarter project
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 159.82 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.2.7f1 (6bd9e232123f)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/alves/Documents/GitHub/tomcarterTest/tomcarter project/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Radeon (TM) RX 470 Graphics (ID=0x67df)
+    Vendor:   ATI
+    VRAM:     4075 MB
+    Driver:   30.0.13033.1000
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56084
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.020306 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 133.98 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.354 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1355ms)
+		BeginReloadAssembly (160ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (947ms)
+			LoadAssemblies (153ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (250ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (54ms)
+			SetupLoadedEditorAssemblies (529ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (36ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (134ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (271ms)
+				ProcessInitializeOnLoadMethodAttributes (86ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.020650 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 241.14 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh: Total: 0.000 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Mono: successfully reloaded assembly
+- Completed reload, in  3.919 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3921ms)
+		BeginReloadAssembly (239ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (12ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (35ms)
+		EndReloadAssembly (3390ms)
+			LoadAssemblies (187ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (713ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (293ms)
+			SetupLoadedEditorAssemblies (1992ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (59ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (241ms)
+				BeforeProcessingInitializeOnLoad (256ms)
+				ProcessInitializeOnLoadAttributes (1173ms)
+				ProcessInitializeOnLoadMethodAttributes (232ms)
+				AfterProcessingInitializeOnLoad (31ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.14 seconds
+Refreshing native plugins compatible for Editor in 2.06 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 10 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 220 unused Assets / (447.3 KB). Loaded Objects now: 4147.
+Memory consumption went from 70.5 MB to 70.1 MB.
+Total: 7.283600 ms (FindLiveObjects: 0.445700 ms CreateObjectMapping: 0.232100 ms MarkObjects: 6.007100 ms  DeleteObjects: 0.596600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 7549.094713 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas(Clone). Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at CanvasReference.OnBeginImpl () [0x000a9] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Visuals\Canvas\CanvasReference.cs:28 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Visuals/Canvas/CanvasReference.cs Line: 28)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Popup Pool. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas Hover Text Pooler. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+ -> (artifact id: 'bf1370ac432389b1792bc924aa9870b3') in 0.347699 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.438476 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas(Clone). Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at CanvasReference.OnBeginImpl () [0x000a9] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Visuals\Canvas\CanvasReference.cs:28 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Visuals/Canvas/CanvasReference.cs Line: 28)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Popup Pool. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas Hover Text Pooler. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+ -> (artifact id: 'fc85df140a7b8565dd6f37927aa63650') in 0.129541 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.138299 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas(Clone). Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at CanvasReference.OnBeginImpl () [0x000a9] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Visuals\Canvas\CanvasReference.cs:28 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Visuals/Canvas/CanvasReference.cs Line: 28)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Popup Pool. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas Hover Text Pooler. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+ -> (artifact id: '3e25c99ca8eaa31a08a4b4e4d119be33') in 0.104106 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.965470 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas(Clone). Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at CanvasReference.OnBeginImpl () [0x000a9] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Visuals\Canvas\CanvasReference.cs:28 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Visuals/Canvas/CanvasReference.cs Line: 28)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Popup Pool. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas Hover Text Pooler. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+ -> (artifact id: 'a79b9b272f72683827a0cb664aa30fef') in 0.110998 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.750375 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas(Clone). Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at CanvasReference.OnBeginImpl () [0x000a9] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Visuals\Canvas\CanvasReference.cs:28 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Visuals/Canvas/CanvasReference.cs Line: 28)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Popup Pool. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas Hover Text Pooler. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+ -> (artifact id: '7e2a62763ca6cb4484d56ba99683a0a4') in 0.108972 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.691915 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas(Clone). Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at CanvasReference.OnBeginImpl () [0x000a9] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Visuals\Canvas\CanvasReference.cs:28 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Visuals/Canvas/CanvasReference.cs Line: 28)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Popup Pool. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas Hover Text Pooler. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+ -> (artifact id: 'd031802bec03a57ceeb5212ddec33b49') in 0.089791 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.123256 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas(Clone). Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at CanvasReference.OnBeginImpl () [0x000a9] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Visuals\Canvas\CanvasReference.cs:28 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Visuals/Canvas/CanvasReference.cs Line: 28)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Popup Pool. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas Hover Text Pooler. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+ -> (artifact id: '42454dba63f538d23292ad96be6b94a0') in 0.085402 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.767816 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas(Clone). Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at CanvasReference.OnBeginImpl () [0x000a9] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Visuals\Canvas\CanvasReference.cs:28 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Visuals/Canvas/CanvasReference.cs Line: 28)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Popup Pool. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas Hover Text Pooler. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+ -> (artifact id: 'aa6c6712f45525ca69ba869554894d99') in 0.087367 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 100.680780 seconds.
+  path: Assets/Sprites/UI/Health Meter.png
+  artifactKey: Guid(4b64e18ec565f024d9c722e180c01a3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/Health Meter.png using Guid(4b64e18ec565f024d9c722e180c01a3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60d879561a8445d25efc93b2d3240fba') in 0.144868 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.019757 seconds.
+Begin MonoManager ReloadAssembly
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas(Clone). Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at CanvasReference.OnBeginImpl () [0x000a9] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Visuals\Canvas\CanvasReference.cs:28 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Visuals/Canvas/CanvasReference.cs Line: 28)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Popup Pool. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+InvalidOperationException: The following game object is invoking the DontDestroyOnLoad method: Canvas Hover Text Pooler. Notice that DontDestroyOnLoad can only be used in play mode and, as such, cannot be part of an editor script.
+  at (wrapper managed-to-native) UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)
+  at ObjectPooler.OnBeginImpl () [0x00070] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\ObjectPooler.cs:64 
+  at PersistedScriptableObject.OnBegin () [0x00006] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:19 
+  at PersistedScriptableObject.Awake () [0x00000] in C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Assets\Scripts\Player\Poolers\PersistedScriptableObject.cs:14 
+
+(Filename: Assets/Scripts/Player/Poolers/ObjectPooler.cs Line: 64)
+
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.27 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh: Total: 0.000 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Mono: successfully reloaded assembly
+- Completed reload, in  3.622 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3623ms)
+		BeginReloadAssembly (335ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (16ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (91ms)
+		EndReloadAssembly (3021ms)
+			LoadAssemblies (197ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (619ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (178ms)
+			SetupLoadedEditorAssemblies (1624ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (30ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (224ms)
+				ProcessInitializeOnLoadAttributes (1115ms)
+				ProcessInitializeOnLoadMethodAttributes (223ms)
+				AfterProcessingInitializeOnLoad (28ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (97ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.69 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 210 unused Assets / (422.0 KB). Loaded Objects now: 4414.
+Memory consumption went from 85.4 MB to 85.0 MB.
+Total: 8.492400 ms (FindLiveObjects: 0.617000 ms CreateObjectMapping: 0.492300 ms MarkObjects: 6.654100 ms  DeleteObjects: 0.727000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.021144 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.51 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh: Total: 0.000 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Mono: successfully reloaded assembly
+- Completed reload, in  3.583 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3584ms)
+		BeginReloadAssembly (382ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (22ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (97ms)
+		EndReloadAssembly (2904ms)
+			LoadAssemblies (223ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (627ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (190ms)
+			SetupLoadedEditorAssemblies (1625ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (31ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (249ms)
+				ProcessInitializeOnLoadAttributes (1090ms)
+				ProcessInitializeOnLoadMethodAttributes (221ms)
+				AfterProcessingInitializeOnLoad (31ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (103ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.30 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 210 unused Assets / (422.3 KB). Loaded Objects now: 4416.
+Memory consumption went from 85.3 MB to 84.9 MB.
+Total: 8.936800 ms (FindLiveObjects: 0.713100 ms CreateObjectMapping: 0.491100 ms MarkObjects: 7.032100 ms  DeleteObjects: 0.699000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 236.819080 seconds.
+  path: Packages/com.unity.probuilder/Content/Icons/UVEditor/camera-64x64.png
+  artifactKey: Guid(90f8fdd975ce6b74f9ff13d9672b45eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.probuilder/Content/Icons/UVEditor/camera-64x64.png using Guid(90f8fdd975ce6b74f9ff13d9672b45eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e049ed09d34064a81444b768bbf5a952') in 0.063367 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/Camera1.png
+  artifactKey: Guid(2384eb5de05269b44a58f8dd1d83d725) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/Camera1.png using Guid(2384eb5de05269b44a58f8dd1d83d725) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd3c5f064c98a74530c487888a9d8abf') in 0.070288 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.737893 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/Lighting/Icons/LightUnitIcons/Candlelight.png
+  artifactKey: Guid(eda062bf16e02ef44a7bf24336ddac6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/Lighting/Icons/LightUnitIcons/Candlelight.png using Guid(eda062bf16e02ef44a7bf24336ddac6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27530cae0f7cb53a11b448ecb36262fa') in 0.051222 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resources/DebugUIPersistentCanvas.prefab
+  artifactKey: Guid(f6b1a0fe75d5009449cf55ae76220e2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resources/DebugUIPersistentCanvas.prefab using Guid(f6b1a0fe75d5009449cf55ae76220e2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e27a662a9e3c3d82a773fc7b61107b2') in 0.065089 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000070 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/Lighting/Icons/LightUnitIcons/d_Candlelight.png
+  artifactKey: Guid(3f9a63faecec9a34c9ffbfedd9ac5c3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/Lighting/Icons/LightUnitIcons/d_Candlelight.png using Guid(3f9a63faecec9a34c9ffbfedd9ac5c3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21c9b49476fc9a04338a4e0c4c003278') in 0.057073 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resources/DebugUICanvas.prefab
+  artifactKey: Guid(cf6cbdd672089a84796e55a21fed1cbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resources/DebugUICanvas.prefab using Guid(cf6cbdd672089a84796e55a21fed1cbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2013420e64687dc4a36a31cfb3b5659c') in 0.122666 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 74.626191 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2243b386765b309e81a7247e2ed441dc') in 0.010706 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.491220 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '495cb65f413d163bf7348ae8347ec6aa') in 0.009584 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.799360 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62b7e12655b3f97939d28fc23cb80041') in 0.010488 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.355351 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d0188bb4f21fa11f1af90547c23a988') in 0.009517 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.942603 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dac1cad17e000504d51803c2a00d6e4b') in 0.011253 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.651052 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b3714e05979ea0488422c45ace44cb6') in 0.009884 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.022498 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.20 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh: Total: 0.000 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Mono: successfully reloaded assembly
+- Completed reload, in  3.473 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3474ms)
+		BeginReloadAssembly (347ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (20ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (85ms)
+		EndReloadAssembly (2847ms)
+			LoadAssemblies (197ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (610ms)
+			ReleaseScriptCaches (5ms)
+			RebuildScriptCaches (172ms)
+			SetupLoadedEditorAssemblies (1594ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (28ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (226ms)
+				ProcessInitializeOnLoadAttributes (1078ms)
+				ProcessInitializeOnLoadMethodAttributes (229ms)
+				AfterProcessingInitializeOnLoad (29ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (103ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.79 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 211 unused Assets / (430.4 KB). Loaded Objects now: 4481.
+Memory consumption went from 87.4 MB to 87.0 MB.
+Total: 8.840100 ms (FindLiveObjects: 0.502800 ms CreateObjectMapping: 0.245900 ms MarkObjects: 7.430100 ms  DeleteObjects: 0.659600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.021208 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.23 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh: Total: 0.000 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Mono: successfully reloaded assembly
+- Completed reload, in  3.285 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3286ms)
+		BeginReloadAssembly (324ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (20ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (66ms)
+		EndReloadAssembly (2712ms)
+			LoadAssemblies (204ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (581ms)
+			ReleaseScriptCaches (5ms)
+			RebuildScriptCaches (166ms)
+			SetupLoadedEditorAssemblies (1539ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (28ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (230ms)
+				ProcessInitializeOnLoadAttributes (1032ms)
+				ProcessInitializeOnLoadMethodAttributes (217ms)
+				AfterProcessingInitializeOnLoad (27ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (102ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 3.18 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 210 unused Assets / (438.0 KB). Loaded Objects now: 4483.
+Memory consumption went from 87.5 MB to 87.0 MB.
+Total: 10.183000 ms (FindLiveObjects: 1.010100 ms CreateObjectMapping: 0.363700 ms MarkObjects: 8.145100 ms  DeleteObjects: 0.661900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 222.846772 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7af12ae3051a4483e942afd974523b65') in 0.029385 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.652551 seconds.
+  path: Assets/Scripts/Visuals/Canvas/Canvas.prefab
+  artifactKey: Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/Canvas.prefab using Guid(fa77b28355906b34db22889e35f45eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52d8dd679dab08b94e09333925b084fe') in 0.009055 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.017836 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.10 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh: Total: 0.000 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Mono: successfully reloaded assembly
+- Completed reload, in  3.565 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3566ms)
+		BeginReloadAssembly (343ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (21ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (88ms)
+		EndReloadAssembly (2948ms)
+			LoadAssemblies (201ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (662ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (187ms)
+			SetupLoadedEditorAssemblies (1647ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (27ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (255ms)
+				ProcessInitializeOnLoadAttributes (1102ms)
+				ProcessInitializeOnLoadMethodAttributes (233ms)
+				AfterProcessingInitializeOnLoad (27ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (118ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.52 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 210 unused Assets / (423.8 KB). Loaded Objects now: 4485.
+Memory consumption went from 87.5 MB to 87.0 MB.
+Total: 10.058300 ms (FindLiveObjects: 0.557700 ms CreateObjectMapping: 0.585000 ms MarkObjects: 7.985800 ms  DeleteObjects: 0.927600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 425.501150 seconds.
+  path: Assets/Scripts/Visuals/Canvas/CustomCanvasScaler.cs
+  artifactKey: Guid(0d7d295422959e1478c378868b0395cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Visuals/Canvas/CustomCanvasScaler.cs using Guid(0d7d295422959e1478c378868b0395cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16a6a9598d3bb11dd2791fcb37541cb6') in 0.022692 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.034675 seconds.
+Begin MonoManager ReloadAssembly
+The file 'MemoryStream' is corrupted! Remove it and launch unity again!
+[Position out of bounds!]
+Fatal Error! The file 'MemoryStream' is corrupted! Remove it and launch unity again!
+[Position out of bounds!]
+Crash!!!
+SymInit: Symbol-SearchPath: 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Mono;.;C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project;C:\Users\alves\Documents\GitHub\tomcarterTest\tomcarter project\Library\BurstCache\JIT;C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor;C:\WINDOWS;C:\WINDOWS\system32;SRV*C:\websymbols*http://msdl.microsoft.com/download/symbols;', symOptions: 534, UserName: 'alves'
+OS-Version: 10.0.0
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Unity.exe:Unity.exe (00007FF76D6C0000), size: 72974336 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2021.2.7.55778
+C:\WINDOWS\SYSTEM32\ntdll.dll:ntdll.dll (00007FF9F7150000), size: 2056192 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\System32\KERNEL32.DLL:KERNEL32.DLL (00007FF9F6050000), size: 774144 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\KERNELBASE.dll:KERNELBASE.dll (00007FF9F49F0000), size: 2916352 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.572
+C:\WINDOWS\System32\CRYPT32.dll:CRYPT32.dll (00007FF9F5050000), size: 1429504 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\ucrtbase.dll:ucrtbase.dll (00007FF9F4890000), size: 1048576 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\USER32.dll:USER32.dll (00007FF9F6610000), size: 1703936 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\System32\win32u.dll:win32u.dll (00007FF9F4990000), size: 139264 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.630
+C:\WINDOWS\System32\GDI32.dll:GDI32.dll (00007FF9F6FC0000), size: 172032 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\gdi32full.dll:gdi32full.dll (00007FF9F4E10000), size: 1085440 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.572
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\libfbxsdk.dll:libfbxsdk.dll (00007FF9766F0000), size: 10215424 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.2.0.0
+C:\WINDOWS\System32\msvcp_win.dll:msvcp_win.dll (00007FF9F4D70000), size: 643072 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\ADVAPI32.dll:ADVAPI32.dll (00007FF9F61A0000), size: 704512 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\optix.6.0.0.dll:optix.6.0.0.dll (00007FF9DA110000), size: 208896 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 6.0.0.0
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\s3tcompress.dll:s3tcompress.dll (00007FF9E4C30000), size: 180224 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\System32\msvcrt.dll:msvcrt.dll (00007FF9F7070000), size: 647168 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 7.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\etccompress.dll:etccompress.dll (00007FF976210000), size: 5066752 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\ispc_texcomp.dll:ispc_texcomp.dll (00007FF9D9B10000), size: 1740800 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\System32\sechost.dll:sechost.dll (00007FF9F5290000), size: 634880 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\compress_bc7e.dll:compress_bc7e.dll (00007FF98C960000), size: 1441792 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\System32\RPCRT4.dll:RPCRT4.dll (00007FF9F6340000), size: 1196032 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.630
+C:\WINDOWS\System32\SHELL32.dll:SHELL32.dll (00007FF9F5330000), size: 7606272 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\System32\SHLWAPI.dll:SHLWAPI.dll (00007FF9F6140000), size: 348160 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\FreeImage.dll:FreeImage.dll (0000000180000000), size: 6582272 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 3.18.0.0
+C:\WINDOWS\System32\ole32.dll:ole32.dll (00007FF9F6E90000), size: 1220608 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\OpenImageDenoise.dll:OpenImageDenoise.dll (00007FF974090000), size: 35123200 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.3.0.0
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\WinPixEventRuntime.dll:WinPixEventRuntime.dll (00007FF9E4C00000), size: 45056 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.0.1812.6001
+C:\WINDOWS\System32\combase.dll:combase.dll (00007FF9F6B30000), size: 3493888 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.572
+C:\WINDOWS\System32\WS2_32.dll:WS2_32.dll (00007FF9F6520000), size: 438272 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\IMM32.dll:IMM32.dll (00007FF9F6110000), size: 196608 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\umbraoptimizer64.dll:umbraoptimizer64.dll (00007FF9D18B0000), size: 1187840 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\System32\SETUPAPI.dll:SETUPAPI.dll (00007FF9F5BE0000), size: 4616192 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\cfgmgr32.dll:cfgmgr32.dll (00007FF9F4F20000), size: 319488 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\bcrypt.dll:bcrypt.dll (00007FF9F49C0000), size: 159744 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\OLEAUT32.dll:OLEAUT32.dll (00007FF9F51B0000), size: 839680 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\OPENGL32.dll:OPENGL32.dll (00007FF9BED10000), size: 1200128 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\tbb12.dll:tbb12.dll (00007FF9D9E10000), size: 389120 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\SYSTEM32\GLU32.dll:GLU32.dll (00007FF9BEB10000), size: 180224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\WINTRUST.dll:WINTRUST.dll (00007FF9F4FF0000), size: 393216 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.630
+C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll:VCRUNTIME140.dll (00007FF9DB580000), size: 110592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.29.30135.0
+C:\WINDOWS\SYSTEM32\MSVCP140.dll:MSVCP140.dll (00007FF9DB4F0000), size: 577536 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.29.30135.0
+C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL:IPHLPAPI.DLL (00007FF9F3CA0000), size: 241664 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\WINHTTP.dll:WINHTTP.dll (00007FF9EFB00000), size: 1048576 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\dwmapi.dll:dwmapi.dll (00007FF9F26F0000), size: 192512 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\RadeonImageFilters.dll:RadeonImageFilters.dll (00007FF973DB0000), size: 2961408 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.7.0.0
+C:\WINDOWS\SYSTEM32\WINMM.dll:WINMM.dll (00007FF9EC300000), size: 159744 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\HID.DLL:HID.DLL (00007FF9F31A0000), size: 53248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\SketchUpAPI.dll:SketchUpAPI.dll (00007FF9734D0000), size: 9306112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 20.2.172.0
+C:\WINDOWS\SYSTEM32\VERSION.dll:VERSION.dll (00007FF9EEB20000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\WSOCK32.dll:WSOCK32.dll (00007FF9E4BF0000), size: 36864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1
+C:\WINDOWS\SYSTEM32\VCRUNTIME140_1.dll:VCRUNTIME140_1.dll (00007FF9EA1A0000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.29.30135.0
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\RadeonML.dll:RadeonML.dll (00007FF9DCD00000), size: 94208 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 0.9.11.0
+C:\WINDOWS\SYSTEM32\Secur32.dll:Secur32.dll (00007FF9DEF00000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\SketchUpCommonPreferences.dll:SketchUpCommonPreferences.dll (00007FF9D8D90000), size: 479232 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 20.2.172.37
+C:\WINDOWS\SYSTEM32\SSPICLI.DLL:SSPICLI.DLL (00007FF9F4770000), size: 245760 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\OpenRL.dll:OpenRL.dll (00000268BEC90000), size: 12779520 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.5.0.2907
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\embree.dll:embree.dll (00007FF9724E0000), size: 16711680 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.14.0.0
+C:\WINDOWS\SYSTEM32\MSVCR100.dll:MSVCR100.dll (0000000072520000), size: 860160 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.40219.325
+C:\WINDOWS\SYSTEM32\MSVCP100.dll:MSVCP100.dll (0000000072480000), size: 622592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.40219.325
+C:\WINDOWS\SYSTEM32\MSWSOCK.DLL:MSWSOCK.DLL (00007FF9F3FB0000), size: 434176 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\tbb.dll:tbb.dll (00007FF9C8000000), size: 413696 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2017.0.2016.1004
+C:\WINDOWS\SYSTEM32\MSVCR120.dll:MSVCR120.dll (00007FF9AF1F0000), size: 978944 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 12.0.40664.0
+C:\WINDOWS\SYSTEM32\MSVCP120.dll:MSVCP120.dll (00007FF9C4AC0000), size: 679936 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 12.0.40664.0
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\OpenRL_pthread.dll:OpenRL_pthread.dll (00000268BF8E0000), size: 61440 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.9.0.0
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\tbbmalloc.dll:tbbmalloc.dll (00007FF9D9D00000), size: 372736 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2017.0.2016.1004
+C:\WINDOWS\SYSTEM32\MSASN1.dll:MSASN1.dll (00007FF9F43B0000), size: 73728 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\kernel.appcore.dll:kernel.appcore.dll (00007FF9F2720000), size: 73728 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\bcryptPrimitives.dll:bcryptPrimitives.dll (00007FF9F4F70000), size: 520192 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\system32\uxtheme.dll:uxtheme.dll (00007FF9F2340000), size: 647168 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\System32\shcore.dll:shcore.dll (00007FF9F6470000), size: 712704 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\SYSTEM32\windows.storage.dll:windows.storage.dll (00007FF9F2A00000), size: 7950336 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\SYSTEM32\Wldp.dll:Wldp.dll (00007FF9F4230000), size: 180224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\profapi.dll:profapi.dll (00007FF9F47C0000), size: 155648 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\system32\IconCodecService.dll:IconCodecService.dll (00007FF9D8AB0000), size: 36864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1
+C:\WINDOWS\SYSTEM32\WindowsCodecs.dll:WindowsCodecs.dll (00007FF9EE080000), size: 1785856 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\clbcatq.dll:clbcatq.dll (00007FF9F67B0000), size: 692224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2001.12.10941.16384
+C:\WINDOWS\System32\netprofm.dll:netprofm.dll (00007FF9F0240000), size: 253952 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.630
+C:\WINDOWS\System32\npmproxy.dll:npmproxy.dll (00007FF9EE030000), size: 65536 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.630
+C:\WINDOWS\System32\NSI.dll:NSI.dll (00007FF9F6FF0000), size: 32768 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\SYSTEM32\dhcpcsvc6.DLL:dhcpcsvc6.DLL (00007FF9EF3F0000), size: 94208 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL:dhcpcsvc.DLL (00007FF9EF3D0000), size: 118784 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\DNSAPI.dll:DNSAPI.dll (00007FF9F3CE0000), size: 831488 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\System32\fwpuclnt.dll:fwpuclnt.dll (00007FF9ED770000), size: 520192 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Windows\System32\rasadhlp.dll:rasadhlp.dll (00007FF9EDB00000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\NVUnityPlugin.DLL:NVUnityPlugin.DLL (00007FF96EE40000), size: 1536000 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Data\Tools\astcenc-sse42.dll:astcenc-sse42.dll (00007FF96F0B0000), size: 565248 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\SYSTEM32\d3d11.dll:d3d11.dll (00007FF9F0AC0000), size: 2506752 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\dxgi.dll:dxgi.dll (00007FF9F31E0000), size: 995328 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\DriverStore\FileRepository\u0373142.inf_amd64_ed00e225cfc8dfad\B373020\aticfx64.dll:aticfx64.dll (00007FF9EC330000), size: 1802240 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 30.0.13033.1000
+C:\WINDOWS\System32\DriverStore\FileRepository\u0373142.inf_amd64_ed00e225cfc8dfad\B373020\atiuxp64.dll:atiuxp64.dll (00007FF9EC2C0000), size: 233472 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 30.0.13033.1000
+C:\WINDOWS\System32\DriverStore\FileRepository\u0373142.inf_amd64_ed00e225cfc8dfad\B373020\atidxx64.dll:atidxx64.dll (00007FF9EA240000), size: 32731136 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 30.0.13033.1000
+C:\WINDOWS\SYSTEM32\apphelp.dll:apphelp.dll (00007FF9F21F0000), size: 589824 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.572
+C:\WINDOWS\SYSTEM32\amdihk64.dll:amdihk64.dll (00007FF9EA210000), size: 196608 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.0.0.1788
+C:\WINDOWS\SYSTEM32\dxcore.dll:dxcore.dll (00007FF9ECC90000), size: 241664 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\system32\wbem\wbemprox.dll:wbemprox.dll (00007FF9E6DC0000), size: 69632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\SYSTEM32\wbemcomn.dll:wbemcomn.dll (00007FF9E7B80000), size: 548864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\system32\wbem\wbemsvc.dll:wbemsvc.dll (00007FF9E4A20000), size: 81920 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\system32\wbem\fastprox.dll:fastprox.dll (00007FF9E45E0000), size: 1093632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\amsi.dll:amsi.dll (00007FF9E1680000), size: 102400 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\SYSTEM32\USERENV.dll:USERENV.dll (00007FF9F4740000), size: 188416 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.572
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.2111.5-0\MpOav.dll:MpOav.dll (00007FF9E1600000), size: 499712 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 4.18.2111.5
+C:\WINDOWS\SYSTEM32\opencl.dll:opencl.dll (00007FF9CCD90000), size: 147456 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.2.6.0
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\radeonrays.dll:radeonrays.dll (00007FF96E410000), size: 557056 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Data\MonoBleedingEdge\EmbedRuntime\mono-2.0-bdwgc.dll:mono-2.0-bdwgc.dll (00007FF967A80000), size: 11177984 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\SYSTEM32\PROPSYS.dll:PROPSYS.dll (00007FF9F0290000), size: 1011712 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 7.0.19041.546
+C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.488_none_ca04af081b815d21\comctl32.dll:comctl32.dll (00007FF9E0AA0000), size: 2732032 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 6.10.19041.488
+C:\Windows\System32\thumbcache.dll:thumbcache.dll (00007FF9D5830000), size: 413696 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Windows\System32\MrmCoreR.dll:MrmCoreR.dll (00007FF9E4720000), size: 999424 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Windows\System32\iertutil.dll:iertutil.dll (00007FF9E99F0000), size: 2818048 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 11.0.19041.630
+C:\WINDOWS\SYSTEM32\windows.staterepositorycore.dll:windows.staterepositorycore.dll (00007FF9E9FB0000), size: 69632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\dbghelp.dll:dbghelp.dll (00007FF9EE8A0000), size: 1982464 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.488
+
+========== OUTPUTTING STACK TRACE ==================
+
+0x00007FF9F4A13E49 (KERNELBASE) RaiseException
+0x00007FF76F0E70DB (Unity) EditorMonoConsole::LogToConsoleImplementation
+0x00007FF76F0E7BCD (Unity) EditorMonoConsole::LogToConsoleImplementation
+0x00007FF76FCC36C7 (Unity) DebugStringToFilePostprocessedStacktrace
+0x00007FF76FCC2E5D (Unity) DebugStringToFile
+0x00007FF76E3475B3 (Unity) CachedReader::OutOfBoundsError
+0x00007FF76E348454 (Unity) CachedReader::UpdateReadCache
+0x00007FF76E5C1636 (Unity) ExecuteSerializationCommands<JSONRead>
+0x00007FF76E5D9868 (Unity) <lambda_580fa16bd23d18c3e466e7b58feca0a1>::operator()
+0x00007FF76E5D4511 (Unity) TransferScriptingObject<StreamedBinaryRead>
+0x00007FF76E5D5A8C (Unity) SerializableManagedRefTransfer::TransferScriptingObjectWithSerializedRefSupport<StreamedBinaryRead>
+0x00007FF76E5EB2EE (Unity) SerializableManagedRefTransfer::TransferBinaryInstanceOnly
+0x00007FF76E5C2FCF (Unity) SerializableManagedRefTransfer::RestoreBackupImpl<SerializableManagedRefBackupGenerator>
+0x00007FF76E5C2DF5 (Unity) SerializableManagedRefTransfer::RestoreBackup<SerializableManagedRefBackupGenerator>
+0x00007FF76E68A412 (Unity) SerializableManagedRefsUtilities::RestoreBackups
+0x00007FF76E5DE2D0 (Unity) MonoManager::EndReloadAssembly
+0x00007FF76E5E5D28 (Unity) MonoManager::ReloadAssembly
+0x00007FF76F4FBF22 (Unity) LoadDomainAndUserAssemblies
+0x00007FF76F4FC654 (Unity) LoadUserAssemblies
+0x00007FF76F98BA58 (Unity) <lambda_c8aac203af85da22e031a8e6d38250eb>::operator()
+0x00007FF76FA20412 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007FF76FA2269D (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007FF76FA25ABE (Unity) asio::io_service::run
+0x00007FF76FA1E8B1 (Unity) IOService::Run
+0x00007FF76F9B7FA8 (Unity) RunAssetImportWorkerClientV2
+0x00007FF76F9B807B (Unity) RunAssetImporterV2
+0x00007FF76F1FF690 (Unity) Application::InitializeProject
+0x00007FF76F64A7D8 (Unity) WinMain
+0x00007FF77095AAA2 (Unity) __scrt_common_main_seh
+0x00007FF9F6067034 (KERNEL32) BaseThreadInitThunk
+0x00007FF9F719CEC1 (ntdll) RtlUserThreadStart
+
+========== END OF STACKTRACE ===========
+
+A crash has been intercepted by the crash handler. For call stack and other details, see the latest crash report generated in:
+ * C:/Users/alves/AppData/Local/Temp/Unity/Editor/Crashes
