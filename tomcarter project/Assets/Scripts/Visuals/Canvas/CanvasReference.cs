@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
 using System.Linq;
@@ -13,6 +14,7 @@ public class CanvasReference : PersistedScriptableObject
     public GameObject CanvasPrefab;
     private GameObject _canvas;
     private Dictionary<CanvasElement, TextMeshProUGUI> _textMeshes;
+    private Dictionary<CanvasElement, Image> _images;
     private Dictionary<GameObject, ComponentCache<MonoBehaviour>> _poolableMeshesComponents;
     protected override void OnBeginImpl() {
         _canvas = GameObject.FindGameObjectWithTag("Canvas");
@@ -22,9 +24,20 @@ public class CanvasReference : PersistedScriptableObject
         }  
         _textMeshes = _canvas.GetComponentsInChildren<TextMeshProUGUI>()
             .Where(m => m.gameObject.activeSelf)
-            .ToDictionary(m => GetCanvasElement(m.gameObject.name), m => m); 
+            .Select(m => new Tuple<CanvasElement?, TextMeshProUGUI>(GetCanvasElement(m.gameObject.name), m))
+            .Where(t => t.Item1 != null)
+            .Select(t => new Tuple<CanvasElement, TextMeshProUGUI>((CanvasElement)t.Item1, t.Item2))
+            .ToDictionary(t => t.Item1, t => t.Item2); 
 
         _poolableMeshesComponents = new Dictionary<GameObject, ComponentCache<MonoBehaviour>>();
+
+        _images = _canvas.GetComponentsInChildren<Image>()
+            .Where(m => m.gameObject.activeSelf)
+            .Select(m => new Tuple<CanvasElement?, Image>(GetCanvasElement(m.gameObject.name), m))
+            .Where(t => t.Item1 != null)
+            .Select(t => new Tuple<CanvasElement, Image>((CanvasElement)t.Item1, t.Item2))
+            .ToDictionary(t => t.Item1, t => t.Item2);
+
         DontDestroyOnLoad(_canvas);
     }
     protected override void OnEndImpl() {}
@@ -46,9 +59,14 @@ public class CanvasReference : PersistedScriptableObject
         return _textMeshes[element];
     } 
 
-    private CanvasElement GetCanvasElement(string gameObjectName) 
+    public Image GetImageForGameObject(CanvasElement element)
     {
-        CanvasElement elem;
+        return _images[element];
+    }
+
+    private CanvasElement? GetCanvasElement(string gameObjectName) 
+    {
+        CanvasElement? elem = null;
         switch (gameObjectName) {
             case "TopBanner":
                 elem = CanvasElement.TopBanner;
@@ -62,8 +80,9 @@ public class CanvasReference : PersistedScriptableObject
             case "ToggleSceneText":
                 elem = CanvasElement.SceneButton;
                 break;
-            default:
-                throw new System.Exception($"Couldn't map canvas game object {gameObjectName} to an element Enum");
+            case "Health Meter":
+                elem = CanvasElement.HealthMeter;
+                break;
         }
         return elem;
     }

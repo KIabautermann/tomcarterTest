@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     [Range(0, 5)]
     public int currentHealth;
     private float _lastTimeHit = 0;
+    [SerializeField]
+    private CanvasReference _canvas;
     public Animator healthMeter;
 
     [SerializeField]
@@ -17,13 +19,12 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        if(GameObject.Find("Health Meter")!=null) healthMeter = GameObject.Find("Health Meter").GetComponent<Animator>();
+        healthMeter = _canvas.GetImageForGameObject(CanvasElement.HealthMeter).GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if(healthMeter!=null)healthMeter.SetInteger("Health", currentHealth);
-        else healthMeter = GameObject.Find("Health Meter").GetComponent<Animator>();
+        healthMeter.SetInteger("Health", currentHealth);
     }
 
 

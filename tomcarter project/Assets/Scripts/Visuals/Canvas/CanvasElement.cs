@@ -7,5 +7,6 @@ public enum CanvasElement
     PupupDialogueBox,
     TextHover,
     TopBanner,
+    HealthMeter,
     SceneButton
 }

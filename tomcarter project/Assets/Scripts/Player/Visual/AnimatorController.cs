@@ -35,7 +35,6 @@ public class AnimatorController : MonoBehaviour
         {
             lockRequest = lockAnimation;
         }
-
     }
 
     public void AnimationUnlock()
