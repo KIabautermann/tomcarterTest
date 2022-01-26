@@ -10,9 +10,14 @@ public class PlayerMeleeState : PlayerTransientState
     [Range (0,1)]
     public float index;
     private bool onAir;
+    private bool activeHitbox;
     private bool backslash;
     private float attackDuration;
     private bool combo;
+    private HitboxGenerator hitbox;
+
+    public Vector2 tempPosition;
+    public Vector2 tempSize;
 
     [SerializeField]
     private VisualEffectSpawner visualEffectSpawner;
@@ -20,6 +25,7 @@ public class PlayerMeleeState : PlayerTransientState
     {
         base.Init(target);
         animationTrigger = stats.meleeID;
+        hitbox = GetComponent<HitboxGenerator>();
     }
 
     protected override void DoChecks()
@@ -56,6 +62,19 @@ public class PlayerMeleeState : PlayerTransientState
         {
             controller.SetAcceleration(1);
             controller.SetVelocityX(Mathf.Lerp(stats.airAttackBoost, 0, index) * controller.facingDirection);
+        }
+        if (activeHitbox)
+        {
+            if (onAir)
+            {
+                Vector3 newPosition = transform.position + new Vector3(stats.airHitboxPosition.x * controller.facingDirection, stats.airHitboxPosition.y, 0);
+                hitbox.CircleHitbox(newPosition, stats.airHitboxSize.x, 1, stats.airRecoveryTime);
+            }
+            else
+            {
+                Vector3 newPosition = transform.position + new Vector3(stats.groundHitboxPosition.x * controller.facingDirection, stats.groundHitboxPosition.y, 0);
+                hitbox.BoxHitbox(newPosition, stats.groundHitboxSize, 1, stats.groundRecoverytime);
+            }       
         }
     }
 
@@ -97,6 +116,7 @@ public class PlayerMeleeState : PlayerTransientState
     protected override void DoTransitionOut()
     {
         controller.SetGravity(true);
+        activeHitbox = false;
         controller.SetAcceleration(0);
         if (onAir)
         {
@@ -127,5 +147,17 @@ public class PlayerMeleeState : PlayerTransientState
     public void ResetCooldown()
     {
         coolDown = 0;
+    }
+
+    public void SetHixbox()
+    {
+        activeHitbox = true;
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Vector3 newposition = transform.position + new Vector3(tempPosition.x * transform.right.x, tempPosition.y, 0);
+        Gizmos.DrawWireCube(newposition, tempSize);
     }
 }

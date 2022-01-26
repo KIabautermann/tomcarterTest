@@ -109,9 +109,10 @@ public class PlayerData : ScriptableObject
     public float airBoostDecay = 1.5f;
     public float airCooldown;
     public float groundCooldown;
-    public Vector2 meleeHitbox = Vector2.one;
-    public Vector2 meleeHiboxOffset;
-
+    public Vector2 groundHitboxPosition;
+    public Vector2 groundHitboxSize;
+    public Vector2 airHitboxPosition;
+    public Vector2 airHitboxSize;
 
     [Header("Range State")]
 

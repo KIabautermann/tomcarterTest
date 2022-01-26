@@ -92,8 +92,10 @@ MonoBehaviour:
   airBoostDecay: 1.5
   airCooldown: 0.5
   groundCooldown: 0
-  meleeHitbox: {x: 1.5, y: 0.7}
-  meleeHiboxOffset: {x: 0.7, y: 0}
+  groundHitboxPosition: {x: 1, y: 0}
+  groundHitboxSize: {x: 2, y: 1}
+  airHitboxPosition: {x: 0.8, y: 0}
+  airHitboxSize: {x: 1.5, y: 1.5}
   rangeID: range
   rangeCooldown: 0.6
   rangeCastTime: 0.2
