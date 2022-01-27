@@ -14,4 +14,5 @@ public class VisualEffectsRepository : ScriptableObject
     public AnimationClip playerAirAttack;
     public AnimationClip playerVineIdle;
     public AnimationClip playerVineEnd;
+    public AnimationClip rootAttack;
 }

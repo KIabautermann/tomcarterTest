@@ -21,3 +21,4 @@ MonoBehaviour:
   playerAirAttack: {fileID: 7400000, guid: 36a466e458fe4b94da248a30d7d2b6ce, type: 2}
   playerVineIdle: {fileID: 7400000, guid: 9ace4f0fc8a18fa4195f2c355b53f10b, type: 2}
   playerVineEnd: {fileID: 7400000, guid: f2e0f8f6384f77149886af7f03f64b38, type: 2}
+  rootAttack: {fileID: 7400000, guid: a44bcbedca68076429ba888ca1b6777c, type: 2}

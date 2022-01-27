@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IHitable
 {
+    public VisualEffectSpawner vfxSpawn;
     [SerializeField]
-    protected MaterialsRepository enemymaterials;
     protected SpriteRenderer myRenderer;
     protected float iFrames;
     [SerializeField]
     protected int maxHealth;
     protected int currentHealth;
-    private bool vulnerable;
-    private bool deathLerp;
-    private bool damageLerp;
-    private float deathIndex;
-    private float damageIndex;
-    private Animator _animator;
+    protected bool vulnerable;
+    protected bool deathLerp;
+    protected bool damageLerp;
+    protected float deathIndex;
+    protected float damageIndex;
+    protected Animator _animator;
     
     public IEnumerator DamageFlash()
     {
@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour, IHitable
         }     
     }
 
-    void Start()
+    public virtual void Start()
     {
         myRenderer = GetComponent<SpriteRenderer>();
         vulnerable = true;
@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour, IHitable
         _animator = GetComponent<Animator>();
     }
 
-    void Update()
+    public virtual void Update()
     {
         if((damageLerp && damageIndex!=1) || (!damageLerp && damageIndex != 0))
         {
