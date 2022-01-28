@@ -170,8 +170,8 @@ TextureImporter:
       name: Bushy Dummy_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 96
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -191,7 +191,7 @@ TextureImporter:
       name: Bushy Dummy_4
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 32
         width: 32
         height: 32
@@ -212,7 +212,7 @@ TextureImporter:
       name: Bushy Dummy_5
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 32
         width: 32
         height: 32
@@ -233,8 +233,8 @@ TextureImporter:
       name: Bushy Dummy_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 64
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -254,8 +254,8 @@ TextureImporter:
       name: Bushy Dummy_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 96
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -275,7 +275,7 @@ TextureImporter:
       name: Bushy Dummy_8
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
         y: 0
         width: 32
         height: 32
@@ -292,6 +292,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Bushy Dummy_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88242da785f18484888a653fd881f916
+      internalID: -1692768875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bushy Dummy_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 949d9d45b8764a34281c1e56df427003
+      internalID: -904645335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -304,6 +346,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Bushy Dummy_5: 2066417781
+      Bushy Dummy_9: -1692768875
       Bushy Dummy_6: -1941424111
       Bushy Dummy_8: -180057155
       Bushy Dummy_7: -2111030541
@@ -312,6 +355,7 @@ TextureImporter:
       Bushy Dummy_2: 832552708
       Bushy Dummy_1: -1819340796
       Bushy Dummy_4: -1640585367
+      Bushy Dummy_10: -904645335
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

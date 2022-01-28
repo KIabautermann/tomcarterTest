@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IHitable
 {
     public VisualEffectSpawner vfxSpawn;
-    [SerializeField]
     protected SpriteRenderer myRenderer;
     protected float iFrames;
     [SerializeField]

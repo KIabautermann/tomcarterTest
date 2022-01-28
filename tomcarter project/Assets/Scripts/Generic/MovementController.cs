@@ -121,14 +121,16 @@ public class MovementController : MonoBehaviour
     }
     public bool OnWall()
     {
-        int n = 0;
-        RaycastHit tmpHit = new RaycastHit();
-        Vector3 detection = new Vector3(_detectionLenght - .1f, myCollider.bounds.size.y - .1f) / 2;
-        if (Physics.BoxCast(myCollider.bounds.center, detection, transform.right, out tmpHit, Quaternion.identity, myCollider.bounds.size.x / 2, _hedge))
-        {
-            n++;
-        }
-        return n != 0;
+        return Physics.Raycast(myCollider.bounds.center, transform.right, (myCollider.bounds.size.x / 2) + .5f, _walkwable);
+    }
+
+    public bool OnLedge()
+    {
+        if (!Grounded()) return false;
+        float newPosX = (myCollider.bounds.center + transform.right * myCollider.bounds.size.x / 2).x;
+        float newPosY = (myCollider.bounds.min.y + .1f);
+        Vector3 newPos = new Vector3(newPosX, newPosY);
+        return !Physics.Raycast(newPos, - Vector3.up, .5f, _walkwable);
     }
 
     public bool OnCeiling() 
@@ -243,10 +245,10 @@ public class MovementController : MonoBehaviour
         if (Application.isPlaying)
         {
             Gizmos.color = Color.red;
-            Vector3 checkPosition = new Vector3(myCollider.bounds.center.x, myCollider.bounds.min.y, myCollider.bounds.center.z);
-            Vector3 checkSize = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght, 0);
-            Gizmos.DrawWireCube(checkPosition, checkSize);
-            Gizmos.DrawLine(checkPosition + Vector3.up * _detectionLenght / 2, checkPosition - Vector3.up * _detectionLenght / 2);
+            float newPosX = (myCollider.bounds.center + transform.right * myCollider.bounds.size.x / 2).x;
+            float newPosY = (myCollider.bounds.min.y + .1f);
+            Vector3 newPos = new Vector3(newPosX, newPosY);
+            Gizmos.DrawLine(newPos, newPos - transform.up * .5f);
         }    
     }
 
