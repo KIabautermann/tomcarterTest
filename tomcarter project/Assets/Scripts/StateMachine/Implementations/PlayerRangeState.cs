@@ -137,7 +137,7 @@ public class PlayerRangeState : PlayerTransientState
         _target.projectileSpawn.Shoot(transform.position, direction, 3, 10, 30, null);
         if (!controller.Grounded())
         {
-            controller.SetAcceleration(1);
+            controller.SetAcceleration(inputs.FixedAxis.x != 0 ? 1 : 0);
             if (dashJump)
             {
                 controller.LockFlip(false);

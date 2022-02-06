@@ -9,7 +9,6 @@ public class Bamboo : Enemy
     public LayerMask targetMask;
     public LayerMask walkable;
     public float detectionRadius;
-    [SerializeField]
     private Transform _target;
     private float _attackCounter;
     private float _searchCounter;
