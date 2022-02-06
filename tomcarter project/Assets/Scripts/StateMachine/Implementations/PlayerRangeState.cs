@@ -156,7 +156,6 @@ public class PlayerRangeState : PlayerTransientState
         }
         else _target.QueueAnimation(_target.animations.idle.name, false, true);
 
-        if (direction.x != 0) _target.GravityExceptionTime();
         casted = true;
     }
 

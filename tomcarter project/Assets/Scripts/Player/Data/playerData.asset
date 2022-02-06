@@ -100,7 +100,7 @@ MonoBehaviour:
   rangeCooldown: 0.6
   rangeCastTime: 0.2
   rangeRecoveryTime: 0.4
-  rangeRecoil: 10
+  rangeRecoil: 12
   rangeHitbox: {x: 4.5, y: 0.5}
   rangeHiboxOffset: {x: 2, y: 0}
   walkable:

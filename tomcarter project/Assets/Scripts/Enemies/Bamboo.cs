@@ -55,5 +55,11 @@ public class Bamboo : Enemy
         vfxSpawn.InstanceEffect(null, attackPosition, Quaternion.Euler(0, 0, 90), vfxSpawn.EffectRepository.rootAttack);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
+
 
 }
