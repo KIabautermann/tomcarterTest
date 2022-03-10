@@ -20,7 +20,6 @@ public class SceneControllerObject : PersistedScriptableObject
     // Esto es para un test de que el pooler funciona bien cambiando de escena. Borraremos mas adelante
     public void ToggleScene()
     {
-        Debug.Log(currSceneIndex);
         currSceneIndex = 1 + (currSceneIndex % 2);
         SceneManager.LoadScene(currSceneIndex);
     }

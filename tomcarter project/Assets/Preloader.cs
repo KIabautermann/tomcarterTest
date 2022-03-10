@@ -13,7 +13,5 @@ public class Preloader : MonoBehaviour
     public VisualEffectSpawner VisualEffectSpawner;
     [SerializeField]
     public List<ObjectPooler> Poolers;
-    // [SerializeField]
-    // public List<SceneRefer> Scenes;
 
 }
