@@ -1,9 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 [CreateAssetMenu(fileName = "SceneController", menuName = "Scene Managers")]
 public class SceneControllerObject : PersistedScriptableObject
@@ -19,8 +20,9 @@ public class SceneControllerObject : PersistedScriptableObject
     // Esto es para un test de que el pooler funciona bien cambiando de escena. Borraremos mas adelante
     public void ToggleScene()
     {
+        Debug.Log(currSceneIndex);
         currSceneIndex = 1 + (currSceneIndex % 2);
-        SceneManager.LoadSceneAsync(currSceneIndex);
+        SceneManager.LoadScene(currSceneIndex);
     }
 
     protected override void OnEndImpl() {}
@@ -30,15 +32,17 @@ public class SceneControllerObject : PersistedScriptableObject
         List<int> scenes = new List<int>();
         
         Scene currScene = SceneManager.GetActiveScene();
+        #if UNITY_EDITOR
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
             Scene s = SceneManager.GetSceneAt(i);
             if (currScene != s && s.buildIndex != -1)
                 scenes.Add(SceneManager.GetSceneAt(i).buildIndex);
+                
+            scenes.ForEach(s => DeactivateAllObjects(s));  
         }
-
-        scenes.ForEach(s => DeactivateAllObjects(s));        
-        
+        #endif
+      
         WaitForScriptableObjects(scenes);
     }
 
@@ -56,13 +60,16 @@ public class SceneControllerObject : PersistedScriptableObject
     {
         currSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if (SceneManager.GetActiveScene().buildIndex == PreloadScene) {
+        // En el caso de estar en la escena Preload, si o si, hay que cargar la "siguiente". 
+        if (currSceneIndex == PreloadScene) {
             if (availableScenes.Count > 0) {
+                // Si hay escenas disponibles que esten abiertas en el editor, elegimos arbitrariamente
                 currSceneIndex = availableScenes[0];
             } else {
+                // Si no hay escenas disponibles abiertas en el editor, pasmos directamente a la escena Default, definida como constante
                 currSceneIndex = DefaultScene;
             }
-            SceneManager.LoadSceneAsync(currSceneIndex);
+            SceneManager.LoadScene(currSceneIndex);
             ActivateAllObjects(currSceneIndex);
         } 
     }

@@ -19,12 +19,12 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        healthMeter = _canvas.GetImageForGameObject(CanvasElement.HealthMeter).GetComponent<Animator>();
+       healthMeter = _canvas.GetImageForGameObject(CanvasElement.HealthMeter).GetComponent<Animator>();
     }
 
     private void Update()
     {
-        healthMeter.SetInteger("Health", currentHealth);
+       healthMeter.SetInteger("Health", currentHealth);
     }
 
 
