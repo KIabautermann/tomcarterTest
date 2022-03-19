@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ea1ddefe492ac4a914a1822d40fe19, type: 3}
+  m_Name: CanvasReferencer
+  m_EditorClassIdentifier: 
+  SceneController: {fileID: 11400000, guid: ea4a25db138a1824293c3c185b69419b, type: 2}
+  TextHoverPooler: {fileID: 11400000, guid: d74112d2ae163a846bd1faf8b49345a0, type: 2}
+  CanvasPrefab: {fileID: 1978988724212452797, guid: fa77b28355906b34db22889e35f45eff,
+    type: 3}

@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23deb08ef567294ba86bfa0e2561b55, type: 3}
+  m_Name: playerData
+  m_EditorClassIdentifier: 
+  collisionDetection: 0.6
+  colliderDefaultSize: {x: 1, y: 1}
+  colliderDefaultPosition: {x: 0, y: 0, z: 0}
+  idleID: idle
+  movementID: run
+  movementVelocity: 13
+  groundedAccelerationTime: 0.15
+  airAccelerationTime: 0.5
+  airID: air
+  jumpID: jump
+  landID: land
+  jumpVelocity: 12
+  jumpLenght: 0.15
+  fallMultiplier: 50
+  minJumpVelocity: 7.5
+  coyoteTime: 0.2
+  shortHopMultiplier: 0.5
+  maxFallVelocity: -35
+  amountOfJumps: 1
+  dashID: dash
+  blinkID: blink
+  dashCooldown: 0.2
+  dashStartUp: 0.02
+  dashLenght: 0.02
+  dashendLenght: 0.1
+  dashSpeed: 80
+  dashDrag: 10
+  postDashTimer: 0.1
+  dashAfterimageCounter: 0.004
+  dashJumpID: dash_jump
+  dashJumpVelocityX: 22
+  dashJumpAccelerationTime: 0.1
+  dashJumpFallMultiplier: 0.3
+  minDashJumpVelocity: 1
+  dashCoyoteTime: 0.1
+  jumpHandicapTime: 0.06
+  dashJumpAfterimageCounter: 0.05
+  hookID: hook
+  hookSpeed: 18
+  circularSpeed: 4
+  hookDetectionRadius: 0.1
+  maxAngle: 70
+  hookCooldown: 0.4
+  yVelocityMultiplier: 0.55
+  hookAimAssistConeAngle: 50
+  hookTarget: {x: 0.6, y: 0.3, z: 0}
+  hookMaxDistance: 6
+  chainSteps: 6
+  hedgeID: hedge
+  hedgeDetectionOffset: 0.5
+  hedgeTransitionInPush: 12
+  hedgeTransitionOutPush: 7
+  hedgeTransitionInTime: 0.1
+  hedgeJumpHandicapTime: 0.2
+  dialogueID: talk
+  npcDetectionLenght: 3
+  npcDetectionRadius: 0.25
+  rootChannelingDuration: 2
+  rootID: root
+  damageTrigger: dmg
+  damagedDuration: 1
+  hardenID: harden
+  hardenTime: 2
+  hardenMovementSpeed: 3
+  hardenDashChannelingTime: 0.5
+  hardenParryTime: 0.4
+  hardenFallMuyltiplier: 80
+  colliderHardenSize: {x: 0.32, y: 0.64}
+  colliderHardenPosition: {x: 0, y: 0.04, z: 0}
+  hardenAfterimageCounter: 0.04
+  meleeID: melee
+  groundAnticipationTime: 0
+  groundRecoverytime: 0.25
+  airAnticipationTime: 0.125
+  airRecoveryTime: 0.25
+  comboWindow: 0.07
+  airAttackBoost: 10
+  airBoostDecay: 1.5
+  airCooldown: 0.5
+  groundCooldown: 0
+  groundHitboxPosition: {x: 1, y: 0}
+  groundHitboxSize: {x: 2, y: 1}
+  airHitboxPosition: {x: 0.8, y: 0}
+  airHitboxSize: {x: 1.5, y: 1.5}
+  rangeID: range
+  rangeCooldown: 0.6
+  rangeCastTime: 0.2
+  rangeRecoveryTime: 0.4
+  rangeRecoil: 12
+  rangeHitbox: {x: 4.5, y: 0.5}
+  rangeHiboxOffset: {x: 2, y: 0}
+  walkable:
+    serializedVersion: 2
+    m_Bits: 34048
+  hitable:
+    serializedVersion: 2
+    m_Bits: 17664
+  hedge:
+    serializedVersion: 2
+    m_Bits: 1024
+  npc:
+    serializedVersion: 2
+    m_Bits: 4096
+  rootable:
+    serializedVersion: 2
+    m_Bits: 8192
+  solidGround:
+    serializedVersion: 2
+    m_Bits: 256
+  hazard:
+    serializedVersion: 2
+    m_Bits: 16384
+  damage:
+    serializedVersion: 2
+    m_Bits: 18432
+  platform:
+    serializedVersion: 2
+    m_Bits: 32768
+  idleNumberID: 0
+  runNumberID: 1
+  airNumberID: 2
+  dashNumberID: 3
+  hardenNumberID: 5
+  hookNumberID: 4
+  rootsNumberID: 6
+  meleeNumberID: 7
+  hedgeNumberID: 8
