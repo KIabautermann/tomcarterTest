@@ -37,11 +37,13 @@ public class PlayerOnAirState : PlayerBasicMovementState
         currentAcceleration = stats.airAccelerationTime;
         currentSpeed = stats.movementVelocity;
         canShortHop = false;
+        platformManager.LogicUpdated();
     }
 
     protected override void DoTransitionOut()
     {
         base.DoTransitionOut();
+        platformManager.LogicExit();
         _jumpCoyoteTime = false;
     }
 
