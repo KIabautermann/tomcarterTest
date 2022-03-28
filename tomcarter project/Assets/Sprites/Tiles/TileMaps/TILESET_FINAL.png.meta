@@ -164,7 +164,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -198,6 +198,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1063,8 +1087,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       TILESET_FINAL_4: -1994541265652091013
-      TILESET_FINAL_32: 6220058782970562876
       TILESET_FINAL_27: -1815999247670287373
+      TILESET_FINAL_31: -427971541981234196
       TILESET_FINAL_25: -9117256248524491158
       TILESET_FINAL_11: 742720021075417244
       TILESET_FINAL_37: 2337681867788292993
@@ -1100,8 +1124,8 @@ TextureImporter:
       TILESET_FINAL_28: -7553208419640382006
       TILESET_FINAL_23: -4511143623945856011
       TILESET_FINAL_7: 6507552673696706139
+      TILESET_FINAL_32: 6220058782970562876
       TILESET_FINAL_26: 1947973366129068122
-      TILESET_FINAL_31: -427971541981234196
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -70,7 +70,7 @@ public class MovementController : MonoBehaviour
     }
     public bool Grounded()
     {
-        Vector3 detection = new Vector3(myCollider.bounds.size.x - .1f, _detectionLenght) / 2;
+        Vector3 detection = new Vector3(myCollider.bounds.size.x - .25f, _detectionLenght) / 2;
         Vector3 center = new Vector3(myCollider.bounds.center.x, myCollider.bounds.min.y, myCollider.bounds.center.z);
         Collider[] temp = Physics.OverlapBox(center, detection, Quaternion.identity, _walkwable);
         if (temp.Length != 0){

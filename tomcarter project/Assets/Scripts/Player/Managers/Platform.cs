@@ -36,14 +36,15 @@ public class Platform : MonoBehaviour
     private void IgnorePlatformCollider(){
 
         if (_checkResolved) { return; }
-        
-        _detection = Physics.OverlapBox(controller.myCollider.bounds.center, (controller.myCollider.bounds.size + Vector3.one) / 2, Quaternion.identity, _platform);
+
+        _detection = Physics.OverlapBox(controller.myCollider.bounds.center, controller.myCollider.size * 1.5f, Quaternion.identity, _platform);
         // Si esta cayendo, decidimos si eyectarlo por arriba de la plataforma, o dejarlo caer, pero siempre regresamos
-        if (!controller.OnPlatform() && Mathf.Abs(controller.CurrentVelocity.y) <= 0.5f) {
+        if (!controller.OnPlatform() && Mathf.Abs(controller.CurrentVelocity.y) <= Mathf.Epsilon) {
             ResolveCollision();
             return;
         }
         
+        // Si ya hay colliders que se agregaron al conjunto de ignorados, no tiene punto buscar mas
         if (_currentIgnoredColliders.Count > 0) {
             // Si no estamos cayendo, ignora las colisiones ya detectadas
             foreach (Collider collider in _currentIgnoredColliders) {
@@ -69,13 +70,13 @@ public class Platform : MonoBehaviour
         for (int i = 0; i < _detection.Length; i++)
         {
             if (_currentIgnoredColliders.Contains(_detection[i])) {
-                float currPos_y = controller.myCollider.transform.position.y;
-                // Si el player ya cruzo la mitad, entonces ayudarlo a subir
-                if (_detection[i].transform.position.y <= currPos_y) {
+                float currPos_y = controller.myCollider.bounds.max.y;
+                // Si el player ya al menos un cuarto de la plataforma, entonces ayudalo a subir
+                if (_detection[i].transform.position.y - _detection[i].bounds.size.y * 0.25f <= currPos_y) {
                     // Solo si no esta ya en tierra firme en la plataforma, o no tiene ya mas velocidad vertical que le sobre
-                    if (!controller.OnPlatform() || controller.CurrentVelocity.y <= 0.1f) {
-                        float forceToApply = Mathf.Max(_detection[i].bounds.max.y - controller.myCollider.bounds.min.y, 0) / (_detection[i].bounds.extents.y);
-                        controller.SetVelocityY(2f * forceToApply);
+                    if (!controller.OnPlatform() || controller.CurrentVelocity.y <= Mathf.Epsilon) {
+                        float forceToApply = Mathf.Max(_detection[i].bounds.max.y - controller.myCollider.bounds.min.y, 0) / (_detection[i].bounds.size.y);
+                        controller.SetVelocityY(10f * forceToApply);
                     }
                 }
                 // Si el player esta por debajo de la mitad Y del collider, empujarlo para abajo 

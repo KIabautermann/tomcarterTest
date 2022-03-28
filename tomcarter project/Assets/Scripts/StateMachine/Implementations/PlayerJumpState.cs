@@ -34,9 +34,13 @@ public class PlayerJumpState : PlayerBasicMovementState
         base.DoTransitionIn();
         inputs.UsedJump();
         _target.QueueAnimation(_target.animations.airUpwards.name, false, true);
-        controller.SetVelocityY(stats.jumpVelocity);
         currentAcceleration = stats.airAccelerationTime;
         currentSpeed = stats.movementVelocity;
+        
+        // La velocidad de Y fijarla en funcion a la Direccion del input solo si esta en una Plataforma.
+        // De esta manera el Script de Platform puede detectar que la velocidad es negativa para poder funcionar
+        int verticalDirection = controller.OnPlatform() && inputs.FixedAxis.y < 0 ? inputs.FixedAxis.y : 1;
+        controller.SetVelocityY(stats.jumpVelocity * verticalDirection);
     }
 
     protected override void DoTransitionOut()
@@ -64,11 +68,11 @@ public class PlayerJumpState : PlayerBasicMovementState
             _target.QueueAnimation(_target.animations.airPeak.name, true, true);
             stateDone = true;
         }   
-        else if(controller.CurrentVelocity.y <=0){
+        else if(controller.CurrentVelocity.y <=0 && !controller.OnPlatform()){
             _target.QueueAnimation(_target.animations.airPeak.name, true, true);
             stateDone = true;
         } 
-        else if (controller.Grounded()&&controller.CurrentVelocity.y<.1f)
+        else if (controller.Grounded() && controller.CurrentVelocity.y<.1f)
         {
             _target.ChangeState<PlayerLandState>();
         }
