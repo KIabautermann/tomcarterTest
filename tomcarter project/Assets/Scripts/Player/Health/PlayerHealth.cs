@@ -24,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-       healthMeter.SetInteger("Health", currentHealth);
+       //healthMeter.SetInteger("Health", currentHealth);
     }
 
 
