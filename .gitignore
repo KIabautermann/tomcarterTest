@@ -54,11 +54,21 @@ Thumbs.db
 /[Aa]ssets/Plugins/FMOD/Cache.meta
 /[Aa]ssets/Plugins/FMOD/Cache/Editor.meta
 
+<<<<<<< HEAD
 /tomcarter\ project/Logs/*
 #/tomcarter\ project/ProjectSettings/*
 /tomcarter\ project/UserSettings/*
 /tomcarter\ project/.vs/
 /tomcarter\ project/.vsconfig
+=======
+/tomcarter project/Logs/*
+
+/Logs/*
+ProjectSettings/
+UserSettings/
+.vs/
+tomcarter project/.vsconfig
+>>>>>>> 2cda78c0ba624d57e10295f16754bc5f4691535d
 
 # Log-files
 fmod.log
