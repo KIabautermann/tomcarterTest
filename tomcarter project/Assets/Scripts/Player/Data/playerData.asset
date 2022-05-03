@@ -86,7 +86,7 @@ MonoBehaviour:
   groundAnticipationTime: 0
   groundRecoverytime: 0.25
   airAnticipationTime: 0.125
-  airRecoveryTime: 0.25
+  airRecoveryTime: 0.32
   comboWindow: 0.07
   airAttackBoost: 10
   airBoostDecay: 1.5
@@ -100,7 +100,7 @@ MonoBehaviour:
   rangeCooldown: 0.6
   rangeCastTime: 0.2
   rangeRecoveryTime: 0.4
-  rangeRecoil: 12
+  rangeRecoil: 14
   rangeHitbox: {x: 4.5, y: 0.5}
   rangeHiboxOffset: {x: 2, y: 0}
   walkable:
