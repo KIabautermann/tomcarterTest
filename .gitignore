@@ -54,15 +54,15 @@ Thumbs.db
 /[Aa]ssets/Plugins/FMOD/Cache.meta
 /[Aa]ssets/Plugins/FMOD/Cache/Editor.meta
 
-Logs
-ProjectSettings/
-UserSettings/
-.vs/
-tomcarter project/.vsconfig
+/tomcarter\ project/Logs/*
+#/tomcarter\ project/ProjectSettings/*
+/tomcarter\ project/UserSettings/*
+/tomcarter\ project/.vs/
+/tomcarter\ project/.vsconfig
 
 # Log-files
 fmod.log
-fmod_editor.log
+tomcarter project/fmod_editor.log
 
 # FMOD 1.10.x (Legacy)
 /Assets/FMODAssets/*
