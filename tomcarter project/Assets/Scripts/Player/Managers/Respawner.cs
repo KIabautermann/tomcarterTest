@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class Respawner : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Respawner : MonoBehaviour
     [SerializeField]
     public float solidGroundMinimum;
     [SerializeField]
-    public float maxHedgeProximity;
+    public float x_maxColliderProximity;
     void Start()
     {
         movement = GetComponent<MovementController>();
@@ -38,26 +39,28 @@ public class Respawner : MonoBehaviour
     {
         // Todo: No permitir hacer una safe zone si esta con una skill de uso limitado/no desbloqueado (y ya se gasto al menos un uso??)
         while (true) {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             
             Collider[] colliders = Physics.OverlapSphere(this.gameObject.transform.position, hazardCheckRadius, data.hazard);
             if (colliders.Length != 0) {
                 continue;
             }
-            
             // No esta en el suelo
             if (!movement.Grounded()) {
                continue; 
             }
             
-            // Esta muy cerca de un hedge
-            colliders = Physics.OverlapSphere(transform.position, maxHedgeProximity, data.hedge);
-            if (colliders.Length != 0) {
+            // Esta muy cerca de una pared
+            colliders = Physics.OverlapBox(transform.position, new Vector3(x_maxColliderProximity, movement.myCollider.size.y / 4, 0.1f));
+
+            int wallCollision = new List<Collider>(colliders).Where(x => x.gameObject != gameObject).Count();
+
+            if (wallCollision > 0) {
                 continue;
             }
 
             RaycastHit groundHit = movement.GetGroundHit();
-            /*var ground = groundHit.collider.gameObject;
+            var ground = groundHit.collider.gameObject;
 
             // No esta sobre tierra firme (no hedge)
             if (Mathf.Pow(2, ground.layer) != data.solidGround.value) {
@@ -66,6 +69,7 @@ public class Respawner : MonoBehaviour
 
             // No es ideal pero si es una vez cada 3 segundos, tampoco es para tanto bardo la eficiencia
             BoxCollider groundCollider = ground.GetComponent<BoxCollider>();
+            
             Vector3 min = groundCollider.bounds.min;
             Vector3 max = groundCollider.bounds.max;
             Vector3 currPos = this.gameObject.transform.position;
@@ -74,7 +78,7 @@ public class Respawner : MonoBehaviour
             // que el de las paredes al costado
             if (min.x < currPos.x - solidGroundMinimum && max.x > currPos.x + solidGroundMinimum) {
                 lastSafeZone = this.gameObject.transform.position;
-            }*/ 
+            }
         }
         
     }

@@ -19,29 +19,35 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-       healthMeter = _canvas.GetImageForGameObject(CanvasElement.HealthMeter).GetComponent<Animator>();
+        StartCoroutine(LoadScriptableObjects());
     }
-
     private void Update()
     {
-       //healthMeter.SetInteger("Health", currentHealth);
+        if(healthMeter != null) healthMeter.SetInteger("Health", currentHealth);
     }
 
 
     private void OnCollisionEnter(Collision other) 
     {    
         int collidedLayer = other.gameObject.layer;
-        if ((data.damage.value & 1 << collidedLayer) != 0 || (data.damage.value & 1 << collidedLayer) != 0)
+        
+        if (_lastTimeHit + _invulnerabilityPeriod > Time.time) return;
+
+        if ((data.damage.value & 1 << collidedLayer) != 0)
         {
             TakingDamage = true;
             _lastTimeHit = Time.time;   
             PlayerEventSystem.GetInstance().TriggerPlayerHasTakenDamage();
         }
-        
-        if (data.hazard == (data.hazard | (1 << collidedLayer)))
-        {
-            PlayerEventSystem.GetInstance().TriggerPlayerCollidedHazard();
-        }
     }
+    
+    private IEnumerator LoadScriptableObjects() 
+    {
+        while (!_canvas.IsLoaded) {
+            yield return new WaitForEndOfFrame();
+        }
+        healthMeter = _canvas.GetImageForGameObject(CanvasElement.HealthMeter).GetComponent<Animator>();
+    }
+
 
 }

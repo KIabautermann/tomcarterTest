@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerDamagedState : PlayerTransientState
 {
@@ -28,6 +29,7 @@ public class PlayerDamagedState : PlayerTransientState
     {
         controller.SetTotalVelocity(0f, Vector2.right);
         controller.SetAcceleration(0f);
+
         base.DoTransitionIn();
     }
 
@@ -35,17 +37,31 @@ public class PlayerDamagedState : PlayerTransientState
     {
         controller.SetTotalVelocity(0f, Vector2.right);
         controller.SetAcceleration(0f);
+        base.DoTransitionOut();
     }
 
     protected override void TransitionChecks()
     {
-        // TODO: Hay un bug que si dasheas en el aire antes de entrar a este estado, el movimiento del Bushy se vuelve mas lento que Maradona intentando leer en ingles
-        if (counter > + playerHealth._invulnerabilityPeriod) 
-        {
-            stateDone = true;
+        if (stateDone && controller.Grounded()) {
+            _target.ChangeState<PlayerIdleState>();
         }
         
-        base.TransitionChecks();
+        playerHealth.currentHealth--;
+
+        Collider[] _hazardHit = Physics.OverlapBox(
+            transform.position, 
+            controller.myCollider.bounds.size/2 * 1.1f,
+            Quaternion.identity, stats.hazard);
+
+        if (stateDone) return;
+
+        stateDone = true;
+
+        if (_hazardHit.Length > 0) {
+            PlayerEventSystem.GetInstance().TriggerPlayerCollidedHazard();
+        } else {
+            base.TransitionChecks();
+        }
     }
 
 }

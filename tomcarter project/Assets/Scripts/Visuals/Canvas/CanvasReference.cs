@@ -30,7 +30,7 @@ public class CanvasReference : PersistedScriptableObject
             .ToDictionary(t => t.Item1, t => t.Item2); 
 
         _poolableMeshesComponents = new Dictionary<GameObject, ComponentCache<MonoBehaviour>>();
-
+        
         _images = _canvas.GetComponentsInChildren<Image>()
             .Where(m => m.gameObject.activeSelf)
             .Select(m => new Tuple<CanvasElement?, Image>(GetCanvasElement(m.gameObject.name), m))

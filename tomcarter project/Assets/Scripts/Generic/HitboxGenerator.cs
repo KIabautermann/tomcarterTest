@@ -24,7 +24,6 @@ public class HitboxGenerator : MonoBehaviour
             if (hitbox[i].GetComponent<IHitable>() != null)
             {
                 hitbox[i].GetComponent<IHitable>().TakeDamage(damage, duration);
-                Debug.Log(hitbox[i].gameObject.name);
             }
         }
     }

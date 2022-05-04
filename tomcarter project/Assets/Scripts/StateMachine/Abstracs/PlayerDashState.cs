@@ -42,7 +42,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
         base.DoLogicUpdate();
       
 
-        if (_hedgeCollisionsChecks.Length != 0 /*&& FitsInHedge(direction)*/)
+        if (_hedgeCollisionsChecks.Length != 0 && FitsInHedge(direction))
         {
             Physics.IgnoreLayerCollision(9,10,false);
         }
@@ -155,7 +155,7 @@ public abstract class PlayerDashState : PlayerUnlockableSkill
     protected override void TransitionChecks()
     {
         base.TransitionChecks();
-        if (_hedgeCollisionsChecks.Length != 0 /*&& FitsInHedge(direction)*/)
+        if (_hedgeCollisionsChecks.Length != 0 && FitsInHedge(direction))
         {
             controller.SetDrag(0);
             Physics.IgnoreLayerCollision(9, 10, true);
