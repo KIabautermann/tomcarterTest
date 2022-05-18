@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Respawner : MonoBehaviour
 {
-    private Vector3 lastSafeZone;
+    public Vector3 LastSafeZone { get; private set; }
     private MovementController movement;
     private Coroutine safeZoneCheckRoutine;
     public PlayerData data;
@@ -20,14 +20,14 @@ public class Respawner : MonoBehaviour
     void Start()
     {
         movement = GetComponent<MovementController>();
-        lastSafeZone = this.gameObject.transform.position;
+        LastSafeZone = this.gameObject.transform.position;
         safeZoneCheckRoutine = StartCoroutine(CheckForSafeZone());
         PlayerEventSystem.GetInstance().OnHazardHit += HazardHitHandler;
     }
 
     private void HazardHitHandler(object sender, EventArgs args) 
     {
-        this.gameObject.transform.position = lastSafeZone;
+        //this.gameObject.transform.position = LastSafeZone;
     }
     
     private void OnDestroy() {
@@ -77,7 +77,7 @@ public class Respawner : MonoBehaviour
             // Tener cuidado que esto no va a funcionar en pozos, si el walkable de abajo no es el mismo game object
             // que el de las paredes al costado
             if (min.x < currPos.x - solidGroundMinimum && max.x > currPos.x + solidGroundMinimum) {
-                lastSafeZone = this.gameObject.transform.position;
+                LastSafeZone = this.gameObject.transform.position;
             }
         }
         

@@ -5,7 +5,6 @@ using System;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public bool TakingDamage { get; private set; }
     [Range(0, 5)]
     public int currentHealth;
     private float _lastTimeHit = 0;
@@ -30,12 +29,11 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter(Collision other) 
     {    
         int collidedLayer = other.gameObject.layer;
-        
+
         if (_lastTimeHit + _invulnerabilityPeriod > Time.time) return;
 
         if ((data.damage.value & 1 << collidedLayer) != 0)
         {
-            TakingDamage = true;
             _lastTimeHit = Time.time;   
             PlayerEventSystem.GetInstance().TriggerPlayerHasTakenDamage();
         }
