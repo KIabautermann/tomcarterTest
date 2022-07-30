@@ -75,7 +75,7 @@ public class PlayerDamagedState : PlayerTransientState
             hazardCollision = true;
             controller.myCollider.enabled = false;
             controller.SetGravity(false);
-            velocity = Vector3.Distance(gameObject.transform.position, lastSafeZone);
+            velocity = Vector3.Distance(gameObject.transform.position, lastSafeZone) * 5;
             // disparar animacion de desaparecer
         } else {
             stateDone = true;

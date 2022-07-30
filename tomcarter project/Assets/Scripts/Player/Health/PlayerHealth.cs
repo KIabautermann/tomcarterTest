@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision other) 
+    /*private void OnCollisionEnter(Collision other) 
     {    
         int collidedLayer = other.gameObject.layer;
 
@@ -34,6 +34,15 @@ public class PlayerHealth : MonoBehaviour
 
         if ((data.damage.value & 1 << collidedLayer) != 0)
         {
+            _lastTimeHit = Time.time;   
+            PlayerEventSystem.GetInstance().TriggerPlayerHasTakenDamage();
+        }
+    }*/
+
+    public void TakeDamage(){
+        if (_lastTimeHit + _invulnerabilityPeriod > Time.time) return;
+
+        else{
             _lastTimeHit = Time.time;   
             PlayerEventSystem.GetInstance().TriggerPlayerHasTakenDamage();
         }
